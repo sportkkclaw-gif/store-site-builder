@@ -1,0 +1,2 @@
+import type { SiteData } from '@/types/site';import { FreshJapaneseTemplate } from './FreshJapaneseTemplate';import { PremiumMinimalTemplate } from './PremiumMinimalTemplate';import { PlayfulColorfulTemplate } from './PlayfulColorfulTemplate';
+export function StoreWebsiteRenderer({data}:{data:SiteData}){if(data.template==='premium-minimal')return <PremiumMinimalTemplate data={data}/>;if(data.template==='playful-colorful')return <PlayfulColorfulTemplate data={data}/>;return <FreshJapaneseTemplate data={data}/>}
