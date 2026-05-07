@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --background: #f8fafc;
@@ -69,24 +67,37 @@ button {
   height: 100vh;
   min-height: 620px;
   overflow-y: auto;
-  background: #f8fafc;
+  background: linear-gradient(180deg, #f8fafc, #eef2f7);
   padding: 16px;
 }
 
 .builder-sidebar-button {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   width: 100%;
   min-width: 180px;
   min-height: 42px;
   padding: 10px 14px;
   border: 0;
-  border-radius: 14px;
+  border-radius: 16px;
   background: transparent;
   color: #475569;
   text-align: left;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
+}
+
+.builder-sidebar-icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  color: #0f766e;
+  font-size: 12px;
 }
 
 .builder-sidebar-button:hover {

@@ -90,12 +90,60 @@
 
 ---
 
+## v0.1.1 UI / Template Productization QA
+
+測試日期：2026-05-06  
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+QA artifacts：`qa-artifacts/v0.1.1/`
+
+| # | 驗收項目 | 結果 | 狀態 |
+|---|---|---|---|
+| 1 | 首頁桌機視覺驗收 | `01-home-desktop.png` 已重新產出；Hero、CTA、三步驟、模板卡、功能特色與 Footer 皆為現代 landing page 視覺，不再像原生 HTML。 | ✅ PASS |
+| 2 | 首頁 390px mobile 驗收 | `02-home-mobile-390.png` 已重新產出；`homeOverflow=false`。 | ✅ PASS |
+| 3 | Builder Overview 視覺驗收 | `03-builder-overview.png` 已重新產出；Overview 使用 dashboard cards、狀態 badge、交付檢查卡。 | ✅ PASS |
+| 4 | Builder 基本資料頁驗收 | `04-builder-basic.png` 已重新產出；基本資料與 Hero 文案分卡、2 欄欄位、helper text 完整。 | ✅ PASS |
+| 5 | Builder 模板選擇頁驗收 | `05-builder-template.png` 已重新產出；三模板皆有 preview card、適合產業與 selected 狀態。 | ✅ PASS |
+| 6 | Builder 菜單 / 商品頁驗收 | `06-builder-menu.png` 已重新產出；分類與商品為卡片式表單，featured 使用 toggle。 | ✅ PASS |
+| 7 | Preview desktop 驗收 | `07-builder-preview-desktop.png` 已重新產出；瀏覽器外框、模板名稱、即時更新狀態正常，無 debug text。 | ✅ PASS |
+| 8 | Preview mobile 驗收 | `08-builder-preview-mobile.png` 已重新產出；手機外框、手機 preview 內容正常。 | ✅ PASS |
+| 9 | 清新日系匯出網站驗收 | `09-export-fresh-japanese.png` 已重新產出；米白、抹茶綠、留白與圓角卡片視覺成立。 | ✅ PASS |
+| 10 | 質感極簡匯出網站驗收 | `10-export-premium-minimal.png` 已重新產出；炭黑 header、米色/咖啡棕、大圖精品餐飲感成立。 | ✅ PASS |
+| 11 | 活潑可愛匯出網站驗收 | `11-export-playful-colorful.png` 已重新產出；珊瑚/黃色/薄荷漸層、促銷感與年輕品牌視覺成立。 | ✅ PASS |
+| 12 | 三模板不只是色板 | 三模板在 Header、Hero、商品卡、CTA band、背景、字體與卡片語氣上皆不同；不是單純換色。 | ✅ PASS |
+| 13 | `exportStaticSite.ts` 同步升級 | 已升級三模板差異化 CSS、placeholder、modules.map、SEO meta 與 390px RWD；不依賴 Next.js runtime。 | ✅ PASS |
+| 14 | `npm run typecheck` | 在正式 repo 工作樹執行，`tsc --noEmit` exit 0。 | ✅ PASS |
+| 15 | `npm run build` | 在正式 repo 工作樹執行，Next.js 16.2.4 build 成功，`/` 與 `/builder` static prerendered。 | ✅ PASS |
+| 16 | ZIP 離線 file:// 結果 | `generated-site-v0.1.1-qa.zip` 已重新產出；三模板 HTML 解壓後可用 `file://` 開啟。 | ✅ PASS |
+| 17 | localhost / _next 檢查結果 | 解壓後三模板 HTML 無 `localhost`、無 `127.0.0.1`、無 `/_next`、無 `_next/`。 | ✅ PASS |
+| 18 | 390px RWD 結果 | `homeOverflow=false`、`builderOverflow=false`、三模板 export overflow 全為 false。 | ✅ PASS |
+| 19 | 已知限制 | QA artifacts 依 `.gitignore` 不納入 repo；PR 描述需列出正式本機 artifacts 路徑與截圖清單。Vercel Preview 仍需重新部署後做 live QA。 | ⚠️ NOTE |
+| 20 | 最終結論 | v0.1.1 本機正式 repo 驗證通過，可進入 PR 更新與 Preview redeploy。 | ✅ PASS |
+
+QA artifact 清單：
+
+- `01-home-desktop.png`
+- `02-home-mobile-390.png`
+- `03-builder-overview.png`
+- `04-builder-basic.png`
+- `05-builder-template.png`
+- `06-builder-menu.png`
+- `07-builder-preview-desktop.png`
+- `08-builder-preview-mobile.png`
+- `09-export-fresh-japanese.png`
+- `10-export-premium-minimal.png`
+- `11-export-playful-colorful.png`
+- `generated-site-v0.1.1-qa.zip`
+- `qa-result.json`
+
+---
+
 ## 總結
 
 - **25 項核心測試**：全部 ✅ PASS（含 Group A–E）
 - **Mobile 390px 實測**：11 項額外行動測試（Group G–H）全部 ✅ PASS，由 Playwright headless chromium 執行
-- **累計驗證**：Build ✅ / ZIP 結構 ✅ / SEO Meta ✅ / Forbidden ✅ / Browser Desktop ✅ / Browser Mobile 390px ✅ / Offline Mobile 390px ✅
-- **阻塞問題**：無
+- **v0.1.1 UI / Template Productization QA**：20 項全部 ✅ PASS / NOTE，由正式 repo 工作樹重新執行
+- **累計驗證**：Build ✅ / ZIP 結構 ✅ / SEO Meta ✅ / Forbidden ✅ / Browser Desktop ✅ / Browser Mobile 390px ✅ / Offline Mobile 390px ✅ / UI Productization ✅
+- **阻塞問題**：無產品阻塞；發布收尾需完成 PR 更新與 Vercel Preview redeploy。
 
 ---
 
