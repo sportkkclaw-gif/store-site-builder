@@ -20,7 +20,8 @@ export function TemplateGallery({ data, onChange }: { data: SiteData; onChange: 
     setPreviewing(null);
   };
 
-  const isSelected = (template: TemplateGalleryItem) => selectedId ? selectedId === template.id : data.template === template.baseTemplate;
+  const fallbackSelectedId = filters.templates.find(template => template.baseTemplate === data.template)?.id;
+  const isSelected = (template: TemplateGalleryItem) => selectedId ? selectedId === template.id : fallbackSelectedId === template.id;
 
   return (
     <div className="grid gap-6">
