@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="青檸清晨 template artwork">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F8FFFB"/><stop offset="0.55" stop-color="#84CC16"/><stop offset="1" stop-color="#B7F5D8"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#0f172a" flood-opacity="0.22"/></filter>
+    <radialGradient id="glow" cx="70%" cy="18%" r="55%"><stop offset="0" stop-color="#94A3B8" stop-opacity="0.65"/><stop offset="1" stop-color="#94A3B8" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="800" height="1000" rx="56" fill="url(#bg)"/>
+  <rect width="800" height="1000" rx="56" fill="url(#glow)"/>
+  <circle cx="120" cy="160" r="96" fill="#fff" opacity="0.18"/>
+  <circle cx="700" cy="800" r="180" fill="#fff" opacity="0.13"/>
+  <g filter="url(#shadow)">
+    <rect x="84" y="138" width="560" height="520" rx="34" fill="#ffffff" opacity="0.94"/>
+    <rect x="84" y="138" width="560" height="74" rx="34" fill="#0f172a" opacity="0.88"/>
+    <circle cx="128" cy="175" r="10" fill="#f97316"/><circle cx="160" cy="175" r="10" fill="#facc15"/><circle cx="192" cy="175" r="10" fill="#22c55e"/>
+    <rect x="126" y="260" width="240" height="32" rx="16" fill="#84CC16" opacity="0.86"/>
+    <rect x="126" y="312" width="330" height="20" rx="10" fill="#0f172a" opacity="0.22"/>
+    <rect x="126" y="350" width="278" height="20" rx="10" fill="#0f172a" opacity="0.14"/>
+    <rect x="126" y="416" width="110" height="44" rx="22" fill="#84CC16"/>
+    <rect x="266" y="416" width="120" height="44" rx="22" fill="#e2e8f0"/>
+    <rect x="126" y="520" width="122" height="94" rx="24" fill="#F8FFFB"/><rect x="278" y="520" width="122" height="94" rx="24" fill="#B7F5D8"/><rect x="430" y="520" width="122" height="94" rx="24" fill="#94A3B8"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="540" y="430" width="172" height="344" rx="36" fill="#111827"/>
+    <rect x="558" y="464" width="136" height="272" rx="24" fill="#ffffff"/>
+    <rect x="578" y="504" width="82" height="18" rx="9" fill="#84CC16"/>
+    <rect x="578" y="544" width="92" height="92" rx="24" fill="#B7F5D8"/>
+    <rect x="578" y="658" width="92" height="12" rx="6" fill="#94a3b8"/><rect x="578" y="684" width="64" height="12" rx="6" fill="#cbd5e1"/>
+  </g>
+  <g opacity="0.92">
+    <circle cx="184" cy="774" r="58" fill="#fff" opacity="0.85"/><circle cx="216" cy="748" r="38" fill="#94A3B8" opacity="0.9"/>
+    <rect x="292" y="728" width="246" height="34" rx="17" fill="#fff" opacity="0.82"/>
+    <rect x="292" y="786" width="180" height="22" rx="11" fill="#fff" opacity="0.55"/>
+  </g>
+  <text x="84" y="876" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="900" fill="#0f172a">青檸清晨</text>
+  <text x="88" y="926" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="700" fill="#0f172a" opacity="0.78">飲料店 · premium website concept</text>
+</svg>

@@ -172,3 +172,47 @@ QA artifact 清單：
   "hasConsoleErrors": false
 }
 ```
+
+
+---
+
+## v0.2.0 Template Gallery Upgrade QA
+
+測試日期：2026-05-07  
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+QA runtime：WSL-native mirror `/tmp/store-site-builder-gallery-qa`（避免 Windows 掛載路徑 Next server hang）  
+QA artifacts：`qa-artifacts/template-gallery-v0.2.0/`
+
+| # | 驗收項目 | 結果 | 狀態 |
+|---|---|---|---|
+| 1 | 30 套模板 catalog | 飲料店 10、餐飲店 10、咖啡廳 10，共 30 套；每套含名稱、說明、適合產業、tags、badge、palette、prompt、推薦邏輯、artwork mapping。 | ✅ PASS |
+| 2 | AI prompt catalog | `docs/template_prompt_catalog.md` 已建立，含通用規格與 30 套 prompt。 | ✅ PASS |
+| 3 | artwork manifest / assets | `lib/templateArtworkManifest.ts` 與 `public/template-gallery/{drink-shop,restaurant,cafe}/*.svg` 完成 30/30 接線。 | ✅ PASS |
+| 4 | 模板畫廊 UI | TemplateSelector 改為 AI 主視覺作品牆；含推薦區、產業 tabs、搜尋、style chips、排序、hover、selected。 | ✅ PASS |
+| 5 | 產業 tabs | Playwright 實測：drinkCount=10、restaurantCount=10、cafeCount=10。 | ✅ PASS |
+| 6 | 搜尋 | 搜尋「抹茶」→ searchCount=1。 | ✅ PASS |
+| 7 | 篩選 | style chip「高質感」→ filteredCount=7，小於全量且正常顯示。 | ✅ PASS |
+| 8 | 排序 | `熱門優先` select 可切換並維持畫廊結果。 | ✅ PASS |
+| 9 | 快速預覽 Modal | `05-preview-modal.png` 已產出，大圖、文案、推薦邏輯、palette、CTA 正常。 | ✅ PASS |
+| 10 | 套用模板 / Preview 同步 | 套用「抹茶日和」後 localStorage `galleryTemplateId=drink-matcha-hiyori`、`template=fresh-japanese`，右側 Preview 文案同步。 | ✅ PASS |
+| 11 | Builder 其他功能不退化 | ExportPanel 仍可下載 ZIP；siteData/localStorage/Preview 保持既有流程。 | ✅ PASS |
+| 12 | JSON / ZIP 不退化 | ZIP 含 `README.txt`、`index.html`、`siteData.json`。 | ✅ PASS |
+| 13 | Forbidden keyword | 匯出 HTML 無 `localhost`、`127.0.0.1`、`/_next`、`_next/`。 | ✅ PASS |
+| 14 | 390px RWD | mobileOverflow=false；`07-template-gallery-mobile-390.png` 已產出。 | ✅ PASS |
+| 15 | Console error | consoleErrors=[]。 | ✅ PASS |
+| 16 | `npm run typecheck` | 正式 repo 執行 `tsc --noEmit` exit 0。 | ✅ PASS |
+| 17 | `npm run build` | 正式 repo Next.js build successful，`/` 與 `/builder` static prerendered。 | ✅ PASS |
+
+QA artifact 清單：
+
+- `01-template-gallery-desktop.png`
+- `02-drink-gallery.png`
+- `03-restaurant-gallery.png`
+- `04-cafe-gallery.png`
+- `05-preview-modal.png`
+- `06-applied-builder-preview.png`
+- `07-template-gallery-mobile-390.png`
+- `generated-site-gallery-qa.zip`
+- `qa-gallery-result.json`
+
+結論：StoreSite Builder 模板畫廊升級本機正式 repo 驗證通過，可進入 PR / Preview 發布收尾。
