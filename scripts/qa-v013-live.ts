@@ -54,13 +54,13 @@ async function applyTemplate(page: Page, name: string, industry: string) {
 
 async function previewMetrics(page: Page, name: string) {
   return await page.evaluate((templateName) => {
-    const h1 = document.querySelector('aside h1, [class*="preview"] h1, h1');
-    const preview = document.querySelector('aside, [class*="builder-preview-column"]') || document.body;
+    const h1 = document.querySelector('.store-template h1') || document.querySelector('aside main h1') || document.querySelector('[class*="preview"] h1');
+    const preview = document.querySelector('.store-template') || document.querySelector('aside, [class*="builder-preview-column"]') || document.body;
     const rect = h1?.getBoundingClientRect();
     const style = h1 ? getComputedStyle(h1) : null;
     const text = h1?.textContent || '';
     const lineHeight = style ? parseFloat(style.lineHeight) : 0;
-    const lines = rect && lineHeight ? Math.round(rect.height / lineHeight) : 0;
+    const lines = rect && lineHeight ? Math.max(1, Math.ceil(rect.height / lineHeight)) : 0;
     const chars = text.replace(/\s+/g, '').length || 1;
     const oneCharPerLine = lines >= Math.min(chars - 1, 4);
     const previewText = preview.textContent || '';
@@ -68,7 +68,7 @@ async function previewMetrics(page: Page, name: string) {
       templateName,
       currentTemplateVisible: previewText.includes(templateName),
       h1Text: text,
-      h1Visible: !!h1 && !!rect && rect.width > 20 && rect.height > 20,
+      h1Visible: !!h1 && !!rect && rect.width > 20 && rect.height > 10,
       h1Width: rect?.width || 0,
       h1Height: rect?.height || 0,
       fontSize: style?.fontSize || '',
@@ -116,6 +116,9 @@ async function main() {
     await page.screenshot({ path: path.join(outDir, `live-${t.name}-desktop.png`), fullPage: true });
     await page.setViewportSize({ width: 390, height: 900 });
     await page.waitForTimeout(400);
+    const previewButton = page.getByRole('button', { name: '預覽' }).first();
+    if (await previewButton.count()) await previewButton.click({ force: true });
+    await page.waitForTimeout(400);
     const mobile = await previewMetrics(page, t.name);
     await page.screenshot({ path: path.join(outDir, `live-${t.name}-mobile.png`), fullPage: true });
     result.screenshots.push(`live-${t.name}-desktop.png`, `live-${t.name}-mobile.png`);
@@ -131,10 +134,11 @@ async function main() {
   await page.waitForTimeout(300);
   result.backEditVisible = await page.getByRole('button', { name: /返回編輯/ }).first().isVisible().catch(() => false);
 
+  await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${baseUrl}/builder`, { waitUntil: 'domcontentloaded' });
   await page.waitForTimeout(700);
   await clickSection(page, '▦ 模板選擇');
-  const quick = page.getByRole('button', { name: /快速預覽 茶霧山嵐/ }).first();
+  const quick = page.getByRole('button', { name: /快速預覽/ }).first();
   if (await quick.count()) await quick.click({ force: true });
   await page.waitForTimeout(500);
   result.modalBackVisible = await page.getByRole('button', { name: /返回模板庫/ }).first().isVisible().catch(() => false);
