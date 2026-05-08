@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { SiteData } from '@/types/site';
 import type { TemplateGalleryItem } from '@/types/template';
 import { getRecommendedTemplates } from '@/lib/templateCatalog';
+import { createTemplateAppliedSiteData } from '@/lib/templateApply';
 import { useTemplateFilters } from '@/hooks/useTemplateFilters';
 import { Badge, Card, EmptyState, SectionHeader } from '@/components/ui';
 import { IndustryTabs } from './IndustryTabs';
@@ -15,8 +16,8 @@ export function TemplateGallery({ data, onChange }: { data: SiteData; onChange: 
   const selectedId = data.galleryTemplateId;
   const recommended = getRecommendedTemplates(filters.industry);
 
-  const applyTemplate = (template: TemplateGalleryItem) => {
-    onChange({ ...data, template: template.baseTemplate, galleryTemplateId: template.id });
+  const applyTemplate = async (template: TemplateGalleryItem) => {
+    onChange(await createTemplateAppliedSiteData(data, template));
     setPreviewing(null);
   };
 
