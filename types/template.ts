@@ -77,7 +77,6 @@ export interface TemplateGalleryItem {
   palette: string[];
   aiArtworkKey: string;
   artworkSrc: string;
-  prompt: string;
   recommended: boolean;
   popularityRank: number;
   newbieFriendly: boolean;
@@ -106,7 +105,6 @@ export interface TemplateArtworkManifestItem {
   alt: string;
   industry: TemplateIndustry;
   slug: string;
-  prompt: string;
   status: 'mock-svg-ready' | 'ai-generated-ready';
 }
 

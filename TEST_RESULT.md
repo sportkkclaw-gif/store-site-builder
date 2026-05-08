@@ -367,3 +367,14 @@ QA artifact 清單：
 - `qa-artifacts/v0.1.3/qa-v013-summary.json`
 - 13 張 QA 截圖：desktop overview、portfolio wall、modal back、6 模板、390 preview、320 builder、file export mobile。
 - 6 個 ZIP：`export-matcha.zip`、`export-pearl-neon.zip`、`export-tea-mist.zip`、`export-gold-dinner.zip`、`export-white-dripper.zip`、`export-city-mono.zip`。
+
+
+## v0.1.3 退回修正補驗（2026-05-08T15:28:42.923Z）
+
+- 修正範圍：移除 UI bundle 中所有 AI prompt metadata（templateCatalog/templateArtworkManifest 不再輸出 prompt 欄位），新增 /__version 版本頁，降低 Hero H1 clamp 並補文字可讀 contrast/panel guard，同步 exportStaticSite。
+- 本機正式 repo 驗證：
+  - npm run typecheck：PASS
+  - npm run build：PASS（Next.js 16.2.4；/builder + /__version routes built）
+- Forbidden source/bundle scan：lib/components/app/pages/types 與 .next client/server bundle 對 AI-designed、AI-generated、website template key visual、website template showcase、concept image、showcase image、template artwork、premium AI、bold AI、Create a、for a brand called、prompt：0 hits。
+- 新增 live QA：scripts/qa-v013-live.ts，對 Vercel Preview /builder 實測 forbidden counts、6 模板 desktop/mobile H1 行數與 overflow、390/320 mobile、返回編輯、返回模板庫。
+- 待部署後補齊：Preview URL、/__version commit、live-qa-result.json、live screenshots。

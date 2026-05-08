@@ -32,7 +32,6 @@ export const templateCatalog = [
       "#C9A86A"
     ],
     "aiArtworkKey": "drink-matcha-hiyori",
-    "prompt": "抹茶日和正式模板主視覺，呈現米白與抹茶綠打造柔和日系茶飲官網，適合清爽品牌形象，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 1,
     "newbieFriendly": true,
@@ -69,7 +68,6 @@ export const templateCatalog = [
       "#F43F8C"
     ],
     "aiArtworkKey": "drink-boba-neon",
-    "prompt": "珍珠霓光正式模板主視覺，呈現霓虹色彩與夜間潮流感，適合年輕客群與社群導流品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 2,
     "newbieFriendly": false,
@@ -106,7 +104,6 @@ export const templateCatalog = [
       "#F472B6"
     ],
     "aiArtworkKey": "drink-fruit-paradise",
-    "prompt": "果香樂園正式模板主視覺，呈現鮮果色彩與活潑構圖，適合果茶、季節飲品與親子客群，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 3,
     "newbieFriendly": false,
@@ -143,7 +140,6 @@ export const templateCatalog = [
       "#FFF7ED"
     ],
     "aiArtworkKey": "drink-brown-sugar-amber",
-    "prompt": "黑糖琥珀正式模板主視覺，呈現焦糖琥珀色與濃郁奶茶感，適合黑糖與甜品系飲品品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 4,
     "newbieFriendly": false,
@@ -180,7 +176,6 @@ export const templateCatalog = [
       "#FFFFFF"
     ],
     "aiArtworkKey": "drink-white-peach-sparkle",
-    "prompt": "白桃氣泡正式模板主視覺，呈現白桃粉與氣泡感打造輕盈頁面，適合季節限定與女性客群，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 5,
     "newbieFriendly": true,
@@ -217,7 +212,6 @@ export const templateCatalog = [
       "#94A3B8"
     ],
     "aiArtworkKey": "drink-lime-morning",
-    "prompt": "青檸清晨正式模板主視覺，呈現青檸綠與留白設計呈現健康清爽感，適合低糖茶飲品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 6,
     "newbieFriendly": true,
@@ -254,7 +248,6 @@ export const templateCatalog = [
       "#D6B76A"
     ],
     "aiArtworkKey": "drink-tea-mist-ridge",
-    "prompt": "茶霧山嵐正式模板主視覺，呈現山霧、茶園與精品茶感，適合高級茶飲與品牌故事型官網，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 7,
     "newbieFriendly": false,
@@ -291,7 +284,6 @@ export const templateCatalog = [
       "#FACC15"
     ],
     "aiArtworkKey": "drink-iced-party",
-    "prompt": "星冰派對正式模板主視覺，呈現冰飲派對感與強烈活動色彩，適合夏季促銷與聯名主題，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 8,
     "newbieFriendly": false,
@@ -328,7 +320,6 @@ export const templateCatalog = [
       "#FDBA74"
     ],
     "aiArtworkKey": "drink-afternoon-cream",
-    "prompt": "午後奶蓋正式模板主視覺，呈現奶油色與柔和光線營造午後感，適合奶蓋與甜感飲品品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 9,
     "newbieFriendly": true,
@@ -365,7 +356,6 @@ export const templateCatalog = [
       "#0F172A"
     ],
     "aiArtworkKey": "drink-lab-brew",
-    "prompt": "飲研實驗室正式模板主視覺，呈現實驗室風格與冷色科技感，適合創新飲品與特色調飲品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 10,
     "newbieFriendly": false,
@@ -402,7 +392,6 @@ export const templateCatalog = [
       "#FDE68A"
     ],
     "aiArtworkKey": "restaurant-charcoal-essence",
-    "prompt": "炭火本味正式模板主視覺，呈現炭火黑與暖光質感，適合燒烤、居酒屋與職人餐飲，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 11,
     "newbieFriendly": false,
@@ -439,7 +428,6 @@ export const templateCatalog = [
       "#FFFFFF"
     ],
     "aiArtworkKey": "restaurant-rice-kitchen",
-    "prompt": "米香食堂正式模板主視覺，呈現米色日常感與親切版面，適合便當、家常料理與小食堂，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 12,
     "newbieFriendly": true,
@@ -476,7 +464,6 @@ export const templateCatalog = [
       "#FFF7ED"
     ],
     "aiArtworkKey": "restaurant-golden-banquet",
-    "prompt": "金色晚宴正式模板主視覺，呈現金色燈光與高級宴席感，適合聚餐、私廚與精緻餐廳，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 13,
     "newbieFriendly": false,
@@ -513,7 +500,6 @@ export const templateCatalog = [
       "#FFFFFF"
     ],
     "aiArtworkKey": "restaurant-corner-meal",
-    "prompt": "街角食光正式模板主視覺，呈現街角小店氛圍與明亮照片區，適合日常快餐與社區餐館，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 14,
     "newbieFriendly": true,
@@ -550,7 +536,6 @@ export const templateCatalog = [
       "#FACC15"
     ],
     "aiArtworkKey": "restaurant-spicy-market",
-    "prompt": "香辣市集正式模板主視覺，呈現熱辣市集色彩與活力排版，適合麻辣、串串與夜市風餐飲，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 15,
     "newbieFriendly": false,
@@ -587,7 +572,6 @@ export const templateCatalog = [
       "#D7B98E"
     ],
     "aiArtworkKey": "restaurant-sunday-shokudo",
-    "prompt": "日曜食堂正式模板主視覺，呈現週末食堂感與柔和日系配色，適合家庭聚餐與溫馨餐館，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 16,
     "newbieFriendly": true,
@@ -624,7 +608,6 @@ export const templateCatalog = [
       "#1F2937"
     ],
     "aiArtworkKey": "restaurant-kitchen-overture",
-    "prompt": "廚房序曲正式模板主視覺，呈現開放式廚房與職人細節，適合主廚品牌與套餐型餐廳，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 17,
     "newbieFriendly": false,
@@ -661,7 +644,6 @@ export const templateCatalog = [
       "#FFFFFF"
     ],
     "aiArtworkKey": "restaurant-brunch-garden",
-    "prompt": "早午餐花園正式模板主視覺，呈現花園早午餐風格與明亮色調，適合咖啡餐館與輕食品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 18,
     "newbieFriendly": true,
@@ -698,7 +680,6 @@ export const templateCatalog = [
       "#FDE68A"
     ],
     "aiArtworkKey": "restaurant-hotpot-home",
-    "prompt": "鍋物暖居正式模板主視覺，呈現暖色鍋物與圓潤視覺，適合火鍋、湯品與聚會餐廳，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 19,
     "newbieFriendly": false,
@@ -735,7 +716,6 @@ export const templateCatalog = [
       "#F59E0B"
     ],
     "aiArtworkKey": "restaurant-fast-enjoy",
-    "prompt": "食尚快享正式模板主視覺，呈現俐落快享版面與清楚 CTA，適合速食、外帶與連鎖餐飲，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 20,
     "newbieFriendly": false,
@@ -772,7 +752,6 @@ export const templateCatalog = [
       "#FFFFFF"
     ],
     "aiArtworkKey": "cafe-nordic-morning",
-    "prompt": "北歐晨光正式模板主視覺，呈現北歐留白與晨光色調，適合簡約咖啡館與早餐品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 21,
     "newbieFriendly": true,
@@ -809,7 +788,6 @@ export const templateCatalog = [
       "#F5E6D3"
     ],
     "aiArtworkKey": "cafe-midnight-roast",
-    "prompt": "午夜焙煎正式模板主視覺，呈現深色烘焙感與夜間氛圍，適合精品豆、酒吧式咖啡館，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 22,
     "newbieFriendly": false,
@@ -846,7 +824,6 @@ export const templateCatalog = [
       "#F3E8D7"
     ],
     "aiArtworkKey": "cafe-cream-library",
-    "prompt": "奶油書房正式模板主視覺，呈現奶油書房感與柔和排版，適合安靜座位與甜點咖啡館，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 23,
     "newbieFriendly": true,
@@ -883,7 +860,6 @@ export const templateCatalog = [
       "#FFF7ED"
     ],
     "aiArtworkKey": "cafe-forest-teatime",
-    "prompt": "森林午茶正式模板主視覺，呈現森林綠與下午茶氛圍，適合自然系咖啡與輕甜點品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 24,
     "newbieFriendly": true,
@@ -920,7 +896,6 @@ export const templateCatalog = [
       "#FFFFFF"
     ],
     "aiArtworkKey": "cafe-window-seat",
-    "prompt": "玻璃窗邊正式模板主視覺，呈現窗邊光影與雜誌式留白，適合質感內用咖啡館，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 25,
     "newbieFriendly": false,
@@ -957,7 +932,6 @@ export const templateCatalog = [
       "#F4A261"
     ],
     "aiArtworkKey": "cafe-mocha-studio",
-    "prompt": "摩卡畫室正式模板主視覺，呈現摩卡色與創作工作室感，適合風格選物與特色咖啡品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 26,
     "newbieFriendly": false,
@@ -994,7 +968,6 @@ export const templateCatalog = [
       "#111827"
     ],
     "aiArtworkKey": "cafe-white-dripper",
-    "prompt": "白瓷濾杯正式模板主視覺，呈現白瓷與極簡精品感，適合手沖咖啡與單品豆展示，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 27,
     "newbieFriendly": false,
@@ -1031,7 +1004,6 @@ export const templateCatalog = [
       "#FFE7C2"
     ],
     "aiArtworkKey": "cafe-caramel-afternoon",
-    "prompt": "焦糖午後正式模板主視覺，呈現焦糖暖色與午後甜點感，適合甜點咖啡與舒適聚會，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 28,
     "newbieFriendly": true,
@@ -1068,7 +1040,6 @@ export const templateCatalog = [
       "#D1D5DB"
     ],
     "aiArtworkKey": "cafe-urban-monochrome",
-    "prompt": "城市黑白正式模板主視覺，呈現黑白城市感與俐落版面，適合成熟都會咖啡品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 29,
     "newbieFriendly": false,
@@ -1105,7 +1076,6 @@ export const templateCatalog = [
       "#FFFFFF"
     ],
     "aiArtworkKey": "cafe-daily-corner",
-    "prompt": "日常一隅正式模板主視覺，呈現社區角落與自然日光感，適合親切型咖啡與外帶小店，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 30,
     "newbieFriendly": true,
