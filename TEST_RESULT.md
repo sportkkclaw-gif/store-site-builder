@@ -255,3 +255,27 @@ Live QA artifacts：`qa-artifacts/template-gallery-v0.2.1-live/`
 | 6 | 390px RWD | mobileOverflow=false。 | ✅ PASS |
 | 7 | Console error | consoleErrors=[]。 | ✅ PASS |
 | 8 | ZIP 匯出 | `README.txt`、`index.html`、`siteData.json` 存在；forbidden=false。 | ✅ PASS |
+
+---
+
+## v0.2.1 P1 AI 模板接線修復 QA
+
+測試日期：2026-05-08 12:51 CST  
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+修復 commit：`dc2b3b8d6a464bde6dd162606755e10ceede9a15`  
+Preview：`https://store-site-builder-pe7fkma51-sportkk101-5719s-projects.vercel.app`
+
+| # | 驗收項目 | 實測結果 | 狀態 |
+|---|---|---|---|
+| 1 | Jason 回報「模板沒有連接上去」重現 | 舊版套用 30 套 AI card 時，只更新 `galleryTemplateId/baseTemplate`；右側 Preview 只顯示三個舊 base template，且 hero 圖仍為 placeholder。 | ✅ 已定位 |
+| 2 | 套用模板後資料流 | 點「珍珠霓光」後 localStorage：`galleryTemplateId=drink-boba-neon`、`template=playful-colorful`、`hero.imageId=template-artwork-drink-boba-neon`、`media[0].dataUrl` 為 JPEG data URL。 | ✅ PASS |
+| 3 | 右側 Preview 模板名稱 | `data-testid=preview-template-name` 顯示「珍珠霓光」，不再只顯示「活潑可愛」。 | ✅ PASS |
+| 4 | 右側 Preview hero 主視覺 | Preview hero 第一張圖為 `data:image/jpeg;base64,...`，natural size `900x600`，不再是 SVG placeholder。 | ✅ PASS |
+| 5 | 30 套模板圖資連接策略 | 新增 `public/template-gallery-hero/{industry}/{slug}.jpg` 30 張壓縮 hero 圖；套用時同源 fetch → dataURL → 寫入 media，供 Preview/ZIP/OG 共用。 | ✅ PASS |
+| 6 | typecheck | `npm run typecheck` exit 0。 | ✅ PASS |
+| 7 | build | `npm run build` exit 0；Next.js 16.2.4 compiled successfully；`/`、`/builder` static prerendered。 | ✅ PASS |
+| 8 | live HTTP | `/` HTTP 200；`/builder` HTTP 200；`/template-gallery-hero/drink-shop/drink-boba-neon.jpg` HTTP 200。 | ✅ PASS |
+| 9 | Vercel Preview | Deployment UID `D49fFi48bgLP8DMNeZqmEfwnf74o` Ready；Preview 可公開開啟。 | ✅ PASS |
+
+結論：Jason 指出的模板接線問題已修復；30 套 AI 模板現在套用後會同步模板名稱、版型、色盤、hero 主視覺、SEO OG 圖與 ZIP media 資料流。
+
