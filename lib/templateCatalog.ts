@@ -37,7 +37,7 @@ export const templateCatalog = [
     "newbieFriendly": true,
     "baseTemplate": "fresh-japanese",
     "recommendationReason": "Jason 推薦：視覺辨識度高，適合展示給店家。",
-    "artworkSrc": "/template-gallery/drink-shop/drink-matcha-hiyori.svg"
+    "artworkSrc": "/template-gallery-ai/drink-shop/drink-matcha-hiyori.png"
   },
   {
     "id": "drink-boba-neon",
@@ -72,7 +72,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "playful-colorful",
     "recommendationReason": "Jason 推薦：視覺辨識度高，適合展示給店家。",
-    "artworkSrc": "/template-gallery/drink-shop/drink-boba-neon.svg"
+    "artworkSrc": "/template-gallery-ai/drink-shop/drink-boba-neon.png"
   },
   {
     "id": "drink-fruit-paradise",
@@ -108,7 +108,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "playful-colorful",
     "recommendationReason": "依據 飲料店 產業與 水果, 高質感 風格推薦。",
-    "artworkSrc": "/template-gallery/drink-shop/drink-fruit-paradise.svg"
+    "artworkSrc": "/template-gallery-ai/drink-shop/drink-fruit-paradise.png"
   },
   {
     "id": "drink-brown-sugar-amber",
@@ -143,7 +143,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "premium-minimal",
     "recommendationReason": "依據 飲料店 產業與 黑糖, 高質感 風格推薦。",
-    "artworkSrc": "/template-gallery/drink-shop/drink-brown-sugar-amber.svg"
+    "artworkSrc": "/template-gallery-ai/drink-shop/drink-brown-sugar-amber.png"
   },
   {
     "id": "drink-white-peach-sparkle",
@@ -177,7 +177,7 @@ export const templateCatalog = [
     "newbieFriendly": true,
     "baseTemplate": "fresh-japanese",
     "recommendationReason": "依據 飲料店 產業與 蜜桃, 高質感 風格推薦。",
-    "artworkSrc": "/template-gallery/drink-shop/drink-white-peach-sparkle.svg"
+    "artworkSrc": "/template-gallery-ai/drink-shop/drink-white-peach-sparkle.png"
   },
   {
     "id": "drink-lime-morning",
@@ -212,7 +212,7 @@ export const templateCatalog = [
     "newbieFriendly": true,
     "baseTemplate": "fresh-japanese",
     "recommendationReason": "依據 飲料店 產業與 清爽, 高質感 風格推薦。",
-    "artworkSrc": "/template-gallery/drink-shop/drink-lime-morning.svg"
+    "artworkSrc": "/template-gallery-ai/drink-shop/drink-lime-morning.png"
   },
   {
     "id": "drink-tea-mist-ridge",
@@ -247,7 +247,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "premium-minimal",
     "recommendationReason": "Jason 推薦：視覺辨識度高，適合展示給店家。",
-    "artworkSrc": "/template-gallery/drink-shop/drink-tea-mist-ridge.svg"
+    "artworkSrc": "/template-gallery-ai/drink-shop/drink-tea-mist-ridge.png"
   },
   {
     "id": "drink-iced-party",
@@ -282,7 +282,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "playful-colorful",
     "recommendationReason": "依據 飲料店 產業與 促銷, 高質感 風格推薦。",
-    "artworkSrc": "/template-gallery/drink-shop/drink-iced-party.svg"
+    "artworkSrc": "/template-gallery-ai/drink-shop/drink-iced-party.png"
   },
   {
     "id": "drink-afternoon-cream",
@@ -316,7 +316,7 @@ export const templateCatalog = [
     "newbieFriendly": true,
     "baseTemplate": "fresh-japanese",
     "recommendationReason": "依據 飲料店 產業與 奶蓋, 溫暖 風格推薦。",
-    "artworkSrc": "/template-gallery/drink-shop/drink-afternoon-cream.svg"
+    "artworkSrc": "/template-gallery-ai/drink-shop/drink-afternoon-cream.png"
   },
   {
     "id": "drink-lab-brew",
@@ -350,7 +350,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "premium-minimal",
     "recommendationReason": "依據 飲料店 產業與 創新, 極簡 風格推薦。",
-    "artworkSrc": "/template-gallery/drink-shop/drink-lab-brew.svg"
+    "artworkSrc": "/template-gallery-ai/drink-shop/drink-lab-brew.png"
   },
   {
     "id": "restaurant-charcoal-essence",
@@ -386,7 +386,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "premium-minimal",
     "recommendationReason": "依據 餐飲店 產業與 炭火, 高質感 風格推薦。",
-    "artworkSrc": "/template-gallery/restaurant/restaurant-charcoal-essence.svg"
+    "artworkSrc": "/template-gallery-ai/restaurant/restaurant-charcoal-essence.png"
   },
   {
     "id": "restaurant-rice-kitchen",
@@ -421,7 +421,7 @@ export const templateCatalog = [
     "newbieFriendly": true,
     "baseTemplate": "fresh-japanese",
     "recommendationReason": "依據 餐飲店 產業與 家常, 主廚故事 風格推薦。",
-    "artworkSrc": "/template-gallery/restaurant/restaurant-rice-kitchen.svg"
+    "artworkSrc": "/template-gallery-ai/restaurant/restaurant-rice-kitchen.png"
   },
   {
     "id": "restaurant-golden-banquet",
@@ -457,7 +457,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "premium-minimal",
     "recommendationReason": "Jason 推薦：視覺辨識度高，適合展示給店家。",
-    "artworkSrc": "/template-gallery/restaurant/restaurant-golden-banquet.svg"
+    "artworkSrc": "/template-gallery-ai/restaurant/restaurant-golden-banquet.png"
   },
   {
     "id": "restaurant-corner-meal",
@@ -490,7 +490,7 @@ export const templateCatalog = [
     "newbieFriendly": true,
     "baseTemplate": "fresh-japanese",
     "recommendationReason": "依據 餐飲店 產業與 街區 風格推薦。",
-    "artworkSrc": "/template-gallery/restaurant/restaurant-corner-meal.svg"
+    "artworkSrc": "/template-gallery-ai/restaurant/restaurant-corner-meal.png"
   },
   {
     "id": "restaurant-spicy-market",
@@ -526,7 +526,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "playful-colorful",
     "recommendationReason": "依據 餐飲店 產業與 香辣, 高質感 風格推薦。",
-    "artworkSrc": "/template-gallery/restaurant/restaurant-spicy-market.svg"
+    "artworkSrc": "/template-gallery-ai/restaurant/restaurant-spicy-market.png"
   },
   {
     "id": "restaurant-sunday-shokudo",
@@ -561,7 +561,7 @@ export const templateCatalog = [
     "newbieFriendly": true,
     "baseTemplate": "fresh-japanese",
     "recommendationReason": "依據 餐飲店 產業與 日式, 高質感 風格推薦。",
-    "artworkSrc": "/template-gallery/restaurant/restaurant-sunday-shokudo.svg"
+    "artworkSrc": "/template-gallery-ai/restaurant/restaurant-sunday-shokudo.png"
   },
   {
     "id": "restaurant-kitchen-overture",
@@ -596,7 +596,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "premium-minimal",
     "recommendationReason": "依據 餐飲店 產業與 主廚故事, 高質感 風格推薦。",
-    "artworkSrc": "/template-gallery/restaurant/restaurant-kitchen-overture.svg"
+    "artworkSrc": "/template-gallery-ai/restaurant/restaurant-kitchen-overture.png"
   },
   {
     "id": "restaurant-brunch-garden",
@@ -631,7 +631,7 @@ export const templateCatalog = [
     "newbieFriendly": true,
     "baseTemplate": "fresh-japanese",
     "recommendationReason": "Jason 推薦：視覺辨識度高，適合展示給店家。",
-    "artworkSrc": "/template-gallery/restaurant/restaurant-brunch-garden.svg"
+    "artworkSrc": "/template-gallery-ai/restaurant/restaurant-brunch-garden.png"
   },
   {
     "id": "restaurant-hotpot-home",
@@ -666,7 +666,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "playful-colorful",
     "recommendationReason": "依據 餐飲店 產業與 聚餐, 高質感 風格推薦。",
-    "artworkSrc": "/template-gallery/restaurant/restaurant-hotpot-home.svg"
+    "artworkSrc": "/template-gallery-ai/restaurant/restaurant-hotpot-home.png"
   },
   {
     "id": "restaurant-fast-enjoy",
@@ -701,7 +701,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "premium-minimal",
     "recommendationReason": "依據 餐飲店 產業與 外帶, 極簡 風格推薦。",
-    "artworkSrc": "/template-gallery/restaurant/restaurant-fast-enjoy.svg"
+    "artworkSrc": "/template-gallery-ai/restaurant/restaurant-fast-enjoy.png"
   },
   {
     "id": "cafe-nordic-morning",
@@ -738,7 +738,7 @@ export const templateCatalog = [
     "newbieFriendly": true,
     "baseTemplate": "fresh-japanese",
     "recommendationReason": "Jason 推薦：視覺辨識度高，適合展示給店家。",
-    "artworkSrc": "/template-gallery/cafe/cafe-nordic-morning.svg"
+    "artworkSrc": "/template-gallery-ai/cafe/cafe-nordic-morning.png"
   },
   {
     "id": "cafe-midnight-roast",
@@ -774,7 +774,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "premium-minimal",
     "recommendationReason": "Jason 推薦：視覺辨識度高，適合展示給店家。",
-    "artworkSrc": "/template-gallery/cafe/cafe-midnight-roast.svg"
+    "artworkSrc": "/template-gallery-ai/cafe/cafe-midnight-roast.png"
   },
   {
     "id": "cafe-cream-library",
@@ -809,7 +809,7 @@ export const templateCatalog = [
     "newbieFriendly": true,
     "baseTemplate": "fresh-japanese",
     "recommendationReason": "依據 咖啡廳 產業與 奶蓋, 書房 風格推薦。",
-    "artworkSrc": "/template-gallery/cafe/cafe-cream-library.svg"
+    "artworkSrc": "/template-gallery-ai/cafe/cafe-cream-library.png"
   },
   {
     "id": "cafe-forest-teatime",
@@ -843,7 +843,7 @@ export const templateCatalog = [
     "newbieFriendly": true,
     "baseTemplate": "fresh-japanese",
     "recommendationReason": "依據 咖啡廳 產業與 植栽, 高質感 風格推薦。",
-    "artworkSrc": "/template-gallery/cafe/cafe-forest-teatime.svg"
+    "artworkSrc": "/template-gallery-ai/cafe/cafe-forest-teatime.png"
   },
   {
     "id": "cafe-window-seat",
@@ -878,7 +878,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "premium-minimal",
     "recommendationReason": "依據 咖啡廳 產業與 城市, 高質感 風格推薦。",
-    "artworkSrc": "/template-gallery/cafe/cafe-window-seat.svg"
+    "artworkSrc": "/template-gallery-ai/cafe/cafe-window-seat.png"
   },
   {
     "id": "cafe-mocha-studio",
@@ -912,7 +912,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "playful-colorful",
     "recommendationReason": "依據 咖啡廳 產業與 藝術, 高質感 風格推薦。",
-    "artworkSrc": "/template-gallery/cafe/cafe-mocha-studio.svg"
+    "artworkSrc": "/template-gallery-ai/cafe/cafe-mocha-studio.png"
   },
   {
     "id": "cafe-white-dripper",
@@ -948,7 +948,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "premium-minimal",
     "recommendationReason": "Jason 推薦：視覺辨識度高，適合展示給店家。",
-    "artworkSrc": "/template-gallery/cafe/cafe-white-dripper.svg"
+    "artworkSrc": "/template-gallery-ai/cafe/cafe-white-dripper.png"
   },
   {
     "id": "cafe-caramel-afternoon",
@@ -982,7 +982,7 @@ export const templateCatalog = [
     "newbieFriendly": true,
     "baseTemplate": "fresh-japanese",
     "recommendationReason": "依據 咖啡廳 產業與 甜點, 溫暖 風格推薦。",
-    "artworkSrc": "/template-gallery/cafe/cafe-caramel-afternoon.svg"
+    "artworkSrc": "/template-gallery-ai/cafe/cafe-caramel-afternoon.png"
   },
   {
     "id": "cafe-urban-monochrome",
@@ -1017,7 +1017,7 @@ export const templateCatalog = [
     "newbieFriendly": false,
     "baseTemplate": "premium-minimal",
     "recommendationReason": "依據 咖啡廳 產業與 黑白, 高質感 風格推薦。",
-    "artworkSrc": "/template-gallery/cafe/cafe-urban-monochrome.svg"
+    "artworkSrc": "/template-gallery-ai/cafe/cafe-urban-monochrome.png"
   },
   {
     "id": "cafe-daily-corner",
@@ -1053,7 +1053,7 @@ export const templateCatalog = [
     "newbieFriendly": true,
     "baseTemplate": "fresh-japanese",
     "recommendationReason": "Jason 推薦：視覺辨識度高，適合展示給店家。",
-    "artworkSrc": "/template-gallery/cafe/cafe-daily-corner.svg"
+    "artworkSrc": "/template-gallery-ai/cafe/cafe-daily-corner.png"
   }
 ] satisfies TemplateGalleryItem[];
 

@@ -216,3 +216,24 @@ QA artifact 清單：
 - `qa-gallery-result.json`
 
 結論：StoreSite Builder 模板畫廊升級本機正式 repo 驗證通過，可進入 PR / Preview 發布收尾。
+
+
+---
+
+## v0.2.1 P1 Formal AI Artwork QA
+
+測試日期：2026-05-08  
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+AI artwork 目錄：`public/template-gallery-ai/`
+
+| # | 驗收項目 | 結果 | 狀態 |
+|---|---|---|---|
+| 1 | 30 張正式 AI 主視覺圖 | `public/template-gallery-ai/{drink-shop,restaurant,cafe}/*.png` 共 30 張。 | ✅ PASS |
+| 2 | 圖像尺寸 | 30 張皆為 portrait `1024×1536`，UI 以 `object-cover` 呈現 4:5 作品牆視覺。 | ✅ PASS |
+| 3 | Catalog 接線 | `lib/templateCatalog.ts` 的 `artworkSrc` 已切換至 `/template-gallery-ai/.../*.png`。 | ✅ PASS |
+| 4 | Artwork manifest 接線 | `lib/templateArtworkManifest.ts` 的 `src` 已切換至 `/template-gallery-ai/.../*.png`，status=`ai-generated-ready`。 | ✅ PASS |
+| 5 | Fallback 策略 | 原 `public/template-gallery/**/*.svg` 保留作為 mock/fallback，不再作為主要畫廊圖。 | ✅ PASS |
+| 6 | `npm run typecheck` | 正式 repo 執行 `tsc --noEmit` exit 0。 | ✅ PASS |
+| 7 | `npm run build` | 正式 repo Next.js build successful，`/` 與 `/builder` static prerendered。 | ✅ PASS |
+
+結論：P1 正式 AI 圖資接線完成，可進入 PR 更新、Preview redeploy 與 live QA。

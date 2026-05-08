@@ -1,0 +1,249 @@
+{
+  "generated_at": "2026-05-08T08:10:00+08:00",
+  "provider": "Hermes image_generate backend",
+  "model": "openai-codex / gpt-image-2-medium",
+  "aspect_ratio": "portrait",
+  "count": 30,
+  "items": [
+    {
+      "id": "cafe-caramel-afternoon",
+      "industry": "cafe",
+      "src": "/template-gallery-ai/cafe/cafe-caramel-afternoon.png",
+      "bytes": 1907933,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "cafe-cream-library",
+      "industry": "cafe",
+      "src": "/template-gallery-ai/cafe/cafe-cream-library.png",
+      "bytes": 1643036,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "cafe-daily-corner",
+      "industry": "cafe",
+      "src": "/template-gallery-ai/cafe/cafe-daily-corner.png",
+      "bytes": 2139781,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "cafe-forest-teatime",
+      "industry": "cafe",
+      "src": "/template-gallery-ai/cafe/cafe-forest-teatime.png",
+      "bytes": 2422894,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "cafe-midnight-roast",
+      "industry": "cafe",
+      "src": "/template-gallery-ai/cafe/cafe-midnight-roast.png",
+      "bytes": 1751182,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "cafe-mocha-studio",
+      "industry": "cafe",
+      "src": "/template-gallery-ai/cafe/cafe-mocha-studio.png",
+      "bytes": 2412721,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "cafe-nordic-morning",
+      "industry": "cafe",
+      "src": "/template-gallery-ai/cafe/cafe-nordic-morning.png",
+      "bytes": 1697664,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "cafe-urban-monochrome",
+      "industry": "cafe",
+      "src": "/template-gallery-ai/cafe/cafe-urban-monochrome.png",
+      "bytes": 1956310,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "cafe-white-dripper",
+      "industry": "cafe",
+      "src": "/template-gallery-ai/cafe/cafe-white-dripper.png",
+      "bytes": 1668312,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "cafe-window-seat",
+      "industry": "cafe",
+      "src": "/template-gallery-ai/cafe/cafe-window-seat.png",
+      "bytes": 2310211,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "drink-afternoon-cream",
+      "industry": "drink-shop",
+      "src": "/template-gallery-ai/drink-shop/drink-afternoon-cream.png",
+      "bytes": 1897876,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "drink-boba-neon",
+      "industry": "drink-shop",
+      "src": "/template-gallery-ai/drink-shop/drink-boba-neon.png",
+      "bytes": 2183454,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "drink-brown-sugar-amber",
+      "industry": "drink-shop",
+      "src": "/template-gallery-ai/drink-shop/drink-brown-sugar-amber.png",
+      "bytes": 2020697,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "drink-fruit-paradise",
+      "industry": "drink-shop",
+      "src": "/template-gallery-ai/drink-shop/drink-fruit-paradise.png",
+      "bytes": 2251221,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "drink-iced-party",
+      "industry": "drink-shop",
+      "src": "/template-gallery-ai/drink-shop/drink-iced-party.png",
+      "bytes": 2049734,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "drink-lab-brew",
+      "industry": "drink-shop",
+      "src": "/template-gallery-ai/drink-shop/drink-lab-brew.png",
+      "bytes": 1983350,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "drink-lime-morning",
+      "industry": "drink-shop",
+      "src": "/template-gallery-ai/drink-shop/drink-lime-morning.png",
+      "bytes": 1778343,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "drink-matcha-hiyori",
+      "industry": "drink-shop",
+      "src": "/template-gallery-ai/drink-shop/drink-matcha-hiyori.png",
+      "bytes": 2045829,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "drink-tea-mist-ridge",
+      "industry": "drink-shop",
+      "src": "/template-gallery-ai/drink-shop/drink-tea-mist-ridge.png",
+      "bytes": 2194667,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "drink-white-peach-sparkle",
+      "industry": "drink-shop",
+      "src": "/template-gallery-ai/drink-shop/drink-white-peach-sparkle.png",
+      "bytes": 1838957,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "restaurant-brunch-garden",
+      "industry": "restaurant",
+      "src": "/template-gallery-ai/restaurant/restaurant-brunch-garden.png",
+      "bytes": 2092027,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "restaurant-charcoal-essence",
+      "industry": "restaurant",
+      "src": "/template-gallery-ai/restaurant/restaurant-charcoal-essence.png",
+      "bytes": 2089744,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "restaurant-corner-meal",
+      "industry": "restaurant",
+      "src": "/template-gallery-ai/restaurant/restaurant-corner-meal.png",
+      "bytes": 2386729,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "restaurant-fast-enjoy",
+      "industry": "restaurant",
+      "src": "/template-gallery-ai/restaurant/restaurant-fast-enjoy.png",
+      "bytes": 2133067,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "restaurant-golden-banquet",
+      "industry": "restaurant",
+      "src": "/template-gallery-ai/restaurant/restaurant-golden-banquet.png",
+      "bytes": 2014830,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "restaurant-hotpot-home",
+      "industry": "restaurant",
+      "src": "/template-gallery-ai/restaurant/restaurant-hotpot-home.png",
+      "bytes": 2222060,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "restaurant-kitchen-overture",
+      "industry": "restaurant",
+      "src": "/template-gallery-ai/restaurant/restaurant-kitchen-overture.png",
+      "bytes": 2103580,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "restaurant-rice-kitchen",
+      "industry": "restaurant",
+      "src": "/template-gallery-ai/restaurant/restaurant-rice-kitchen.png",
+      "bytes": 2385855,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "restaurant-spicy-market",
+      "industry": "restaurant",
+      "src": "/template-gallery-ai/restaurant/restaurant-spicy-market.png",
+      "bytes": 2877369,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    },
+    {
+      "id": "restaurant-sunday-shokudo",
+      "industry": "restaurant",
+      "src": "/template-gallery-ai/restaurant/restaurant-sunday-shokudo.png",
+      "bytes": 2224009,
+      "size": "1024x1536",
+      "status": "ai-generated-ready"
+    }
+  ]
+}
