@@ -237,3 +237,21 @@ AI artwork 目錄：`public/template-gallery-ai/`
 | 7 | `npm run build` | 正式 repo Next.js build successful，`/` 與 `/builder` static prerendered。 | ✅ PASS |
 
 結論：P1 正式 AI 圖資接線完成，可進入 PR 更新、Preview redeploy 與 live QA。
+
+
+### v0.2.1 Live Preview QA 補充
+
+Preview：`https://store-site-builder-44ze20f46-sportkk101-5719s-projects.vercel.app`  
+Vercel Deployment：`dpl_EXjmtDdX86fy2YjRFGPeCCHKrcjo` / Ready / Preview  
+Live QA artifacts：`qa-artifacts/template-gallery-v0.2.1-live/`
+
+| # | Live 驗收項目 | 結果 | 狀態 |
+|---|---|---|---|
+| 1 | HTTP `/` | 200 | ✅ PASS |
+| 2 | HTTP `/builder` | 200 | ✅ PASS |
+| 3 | AI PNG 圖資 | `/template-gallery-ai/drink-shop/drink-matcha-hiyori.png`、`restaurant-golden-banquet.png`、`cafe-nordic-morning.png` 皆 200。 | ✅ PASS |
+| 4 | Playwright live gallery QA | drinkCount=10、restaurantCount=10、cafeCount=10、searchCount=1、filteredCount=7。 | ✅ PASS |
+| 5 | Modal / 套用 / Preview 同步 | applied=true、previewSync=true。 | ✅ PASS |
+| 6 | 390px RWD | mobileOverflow=false。 | ✅ PASS |
+| 7 | Console error | consoleErrors=[]。 | ✅ PASS |
+| 8 | ZIP 匯出 | `README.txt`、`index.html`、`siteData.json` 存在；forbidden=false。 | ✅ PASS |
