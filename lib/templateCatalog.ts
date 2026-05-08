@@ -1,5 +1,6 @@
 import type { IndustryType } from '@/types/site';
 import type { TemplateGalleryItem, TemplateIndustry, TemplateSort } from '@/types/template';
+import { enrichAllTemplates } from './enrichTemplate';
 
 export const templateCatalog = [
   {
@@ -1056,6 +1057,8 @@ export const templateCatalog = [
     "artworkSrc": "/template-gallery-ai/cafe/cafe-daily-corner.png"
   }
 ] satisfies TemplateGalleryItem[];
+
+export const templateCatalogWithPresets = enrichAllTemplates(templateCatalog);
 
 export const templateIndustries: TemplateIndustry[] = ['drink-shop', 'restaurant', 'cafe'];
 

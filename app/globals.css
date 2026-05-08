@@ -9,6 +9,8 @@ html,
 body {
   margin: 0;
   min-height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   background: var(--background);
   color: var(--foreground);
 }
@@ -56,19 +58,28 @@ button {
   display: none;
 }
 
-.builder-mobile-controls {
+.builder-mobile-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 30;
   display: block;
-  padding: 10px;
+  padding: calc(env(safe-area-inset-top) + 10px) 10px 10px;
   border-bottom: 1px solid #e2e8f0;
-  background: #ffffff;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(12px);
 }
 
 .preview-panel {
   height: 100vh;
   min-height: 620px;
   overflow-y: auto;
+  overflow-x: hidden;
   background: linear-gradient(180deg, #f8fafc, #eef2f7);
-  padding: 16px;
+  padding: calc(env(safe-area-inset-top) + 16px) 16px 16px;
+}
+
+.preview-mobile-back {
+  display: block;
 }
 
 .builder-sidebar-button {
@@ -157,7 +168,11 @@ button {
     background: #ffffff;
   }
 
-  .builder-mobile-controls {
+  .builder-mobile-sticky {
+    display: none !important;
+  }
+
+  .preview-mobile-back {
     display: none !important;
   }
 }

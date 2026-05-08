@@ -279,3 +279,47 @@ Preview：`https://store-site-builder-pe7fkma51-sportkk101-5719s-projects.vercel
 
 結論：Jason 指出的模板接線問題已修復；30 套 AI 模板現在套用後會同步模板名稱、版型、色盤、hero 主視覺、SEO OG 圖與 ZIP media 資料流。
 
+
+
+---
+
+## v0.1.2 Template Binding + Mobile UX QA
+
+測試日期：2026-05-08 21:26 CST  
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+QA runtime：WSL-native mirror `/tmp/store-site-builder-v012`（避免 Windows 掛載路徑 Next server hang）  
+QA artifacts：`qa-artifacts/v0.1.2/`
+
+| # | 驗收項目 | 實測結果 | 狀態 |
+|---|---|---|---|
+| 1 | TemplatePreset 型別系統 | `TemplateCatalogItem + themePreset + backgroundPreset + typographyPreset + componentStylePreset + layoutFamily + exportStylePreset` 已建立並接到 30 套模板 enrich flow。 | ✅ PASS |
+| 2 | 套用模板不破壞使用者內容 | `applyTemplatePreset()` 保留店名、菜單、圖片、連結、SEO、FAQ，只更新 template/theme/visual/media/hero/OG。 | ✅ PASS |
+| 3 | Preview 樣式同步 | 三個 React template renderer 已接 `getTemplateVisualStyle(data)`，背景、card、border、shadow、button band、nav、hero-grid、heading scale 改由 template preset 生成。 | ✅ PASS |
+| 4 | Export HTML 樣式同步 | `exportStaticSite.ts` 使用同一套 visual style；ZIP HTML 含 gradient、assets 引用、card radius/shadow CSS。 | ✅ PASS |
+| 5 | 六模板實測 | 抹茶日和、珍珠霓光、金色晚宴、香辣市集、白瓷濾杯、城市黑白均可套用並產生 Preview 截圖。 | ✅ PASS |
+| 6 | Mobile Builder 390px | Playwright 390×900：`scrollWidth=390`、`innerWidth=390`、`noHorizontalOverflow=true`。 | ✅ PASS |
+| 7 | Mobile Builder 320px | Playwright 320×780：`scrollWidth=320`、`innerWidth=320`、`noHorizontalOverflow=true`。 | ✅ PASS |
+| 8 | Preview 返回按鈕 | 390px mobile preview mode 實測 `backVisible=true`，可看到返回編輯入口。 | ✅ PASS |
+| 9 | ZIP 匯出 | `store-site-builder-v0.1.2-export.zip` 含 `README.txt`、`index.html`、`siteData.json`、`assets/template-artwork-cafe-urban-monochrome.jpg`。 | ✅ PASS |
+| 10 | Forbidden keyword | 匯出 HTML 無 `localhost`、無 `127.0.0.1`、無 `/_next`。 | ✅ PASS |
+| 11 | file:// 離線開啟 | 解壓至 `/tmp/store-site-builder-v012-export-check` 後，`file:///tmp/store-site-builder-v012-export-check/index.html` 可開啟，title 正常。 | ✅ PASS |
+| 12 | typecheck | 正式 repo 執行 `npm run typecheck`，`tsc --noEmit` exit 0。 | ✅ PASS |
+| 13 | build | 正式 repo 執行 `npm run build`，Next.js 16.2.4 compiled successfully，`/`、`/builder` static prerendered。 | ✅ PASS |
+
+QA artifact 清單：
+
+- `01-builder-desktop-overview.png`
+- `02-template-gallery-desktop.png`
+- `template-matcha.png`
+- `template-pearl-neon.png`
+- `template-gold-dinner.png`
+- `template-spicy-market.png`
+- `template-white-cafe.png`
+- `template-city-mono.png`
+- `09-mobile-390-builder.png`
+- `10-mobile-390-preview-back.png`
+- `11-mobile-320-builder.png`
+- `store-site-builder-v0.1.2-export.zip`
+- `qa-v012-summary.json`
+
+結論：v0.1.2 Template Binding + Mobile UX 修復在正式 repo build/typecheck 與 WSL-native browser QA 均通過；可進入 commit、push、PR 更新與 Vercel Preview redeploy。

@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import type { SiteData } from '@/types/site';
 import type { TemplateGalleryItem } from '@/types/template';
 import { getRecommendedTemplates } from '@/lib/templateCatalog';
-import { createTemplateAppliedSiteData } from '@/lib/templateApply';
+import { applyTemplatePreset } from '@/lib/applyTemplatePreset';
 import { useTemplateFilters } from '@/hooks/useTemplateFilters';
 import { Badge, Card, EmptyState, SectionHeader } from '@/components/ui';
 import { IndustryTabs } from './IndustryTabs';
@@ -10,22 +10,39 @@ import { TemplateFilterBar } from './TemplateFilterBar';
 import { TemplateGalleryItem as GalleryItem } from './TemplateGalleryItem';
 import { TemplatePreviewModal } from './TemplatePreviewModal';
 
+function Toast({ message, onDone }: { message: string; onDone: () => void }) {
+  useEffect(() => {
+    const t = setTimeout(onDone, 3000);
+    return () => clearTimeout(t);
+  }, [onDone]);
+  return (
+    <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-teal-600 px-6 py-3 text-sm font-black text-white shadow-xl animate-fade-in">
+      {message}
+    </div>
+  );
+}
+
 export function TemplateGallery({ data, onChange }: { data: SiteData; onChange: (d: SiteData) => void }) {
   const filters = useTemplateFilters(data.industry);
   const [previewing, setPreviewing] = useState<TemplateGalleryItem | null>(null);
+  const [toast, setToast] = useState<string | null>(null);
   const selectedId = data.galleryTemplateId;
   const recommended = getRecommendedTemplates(filters.industry);
 
-  const applyTemplate = async (template: TemplateGalleryItem) => {
-    onChange(await createTemplateAppliedSiteData(data, template));
+  const applyTemplate = useCallback(async (template: TemplateGalleryItem) => {
+    const updated = await applyTemplatePreset(data, template);
+    onChange(updated);
     setPreviewing(null);
-  };
+    setToast(`已套用「${template.name}」模板`);
+  }, [data, onChange]);
 
   const fallbackSelectedId = filters.templates.find(template => template.baseTemplate === data.template)?.id;
-  const isSelected = (template: TemplateGalleryItem) => selectedId ? selectedId === template.id : fallbackSelectedId === template.id;
+  const isSelected = (template: TemplateGalleryItem) =>
+    selectedId ? selectedId === template.id : fallbackSelectedId === template.id;
 
   return (
     <div className="grid gap-6">
+      {toast && <Toast message={toast} onDone={() => setToast(null)} />}
       <Card className="overflow-hidden bg-[radial-gradient(circle_at_20%_0%,rgba(20,184,166,.16),transparent_34%),linear-gradient(135deg,#fff,#f8fafc)]">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <SectionHeader eyebrow="Template Gallery" title="AI 視覺模板畫廊" description="3 個產業 × 10 套模板，以主視覺作品圖選擇品牌官網方向。套用後會同步右側 Preview，JSON / ZIP 維持既有流程。" />

@@ -1,16 +1,51 @@
-import type { TemplateGalleryItem } from '@/types/template';
+import type { TemplateGalleryItem, TemplateCatalogItem } from '@/types/template';
 import { templateIndustryLabels } from '@/types/template';
 import { Badge, Button } from '@/components/ui';
+import { getEnrichedTemplateById } from '@/lib/enrichTemplate';
+import { templateCatalog } from '@/lib/templateCatalog';
+
+function TemplateStyleInfo({ template }: { template: TemplateGalleryItem }) {
+  const enriched = getEnrichedTemplateById(template.id, templateCatalog);
+  return (
+    <div className="flex flex-wrap gap-2">
+      {enriched && (
+        <>
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-black text-slate-600">
+            佈局：{enriched.layoutFamily}
+          </span>
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-black text-slate-600">
+            手機：{enriched.exportStylePreset.mobileDensity}
+          </span>
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-black text-slate-600">
+            按鈕：{enriched.componentStylePreset.buttonStyle}
+          </span>
+        </>
+      )}
+    </div>
+  );
+}
 
 export function TemplatePreviewModal({ template, selected, onClose, onApply }: { template: TemplateGalleryItem | null; selected: boolean; onClose: () => void; onApply: (template: TemplateGalleryItem) => void }) {
   if (!template) return null;
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center bg-slate-950/70 p-3 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label={`${template.name} 快速預覽`} onClick={onClose}>
-      <div className="max-h-[92vh] w-full max-w-5xl overflow-hidden rounded-[36px] bg-white shadow-2xl" onClick={e => e.stopPropagation()}>
-        <div className="grid max-h-[92vh] overflow-y-auto lg:grid-cols-[1.05fr_.95fr]">
+    <div className="fixed inset-0 z-50 grid place-items-center bg-slate-950/70 p-0 backdrop-blur-sm md:p-3" role="dialog" aria-modal="true" aria-label={`${template.name} 快速預覽`} onClick={onClose}>
+      <div className="h-[100dvh] w-full overflow-hidden bg-white shadow-2xl md:max-h-[92vh] md:max-w-5xl md:rounded-[36px]" onClick={e => e.stopPropagation()}>
+        {/* Mobile sticky top bar — visible on small screens */}
+        <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-slate-100 bg-white/95 px-4 py-3 pt-[calc(env(safe-area-inset-top)+12px)] backdrop-blur md:hidden">
+          <button type="button" onClick={onClose} className="min-h-11 rounded-full px-3 text-sm font-black text-slate-700">
+            ← 返回
+          </button>
+          <span className="truncate text-sm font-black text-slate-950">{template.name}</span>
+          <button type="button" onClick={() => !selected && onApply(template)} className="min-h-11 rounded-full bg-teal-600 px-4 text-xs font-black text-white disabled:bg-slate-300" disabled={selected}>
+            {selected ? '使用中' : '套用'}
+          </button>
+        </div>
+
+        <div className="grid h-[calc(100dvh-68px)] overflow-y-auto md:max-h-[92vh] lg:grid-cols-[1.05fr_.95fr]">
           <div className="relative min-h-[460px] bg-slate-100">
             <img src={template.artworkSrc} alt={`${template.name} 大圖預覽`} className="h-full min-h-[460px] w-full object-cover" />
-            <button type="button" onClick={onClose} className="absolute right-4 top-4 rounded-full bg-white/90 px-4 py-2 text-sm font-black text-slate-800 shadow-lg">關閉</button>
+            {/* Desktop close button */}
+            <button type="button" onClick={onClose} className="absolute right-4 top-4 hidden rounded-full bg-white/90 px-4 py-2 text-sm font-black text-slate-800 shadow-lg md:block">關閉</button>
           </div>
           <div className="grid content-between gap-8 p-6 md:p-8">
             <div>
@@ -26,11 +61,16 @@ export function TemplatePreviewModal({ template, selected, onClose, onApply }: {
                 <p className="text-sm leading-6 text-slate-600">{template.recommendationReason}</p>
               </div>
               <div className="mt-6 flex flex-wrap gap-2">{template.styleTags.map(tag => <span key={tag} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-black text-slate-600">{tag}</span>)}</div>
-              <div className="mt-6 grid grid-cols-4 gap-2">{template.palette.map(color => <span key={color} className="h-12 rounded-2xl ring-1 ring-slate-200" style={{ background: color }} />)}</div>
+              <div className="mt-6 mb-4">
+                <p className="mb-2 text-xs font-black text-slate-400 uppercase tracking-widest">風格預覽</p>
+                <TemplateStyleInfo template={template} />
+              </div>
+              <div className="grid grid-cols-4 gap-2">{template.palette.map(color => <span key={color} className="h-12 rounded-2xl ring-1 ring-slate-200" style={{ background: color }} />)}</div>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <Button size="lg" onClick={() => onApply(template)}>{selected ? '重新套用此模板' : '套用此模板'}</Button>
-              <Button size="lg" variant="secondary" onClick={onClose}>返回畫廊</Button>
+            {/* Desktop only: action buttons */}
+            <div className="hidden md:flex flex-wrap gap-3">
+              <Button size="lg" onClick={() => !selected && onApply(template)} disabled={selected}>{selected ? '目前使用中' : '套用這個模板'}</Button>
+              <Button size="lg" variant="secondary" onClick={onClose}>{selected ? '已套用，右側預覽已更新｜返回模板庫' : '返回模板庫'}</Button>
             </div>
           </div>
         </div>
