@@ -323,3 +323,47 @@ QA artifact 清單：
 - `qa-v012-summary.json`
 
 結論：v0.1.2 Template Binding + Mobile UX 修復在正式 repo build/typecheck 與 WSL-native browser QA 均通過；可進入 commit、push、PR 更新與 Vercel Preview redeploy。
+
+
+---
+
+## v0.1.3 Template Polish + Copy + Preview Layout QA
+
+測試日期：2026-05-08 22:50 CST  
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+本輪目標：模板中文文案、Hero 中文排版、AI artwork treatment、圖片主導畫廊、手機 UX、exportStaticSite 同步修復。
+
+### Build / Typecheck
+- `npm run typecheck`：PASS
+- `npm run build`：PASS（Next.js 16.2.4，`/`、`/builder` static prerendered）
+
+### 文案 QA
+- 30 套模板 `shortDescription` / `longDescription` 已改為正式中文。
+- `styleTags` / `badges` 已中文化。
+- 禁止字樣未出現在使用者展示文案：AI-designed、website template key visual、showcase image、concept image、premium AI、Create a、for a brand called。
+
+### Preview / Hero QA（6 套）
+- 抹茶日和：Hero readable=true，h1=208x80，treatment=soft-card-artwork。
+- 珍珠霓光：Hero readable=true，h1=196x83，treatment=hero-floating-artwork。
+- 茶霧山嵐：Hero readable=true，h1=197x74，treatment=editorial-split。
+- 金色晚宴：Hero readable=true，h1=294x74，treatment=dark-full-bleed。
+- 白瓷濾杯：Hero readable=true，h1=197x74，treatment=soft-card-artwork。
+- 城市黑白：Hero readable=true，h1=197x74，treatment=soft-card-artwork。
+
+### Mobile QA
+- 390px：scrollWidth=390 / innerWidth=390，無水平破版。
+- 320px：scrollWidth=320 / innerWidth=320，無嚴重水平破版。
+- Preview 返回編輯：PASS。
+- Template Preview Modal 返回模板庫：PASS。
+
+### Export / file:// QA
+- 六套模板均成功匯出 ZIP：抹茶日和、珍珠霓光、茶霧山嵐、金色晚宴、白瓷濾杯、城市黑白。
+- 六套 ZIP 均含 `README.txt`、`index.html`、`siteData.json` 與 AI artwork assets。
+- `index.html` 具備 Hero readable CSS：`clamp(...)`、`word-break:keep-all`、`overflow-wrap:normal`。
+- 掃描結果：無 `localhost`、無 `127.0.0.1`、無 `/_next`。
+- `file://` 抽樣開啟：PASS；AI artwork 顯示；390px 無水平破版。
+
+### QA artifacts
+- `qa-artifacts/v0.1.3/qa-v013-summary.json`
+- 13 張 QA 截圖：desktop overview、portfolio wall、modal back、6 模板、390 preview、320 builder、file export mobile。
+- 6 個 ZIP：`export-matcha.zip`、`export-pearl-neon.zip`、`export-tea-mist.zip`、`export-gold-dinner.zip`、`export-white-dripper.zip`、`export-city-mono.zip`。

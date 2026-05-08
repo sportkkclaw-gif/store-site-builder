@@ -33,7 +33,7 @@ export function TemplatePreviewModal({ template, selected, onClose, onApply }: {
         {/* Mobile sticky top bar — visible on small screens */}
         <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-slate-100 bg-white/95 px-4 py-3 pt-[calc(env(safe-area-inset-top)+12px)] backdrop-blur md:hidden">
           <button type="button" onClick={onClose} className="min-h-11 rounded-full px-3 text-sm font-black text-slate-700">
-            ← 返回
+            ← 返回模板庫
           </button>
           <span className="truncate text-sm font-black text-slate-950">{template.name}</span>
           <button type="button" onClick={() => !selected && onApply(template)} className="min-h-11 rounded-full bg-teal-600 px-4 text-xs font-black text-white disabled:bg-slate-300" disabled={selected}>
@@ -45,7 +45,7 @@ export function TemplatePreviewModal({ template, selected, onClose, onApply }: {
           <div className="relative min-h-[460px] bg-slate-100">
             <img src={template.artworkSrc} alt={`${template.name} 大圖預覽`} className="h-full min-h-[460px] w-full object-cover" />
             {/* Desktop close button */}
-            <button type="button" onClick={onClose} className="absolute right-4 top-4 hidden rounded-full bg-white/90 px-4 py-2 text-sm font-black text-slate-800 shadow-lg md:block">關閉</button>
+            <button type="button" onClick={onClose} className="absolute right-4 top-4 hidden min-h-11 rounded-full bg-white/90 px-4 py-2 text-sm font-black text-slate-800 shadow-lg md:block">× 關閉</button>
           </div>
           <div className="grid content-between gap-8 p-6 md:p-8">
             <div>

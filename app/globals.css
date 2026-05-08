@@ -75,8 +75,28 @@ button {
   overflow-y: auto;
   overflow-x: hidden;
   background: linear-gradient(180deg, #f8fafc, #eef2f7);
-  padding: calc(env(safe-area-inset-top) + 16px) 16px 16px;
+  padding: calc(env(safe-area-inset-top) + 16px) 16px calc(env(safe-area-inset-bottom) + 16px);
 }
+
+.desktop-preview-window {
+  width: 100%;
+}
+
+.desktop-preview-canvas {
+  width: 1180px;
+  max-width: none;
+  transform: scale(.43);
+  transform-origin: top left;
+  min-height: 1680px;
+  margin-right: -672px;
+  margin-bottom: -950px;
+}
+
+.mobile-preview-window {
+  scrollbar-gutter: stable;
+  -webkit-overflow-scrolling: touch;
+}
+
 
 .preview-mobile-back {
   display: block;
@@ -158,10 +178,10 @@ button {
 
   .builder-preview-column {
     display: block !important;
-    width: 480px;
-    min-width: 420px;
-    max-width: 520px;
-    flex: 0 0 480px;
+    width: 560px;
+    min-width: 500px;
+    max-width: 640px;
+    flex: 0 0 560px;
     height: 100vh;
     overflow: hidden;
     border-left: 1px solid #e2e8f0;
@@ -179,7 +199,7 @@ button {
 
 @media (min-width: 1440px) {
   .builder-preview-column {
-    width: 520px;
-    flex-basis: 520px;
+    width: 640px;
+    flex-basis: 640px;
   }
 }

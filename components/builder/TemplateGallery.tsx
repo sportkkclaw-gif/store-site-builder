@@ -59,7 +59,7 @@ export function TemplateGallery({ data, onChange }: { data: SiteData; onChange: 
           </div>
           <span className="text-sm font-bold text-slate-500">依產業與熱門度推薦</span>
         </div>
-        <div className="grid gap-4 md:grid-cols-3 xl:grid-cols-4">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {recommended.map(template => <GalleryItem key={template.id} compact template={template} selected={isSelected(template)} onPreview={setPreviewing} onApply={applyTemplate} />)}
         </div>
       </section>
@@ -75,7 +75,7 @@ export function TemplateGallery({ data, onChange }: { data: SiteData; onChange: 
           <span className="rounded-full bg-slate-100 px-4 py-2 text-sm font-black text-slate-600">顯示 {filters.templates.length} 套</span>
         </div>
         {filters.templates.length ? (
-          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3" data-testid="template-gallery-grid">
+          <div className="grid gap-6 sm:grid-cols-2 2xl:grid-cols-3" data-testid="template-gallery-grid">
             {filters.templates.map(template => <GalleryItem key={template.id} template={template} selected={isSelected(template)} onPreview={setPreviewing} onApply={applyTemplate} />)}
           </div>
         ) : <EmptyState title="找不到符合條件的模板" description="請清除搜尋或改用其他風格篩選。" icon="🔎" />}

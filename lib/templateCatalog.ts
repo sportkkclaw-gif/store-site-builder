@@ -8,8 +8,8 @@ export const templateCatalog = [
     "industry": "drink-shop",
     "slug": "drink-matcha-hiyori",
     "name": "抹茶日和",
-    "shortDescription": "premium AI-designed website template key visual for a tea and drink shop brand c。",
-    "longDescription": "抹茶日和以飲料店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "米白與抹茶綠打造柔和日系茶飲官網，適合清爽品牌形象。",
+    "longDescription": "以大量留白、柔和綠色與茶飲情境建立自然舒適的品牌感，適合手搖飲、茶飲與甜點店快速建立清新官方網站。",
     "suitableFor": [
       "飲料店",
       "小型品牌",
@@ -17,13 +17,13 @@ export const templateCatalog = [
     ],
     "styleTags": [
       "抹茶",
-      "高質感",
-      "溫暖",
-      "極簡"
+      "日系",
+      "清爽",
+      "自然"
     ],
     "badges": [
       "推薦",
-      "飲料店"
+      "清新茶飲"
     ],
     "palette": [
       "#EAF5DF",
@@ -32,7 +32,7 @@ export const templateCatalog = [
       "#C9A86A"
     ],
     "aiArtworkKey": "drink-matcha-hiyori",
-    "prompt": "Create a premium AI-designed website template key visual for a tea and drink shop brand called \"抹茶日和\". Show a refined website concept scene with a soft Japanese aesthetic, matcha green and warm ivory palette, elegant desktop website hero layout, subtle mobile preview, tea drink product presentation, gentle rounded shapes, airy whitespace, soft editorial composition, calm tea-house branding mood, handcrafted beverage vibe, polished commercial presentation, premium template gallery artwork, visually rich, clean and sophisticated, suitable for a drink shop website selection gallery, no watermark, no garbled text, no generic wireframe.",
+    "prompt": "抹茶日和正式模板主視覺，呈現米白與抹茶綠打造柔和日系茶飲官網，適合清爽品牌形象，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 1,
     "newbieFriendly": true,
@@ -45,20 +45,22 @@ export const templateCatalog = [
     "industry": "drink-shop",
     "slug": "drink-boba-neon",
     "name": "珍珠霓光",
-    "shortDescription": "bold AI-designed website template showcase image for a trendy bubble tea brand c。",
-    "longDescription": "珍珠霓光以飲料店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "霓虹色彩與夜間潮流感，適合年輕客群與社群導流品牌。",
+    "longDescription": "以高對比霓虹、強烈主視覺與活動感版面打造吸睛官網，適合新品曝光、外送導流與年輕化手搖飲品牌。",
     "suitableFor": [
       "飲料店",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
-      "霓光",
-      "活潑"
+      "霓虹",
+      "潮流",
+      "高對比",
+      "社群"
     ],
     "badges": [
       "推薦",
-      "飲料店"
+      "活動導流"
     ],
     "palette": [
       "#12051F",
@@ -67,7 +69,7 @@ export const templateCatalog = [
       "#F43F8C"
     ],
     "aiArtworkKey": "drink-boba-neon",
-    "prompt": "Create a bold AI-designed website template showcase image for a trendy bubble tea brand called \"珍珠霓光\". Use neon accents, nightlife mood, glossy drink imagery, youth culture energy, purple, electric blue, neon pink and black palette, dynamic website concept with strong hero area, call-to-action feeling, social-media-driven branding, energetic composition, futuristic beverage storefront vibe, commercial-quality template artwork, suitable for a modern drink shop website gallery, polished and eye-catching, no watermark, no gibberish text, no boring placeholder blocks.",
+    "prompt": "珍珠霓光正式模板主視覺，呈現霓虹色彩與夜間潮流感，適合年輕客群與社群導流品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 2,
     "newbieFriendly": false,
@@ -80,8 +82,8 @@ export const templateCatalog = [
     "industry": "drink-shop",
     "slug": "drink-fruit-paradise",
     "name": "果香樂園",
-    "shortDescription": "vibrant AI-generated website template artwork for a fruit tea and fresh drink br。",
-    "longDescription": "果香樂園以飲料店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "鮮果色彩與活潑構圖，適合果茶、季節飲品與親子客群。",
+    "longDescription": "以明亮水果色、圓潤卡片與輕快節奏呈現清爽感，適合水果茶、冰沙、季節限定與社群活動頁。",
     "suitableFor": [
       "飲料店",
       "小型品牌",
@@ -89,12 +91,13 @@ export const templateCatalog = [
     ],
     "styleTags": [
       "水果",
-      "高質感",
-      "極簡",
+      "繽紛",
+      "清爽",
       "活潑"
     ],
     "badges": [
-      "飲料店"
+      "新品曝光",
+      "水果茶"
     ],
     "palette": [
       "#FFF7AD",
@@ -103,7 +106,7 @@ export const templateCatalog = [
       "#F472B6"
     ],
     "aiArtworkKey": "drink-fruit-paradise",
-    "prompt": "Create a vibrant AI-generated website template artwork for a fruit tea and fresh drink brand called \"果香樂園\". Show a colorful, cheerful, fruit-forward website concept with citrus, berry, mango and guava color accents, playful modern composition, refreshing drink visuals, bright product display, clean landing page structure implied, joyful commercial mood, suitable for young drink brands, premium template showcase image, rich yet clean, no watermark, no garbled text.",
+    "prompt": "果香樂園正式模板主視覺，呈現鮮果色彩與活潑構圖，適合果茶、季節飲品與親子客群，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 3,
     "newbieFriendly": false,
@@ -116,8 +119,8 @@ export const templateCatalog = [
     "industry": "drink-shop",
     "slug": "drink-brown-sugar-amber",
     "name": "黑糖琥珀",
-    "shortDescription": "premium beverage website concept image for a black sugar milk tea brand called \"。",
-    "longDescription": "黑糖琥珀以飲料店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "焦糖琥珀色與濃郁奶茶感，適合黑糖與甜品系飲品品牌。",
+    "longDescription": "以深棕、焦糖與奶霜色建立濃厚甜點氛圍，適合黑糖珍奶、厚奶飲品與主打香氣口感的店家。",
     "suitableFor": [
       "飲料店",
       "小型品牌",
@@ -125,11 +128,13 @@ export const templateCatalog = [
     ],
     "styleTags": [
       "黑糖",
-      "高質感",
+      "琥珀",
+      "濃郁",
       "溫暖"
     ],
     "badges": [
-      "飲料店"
+      "甜品飲品",
+      "質感款"
     ],
     "palette": [
       "#2B1608",
@@ -138,7 +143,7 @@ export const templateCatalog = [
       "#FFF7ED"
     ],
     "aiArtworkKey": "drink-brown-sugar-amber",
-    "prompt": "Create a premium beverage website concept image for a black sugar milk tea brand called \"黑糖琥珀\". Use warm amber, caramel, deep brown and cream tones, luxurious milk tea atmosphere, glossy drink close-ups, warm lighting, rich dessert-drink branding, elegant web design proposal feel, structured website hero and featured products sections implied, inviting and commercial, suitable for drink shop website template gallery, no watermark, no garbled text.",
+    "prompt": "黑糖琥珀正式模板主視覺，呈現焦糖琥珀色與濃郁奶茶感，適合黑糖與甜品系飲品品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 4,
     "newbieFriendly": false,
@@ -151,19 +156,22 @@ export const templateCatalog = [
     "industry": "drink-shop",
     "slug": "drink-white-peach-sparkle",
     "name": "白桃氣泡",
-    "shortDescription": "sweet and airy AI website template key visual for a sparkling fruit drink brand 。",
-    "longDescription": "白桃氣泡以飲料店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "白桃粉與氣泡感打造輕盈頁面，適合季節限定與女性客群。",
+    "longDescription": "以柔粉、白色與微氣泡視覺營造清甜印象，適合白桃、氣泡飲、果香茶與期間限定新品宣傳。",
     "suitableFor": [
       "飲料店",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
-      "蜜桃",
-      "高質感"
+      "白桃",
+      "氣泡",
+      "柔粉",
+      "輕盈"
     ],
     "badges": [
-      "飲料店"
+      "季節限定",
+      "清甜款"
     ],
     "palette": [
       "#FFF1F7",
@@ -172,7 +180,7 @@ export const templateCatalog = [
       "#FFFFFF"
     ],
     "aiArtworkKey": "drink-white-peach-sparkle",
-    "prompt": "Create a sweet and airy AI website template key visual for a sparkling fruit drink brand called \"白桃氣泡\". Use blush pink, soft peach, white and sparkling pastel highlights, feminine lighthearted mood, soft bubbles, seasonal drink campaign feeling, premium landing page concept, elegant product display, fresh brand storytelling atmosphere, polished template artwork for a drink shop gallery, no watermark, no gibberish text.",
+    "prompt": "白桃氣泡正式模板主視覺，呈現白桃粉與氣泡感打造輕盈頁面，適合季節限定與女性客群，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 5,
     "newbieFriendly": true,
@@ -185,20 +193,22 @@ export const templateCatalog = [
     "industry": "drink-shop",
     "slug": "drink-lime-morning",
     "name": "青檸清晨",
-    "shortDescription": "clean, minimal, refreshing AI website template artwork for a healthy tea and cit。",
-    "longDescription": "青檸清晨以飲料店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "青檸綠與留白設計呈現健康清爽感，適合低糖茶飲品牌。",
+    "longDescription": "以檸檬綠、薄荷色與乾淨版面建立清晨般的清新形象，適合健康茶、低糖飲品與外帶飲料店。",
     "suitableFor": [
       "飲料店",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
-      "清爽",
-      "高質感",
-      "極簡"
+      "青檸",
+      "健康",
+      "極簡",
+      "清晨"
     ],
     "badges": [
-      "飲料店"
+      "新手友善",
+      "低糖茶飲"
     ],
     "palette": [
       "#F8FFFB",
@@ -207,7 +217,7 @@ export const templateCatalog = [
       "#94A3B8"
     ],
     "aiArtworkKey": "drink-lime-morning",
-    "prompt": "Create a clean, minimal, refreshing AI website template artwork for a healthy tea and citrus drink brand called \"青檸清晨\". Use white, lime green, pale mint and soft gray palette, wellness-inspired composition, modern minimal layout, fresh ingredients visual cues, clean website hero with product section implied, crisp and contemporary drink branding mood, premium and polished, no watermark, no garbled text.",
+    "prompt": "青檸清晨正式模板主視覺，呈現青檸綠與留白設計呈現健康清爽感，適合低糖茶飲品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 6,
     "newbieFriendly": true,
@@ -220,8 +230,8 @@ export const templateCatalog = [
     "industry": "drink-shop",
     "slug": "drink-tea-mist-ridge",
     "name": "茶霧山嵐",
-    "shortDescription": "refined premium tea brand website concept image for \"茶霧山嵐\"。",
-    "longDescription": "茶霧山嵐以飲料店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "山霧、茶園與精品茶感，適合高級茶飲與品牌故事型官網。",
+    "longDescription": "以深綠、米色與高山茶意象呈現沉穩高級感，強調茶葉品質、品牌故事與精緻飲品展示。",
     "suitableFor": [
       "飲料店",
       "小型品牌",
@@ -229,11 +239,13 @@ export const templateCatalog = [
     ],
     "styleTags": [
       "高山茶",
-      "高質感"
+      "精品",
+      "沉穩",
+      "東方"
     ],
     "badges": [
       "推薦",
-      "飲料店"
+      "高級茶飲"
     ],
     "palette": [
       "#EEF5EF",
@@ -242,7 +254,7 @@ export const templateCatalog = [
       "#D6B76A"
     ],
     "aiArtworkKey": "drink-tea-mist-ridge",
-    "prompt": "Create a refined premium tea brand website concept image for \"茶霧山嵐\". Show a boutique tea identity with misty mountain tea field mood, jade green, stone gray, ivory and muted gold palette, elegant editorial composition, high-mountain tea storytelling, premium desktop website mockup scene, subtle cultural Eastern refinement, strong branding presence, visually rich but calm, perfect for a high-end tea drink template gallery, no watermark, no gibberish text.",
+    "prompt": "茶霧山嵐正式模板主視覺，呈現山霧、茶園與精品茶感，適合高級茶飲與品牌故事型官網，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 7,
     "newbieFriendly": false,
@@ -255,20 +267,22 @@ export const templateCatalog = [
     "industry": "drink-shop",
     "slug": "drink-iced-party",
     "name": "星冰派對",
-    "shortDescription": "energetic campaign-style AI website template visual for a drink shop brand calle。",
-    "longDescription": "星冰派對以飲料店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "冰飲派對感與強烈活動色彩，適合夏季促銷與聯名主題。",
+    "longDescription": "以鮮明撞色、冰塊光感與大面積主視覺提升活動張力，適合新品上市、節慶檔期與社群導流。",
     "suitableFor": [
       "飲料店",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
+      "派對",
+      "冰飲",
       "促銷",
-      "高質感",
-      "活潑"
+      "高能量"
     ],
     "badges": [
-      "飲料店"
+      "活動頁",
+      "年輕客群"
     ],
     "palette": [
       "#ECFEFF",
@@ -277,7 +291,7 @@ export const templateCatalog = [
       "#FACC15"
     ],
     "aiArtworkKey": "drink-iced-party",
-    "prompt": "Create an energetic campaign-style AI website template visual for a drink shop brand called \"星冰派對\". Use vibrant summer colors, icy drink visuals, promotion-driven mood, limited-time offer feeling, large hero scene, festive graphic accents, playful high-conversion commercial layout, youth-friendly branding, suitable for chain drink shops and seasonal campaigns, premium gallery image, no watermark, no garbled text.",
+    "prompt": "星冰派對正式模板主視覺，呈現冰飲派對感與強烈活動色彩，適合夏季促銷與聯名主題，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 8,
     "newbieFriendly": false,
@@ -290,8 +304,8 @@ export const templateCatalog = [
     "industry": "drink-shop",
     "slug": "drink-afternoon-cream",
     "name": "午後奶蓋",
-    "shortDescription": "warm lifestyle-style AI website concept visual for a comforting tea brand called。",
-    "longDescription": "午後奶蓋以飲料店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "奶油色與柔和光線營造午後感，適合奶蓋與甜感飲品品牌。",
+    "longDescription": "以溫柔奶油色、圓角卡片與柔光照片建立舒適氛圍，適合奶蓋茶、鮮奶系列與甜點飲品。",
     "suitableFor": [
       "飲料店",
       "小型品牌",
@@ -299,10 +313,13 @@ export const templateCatalog = [
     ],
     "styleTags": [
       "奶蓋",
-      "溫暖"
+      "奶油色",
+      "午後",
+      "柔和"
     ],
     "badges": [
-      "飲料店"
+      "新手友善",
+      "溫柔品牌"
     ],
     "palette": [
       "#FFF7ED",
@@ -311,7 +328,7 @@ export const templateCatalog = [
       "#FDBA74"
     ],
     "aiArtworkKey": "drink-afternoon-cream",
-    "prompt": "Create a warm lifestyle-style AI website concept visual for a comforting tea brand called \"午後奶蓋\". Use cream, latte beige, soft tea green and warm peach tones, cozy afternoon mood, friendly handcrafted beverage scene, welcoming website concept, featured drinks and cozy brand storytelling feel, soft lighting, lifestyle editorial quality, suitable for social-media-friendly beverage branding, no watermark, no gibberish text.",
+    "prompt": "午後奶蓋正式模板主視覺，呈現奶油色與柔和光線營造午後感，適合奶蓋與甜感飲品品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 9,
     "newbieFriendly": true,
@@ -324,19 +341,22 @@ export const templateCatalog = [
     "industry": "drink-shop",
     "slug": "drink-lab-brew",
     "name": "飲研實驗室",
-    "shortDescription": "modern innovative AI website template artwork for a concept drink brand called \"。",
-    "longDescription": "飲研實驗室以飲料店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "實驗室風格與冷色科技感，適合創新飲品與特色調飲品牌。",
+    "longDescription": "以深色背景、冷光點綴與俐落版面塑造研發感，適合創意茶飲、特調飲品與主打差異化的店家。",
     "suitableFor": [
       "飲料店",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
+      "實驗",
+      "科技",
       "創新",
-      "極簡"
+      "冷色"
     ],
     "badges": [
-      "飲料店"
+      "概念店",
+      "特色調飲"
     ],
     "palette": [
       "#F8FAFC",
@@ -345,7 +365,7 @@ export const templateCatalog = [
       "#0F172A"
     ],
     "aiArtworkKey": "drink-lab-brew",
-    "prompt": "Create a modern innovative AI website template artwork for a concept drink brand called \"飲研實驗室\". Use sleek teal, white, glassy textures and subtle futuristic accents, innovation-driven beverage lab identity, experimental drinks, modern product storytelling, sharp layout suggestion, clean tech-inspired but friendly commercial website concept, standout template gallery art, no watermark, no garbled text, no cheap sci-fi clutter. -------------------------------------------------- B. 餐飲店模板 10 套 --------------------------------------------------",
+    "prompt": "飲研實驗室正式模板主視覺，呈現實驗室風格與冷色科技感，適合創新飲品與特色調飲品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 10,
     "newbieFriendly": false,
@@ -358,8 +378,8 @@ export const templateCatalog = [
     "industry": "restaurant",
     "slug": "restaurant-charcoal-essence",
     "name": "炭火本味",
-    "shortDescription": "premium restaurant website concept image for \"炭火本味\"。",
-    "longDescription": "炭火本味以餐飲店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "炭火黑與暖光質感，適合燒烤、居酒屋與職人餐飲。",
+    "longDescription": "以深色背景、炭火光影與大器排版呈現熟成風味，適合燒肉、串燒、炭烤與晚餐預約型店家。",
     "suitableFor": [
       "餐飲店",
       "小型品牌",
@@ -367,12 +387,13 @@ export const templateCatalog = [
     ],
     "styleTags": [
       "炭火",
-      "高質感",
-      "溫暖",
-      "活潑"
+      "職人",
+      "深色",
+      "晚餐"
     ],
     "badges": [
-      "餐飲店"
+      "質感餐飲",
+      "預約導向"
     ],
     "palette": [
       "#11100E",
@@ -381,7 +402,7 @@ export const templateCatalog = [
       "#FDE68A"
     ],
     "aiArtworkKey": "restaurant-charcoal-essence",
-    "prompt": "Create a premium restaurant website concept image for \"炭火本味\". Show a dark, warm, charcoal-grill-inspired atmosphere with black, ember orange, wood brown and warm light, high-end food presentation, smoky grill mood, bold hero scene, elevated dining branding, desktop website feel with menu and reservation tone implied, polished commercial template artwork, no watermark, no gibberish text.",
+    "prompt": "炭火本味正式模板主視覺，呈現炭火黑與暖光質感，適合燒烤、居酒屋與職人餐飲，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 11,
     "newbieFriendly": false,
@@ -394,20 +415,22 @@ export const templateCatalog = [
     "industry": "restaurant",
     "slug": "restaurant-rice-kitchen",
     "name": "米香食堂",
-    "shortDescription": "warm and approachable AI website template visual for a home-style restaurant cal。",
-    "longDescription": "米香食堂以餐飲店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "米色日常感與親切版面，適合便當、家常料理與小食堂。",
+    "longDescription": "以米白、木色與溫暖留白營造安心感，適合日式食堂、便當店、家庭料理與社區型餐飲。",
     "suitableFor": [
       "餐飲店",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
+      "米香",
       "家常",
-      "主廚故事",
-      "溫暖"
+      "溫暖",
+      "日常"
     ],
     "badges": [
-      "餐飲店"
+      "親民食堂",
+      "新手友善"
     ],
     "palette": [
       "#FFF8EA",
@@ -416,7 +439,7 @@ export const templateCatalog = [
       "#FFFFFF"
     ],
     "aiArtworkKey": "restaurant-rice-kitchen",
-    "prompt": "Create a warm and approachable AI website template visual for a home-style restaurant called \"米香食堂\". Use warm beige, rice white, muted clay and soft wood tones, comforting dining atmosphere, homemade meal presentation, friendly brand storytelling, clear and welcoming website concept scene, suitable for family restaurant branding, polished and trustworthy, no watermark, no garbled text.",
+    "prompt": "米香食堂正式模板主視覺，呈現米色日常感與親切版面，適合便當、家常料理與小食堂，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 12,
     "newbieFriendly": true,
@@ -429,21 +452,22 @@ export const templateCatalog = [
     "industry": "restaurant",
     "slug": "restaurant-golden-banquet",
     "name": "金色晚宴",
-    "shortDescription": "luxurious fine-dining website concept image for \"金色晚宴\"。",
-    "longDescription": "金色晚宴以餐飲店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "金色燈光與高級宴席感，適合聚餐、私廚與精緻餐廳。",
+    "longDescription": "以金色細節、深色背景與大圖主視覺建立儀式感，適合宴會餐廳、私廚套餐與高客單價餐飲品牌。",
     "suitableFor": [
       "餐飲店",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
-      "奢華",
-      "高質感",
-      "溫暖"
+      "金色",
+      "宴席",
+      "高級",
+      "儀式感"
     ],
     "badges": [
       "推薦",
-      "餐飲店"
+      "高級餐廳"
     ],
     "palette": [
       "#0B0B0F",
@@ -452,7 +476,7 @@ export const templateCatalog = [
       "#FFF7ED"
     ],
     "aiArtworkKey": "restaurant-golden-banquet",
-    "prompt": "Create a luxurious fine-dining website concept image for \"金色晚宴\". Use black, deep wine, gold and warm spotlight tones, premium editorial composition, elegant plated cuisine, upscale dining atmosphere, sophisticated desktop hero layout, reservation and tasting menu mood, luxury commercial presentation, perfect for restaurant template gallery, no watermark, no gibberish text.",
+    "prompt": "金色晚宴正式模板主視覺，呈現金色燈光與高級宴席感，適合聚餐、私廚與精緻餐廳，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 13,
     "newbieFriendly": false,
@@ -465,18 +489,22 @@ export const templateCatalog = [
     "industry": "restaurant",
     "slug": "restaurant-corner-meal",
     "name": "街角食光",
-    "shortDescription": "lifestyle-driven restaurant website template artwork for \"街角食光\"。",
-    "longDescription": "街角食光以餐飲店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "街角小店氛圍與明亮照片區，適合日常快餐與社區餐館。",
+    "longDescription": "以親切色彩、清楚菜單與快速行動按鈕建立好點餐的網站，適合麵飯小館、早午餐與街邊餐飲。",
     "suitableFor": [
       "餐飲店",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
-      "街區"
+      "街角",
+      "親切",
+      "日常",
+      "好點餐"
     ],
     "badges": [
-      "餐飲店"
+      "社區店",
+      "外帶友善"
     ],
     "palette": [
       "#F8FAFC",
@@ -485,7 +513,7 @@ export const templateCatalog = [
       "#FFFFFF"
     ],
     "aiArtworkKey": "restaurant-corner-meal",
-    "prompt": "Create a lifestyle-driven restaurant website template artwork for \"街角食光\". Show a bright, stylish neighborhood restaurant mood, natural light, soft neutrals, modern food photography, approachable but design-conscious atmosphere, urban casual dining brand feeling, polished website concept with story-driven sections implied, commercial and visually appealing, no watermark, no garbled text.",
+    "prompt": "街角食光正式模板主視覺，呈現街角小店氛圍與明亮照片區，適合日常快餐與社區餐館，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 14,
     "newbieFriendly": true,
@@ -498,8 +526,8 @@ export const templateCatalog = [
     "industry": "restaurant",
     "slug": "restaurant-spicy-market",
     "name": "香辣市集",
-    "shortDescription": "vivid and lively AI website concept image for a spicy food restaurant brand call。",
-    "longDescription": "香辣市集以餐飲店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "熱辣市集色彩與活力排版，適合麻辣、串串與夜市風餐飲。",
+    "longDescription": "以紅橘色、節奏感卡片與強烈 CTA 呈現熱鬧食慾，適合麻辣鍋、辣味小吃與活動型餐飲品牌。",
     "suitableFor": [
       "餐飲店",
       "小型品牌",
@@ -507,12 +535,13 @@ export const templateCatalog = [
     ],
     "styleTags": [
       "香辣",
-      "高質感",
-      "溫暖",
-      "活潑"
+      "市集",
+      "熱鬧",
+      "紅橘"
     ],
     "badges": [
-      "餐飲店"
+      "人氣款",
+      "活動導流"
     ],
     "palette": [
       "#300B0B",
@@ -521,7 +550,7 @@ export const templateCatalog = [
       "#FACC15"
     ],
     "aiArtworkKey": "restaurant-spicy-market",
-    "prompt": "Create a vivid and lively AI website concept image for a spicy food restaurant brand called \"香辣市集\". Use rich red, chili orange, warm yellow and dark accents, bustling market energy, bold food styling, expressive promotional atmosphere, strong hero and featured dishes scene, culturally vibrant restaurant branding, premium commercial template artwork, no watermark, no garbled text.",
+    "prompt": "香辣市集正式模板主視覺，呈現熱辣市集色彩與活力排版，適合麻辣、串串與夜市風餐飲，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 15,
     "newbieFriendly": false,
@@ -534,20 +563,22 @@ export const templateCatalog = [
     "industry": "restaurant",
     "slug": "restaurant-sunday-shokudo",
     "name": "日曜食堂",
-    "shortDescription": "clean Japanese-inspired restaurant website concept image for \"日曜食堂\"。",
-    "longDescription": "日曜食堂以餐飲店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "週末食堂感與柔和日系配色，適合家庭聚餐與溫馨餐館。",
+    "longDescription": "以自然色、生活照片與舒適排版傳達週末聚餐氣氛，適合親子餐廳、日式定食與鄰里食堂。",
     "suitableFor": [
       "餐飲店",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
-      "日式",
-      "高質感",
-      "極簡"
+      "日曜",
+      "家庭",
+      "日系",
+      "溫馨"
     ],
     "badges": [
-      "餐飲店"
+      "家庭聚餐",
+      "新手友善"
     ],
     "palette": [
       "#F8F2E8",
@@ -556,7 +587,7 @@ export const templateCatalog = [
       "#D7B98E"
     ],
     "aiArtworkKey": "restaurant-sunday-shokudo",
-    "prompt": "Create a clean Japanese-inspired restaurant website concept image for \"日曜食堂\". Use soft wood, ivory, muted green and charcoal typography tones, organized and minimal dining mood, clean plated meals, Japanese casual dining atmosphere, premium editorial website visual, refined and structured, suitable for restaurant template gallery, no watermark, no gibberish text.",
+    "prompt": "日曜食堂正式模板主視覺，呈現週末食堂感與柔和日系配色，適合家庭聚餐與溫馨餐館，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 16,
     "newbieFriendly": true,
@@ -569,20 +600,22 @@ export const templateCatalog = [
     "industry": "restaurant",
     "slug": "restaurant-kitchen-overture",
     "name": "廚房序曲",
-    "shortDescription": "storytelling-focused restaurant website template visual for \"廚房序曲\"。",
-    "longDescription": "廚房序曲以餐飲店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "開放式廚房與職人細節，適合主廚品牌與套餐型餐廳。",
+    "longDescription": "以俐落版面、食材細節與精準留白建立專業感，適合主廚餐廳、私房料理與講究流程的餐飲品牌。",
     "suitableFor": [
       "餐飲店",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
-      "主廚故事",
-      "高質感",
-      "溫暖"
+      "主廚",
+      "職人",
+      "精準",
+      "套餐"
     ],
     "badges": [
-      "餐飲店"
+      "主廚推薦",
+      "專業感"
     ],
     "palette": [
       "#F7EEE4",
@@ -591,7 +624,7 @@ export const templateCatalog = [
       "#1F2937"
     ],
     "aiArtworkKey": "restaurant-kitchen-overture",
-    "prompt": "Create a storytelling-focused restaurant website template visual for \"廚房序曲\". Emphasize chef story, ingredients, signature dishes and brand narrative. Use elegant warm neutrals, editorial layout feeling, atmospheric kitchen and plating cues, refined but human brand presence, restaurant website concept with personality and narrative richness, polished commercial art, no watermark, no gibberish text.",
+    "prompt": "廚房序曲正式模板主視覺，呈現開放式廚房與職人細節，適合主廚品牌與套餐型餐廳，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 17,
     "newbieFriendly": false,
@@ -604,8 +637,8 @@ export const templateCatalog = [
     "industry": "restaurant",
     "slug": "restaurant-brunch-garden",
     "name": "早午餐花園",
-    "shortDescription": "bright, fresh AI website concept image for a brunch restaurant brand called \"早午餐。",
-    "longDescription": "早午餐花園以餐飲店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "花園早午餐風格與明亮色調，適合咖啡餐館與輕食品牌。",
+    "longDescription": "以自然光、綠意與柔和卡片呈現放鬆氛圍，適合早午餐、沙拉、輕食與週末聚會型餐廳。",
     "suitableFor": [
       "餐飲店",
       "小型品牌",
@@ -613,11 +646,13 @@ export const templateCatalog = [
     ],
     "styleTags": [
       "早午餐",
-      "高質感"
+      "花園",
+      "輕食",
+      "明亮"
     ],
     "badges": [
-      "推薦",
-      "餐飲店"
+      "輕食餐館",
+      "親子友善"
     ],
     "palette": [
       "#F7FFE8",
@@ -626,7 +661,7 @@ export const templateCatalog = [
       "#FFFFFF"
     ],
     "aiArtworkKey": "restaurant-brunch-garden",
-    "prompt": "Create a bright, fresh AI website concept image for a brunch restaurant brand called \"早午餐花園\". Use pastel green, pale yellow, white and natural wood tones, airy brunch atmosphere, healthy plates, eggs, salad and coffee lifestyle mood, floral and natural light accents, soft premium landing page concept, delightful commercial template artwork, no watermark, no garbled text.",
+    "prompt": "早午餐花園正式模板主視覺，呈現花園早午餐風格與明亮色調，適合咖啡餐館與輕食品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 18,
     "newbieFriendly": true,
@@ -639,20 +674,22 @@ export const templateCatalog = [
     "industry": "restaurant",
     "slug": "restaurant-hotpot-home",
     "name": "鍋物暖居",
-    "shortDescription": "cozy and inviting AI website template image for a hotpot restaurant brand called。",
-    "longDescription": "鍋物暖居以餐飲店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "暖色鍋物與圓潤視覺，適合火鍋、湯品與聚會餐廳。",
+    "longDescription": "以溫暖紅橘、食材堆疊與大 CTA 營造聚餐感，適合鍋物、湯品、家庭聚會與外帶套餐推廣。",
     "suitableFor": [
       "餐飲店",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
+      "鍋物",
+      "暖居",
       "聚餐",
-      "高質感",
-      "溫暖"
+      "熱騰騰"
     ],
     "badges": [
-      "餐飲店"
+      "聚餐推薦",
+      "外帶套餐"
     ],
     "palette": [
       "#FFF1E6",
@@ -661,7 +698,7 @@ export const templateCatalog = [
       "#FDE68A"
     ],
     "aiArtworkKey": "restaurant-hotpot-home",
-    "prompt": "Create a cozy and inviting AI website template image for a hotpot restaurant brand called \"鍋物暖居\". Use warm amber, brick red, soft cream and wood tones, family gathering warmth, steam and hotpot atmosphere, comforting dining concept, welcoming reservation and menu mood, premium and festive restaurant website presentation, no watermark, no garbled text.",
+    "prompt": "鍋物暖居正式模板主視覺，呈現暖色鍋物與圓潤視覺，適合火鍋、湯品與聚會餐廳，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 19,
     "newbieFriendly": false,
@@ -674,20 +711,22 @@ export const templateCatalog = [
     "industry": "restaurant",
     "slug": "restaurant-fast-enjoy",
     "name": "食尚快享",
-    "shortDescription": "modern high-conversion restaurant website concept for \"食尚快享\"。",
-    "longDescription": "食尚快享以餐飲店品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "俐落快享版面與清楚 CTA，適合速食、外帶與連鎖餐飲。",
+    "longDescription": "以高效率版面、醒目價格與行動按鈕縮短下單路徑，適合便當、速食、外送與多分店餐飲品牌。",
     "suitableFor": [
       "餐飲店",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
+      "快享",
+      "速食",
       "外帶",
-      "極簡",
-      "活潑"
+      "效率"
     ],
     "badges": [
-      "餐飲店"
+      "外送導流",
+      "高轉換"
     ],
     "palette": [
       "#F8FAFC",
@@ -696,7 +735,7 @@ export const templateCatalog = [
       "#F59E0B"
     ],
     "aiArtworkKey": "restaurant-fast-enjoy",
-    "prompt": "Create a modern high-conversion restaurant website concept for \"食尚快享\". Emphasize menu clarity, fast ordering, delivery convenience and modern brand efficiency. Use bold clean layout cues, commercial-friendly palette, food hero shots, delivery and takeout mood, dynamic but organized composition, suitable for fast-casual restaurant branding, polished template showcase artwork, no watermark, no gibberish text. -------------------------------------------------- C. 咖啡廳模板 10 套 --------------------------------------------------",
+    "prompt": "食尚快享正式模板主視覺，呈現俐落快享版面與清楚 CTA，適合速食、外帶與連鎖餐飲，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 20,
     "newbieFriendly": false,
@@ -709,8 +748,8 @@ export const templateCatalog = [
     "industry": "cafe",
     "slug": "cafe-nordic-morning",
     "name": "北歐晨光",
-    "shortDescription": "premium cafe website concept image for \"北歐晨光\"。",
-    "longDescription": "北歐晨光以咖啡廳品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "北歐留白與晨光色調，適合簡約咖啡館與早餐品牌。",
+    "longDescription": "以乾淨白底、木質暖色與柔和照片建立輕盈感，適合精品咖啡、早餐咖啡與簡約生活風品牌。",
     "suitableFor": [
       "咖啡廳",
       "小型品牌",
@@ -718,13 +757,13 @@ export const templateCatalog = [
     ],
     "styleTags": [
       "北歐",
-      "高質感",
-      "溫暖",
-      "極簡"
+      "晨光",
+      "簡約",
+      "木質"
     ],
     "badges": [
-      "推薦",
-      "咖啡廳"
+      "新手友善",
+      "簡約咖啡"
     ],
     "palette": [
       "#FAFAF7",
@@ -733,7 +772,7 @@ export const templateCatalog = [
       "#FFFFFF"
     ],
     "aiArtworkKey": "cafe-nordic-morning",
-    "prompt": "Create a premium cafe website concept image for \"北歐晨光\". Use Scandinavian minimalism, pale wood, warm white, soft gray and gentle sunlight, coffee and pastry mood, elegant whitespace, calm editorial layout, modern cafe landing page concept, cozy lifestyle branding, polished and tasteful template gallery artwork, no watermark, no garbled text.",
+    "prompt": "北歐晨光正式模板主視覺，呈現北歐留白與晨光色調，適合簡約咖啡館與早餐品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 21,
     "newbieFriendly": true,
@@ -746,8 +785,8 @@ export const templateCatalog = [
     "industry": "cafe",
     "slug": "cafe-midnight-roast",
     "name": "午夜焙煎",
-    "shortDescription": "moody premium cafe website template visual for \"午夜焙煎\"。",
-    "longDescription": "午夜焙煎以咖啡廳品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "深色烘焙感與夜間氛圍，適合精品豆、酒吧式咖啡館。",
+    "longDescription": "以深棕、黑色與金色細節呈現成熟質感，適合自家烘焙、夜間咖啡、咖啡酒吧與高單價豆單。",
     "suitableFor": [
       "咖啡廳",
       "小型品牌",
@@ -755,12 +794,13 @@ export const templateCatalog = [
     ],
     "styleTags": [
       "深焙",
-      "高質感",
-      "溫暖"
+      "午夜",
+      "成熟",
+      "精品豆"
     ],
     "badges": [
-      "推薦",
-      "咖啡廳"
+      "深色質感",
+      "精品咖啡"
     ],
     "palette": [
       "#0F0A07",
@@ -769,7 +809,7 @@ export const templateCatalog = [
       "#F5E6D3"
     ],
     "aiArtworkKey": "cafe-midnight-roast",
-    "prompt": "Create a moody premium cafe website template visual for \"午夜焙煎\". Use dark espresso brown, charcoal, copper and warm spotlight accents, late-night roastery mood, specialty coffee atmosphere, sleek and cinematic composition, refined desktop website hero feel, premium coffee brand proposal style, no watermark, no gibberish text.",
+    "prompt": "午夜焙煎正式模板主視覺，呈現深色烘焙感與夜間氛圍，適合精品豆、酒吧式咖啡館，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 22,
     "newbieFriendly": false,
@@ -782,20 +822,22 @@ export const templateCatalog = [
     "industry": "cafe",
     "slug": "cafe-cream-library",
     "name": "奶油書房",
-    "shortDescription": "literary lifestyle cafe website concept image for \"奶油書房\"。",
-    "longDescription": "奶油書房以咖啡廳品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "奶油書房感與柔和排版，適合安靜座位與甜點咖啡館。",
+    "longDescription": "以奶油白、書頁色與柔和卡片營造停留感，適合閱讀咖啡館、甜點店與主打舒適內用的品牌。",
     "suitableFor": [
       "咖啡廳",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
-      "奶蓋",
+      "奶油",
       "書房",
-      "溫暖"
+      "甜點",
+      "安靜"
     ],
     "badges": [
-      "咖啡廳"
+      "內用友善",
+      "甜點咖啡"
     ],
     "palette": [
       "#FFF8ED",
@@ -804,7 +846,7 @@ export const templateCatalog = [
       "#F3E8D7"
     ],
     "aiArtworkKey": "cafe-cream-library",
-    "prompt": "Create a literary lifestyle cafe website concept image for \"奶油書房\". Use cream, oatmeal, dusty beige and muted brown tones, reading corner atmosphere, books, coffee cups and soft afternoon light, cozy intellectual branding, elegant website proposal composition, warm and inviting, ideal for a cafe template gallery, no watermark, no garbled text.",
+    "prompt": "奶油書房正式模板主視覺，呈現奶油書房感與柔和排版，適合安靜座位與甜點咖啡館，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 23,
     "newbieFriendly": true,
@@ -817,19 +859,22 @@ export const templateCatalog = [
     "industry": "cafe",
     "slug": "cafe-forest-teatime",
     "name": "森林午茶",
-    "shortDescription": "natural plant-inspired cafe website template artwork for \"森林午茶\"。",
-    "longDescription": "森林午茶以咖啡廳品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "森林綠與下午茶氛圍，適合自然系咖啡與輕甜點品牌。",
+    "longDescription": "以綠意、木質色與柔光視覺打造放鬆感，適合森林系咖啡館、手作甜點與下午茶套餐展示。",
     "suitableFor": [
       "咖啡廳",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
-      "植栽",
-      "高質感"
+      "森林",
+      "午茶",
+      "自然",
+      "放鬆"
     ],
     "badges": [
-      "咖啡廳"
+      "下午茶",
+      "自然系"
     ],
     "palette": [
       "#F1F8EF",
@@ -838,7 +883,7 @@ export const templateCatalog = [
       "#FFF7ED"
     ],
     "aiArtworkKey": "cafe-forest-teatime",
-    "prompt": "Create a natural plant-inspired cafe website template artwork for \"森林午茶\". Use sage green, moss, cream and soft botanical tones, greenery, desserts, afternoon tea atmosphere, fresh and organic mood, beautiful website concept scene, soft premium lighting, nature-lifestyle branding, no watermark, no gibberish text.",
+    "prompt": "森林午茶正式模板主視覺，呈現森林綠與下午茶氛圍，適合自然系咖啡與輕甜點品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 24,
     "newbieFriendly": true,
@@ -851,20 +896,22 @@ export const templateCatalog = [
     "industry": "cafe",
     "slug": "cafe-window-seat",
     "name": "玻璃窗邊",
-    "shortDescription": "urban cozy cafe website concept image for \"玻璃窗邊\"。",
-    "longDescription": "玻璃窗邊以咖啡廳品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "窗邊光影與雜誌式留白，適合質感內用咖啡館。",
+    "longDescription": "以大片留白、窗景照片與俐落資訊建立安靜高級感，適合座位預約、咖啡空間介紹與品牌故事頁。",
     "suitableFor": [
       "咖啡廳",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
-      "城市",
-      "高質感",
-      "溫暖"
+      "窗邊",
+      "光影",
+      "雜誌感",
+      "內用"
     ],
     "badges": [
-      "咖啡廳"
+      "空間展示",
+      "質感店"
     ],
     "palette": [
       "#F8FAFC",
@@ -873,7 +920,7 @@ export const templateCatalog = [
       "#FFFFFF"
     ],
     "aiArtworkKey": "cafe-window-seat",
-    "prompt": "Create an urban cozy cafe website concept image for \"玻璃窗邊\". Show city-side cafe vibes with window light, street ambiance, modern coffee and pastry visuals, muted modern palette, everyday lifestyle editorial style, stylish and relatable coffee shop branding, premium template artwork, no watermark, no garbled text.",
+    "prompt": "玻璃窗邊正式模板主視覺，呈現窗邊光影與雜誌式留白，適合質感內用咖啡館，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 25,
     "newbieFriendly": false,
@@ -886,19 +933,22 @@ export const templateCatalog = [
     "industry": "cafe",
     "slug": "cafe-mocha-studio",
     "name": "摩卡畫室",
-    "shortDescription": "artistic creative cafe website concept for \"摩卡畫室\"。",
-    "longDescription": "摩卡畫室以咖啡廳品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "摩卡色與創作工作室感，適合風格選物與特色咖啡品牌。",
+    "longDescription": "以咖啡棕、手作質感與活潑區塊呈現個性，適合咖啡工作室、選物店與創作者合作空間。",
     "suitableFor": [
       "咖啡廳",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
-      "藝術",
-      "高質感"
+      "摩卡",
+      "工作室",
+      "手作",
+      "個性"
     ],
     "badges": [
-      "咖啡廳"
+      "風格店",
+      "創作者"
     ],
     "palette": [
       "#FFF2E0",
@@ -907,7 +957,7 @@ export const templateCatalog = [
       "#F4A261"
     ],
     "aiArtworkKey": "cafe-mocha-studio",
-    "prompt": "Create an artistic creative cafe website concept for \"摩卡畫室\". Use expressive but tasteful tones, coffee plus art studio atmosphere, sketchbooks, creative tools, soft gallery mood, unique brand identity, creative editorial composition, website concept with artistic energy and premium polish, no watermark, no gibberish text.",
+    "prompt": "摩卡畫室正式模板主視覺，呈現摩卡色與創作工作室感，適合風格選物與特色咖啡品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 26,
     "newbieFriendly": false,
@@ -920,21 +970,22 @@ export const templateCatalog = [
     "industry": "cafe",
     "slug": "cafe-white-dripper",
     "name": "白瓷濾杯",
-    "shortDescription": "clean specialty coffee website concept image for \"白瓷濾杯\"。",
-    "longDescription": "白瓷濾杯以咖啡廳品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "白瓷與極簡精品感，適合手沖咖啡與單品豆展示。",
+    "longDescription": "以白色、灰階與克制排版突出咖啡器具與豆單品質，適合手沖咖啡、精品豆販售與安靜高級品牌。",
     "suitableFor": [
       "咖啡廳",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
+      "白瓷",
       "手沖",
-      "高質感",
-      "極簡"
+      "極簡",
+      "精品"
     ],
     "badges": [
       "推薦",
-      "咖啡廳"
+      "手沖咖啡"
     ],
     "palette": [
       "#FFFFFF",
@@ -943,7 +994,7 @@ export const templateCatalog = [
       "#111827"
     ],
     "aiArtworkKey": "cafe-white-dripper",
-    "prompt": "Create a clean specialty coffee website concept image for \"白瓷濾杯\". Use white, stone gray, subtle brown and matte ceramic textures, hand-drip coffee precision, minimalist professional mood, refined layout structure, premium product storytelling, boutique roastery or brew bar identity, elegant commercial template artwork, no watermark, no garbled text.",
+    "prompt": "白瓷濾杯正式模板主視覺，呈現白瓷與極簡精品感，適合手沖咖啡與單品豆展示，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 27,
     "newbieFriendly": false,
@@ -956,19 +1007,22 @@ export const templateCatalog = [
     "industry": "cafe",
     "slug": "cafe-caramel-afternoon",
     "name": "焦糖午後",
-    "shortDescription": "soft dessert-cafe website concept image for \"焦糖午後\"。",
-    "longDescription": "焦糖午後以咖啡廳品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "焦糖暖色與午後甜點感，適合甜點咖啡與舒適聚會。",
+    "longDescription": "以焦糖、奶油與柔光照片營造溫暖食慾，適合布丁、蛋糕、咖啡套餐與午後聚會型店家。",
     "suitableFor": [
       "咖啡廳",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
+      "焦糖",
+      "午後",
       "甜點",
       "溫暖"
     ],
     "badges": [
-      "咖啡廳"
+      "甜點推薦",
+      "聚會友善"
     ],
     "palette": [
       "#FFF3E8",
@@ -977,7 +1031,7 @@ export const templateCatalog = [
       "#FFE7C2"
     ],
     "aiArtworkKey": "cafe-caramel-afternoon",
-    "prompt": "Create a soft dessert-cafe website concept image for \"焦糖午後\". Use caramel, cream, soft blush and warm latte tones, pastries and coffee pairings, sweet but sophisticated mood, inviting afternoon dessert cafe atmosphere, elegant website proposal style, polished commercial template image, no watermark, no gibberish text.",
+    "prompt": "焦糖午後正式模板主視覺，呈現焦糖暖色與午後甜點感，適合甜點咖啡與舒適聚會，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 28,
     "newbieFriendly": true,
@@ -990,8 +1044,8 @@ export const templateCatalog = [
     "industry": "cafe",
     "slug": "cafe-urban-monochrome",
     "name": "城市黑白",
-    "shortDescription": "modern fashion-forward cafe website concept for \"城市黑白\"。",
-    "longDescription": "城市黑白以咖啡廳品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "黑白城市感與俐落版面，適合成熟都會咖啡品牌。",
+    "longDescription": "以黑白灰階、強烈留白與雜誌式構圖建立專業氣場，適合都會咖啡、概念店與品牌形象官網。",
     "suitableFor": [
       "咖啡廳",
       "小型品牌",
@@ -999,11 +1053,13 @@ export const templateCatalog = [
     ],
     "styleTags": [
       "黑白",
-      "高質感",
-      "極簡"
+      "城市",
+      "俐落",
+      "都會"
     ],
     "badges": [
-      "咖啡廳"
+      "推薦",
+      "形象官網"
     ],
     "palette": [
       "#F8FAFC",
@@ -1012,7 +1068,7 @@ export const templateCatalog = [
       "#D1D5DB"
     ],
     "aiArtworkKey": "cafe-urban-monochrome",
-    "prompt": "Create a modern fashion-forward cafe website concept for \"城市黑白\". Use monochrome palette, black, white, concrete gray and subtle metallic accents, editorial street-chic atmosphere, design-conscious coffee bar identity, minimalist but stylish layout feel, premium commercial website concept art, no watermark, no garbled text.",
+    "prompt": "城市黑白正式模板主視覺，呈現黑白城市感與俐落版面，適合成熟都會咖啡品牌，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": false,
     "popularityRank": 29,
     "newbieFriendly": false,
@@ -1025,21 +1081,22 @@ export const templateCatalog = [
     "industry": "cafe",
     "slug": "cafe-daily-corner",
     "name": "日常一隅",
-    "shortDescription": "warm community cafe website concept image for \"日常一隅\"。",
-    "longDescription": "日常一隅以咖啡廳品牌官網提案為核心，整合主視覺、商品情境、CTA 與行動版預覽，適合需要快速建立高辨識度官網的店家。",
+    "shortDescription": "社區角落與自然日光感，適合親切型咖啡與外帶小店。",
+    "longDescription": "以柔和中性色、日常照片與簡潔資訊呈現鄰里感，適合外帶咖啡、社區咖啡館與日常品牌經營。",
     "suitableFor": [
       "咖啡廳",
       "小型品牌",
       "形象官網"
     ],
     "styleTags": [
-      "街區",
       "社區",
-      "溫暖"
+      "日常",
+      "自然光",
+      "親切"
     ],
     "badges": [
-      "推薦",
-      "咖啡廳"
+      "社區店",
+      "新手友善"
     ],
     "palette": [
       "#F7F3EA",
@@ -1048,7 +1105,7 @@ export const templateCatalog = [
       "#FFFFFF"
     ],
     "aiArtworkKey": "cafe-daily-corner",
-    "prompt": "Create a warm community cafe website concept image for \"日常一隅\". Use soft neutrals, light wood, muted green and natural daylight, friendly neighborhood cafe mood, warm daily-life atmosphere, approachable social brand feeling, lifestyle editorial composition, polished cafe template artwork for a gallery, no watermark, no garbled text.",
+    "prompt": "日常一隅正式模板主視覺，呈現社區角落與自然日光感，適合親切型咖啡與外帶小店，適合作為店家官網模板作品牆與 Hero 視覺。",
     "recommended": true,
     "popularityRank": 30,
     "newbieFriendly": true,
