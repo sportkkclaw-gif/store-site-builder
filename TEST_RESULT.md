@@ -377,4 +377,13 @@ QA artifact 清單：
   - npm run build：PASS（Next.js 16.2.4；/builder + /__version routes built）
 - Forbidden source/bundle scan：lib/components/app/pages/types 與 .next client/server bundle 對 AI-designed、AI-generated、website template key visual、website template showcase、concept image、showcase image、template artwork、premium AI、bold AI、Create a、for a brand called、prompt：0 hits。
 - 新增 live QA：scripts/qa-v013-live.ts，對 Vercel Preview /builder 實測 forbidden counts、6 模板 desktop/mobile H1 行數與 overflow、390/320 mobile、返回編輯、返回模板庫。
-- 待部署後補齊：Preview URL、/__version commit、live-qa-result.json、live screenshots。
+### v0.1.3 Live Preview 補驗完成
+
+- Preview: https://store-site-builder-oft0j4io6-sportkk101-5719s-projects.vercel.app
+- /__version: v0.1.3 / commit 6e65b76fa182b56a7de950ac37793917e2f5061f
+- HTTP: `/` 200、`/builder` 200、`/__version` 200
+- Live forbidden string counts: AI-designed=0, AI-generated=0, website template key visual=0, website template showcase=0, concept image=0, showcase image=0, template artwork=0, premium AI=0, bold AI=0, Create a=0, for a brand called=0, prompt=0
+- Live Hero QA: 6/6 模板 desktop/mobile 均未一字一行、無水平 overflow；H1 行數均 <= 4；word-break=keep-all；overflow-wrap=normal。
+- Mobile QA: 390px / 320px 無水平 overflow；手機預覽模式可返回編輯；Preview modal 可返回模板庫。
+- Export QA: generated-site.zip 重新產出；index.html 無 localhost、127.0.0.1、/_next 與 forbidden AI prompt 字串；含 README.txt、siteData.json、assets/img-qa.png。
+- Artifacts: `qa-artifacts/v0.1.3/live-qa-result.json`、`qa-artifacts/v0.1.3/live-*.png`、`qa-artifacts/generated-site.zip`。
