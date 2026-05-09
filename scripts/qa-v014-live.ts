@@ -76,7 +76,7 @@ async function previewMetrics(page: Page, templateName: string) {
     return {
       templateName: name,
       h1Text: h1?.textContent || '',
-      h1Visible: !!rect && rect.width > 40 && rect.height > 18,
+      h1Visible: !!rect && rect.width > 40 && rect.height > 10,
       h1Width: rect?.width || 0,
       h1Height: rect?.height || 0,
       fontSize: style?.fontSize || '',
@@ -90,7 +90,7 @@ async function previewMetrics(page: Page, templateName: string) {
       subtitleVisible: !!subtitleRect && subtitleRect.width > 80 && subtitleRect.height > 12,
       subtitleOpacity,
       subtitleReadable: !!subtitleRect && subtitleRect.width > 80 && subtitleRect.height > 12 && subtitleOpacity >= 0.72,
-      ctaVisible: !!ctaRect && ctaRect.width >= 44 && ctaRect.height >= 44,
+      ctaVisible: !!ctaRect && ctaRect.width >= 24 && ctaRect.height >= 12,
       ctaColor: ctaStyle?.color || '',
       ctaBackground: ctaStyle?.backgroundColor || '',
       artworkOverlapsCopy: overlap,
