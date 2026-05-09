@@ -5,6 +5,8 @@ import { enrichAllTemplates } from './enrichTemplate';
 export const templateCatalog = [
   {
     "id": "drink-matcha-hiyori",
+    "skinId": "drink-matcha-hiyori",
+    "skinFamily": "soft-matcha",
     "industry": "drink-shop",
     "slug": "drink-matcha-hiyori",
     "name": "抹茶日和",
@@ -41,6 +43,8 @@ export const templateCatalog = [
   },
   {
     "id": "drink-boba-neon",
+    "skinId": "drink-boba-neon",
+    "skinFamily": "neon-dark",
     "industry": "drink-shop",
     "slug": "drink-boba-neon",
     "name": "珍珠霓光",
@@ -77,6 +81,8 @@ export const templateCatalog = [
   },
   {
     "id": "drink-fruit-paradise",
+    "skinId": "drink-fruit-paradise",
+    "skinFamily": "fruit-bright",
     "industry": "drink-shop",
     "slug": "drink-fruit-paradise",
     "name": "果香樂園",
@@ -113,6 +119,8 @@ export const templateCatalog = [
   },
   {
     "id": "drink-brown-sugar-amber",
+    "skinId": "drink-brown-sugar-amber",
+    "skinFamily": "amber-brown",
     "industry": "drink-shop",
     "slug": "drink-brown-sugar-amber",
     "name": "黑糖琥珀",
@@ -149,6 +157,8 @@ export const templateCatalog = [
   },
   {
     "id": "drink-white-peach-sparkle",
+    "skinId": "drink-white-peach-sparkle",
+    "skinFamily": "peach-pastel",
     "industry": "drink-shop",
     "slug": "drink-white-peach-sparkle",
     "name": "白桃氣泡",
@@ -185,6 +195,8 @@ export const templateCatalog = [
   },
   {
     "id": "drink-lime-morning",
+    "skinId": "drink-lime-morning",
+    "skinFamily": "fruit-bright",
     "industry": "drink-shop",
     "slug": "drink-lime-morning",
     "name": "青檸清晨",
@@ -221,6 +233,8 @@ export const templateCatalog = [
   },
   {
     "id": "drink-tea-mist-ridge",
+    "skinId": "drink-tea-mist-ridge",
+    "skinFamily": "tea-mist-premium",
     "industry": "drink-shop",
     "slug": "drink-tea-mist-ridge",
     "name": "茶霧山嵐",
@@ -257,6 +271,8 @@ export const templateCatalog = [
   },
   {
     "id": "drink-iced-party",
+    "skinId": "drink-iced-party",
+    "skinFamily": "fruit-bright",
     "industry": "drink-shop",
     "slug": "drink-iced-party",
     "name": "星冰派對",
@@ -293,6 +309,8 @@ export const templateCatalog = [
   },
   {
     "id": "drink-afternoon-cream",
+    "skinId": "drink-afternoon-cream",
+    "skinFamily": "peach-pastel",
     "industry": "drink-shop",
     "slug": "drink-afternoon-cream",
     "name": "午後奶蓋",
@@ -329,6 +347,8 @@ export const templateCatalog = [
   },
   {
     "id": "drink-lab-brew",
+    "skinId": "drink-lab-brew",
+    "skinFamily": "neon-dark",
     "industry": "drink-shop",
     "slug": "drink-lab-brew",
     "name": "飲研實驗室",
@@ -365,6 +385,8 @@ export const templateCatalog = [
   },
   {
     "id": "restaurant-charcoal-essence",
+    "skinId": "restaurant-charcoal-essence",
+    "skinFamily": "charcoal-grill",
     "industry": "restaurant",
     "slug": "restaurant-charcoal-essence",
     "name": "炭火本味",
@@ -401,6 +423,8 @@ export const templateCatalog = [
   },
   {
     "id": "restaurant-rice-kitchen",
+    "skinId": "restaurant-rice-kitchen",
+    "skinFamily": "urban-casual",
     "industry": "restaurant",
     "slug": "restaurant-rice-kitchen",
     "name": "米香食堂",
@@ -437,6 +461,8 @@ export const templateCatalog = [
   },
   {
     "id": "restaurant-golden-banquet",
+    "skinId": "restaurant-golden-banquet",
+    "skinFamily": "luxury-black-gold",
     "industry": "restaurant",
     "slug": "restaurant-golden-banquet",
     "name": "金色晚宴",
@@ -473,6 +499,8 @@ export const templateCatalog = [
   },
   {
     "id": "restaurant-corner-meal",
+    "skinId": "restaurant-corner-meal",
+    "skinFamily": "urban-casual",
     "industry": "restaurant",
     "slug": "restaurant-corner-meal",
     "name": "街角食光",
@@ -509,6 +537,8 @@ export const templateCatalog = [
   },
   {
     "id": "restaurant-spicy-market",
+    "skinId": "restaurant-spicy-market",
+    "skinFamily": "charcoal-grill",
     "industry": "restaurant",
     "slug": "restaurant-spicy-market",
     "name": "香辣市集",
@@ -545,6 +575,8 @@ export const templateCatalog = [
   },
   {
     "id": "restaurant-sunday-shokudo",
+    "skinId": "restaurant-sunday-shokudo",
+    "skinFamily": "urban-casual",
     "industry": "restaurant",
     "slug": "restaurant-sunday-shokudo",
     "name": "日曜食堂",
@@ -581,6 +613,8 @@ export const templateCatalog = [
   },
   {
     "id": "restaurant-kitchen-overture",
+    "skinId": "restaurant-kitchen-overture",
+    "skinFamily": "luxury-black-gold",
     "industry": "restaurant",
     "slug": "restaurant-kitchen-overture",
     "name": "廚房序曲",
@@ -617,6 +651,8 @@ export const templateCatalog = [
   },
   {
     "id": "restaurant-brunch-garden",
+    "skinId": "restaurant-brunch-garden",
+    "skinFamily": "fruit-bright",
     "industry": "restaurant",
     "slug": "restaurant-brunch-garden",
     "name": "早午餐花園",
@@ -653,6 +689,8 @@ export const templateCatalog = [
   },
   {
     "id": "restaurant-hotpot-home",
+    "skinId": "restaurant-hotpot-home",
+    "skinFamily": "amber-brown",
     "industry": "restaurant",
     "slug": "restaurant-hotpot-home",
     "name": "鍋物暖居",
@@ -689,6 +727,8 @@ export const templateCatalog = [
   },
   {
     "id": "restaurant-fast-enjoy",
+    "skinId": "restaurant-fast-enjoy",
+    "skinFamily": "fruit-bright",
     "industry": "restaurant",
     "slug": "restaurant-fast-enjoy",
     "name": "食尚快享",
@@ -725,6 +765,8 @@ export const templateCatalog = [
   },
   {
     "id": "cafe-nordic-morning",
+    "skinId": "cafe-nordic-morning",
+    "skinFamily": "ceramic-minimal",
     "industry": "cafe",
     "slug": "cafe-nordic-morning",
     "name": "北歐晨光",
@@ -761,6 +803,8 @@ export const templateCatalog = [
   },
   {
     "id": "cafe-midnight-roast",
+    "skinId": "cafe-midnight-roast",
+    "skinFamily": "monochrome-editorial",
     "industry": "cafe",
     "slug": "cafe-midnight-roast",
     "name": "午夜焙煎",
@@ -797,6 +841,8 @@ export const templateCatalog = [
   },
   {
     "id": "cafe-cream-library",
+    "skinId": "cafe-cream-library",
+    "skinFamily": "ceramic-minimal",
     "industry": "cafe",
     "slug": "cafe-cream-library",
     "name": "奶油書房",
@@ -833,6 +879,8 @@ export const templateCatalog = [
   },
   {
     "id": "cafe-forest-teatime",
+    "skinId": "cafe-forest-teatime",
+    "skinFamily": "soft-matcha",
     "industry": "cafe",
     "slug": "cafe-forest-teatime",
     "name": "森林午茶",
@@ -869,6 +917,8 @@ export const templateCatalog = [
   },
   {
     "id": "cafe-window-seat",
+    "skinId": "cafe-window-seat",
+    "skinFamily": "urban-casual",
     "industry": "cafe",
     "slug": "cafe-window-seat",
     "name": "玻璃窗邊",
@@ -905,6 +955,8 @@ export const templateCatalog = [
   },
   {
     "id": "cafe-mocha-studio",
+    "skinId": "cafe-mocha-studio",
+    "skinFamily": "amber-brown",
     "industry": "cafe",
     "slug": "cafe-mocha-studio",
     "name": "摩卡畫室",
@@ -941,6 +993,8 @@ export const templateCatalog = [
   },
   {
     "id": "cafe-white-dripper",
+    "skinId": "cafe-white-dripper",
+    "skinFamily": "ceramic-minimal",
     "industry": "cafe",
     "slug": "cafe-white-dripper",
     "name": "白瓷濾杯",
@@ -977,6 +1031,8 @@ export const templateCatalog = [
   },
   {
     "id": "cafe-caramel-afternoon",
+    "skinId": "cafe-caramel-afternoon",
+    "skinFamily": "amber-brown",
     "industry": "cafe",
     "slug": "cafe-caramel-afternoon",
     "name": "焦糖午後",
@@ -1013,6 +1069,8 @@ export const templateCatalog = [
   },
   {
     "id": "cafe-urban-monochrome",
+    "skinId": "cafe-urban-monochrome",
+    "skinFamily": "monochrome-editorial",
     "industry": "cafe",
     "slug": "cafe-urban-monochrome",
     "name": "城市黑白",
@@ -1049,6 +1107,8 @@ export const templateCatalog = [
   },
   {
     "id": "cafe-daily-corner",
+    "skinId": "cafe-daily-corner",
+    "skinFamily": "urban-casual",
     "industry": "cafe",
     "slug": "cafe-daily-corner",
     "name": "日常一隅",

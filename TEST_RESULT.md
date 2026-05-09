@@ -556,3 +556,30 @@ QA result：`qa-artifacts/v0.1.6/template-skin-result.json`
 | 15 | `npm run build` | 正式 repo Next.js 16.2.4 build successful；`/`、`/builder` static prerendered，`/__version` dynamic。 | ✅ PASS |
 
 結論：v0.1.6 Full Template Skin System 本機正式 repo 驗證通過；可進入 commit / PR 更新 / Vercel Preview redeploy / live QA。
+
+---
+
+## v0.2.0 Full Visual Template Engine QA
+
+測試日期：2026-05-09  
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+QA artifacts：`qa-artifacts/v0.2.0/`
+
+| # | 驗收項目 | 結果 | 狀態 |
+|---|---|---|---|
+| 1 | TemplateSkinEngine | `lib/templateSkinEngine.ts` 完成；輸出 getTemplateSkin / getTemplateCssVariables / getTemplateComponentClasses / getThemedPlaceholder / getExportTemplateCss。 | ✅ PASS |
+| 2 | 10/11 skin family | soft-matcha、neon-dark、fruit-bright、amber-brown、peach-pastel、tea-mist-premium、luxury-black-gold、charcoal-grill、urban-casual、ceramic-minimal、monochrome-editorial 完成。 | ✅ PASS |
+| 3 | 30 套模板 mapping | `templateCatalog` 30/30 皆有 skinId / skinFamily；無 default white fallback。 | ✅ PASS |
+| 4 | Product cards | 10 套代表模板 computed style 全部有 skin，styleDiversity.product=10。 | ✅ PASS |
+| 5 | Menu list | 10 套代表模板 computed style 全部有 skin，styleDiversity.menu=10。 | ✅ PASS |
+| 6 | Placeholder | `data-store-site-text=false`；無 StoreSite Builder placeholder 字樣。 | ✅ PASS |
+| 7 | Footer / Section | footer / section computed style 全部依 skin，styleDiversity.section=10、footer=10。 | ✅ PASS |
+| 8 | ExportStaticSite | Export HTML 使用同一 skin engine，含 data-skin-family、skin-product-card、skin-menu-list、artwork asset。 | ✅ PASS |
+| 9 | Forbidden strings | live DOM 與 export HTML forbidden strings = 0；無 localhost / 127 / _next。 | ✅ PASS |
+| 10 | RWD | 10 套代表模板 390px 與 320px scrollWidth == innerWidth。 | ✅ PASS |
+| 11 | QA script | `npx tsx scripts/qa-full-template-skin.ts http://127.0.0.1:3200` exit 0。 | ✅ PASS |
+| 12 | 截圖 | `qa-artifacts/v0.2.0/visual-skin/` 已產出 50 張（10 套 × gallery/hero/products/menu/export-products）。 | ✅ PASS |
+| 13 | Typecheck / Build | `npm run typecheck && npm run build` exit 0；Next.js 16.2.4 compiled successfully。 | ✅ PASS |
+
+QA 結果檔：`qa-artifacts/v0.2.0/full-template-skin-result.json`  
+視覺截圖目錄：`qa-artifacts/v0.2.0/visual-skin/`

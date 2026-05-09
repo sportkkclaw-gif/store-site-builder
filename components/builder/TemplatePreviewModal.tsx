@@ -8,6 +8,7 @@ import { getTemplateArtwork } from '@/lib/templateArtworkResolver';
 import { defaultSiteData } from '@/lib/defaultSiteData';
 import { applyTemplatePresetSync } from '@/lib/applyTemplatePreset';
 import { StoreWebsiteRenderer } from '@/components/templates/StoreWebsiteRenderer';
+import { getTemplateSkin } from '@/lib/templateSkinEngine';
 
 function TemplateStyleInfo({ template }: { template: TemplateGalleryItem }) {
   const enriched = getEnrichedTemplateById(template.id, templateCatalog);
@@ -36,9 +37,10 @@ export function TemplatePreviewModal({ template, selected, onClose, onApply }: {
   const backplate = getTemplateBackplate(enriched || template);
   const artwork = getTemplateArtwork(enriched || template);
   const actualPreviewData = applyTemplatePresetSync(defaultSiteData, template);
+  const skin = getTemplateSkin(template);
   return (
     <div className="fixed inset-0 z-50 grid place-items-center bg-slate-950/70 p-0 backdrop-blur-sm md:p-3" role="dialog" aria-modal="true" aria-label={`${template.name} 快速預覽`} onClick={onClose}>
-      <div className="h-[100dvh] w-full overflow-hidden bg-white shadow-2xl md:max-h-[92vh] md:max-w-5xl md:rounded-[36px]" onClick={e => e.stopPropagation()}>
+      <div className="h-[100dvh] w-full overflow-hidden bg-white shadow-2xl md:max-h-[92vh] md:max-w-7xl md:rounded-[36px]" onClick={e => e.stopPropagation()}>
         {/* Mobile sticky top bar — visible on small screens */}
         <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-slate-100 bg-white/95 px-4 py-3 pt-[calc(env(safe-area-inset-top)+12px)] backdrop-blur md:hidden">
           <button type="button" onClick={onClose} className="min-h-11 rounded-full px-3 text-sm font-black text-slate-700">
@@ -52,7 +54,7 @@ export function TemplatePreviewModal({ template, selected, onClose, onApply }: {
 
         <div className="grid h-[calc(100dvh-68px)] overflow-y-auto md:max-h-[92vh] lg:grid-cols-[1.05fr_.95fr]">
           <div className="relative grid min-h-[460px] gap-4 overflow-hidden bg-slate-100 p-4" style={{ background: backplate.preset.page.background }}>
-            <div className="grid gap-4 xl:grid-cols-3">
+            <div className="grid gap-4 xl:grid-cols-3" data-modal-three-stage="true" data-skin-family={skin.family}>
               <div className="overflow-hidden rounded-[28px] bg-white shadow-2xl ring-1 ring-white/30">
                 <p className="px-4 pt-4 text-xs font-black uppercase tracking-[.22em] text-slate-500">1 / AI artwork 原圖</p>
                 <img src={artwork.gallerySrc} data-gallery-src={artwork.gallerySrc} alt={`${template.name} AI artwork 原圖`} className="mt-3 h-[360px] w-full object-cover object-top" />

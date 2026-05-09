@@ -14,7 +14,7 @@ export const getServerSideProps: GetServerSideProps<VersionProps> = async () => 
   const branch = process.env.VERCEL_GIT_COMMIT_REF || process.env.NEXT_PUBLIC_COMMIT_REF || 'local';
   const deployment = process.env.VERCEL_URL || 'local';
   const buildTime = process.env.NEXT_PUBLIC_BUILD_TIME || new Date().toISOString();
-  return { props: { version: 'v0.1.6', commit, commitShort: commit.slice(0, 7), branch, deployment, buildTime } };
+  return { props: { version: 'v0.2.0', commit, commitShort: commit.slice(0, 7), branch, deployment, buildTime } };
 };
 
 export default function VersionPage(props: VersionProps) {

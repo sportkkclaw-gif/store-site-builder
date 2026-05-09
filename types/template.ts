@@ -100,8 +100,23 @@ export interface TemplateExportStylePreset {
   offlineSafe: true;
 }
 
+export type TemplateSkinFamily =
+  | 'soft-matcha'
+  | 'neon-dark'
+  | 'fruit-bright'
+  | 'amber-brown'
+  | 'peach-pastel'
+  | 'tea-mist-premium'
+  | 'luxury-black-gold'
+  | 'charcoal-grill'
+  | 'urban-casual'
+  | 'ceramic-minimal'
+  | 'monochrome-editorial';
+
 export interface TemplateGalleryItem {
   id: string;
+  skinId?: string;
+  skinFamily?: TemplateSkinFamily;
   industry: TemplateIndustry;
   slug: string;
   name: string;
