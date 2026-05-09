@@ -527,3 +527,32 @@ QA artifacts：`qa-artifacts/v0.1.5/`
 - prompt：0
 
 結論：v0.1.5.1 Artwork-as-Source-of-Truth 本機 build 與 9 套 Visual Parity QA 通過；下一步為 commit/push、Vercel Preview 部署與 live verification。
+
+---
+
+## v0.1.6 Full Template Skin System QA
+
+測試日期：2026-05-09
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
+QA artifacts：`qa-artifacts/v0.1.6/`（依 .gitignore 不納入 repo）
+QA result：`qa-artifacts/v0.1.6/template-skin-result.json`
+
+| # | 驗收項目 | 結果 | 狀態 |
+|---|---|---|---|
+| 1 | `TemplateSkinPreset` 型別 | `types/template.ts` 已新增完整 skin preset：surface、section、card、menu、footer、placeholder、button、border 等全站 token。 | ✅ PASS |
+| 2 | `getTemplateSkin()` | `lib/templateSkin.ts` 已建立，9 套指定模板各自 mapping；非指定模板可依 themeType fallback。 | ✅ PASS |
+| 3 | React Preview 全站套 skin | `FullSkinTemplate` 統一套用 Hero、section background、product cards、menu list、placeholder、footer；三個舊 renderer 改為 thin wrapper。 | ✅ PASS |
+| 4 | Placeholder 主題化 | `ThemedPlaceholderImage` 已取代通用「StoreSite Builder」字樣，QA 檢查 `data-store-site-text=false` 且 preview/export text 不含 StoreSite Builder。 | ✅ PASS |
+| 5 | Product cards 非通用白卡 | 9 套 preview 均有 `data-product-card-skin=true` 且 card background / border 由 skin token 生成。 | ✅ PASS |
+| 6 | Menu list 套模板 skin | 9 套 preview/export 均有 `data-menu-list-skin=true` 且 background 不透明。 | ✅ PASS |
+| 7 | Section background 套模板 | 9 套 preview/export 均有 `.skin-section` 且 section background 由 skin token 控制。 | ✅ PASS |
+| 8 | Footer 套模板 | 9 套 preview/export 均有 `data-footer-skin=true` 且 footer background 由 skin token 控制。 | ✅ PASS |
+| 9 | Export 全站套 skin | `exportStaticSite.ts` 已同步 Full Skin HTML/CSS；export HTML 含 `data-full-skin=true`、`skin-product-card`、`themed-placeholder` 與對應 artwork asset。 | ✅ PASS |
+| 10 | Quick Preview Modal 三段對照 | Modal 改為 Gallery artwork + Hero preview + Section preview，QA 9 套皆檢出 `data-modal-section-renderer=true`。 | ✅ PASS |
+| 11 | 9 套模板完整驗收 | 抹茶日和、珍珠霓光、果香樂園、黑糖琥珀、白桃氣泡、茶霧山嵐、金色晚宴、白瓷濾杯、城市黑白：`ok=true`。 | ✅ PASS |
+| 12 | 390px RWD | 9 套 Preview 390px 與 9 套 Export 390px 均 `scrollWidth <= innerWidth`。 | ✅ PASS |
+| 13 | QA artifacts | 產出 9 張 preview full page、9 張 export index full page、9 張 Quick Preview modal 截圖與 `template-skin-result.json`。 | ✅ PASS |
+| 14 | `npm run typecheck` | 正式 repo 執行 `tsc --noEmit` exit 0。 | ✅ PASS |
+| 15 | `npm run build` | 正式 repo Next.js 16.2.4 build successful；`/`、`/builder` static prerendered，`/__version` dynamic。 | ✅ PASS |
+
+結論：v0.1.6 Full Template Skin System 本機正式 repo 驗證通過；可進入 commit / PR 更新 / Vercel Preview redeploy / live QA。

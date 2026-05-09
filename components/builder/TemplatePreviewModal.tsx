@@ -52,15 +52,23 @@ export function TemplatePreviewModal({ template, selected, onClose, onApply }: {
 
         <div className="grid h-[calc(100dvh-68px)] overflow-y-auto md:max-h-[92vh] lg:grid-cols-[1.05fr_.95fr]">
           <div className="relative grid min-h-[460px] gap-4 overflow-hidden bg-slate-100 p-4" style={{ background: backplate.preset.page.background }}>
-            <div className="grid gap-4 lg:grid-cols-[.9fr_1.1fr]">
+            <div className="grid gap-4 xl:grid-cols-3">
               <div className="overflow-hidden rounded-[28px] bg-white shadow-2xl ring-1 ring-white/30">
-                <p className="px-4 pt-4 text-xs font-black uppercase tracking-[.22em] text-slate-500">Gallery artwork source</p>
-                <img src={artwork.gallerySrc} data-gallery-src={artwork.gallerySrc} alt={`${template.name} AI artwork 原圖`} className="mt-3 h-[420px] w-full object-cover object-top" />
+                <p className="px-4 pt-4 text-xs font-black uppercase tracking-[.22em] text-slate-500">1 / AI artwork 原圖</p>
+                <img src={artwork.gallerySrc} data-gallery-src={artwork.gallerySrc} alt={`${template.name} AI artwork 原圖`} className="mt-3 h-[360px] w-full object-cover object-top" />
               </div>
               <div className="overflow-hidden rounded-[28px] bg-white shadow-2xl ring-1 ring-white/30">
-                <p className="px-4 pt-4 text-xs font-black uppercase tracking-[.22em] text-slate-500">Actual applied Hero Preview</p>
-                <div className="mt-3 h-[420px] overflow-hidden" data-modal-actual-renderer="true">
-                  <div className="origin-top-left scale-[.48] md:scale-[.52]" style={{ width: 1080 }}>
+                <p className="px-4 pt-4 text-xs font-black uppercase tracking-[.22em] text-slate-500">2 / 實際 Hero preview</p>
+                <div className="mt-3 h-[360px] overflow-hidden" data-modal-actual-renderer="true">
+                  <div className="origin-top-left scale-[.34] md:scale-[.38]" style={{ width: 1080 }}>
+                    <StoreWebsiteRenderer data={actualPreviewData} />
+                  </div>
+                </div>
+              </div>
+              <div className="overflow-hidden rounded-[28px] bg-white shadow-2xl ring-1 ring-white/30">
+                <p className="px-4 pt-4 text-xs font-black uppercase tracking-[.22em] text-slate-500">3 / 實際下方 section skin</p>
+                <div className="mt-3 h-[360px] overflow-hidden" data-modal-section-renderer="true">
+                  <div className="origin-top-left translate-y-[-270px] scale-[.34] md:scale-[.38]" style={{ width: 1080 }}>
                     <StoreWebsiteRenderer data={actualPreviewData} />
                   </div>
                 </div>

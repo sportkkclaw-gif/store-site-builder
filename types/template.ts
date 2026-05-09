@@ -134,8 +134,21 @@ export interface TemplateArtworkBackplate {
   heroHeightMobile: string;
 }
 
+export interface TemplateSkinPreset {
+  id: string;
+  nav: { mode: 'floating-pill' | 'dark-bar' | 'minimal-line' | 'glass' | 'editorial'; background: string; textColor: string; accentColor: string; radius: number; border?: string; shadow?: string };
+  page: { background: string; texture?: 'none' | 'grain' | 'paper' | 'neon-grid' | 'botanical' | 'soft-bubbles' | 'monochrome'; textColor: string; mutedTextColor: string };
+  hero: { useArtworkBackplate: boolean; overlay: string; contentPanel: 'dark-glass' | 'light-glass' | 'solid-light' | 'solid-dark' | 'editorial-card'; contentPanelBackground: string; headingColor: string; subtitleColor: string; ctaStyle: 'neon' | 'matcha' | 'fruit' | 'amber' | 'premium-gold' | 'minimal-black' | 'coffee' };
+  section: { background: string; alternateBackground: string; headingColor: string; eyebrowColor: string; dividerStyle: 'none' | 'soft-line' | 'bold-line' | 'glow-line' | 'editorial-rule'; spacing: 'compact' | 'balanced' | 'spacious' };
+  productCard: { mode: 'soft-card' | 'dark-glass' | 'neon-card' | 'editorial-card' | 'minimal-line' | 'warm-paper' | 'playful'; background: string; textColor: string; priceColor: string; border: string; radius: number; shadow: string; imageTreatment: 'theme-placeholder' | 'artwork-crop' | 'soft-blob' | 'dark-frame' | 'minimal-frame' };
+  menuList: { mode: 'clean-list' | 'dark-list' | 'premium-menu' | 'playful-menu' | 'editorial-menu'; background: string; rowBackground: string; rowBorder: string; categoryColor: string; priceColor: string };
+  placeholder: { mode: 'themed-abstract' | 'artwork-crop' | 'icon-pattern' | 'minimal-shape'; background: string; accentShape: string; labelColor: string; showStoreSiteText: boolean };
+  footer: { background: string; textColor: string; accentColor: string };
+}
+
 export interface TemplateCatalogItem extends TemplateGalleryItem {
   artworkBackplate: TemplateArtworkBackplate;
+  skinPreset?: TemplateSkinPreset;
   aiArtwork: {
     key: string;
     gallerySrc: string;
