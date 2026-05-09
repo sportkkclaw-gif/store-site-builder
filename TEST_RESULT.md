@@ -387,3 +387,45 @@ QA artifact 清單：
 - Mobile QA: 390px / 320px 無水平 overflow；手機預覽模式可返回編輯；Preview modal 可返回模板庫。
 - Export QA: generated-site.zip 重新產出；index.html 無 localhost、127.0.0.1、/_next 與 forbidden AI prompt 字串；含 README.txt、siteData.json、assets/img-qa.png。
 - Artifacts: `qa-artifacts/v0.1.3/live-qa-result.json`、`qa-artifacts/v0.1.3/live-*.png`、`qa-artifacts/generated-site.zip`。
+
+---
+
+## v0.1.4 Visual Readability + Template Landing Polish QA
+
+測試日期：2026-05-09  
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+Preview：`https://store-site-builder-git-accepta-260340-sportkk101-5719s-projects.vercel.app`  
+Commit：`d5aeff36300442f54b56615317fe7cd58f0b33de`
+
+### 修正範圍
+- 建立 `getReadableHeroTextStyle(templateItem)` readable guard：heading/subtitle/eyebrow/CTA/panel/overlay/decorative opacity。
+- 三個 React template renderer 統一 Hero hierarchy：badge → foreground h1 → subtitle → CTA row → artwork → decorative text。
+- 珍珠霓光專修：深色 panel、白色 foreground h1、cyan CTA、decorative text opacity 0.09、artwork 不壓文字。
+- Mobile Hero 一律上下排列，h1 使用 `clamp(32px,9vw,46px)`、`line-height:1.12`、`word-break:keep-all`、`text-wrap:balance`。
+- `lib/exportStaticSite.ts` 同步 Preview 樣式與 mobile guard，避免只修 Builder Preview。
+
+### Build / Export
+- `npm run typecheck`：PASS
+- `npm run build`：PASS（Next.js 16.2.4 compiled successfully）
+- `scripts/qa-v014-export.ts`：PASS
+- 珍珠霓光 ZIP：`qa-artifacts/v0.1.4/export-pearl-neon.zip`
+- file:// mobile：h1Lines=2、h1Opacity=0.98、subtitleVisible=true、ctaVisible=true、imageVisible=true、scrollWidth=390/innerWidth=390。
+- Export forbidden：無 `localhost`、無 `127.0.0.1`、無 `/_next`；AI-designed、AI-generated、website template key visual、concept image、showcase image、prompt 全 0。
+
+### Live Preview QA（10 套）
+- `scripts/qa-v014-live.ts`：PASS (`ok=true`)
+- `/__version`：v0.1.4 / `d5aeff36300442f54b56615317fe7cd58f0b33de`
+- 10 套模板實測：抹茶日和、珍珠霓光、果香樂園、白桃氣泡、茶霧山嵐、金色晚宴、香辣市集、白瓷濾杯、城市黑白、北歐晨光。
+- 每套 desktop/mobile：h1 visible、h1 <= 4 行、非一字一行、subtitle readable、CTA visible、artworkDoesNotCoverText=true、無水平 overflow。
+- 390px：scrollWidth=390 / innerWidth=390。
+- 320px：scrollWidth=320 / innerWidth=320。
+- 返回按鈕：返回編輯 visible，tap target 114.5×44；返回模板庫 visible，tap target 322×54。
+
+### QA artifacts
+- `qa-artifacts/v0.1.4/live-qa-result.json`
+- `qa-artifacts/v0.1.4/live-*.png`（10 套 desktop/mobile + version）
+- `qa-artifacts/v0.1.4/export-pearl-neon-file-mobile.png`
+- `qa-artifacts/v0.1.4/export-qa-result.json`
+- `qa-artifacts/v0.1.4/export-pearl-neon.zip`
+
+結論：v0.1.4 Visual Readability + Template Landing Polish 已通過 build/export/live QA，可再次提交 Jason 視覺驗收。
