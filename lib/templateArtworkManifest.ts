@@ -7,7 +7,7 @@ export const templateArtworkManifest = [
     "alt": "抹茶日和 模板主視覺圖",
     "industry": "drink-shop",
     "slug": "drink-matcha-hiyori",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "drink-boba-neon",
@@ -15,7 +15,7 @@ export const templateArtworkManifest = [
     "alt": "珍珠霓光 模板主視覺圖",
     "industry": "drink-shop",
     "slug": "drink-boba-neon",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "drink-fruit-paradise",
@@ -23,7 +23,7 @@ export const templateArtworkManifest = [
     "alt": "果香樂園 模板主視覺圖",
     "industry": "drink-shop",
     "slug": "drink-fruit-paradise",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "drink-brown-sugar-amber",
@@ -31,7 +31,7 @@ export const templateArtworkManifest = [
     "alt": "黑糖琥珀 模板主視覺圖",
     "industry": "drink-shop",
     "slug": "drink-brown-sugar-amber",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "drink-white-peach-sparkle",
@@ -39,7 +39,7 @@ export const templateArtworkManifest = [
     "alt": "白桃氣泡 模板主視覺圖",
     "industry": "drink-shop",
     "slug": "drink-white-peach-sparkle",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "drink-lime-morning",
@@ -47,7 +47,7 @@ export const templateArtworkManifest = [
     "alt": "青檸清晨 模板主視覺圖",
     "industry": "drink-shop",
     "slug": "drink-lime-morning",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "drink-tea-mist-ridge",
@@ -55,7 +55,7 @@ export const templateArtworkManifest = [
     "alt": "茶霧山嵐 模板主視覺圖",
     "industry": "drink-shop",
     "slug": "drink-tea-mist-ridge",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "drink-iced-party",
@@ -63,7 +63,7 @@ export const templateArtworkManifest = [
     "alt": "星冰派對 模板主視覺圖",
     "industry": "drink-shop",
     "slug": "drink-iced-party",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "drink-afternoon-cream",
@@ -71,7 +71,7 @@ export const templateArtworkManifest = [
     "alt": "午後奶蓋 模板主視覺圖",
     "industry": "drink-shop",
     "slug": "drink-afternoon-cream",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "drink-lab-brew",
@@ -79,7 +79,7 @@ export const templateArtworkManifest = [
     "alt": "飲研實驗室 模板主視覺圖",
     "industry": "drink-shop",
     "slug": "drink-lab-brew",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "restaurant-charcoal-essence",
@@ -87,7 +87,7 @@ export const templateArtworkManifest = [
     "alt": "炭火本味 模板主視覺圖",
     "industry": "restaurant",
     "slug": "restaurant-charcoal-essence",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "restaurant-rice-kitchen",
@@ -95,7 +95,7 @@ export const templateArtworkManifest = [
     "alt": "米香食堂 模板主視覺圖",
     "industry": "restaurant",
     "slug": "restaurant-rice-kitchen",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "restaurant-golden-banquet",
@@ -103,7 +103,7 @@ export const templateArtworkManifest = [
     "alt": "金色晚宴 模板主視覺圖",
     "industry": "restaurant",
     "slug": "restaurant-golden-banquet",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "restaurant-corner-meal",
@@ -111,7 +111,7 @@ export const templateArtworkManifest = [
     "alt": "街角食光 模板主視覺圖",
     "industry": "restaurant",
     "slug": "restaurant-corner-meal",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "restaurant-spicy-market",
@@ -119,7 +119,7 @@ export const templateArtworkManifest = [
     "alt": "香辣市集 模板主視覺圖",
     "industry": "restaurant",
     "slug": "restaurant-spicy-market",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "restaurant-sunday-shokudo",
@@ -127,7 +127,7 @@ export const templateArtworkManifest = [
     "alt": "日曜食堂 模板主視覺圖",
     "industry": "restaurant",
     "slug": "restaurant-sunday-shokudo",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "restaurant-kitchen-overture",
@@ -135,7 +135,7 @@ export const templateArtworkManifest = [
     "alt": "廚房序曲 模板主視覺圖",
     "industry": "restaurant",
     "slug": "restaurant-kitchen-overture",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "restaurant-brunch-garden",
@@ -143,7 +143,7 @@ export const templateArtworkManifest = [
     "alt": "早午餐花園 模板主視覺圖",
     "industry": "restaurant",
     "slug": "restaurant-brunch-garden",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "restaurant-hotpot-home",
@@ -151,7 +151,7 @@ export const templateArtworkManifest = [
     "alt": "鍋物暖居 模板主視覺圖",
     "industry": "restaurant",
     "slug": "restaurant-hotpot-home",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "restaurant-fast-enjoy",
@@ -159,7 +159,7 @@ export const templateArtworkManifest = [
     "alt": "食尚快享 模板主視覺圖",
     "industry": "restaurant",
     "slug": "restaurant-fast-enjoy",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "cafe-nordic-morning",
@@ -167,7 +167,7 @@ export const templateArtworkManifest = [
     "alt": "北歐晨光 模板主視覺圖",
     "industry": "cafe",
     "slug": "cafe-nordic-morning",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "cafe-midnight-roast",
@@ -175,7 +175,7 @@ export const templateArtworkManifest = [
     "alt": "午夜焙煎 模板主視覺圖",
     "industry": "cafe",
     "slug": "cafe-midnight-roast",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "cafe-cream-library",
@@ -183,7 +183,7 @@ export const templateArtworkManifest = [
     "alt": "奶油書房 模板主視覺圖",
     "industry": "cafe",
     "slug": "cafe-cream-library",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "cafe-forest-teatime",
@@ -191,7 +191,7 @@ export const templateArtworkManifest = [
     "alt": "森林午茶 模板主視覺圖",
     "industry": "cafe",
     "slug": "cafe-forest-teatime",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "cafe-window-seat",
@@ -199,7 +199,7 @@ export const templateArtworkManifest = [
     "alt": "玻璃窗邊 模板主視覺圖",
     "industry": "cafe",
     "slug": "cafe-window-seat",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "cafe-mocha-studio",
@@ -207,7 +207,7 @@ export const templateArtworkManifest = [
     "alt": "摩卡畫室 模板主視覺圖",
     "industry": "cafe",
     "slug": "cafe-mocha-studio",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "cafe-white-dripper",
@@ -215,7 +215,7 @@ export const templateArtworkManifest = [
     "alt": "白瓷濾杯 模板主視覺圖",
     "industry": "cafe",
     "slug": "cafe-white-dripper",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "cafe-caramel-afternoon",
@@ -223,7 +223,7 @@ export const templateArtworkManifest = [
     "alt": "焦糖午後 模板主視覺圖",
     "industry": "cafe",
     "slug": "cafe-caramel-afternoon",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "cafe-urban-monochrome",
@@ -231,7 +231,7 @@ export const templateArtworkManifest = [
     "alt": "城市黑白 模板主視覺圖",
     "industry": "cafe",
     "slug": "cafe-urban-monochrome",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   },
   {
     "key": "cafe-daily-corner",
@@ -239,7 +239,7 @@ export const templateArtworkManifest = [
     "alt": "日常一隅 模板主視覺圖",
     "industry": "cafe",
     "slug": "cafe-daily-corner",
-    "status": "ai-generated-ready"
+    "status": "visual-ready"
   }
 ] satisfies TemplateArtworkManifestItem[];
 

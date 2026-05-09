@@ -105,7 +105,7 @@ export interface TemplateArtworkManifestItem {
   alt: string;
   industry: TemplateIndustry;
   slug: string;
-  status: 'mock-svg-ready' | 'ai-generated-ready';
+  status: 'mock-svg-ready' | 'visual-ready';
 }
 
 export interface TemplateFilterState {
