@@ -1,7 +1,6 @@
 import type { TemplateCatalogItem, TemplateGalleryItem, TemplateLayoutFamily, TemplateBackgroundMode } from '@/types/template';
 import { getTemplateBackplatePreset } from './templateBackplateStyles';
-
-const artworkHeroSrc = (src: string) => src.replace('/template-gallery-ai/', '/template-gallery-hero/').replace(/\.png$/, '.jpg');
+import { getTemplateArtwork } from './templateArtworkResolver';
 
 function layoutFamilyFor(template: TemplateGalleryItem): TemplateLayoutFamily {
   if (template.industry === 'drink-shop') {
@@ -51,12 +50,14 @@ export function enrichTemplateItem(template: TemplateGalleryItem): TemplateCatal
   const backgroundColor = mode === 'minimal-white' ? '#FFFFFF' : mode === 'dark-premium' ? '#111827' : p2;
   const surfaceColor = isDark ? 'rgba(17,24,39,.82)' : mode === 'minimal-white' ? 'rgba(255,255,255,.94)' : 'rgba(255,255,255,.86)';
   const borderColor = isDark ? 'rgba(255,255,255,.18)' : 'rgba(15,23,42,.10)';
-  const heroSrc = artworkHeroSrc(template.artworkSrc);
+  const heroSrc = template.artworkSrc;
+  const artwork = getTemplateArtwork(template);
   const radius = template.baseTemplate === 'playful-colorful' ? 36 : template.baseTemplate === 'premium-minimal' ? 16 : 28;
 
   return {
     ...template,
     aiArtwork: { key: template.aiArtworkKey, gallerySrc: template.artworkSrc, heroSrc, alt: `${template.name} AI 主視覺` },
+    artworkBackplate: artwork.backplate,
     layoutFamily,
     themePreset: {
       primaryColor,

@@ -479,3 +479,51 @@ QA artifacts：`qa-artifacts/v0.1.5/`
 - `qa-artifacts/v0.1.5/live-*.png`（7 套 desktop/mobile + version + quick preview modal）
 
 結論：v0.1.5 Template Backplate / Background System 已通過 build、export QA 與 Vercel Preview live QA，可提交 Jason 驗收。
+
+
+---
+
+## v0.1.5.1 Artwork-as-Source-of-Truth QA
+
+測試日期：2026-05-09  
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+QA artifacts：`qa-artifacts/v0.1.5/`
+
+### 修正範圍
+- 新增 `TemplateArtworkBackplate` type。
+- 新增 `lib/templateArtworkResolver.ts`，統一解析 `gallerySrc` / `previewSrc` / `exportSrc` / `mobileSrc` / `desktopSrc`。
+- `enrichTemplate.ts`、`applyTemplatePreset.ts` 停止把 gallery artwork 轉成另一張 hero jpg；Preview Hero 直接使用 gallery artwork。
+- `StoreWebsiteRenderer` 旗下三個模板 renderer 的第一屏 Hero 已改為 `.template-hero-backplate` full-cover artwork backplate。
+- `TemplatePreviewModal.tsx` 改為左側 gallery artwork、右側 actual applied Hero preview。
+- `exportStaticSite.ts` / `exportZip.ts` 輸出 same artwork asset 到 ZIP `assets/template-artwork-*.png`。
+- 新增 `scripts/qa-template-parity.ts`。
+
+### Build
+- `npm run typecheck`：PASS
+- `npm run build`：PASS
+
+### Visual Parity QA（9 套）
+- `qa-artifacts/v0.1.5/template-parity-result.json`：PASS
+- 9/9 Gallery / Preview / Export 同源：PASS
+- 9/9 Preview Hero artwork 面積 >= 40%（實測約 58%）：PASS
+- 9/9 Export Hero artwork 面積 >= 40%（實測約 99%）：PASS
+- 9/9 Mobile readable：PASS
+- 9/9 Export file://：PASS
+- 測試模板：抹茶日和、珍珠霓光、果香樂園、黑糖琥珀、白桃氣泡、茶霧山嵐、金色晚宴、白瓷濾杯、城市黑白
+
+### QA artifacts
+- `qa-artifacts/v0.1.5/template-parity-result.json`
+- `qa-artifacts/v0.1.5/parity-*-gallery.png`（9 張）
+- `qa-artifacts/v0.1.5/parity-*-preview-hero.png`（9 張）
+- `qa-artifacts/v0.1.5/parity-*-mobile-hero.png`（9 張）
+- `qa-artifacts/v0.1.5/parity-*-export-index.png`（9 張）
+
+### Forbidden strings
+- AI-designed：0
+- AI-generated：0
+- website template key visual：0
+- concept image：0
+- showcase image：0
+- prompt：0
+
+結論：v0.1.5.1 Artwork-as-Source-of-Truth 本機 build 與 9 套 Visual Parity QA 通過；下一步為 commit/push、Vercel Preview 部署與 live verification。

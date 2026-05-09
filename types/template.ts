@@ -120,7 +120,22 @@ export interface TemplateGalleryItem {
   recommendationReason: string;
 }
 
+export interface TemplateArtworkBackplate {
+  enabled: true;
+  assetPath: string;
+  mobileAssetPath?: string;
+  desktopAssetPath?: string;
+  cropMode: 'cover' | 'contain' | 'top-cover' | 'center-cover';
+  overlay: string;
+  textPanelMode: 'glass' | 'solid' | 'dark' | 'light' | 'none';
+  textPanelPosition: 'left' | 'center' | 'bottom' | 'floating';
+  textContrast: 'light' | 'dark';
+  heroHeightDesktop: string;
+  heroHeightMobile: string;
+}
+
 export interface TemplateCatalogItem extends TemplateGalleryItem {
+  artworkBackplate: TemplateArtworkBackplate;
   aiArtwork: {
     key: string;
     gallerySrc: string;

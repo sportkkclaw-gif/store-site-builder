@@ -1,9 +1,9 @@
 import type { MediaAsset, SiteData, SiteVisual } from '@/types/site';
 import type { TemplateCatalogItem, TemplateGalleryItem } from '@/types/template';
 import { enrichTemplateItem } from './enrichTemplate';
+import { getTemplateArtwork } from './templateArtworkResolver';
 
 const TEMPLATE_MEDIA_PREFIX = 'template-artwork-';
-const heroArtworkSrc = (template: TemplateGalleryItem) => template.artworkSrc.replace('/template-gallery-ai/', '/template-gallery-hero/').replace(/\.png$/, '.jpg');
 
 async function imageToDataUrl(src: string): Promise<string | null> {
   if (typeof window === 'undefined') return null;
@@ -74,13 +74,14 @@ function templateIndustryName(industry: TemplateGalleryItem['industry']) {
 export async function applyTemplatePreset(data: SiteData, templateItem: TemplateGalleryItem): Promise<SiteData> {
   const template = enrichTemplateItem(templateItem);
   const mediaId = `${TEMPLATE_MEDIA_PREFIX}${template.id}`;
-  const embeddedHero = await imageToDataUrl(template.aiArtwork.heroSrc);
+  const artwork = getTemplateArtwork(template);
+  const embeddedHero = await imageToDataUrl(artwork.gallerySrc);
   const templateMedia: MediaAsset = {
     id: mediaId,
     name: `${template.name} 模板主視覺`,
     type: 'hero',
-    mimeType: embeddedHero ? 'image/jpeg' : 'image/png',
-    dataUrl: embeddedHero || template.artworkSrc,
+    mimeType: embeddedHero ? 'image/png' : 'image/png',
+    dataUrl: embeddedHero || artwork.gallerySrc,
   };
   const media = [templateMedia, ...data.media.filter(asset => !asset.id.startsWith(TEMPLATE_MEDIA_PREFIX))];
   return applyTemplatePresetToData(data, template, mediaId, media);
@@ -89,12 +90,13 @@ export async function applyTemplatePreset(data: SiteData, templateItem: Template
 export function applyTemplatePresetSync(data: SiteData, templateItem: TemplateGalleryItem): SiteData {
   const template = enrichTemplateItem(templateItem);
   const mediaId = `${TEMPLATE_MEDIA_PREFIX}${template.id}`;
+  const artwork = getTemplateArtwork(template);
   const templateMedia: MediaAsset = {
     id: mediaId,
     name: `${template.name} 模板主視覺`,
     type: 'hero',
-    mimeType: 'image/jpeg',
-    dataUrl: heroArtworkSrc(template),
+    mimeType: 'image/png',
+    dataUrl: artwork.gallerySrc,
   };
   const media = [templateMedia, ...data.media.filter(asset => !asset.id.startsWith(TEMPLATE_MEDIA_PREFIX))];
   return applyTemplatePresetToData(data, template, mediaId, media);
