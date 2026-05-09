@@ -577,7 +577,7 @@ QA artifacts：`qa-artifacts/v0.2.0/`
 | 8 | ExportStaticSite | Export HTML 使用同一 skin engine，含 data-skin-family、skin-product-card、skin-menu-list、artwork asset。 | ✅ PASS |
 | 9 | Forbidden strings | live DOM 與 export HTML forbidden strings = 0；無 localhost / 127 / _next。 | ✅ PASS |
 | 10 | RWD | 10 套代表模板 390px 與 320px scrollWidth == innerWidth。 | ✅ PASS |
-| 11 | QA script | `npx tsx scripts/qa-full-template-skin.ts http://127.0.0.1:3200` exit 0。 | ✅ PASS |
+| 11 | QA script | Local WSL mirror 與最新 Vercel Preview 均執行 `npx tsx scripts/qa-full-template-skin.ts` exit 0。 | ✅ PASS |
 | 12 | 截圖 | `qa-artifacts/v0.2.0/visual-skin/` 已產出 50 張（10 套 × gallery/hero/products/menu/export-products）。 | ✅ PASS |
 | 13 | Typecheck / Build | `npm run typecheck && npm run build` exit 0；Next.js 16.2.4 compiled successfully。 | ✅ PASS |
 
