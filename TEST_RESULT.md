@@ -429,3 +429,35 @@ Commit：`d5aeff36300442f54b56615317fe7cd58f0b33de`
 - `qa-artifacts/v0.1.4/export-pearl-neon.zip`
 
 結論：v0.1.4 Visual Readability + Template Landing Polish 已通過 build/export/live QA，可再次提交 Jason 視覺驗收。
+
+
+---
+
+## v0.1.5 Template Backplate / Background System QA
+
+測試日期：2026-05-09  
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+QA artifacts：`qa-artifacts/v0.1.5/`
+
+### 修正範圍
+- 新增 `TemplateBackplatePreset` 型別，描述 page / hero / sections / decorative 四層背板。
+- 新增 `lib/templateBackplateStyles.ts`，集中產出 `pageStyle`、`heroStyle`、`sectionStyle`、`cardStyle`、`decorativeLayers`、`mobileHeroStyle`、`exportCssVariables`。
+- 30 套模板皆透過 catalog/enrich flow 取得 backplate preset；7 套指定模板完成實測：珍珠霓光、抹茶日和、白桃氣泡、茶霧山嵐、金色晚宴、白瓷濾杯、城市黑白。
+- 三個 React template renderer 與 `exportStaticSite.ts` 共用同一套 backplate system，避免 Preview / Export 分叉。
+- Quick Preview Modal 改為同時展示原 artwork、實際網站 Hero 示意與手機套用示意，不再只顯示展示圖。
+- 珍珠霓光專修為 dark neon stage：紫藍霓虹 radial glow、深色 glass card、cyan/magenta CTA、artwork 作為主要背景視覺。
+
+### Build / Export QA
+- `npm run typecheck`：PASS
+- `npm run build`：PASS（Next.js 16.2.4 compiled successfully；`/`、`/builder` static prerendered；`/__version` server-rendered）
+- `npm exec -- tsx scripts/qa-v015-export.ts`：PASS (`ok=true`)
+- Export 7/7 模板：file:// 390px 可開啟、H1 visible、H1 <= 4 行、subtitle visible、CTA visible、image visible、heroBackplate 非純色、無水平 overflow。
+- Export forbidden：無 `localhost`、無 `127.0.0.1`、無 `/_next`；AI-designed、AI-generated、website template key visual、concept image、showcase image、prompt 全 0。
+
+### QA artifacts
+- `qa-artifacts/v0.1.5/export-qa-result.json`
+- `qa-artifacts/v0.1.5/export-{drink-boba-neon,drink-matcha-hiyori,drink-white-peach-sparkle,drink-tea-mist-ridge,restaurant-golden-banquet,cafe-white-dripper,cafe-urban-monochrome}.zip`
+- `qa-artifacts/v0.1.5/export-*-file-mobile.png`
+- `scripts/qa-v015-live.ts` 已新增，供 Vercel Preview live QA 使用。
+
+結論：v0.1.5 Template Backplate / Background System 本機 build/export QA 通過；下一步為 commit/push、Vercel Preview 部署與 live QA。

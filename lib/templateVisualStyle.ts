@@ -3,6 +3,7 @@ import type { TemplateCatalogItem, TemplateGalleryItem } from '@/types/template'
 import { getEnrichedTemplateById, enrichTemplateItem } from './enrichTemplate';
 import { templateCatalog } from './templateCatalog';
 import { getTemplateImageTreatment, type TemplateImageTreatmentKind } from './templateImageTreatment';
+import { getTemplateBackplate } from './templateBackplateStyles';
 
 export interface TemplateVisualStyle {
   pageBackgroundStyle: string;
@@ -107,6 +108,7 @@ export function getReadableHeroTextStyle(template: TemplateCatalogItem) {
 
 function fromTemplate(template: TemplateCatalogItem): TemplateVisualStyle {
   const treatment = getTemplateImageTreatment(template);
+  const backplate = getTemplateBackplate(template);
   const readable = getReadableHeroTextStyle(template);
   const dark = template.themePreset.textColor === '#F8FAFC' || template.backgroundPreset.mode === 'dark-premium';
   const shadow = template.componentStylePreset.shadow === 'dramatic' ? '0 26px 70px rgba(15,23,42,.24)' : template.componentStylePreset.shadow === 'none' ? 'none' : '0 18px 45px rgba(15,23,42,.12)';
@@ -119,9 +121,9 @@ function fromTemplate(template: TemplateCatalogItem): TemplateVisualStyle {
       ? 'background:transparent;color:inherit;border:1px solid transparent'
       : `background:${template.themePreset.surfaceColor};color:${template.themePreset.textColor};border:1px solid ${template.themePreset.borderColor}`;
   return {
-    pageBackgroundStyle: template.backgroundPreset.pageBackground,
-    heroBackgroundStyle: template.backgroundPreset.heroBackground,
-    sectionBackgroundStyle: template.backgroundPreset.sectionBackground,
+    pageBackgroundStyle: backplate.preset.page.background,
+    heroBackgroundStyle: backplate.preset.hero.background,
+    sectionBackgroundStyle: backplate.preset.sections.surface,
     imageTreatment: treatment.imageTreatment,
     heroLayout: treatment.heroLayout,
     artworkPosition: treatment.artworkPosition,
@@ -130,9 +132,9 @@ function fromTemplate(template: TemplateCatalogItem): TemplateVisualStyle {
     heroMinHeight: treatment.heroMinHeight,
     mobileHeroLayout: treatment.mobileHeroLayout,
     textContrastMode: treatment.textContrast || (dark ? 'light-on-dark' : 'dark-on-light'),
-    cardBackground: template.themePreset.surfaceColor,
-    cardBorder: template.themePreset.borderColor,
-    cardShadow: shadow,
+    cardBackground: backplate.preset.sections.cardSurface,
+    cardBorder: backplate.preset.sections.border,
+    cardShadow: backplate.shadowCss,
     buttonCss: `background:${readable.ctaBackground};color:${readable.ctaTextColor};border:1px solid rgba(255,255,255,.18)`,
     navCss,
     radius: template.componentStylePreset.radius,

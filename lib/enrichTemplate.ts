@@ -1,4 +1,5 @@
 import type { TemplateCatalogItem, TemplateGalleryItem, TemplateLayoutFamily, TemplateBackgroundMode } from '@/types/template';
+import { getTemplateBackplatePreset } from './templateBackplateStyles';
 
 const artworkHeroSrc = (src: string) => src.replace('/template-gallery-ai/', '/template-gallery-hero/').replace(/\.png$/, '.jpg');
 
@@ -84,6 +85,7 @@ export function enrichTemplateItem(template: TemplateGalleryItem): TemplateCatal
       useArtworkAsHeroBackground: mode === 'image-hero' || mode === 'dark-premium',
       useArtworkAsSectionAccent: mode !== 'minimal-white',
     },
+    backplatePreset: getTemplateBackplatePreset(template),
     typographyPreset: {
       headingStyle: fontFor(template) === 'serif' ? 'editorial-serif' : fontFor(template) === 'rounded' ? 'rounded-friendly' : template.baseTemplate === 'premium-minimal' ? 'minimal-sans' : 'bold-modern',
       bodyStyle: template.styleTags.some(tag => ['高質感','奢華','黑白','手沖'].includes(tag)) ? 'premium' : template.styleTags.some(tag => ['溫暖','甜點','日式'].includes(tag)) ? 'warm' : 'clean',
