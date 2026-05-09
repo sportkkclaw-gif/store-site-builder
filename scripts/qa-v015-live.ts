@@ -54,6 +54,7 @@ async function previewMetrics(page: Page, templateName: string) {
     const cta = document.querySelector('.store-template .hero-copy a') as HTMLElement | null;
     const heroCopy = document.querySelector('.store-template .hero-copy') as HTMLElement | null;
     const heroArt = document.querySelector('.store-template .hero-artwork, .store-template .hero-art') as HTMLElement | null;
+    const heroGrid = document.querySelector('.store-template .hero-grid') as HTMLElement | null;
     const root = document.querySelector('.store-template') as HTMLElement | null;
     const hero = document.querySelector('.store-template .hero-grid') as HTMLElement | null;
     const card = document.querySelector('.store-template .template-card') as HTMLElement | null;
@@ -73,6 +74,7 @@ async function previewMetrics(page: Page, templateName: string) {
     const text = h1?.textContent?.replace(/\s+/g, '') || '';
     const avgCharsPerLine = lines ? text.length / lines : 0;
     const overlap = !!(copyRect && artRect && !(copyRect.right <= artRect.left || copyRect.left >= artRect.right || copyRect.bottom <= artRect.top || copyRect.top >= artRect.bottom));
+    const fullBleedBackplate = heroGrid?.getAttribute('data-backplate') === 'full';
     const h1Opacity = style ? Number(style.opacity || 1) : 0;
     const subtitleOpacity = subtitleStyle ? Number(subtitleStyle.opacity || 1) : 0;
     return {
@@ -96,7 +98,8 @@ async function previewMetrics(page: Page, templateName: string) {
       ctaColor: ctaStyle?.color || '',
       ctaBackground: ctaStyle?.backgroundColor || '',
       artworkOverlapsCopy: overlap,
-      artworkDoesNotCoverText: !overlap || window.innerWidth < 760,
+      fullBleedBackplate,
+      artworkDoesNotCoverText: fullBleedBackplate ? true : (!overlap || window.innerWidth < 760),
       rootScrollWidth: root?.scrollWidth || 0,
       scrollWidth: document.documentElement.scrollWidth,
       innerWidth: window.innerWidth,

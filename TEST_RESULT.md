@@ -461,3 +461,21 @@ QA artifacts：`qa-artifacts/v0.1.5/`
 - `scripts/qa-v015-live.ts` 已新增，供 Vercel Preview live QA 使用。
 
 結論：v0.1.5 Template Backplate / Background System 本機 build/export QA 通過；下一步為 commit/push、Vercel Preview 部署與 live QA。
+
+### Live Preview QA（7 套）
+- Preview：`https://store-site-builder-git-accepta-260340-sportkk101-5719s-projects.vercel.app`
+- Vercel deployment host：`store-site-builder-110th3n1y-sportkk101-5719s-projects.vercel.app`
+- `/__version`：v0.1.5 / commit `2a0a7416d554165006889e107be35e53ef395515` / branch `acceptance/store-site-builder-mvp`
+- HTTP：`/` 200、`/builder` 200、`/__version` 200
+- `PREVIEW_URL=... npm exec -- tsx scripts/qa-v015-live.ts`：PASS (`ok=true`)
+- 7 套模板實測：抹茶日和、珍珠霓光、白桃氣泡、茶霧山嵐、金色晚宴、白瓷濾杯、城市黑白。
+- 每套 desktop/mobile：backplate 非純色、H1 visible、H1 <= 4 行、非一字一行、subtitle readable、CTA visible、無水平 overflow。
+- 390px：scrollWidth=390 / innerWidth=390；320px：scrollWidth=320 / innerWidth=320。
+- Quick Preview Modal：實際網站 Hero 示意與手機套用示意均 visible；返回模板庫 visible。
+- Live forbidden：AI-designed、AI-generated、website template key visual、concept image、showcase image、prompt 全 0。
+
+### Live artifacts
+- `qa-artifacts/v0.1.5/live-qa-result.json`
+- `qa-artifacts/v0.1.5/live-*.png`（7 套 desktop/mobile + version + quick preview modal）
+
+結論：v0.1.5 Template Backplate / Background System 已通過 build、export QA 與 Vercel Preview live QA，可提交 Jason 驗收。
