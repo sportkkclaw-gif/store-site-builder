@@ -1,7 +1,8 @@
 import type { SiteData } from '@/types/site';
 import type { TemplateGalleryItem } from '@/types/template';
 import { getTemplateArtwork } from './templateArtworkResolver';
-import { getTemplateById, templateCatalog } from './templateCatalog';
+import { getTemplateById } from './templateCatalog';
+import { assertTemplateVisualContractComplete, getTemplateVisualContract } from './templateVisualContracts';
 
 export type SkinFamily =
   | 'soft-matcha'
@@ -19,6 +20,8 @@ export type SkinFamily =
 export type TemplateSkin = {
   id: string;
   family: SkinFamily;
+  visualContractId: string;
+  visualContractName: string;
   artwork: { src: string; mobileSrc?: string; desktopSrc?: string; objectPosition: string; overlay: string; blendMode?: string };
   page: { background: string; texture: 'none' | 'grain' | 'paper' | 'neon-grid' | 'botanical' | 'bubbles' | 'monochrome' | 'charcoal'; textColor: string; mutedTextColor: string };
   nav: { background: string; textColor: string; accentColor: string; border: string; radius: string; shadow: string };
@@ -65,7 +68,7 @@ export const templateSkinFamilyMap: Record<string, SkinFamily> = {
   'cafe-daily-corner': 'urban-casual',
 };
 
-const familySkins: Record<SkinFamily, Omit<TemplateSkin, 'id' | 'family' | 'artwork'>> = {
+const familySkins: Record<SkinFamily, Omit<TemplateSkin, 'id' | 'family' | 'visualContractId' | 'visualContractName' | 'artwork'>> = {
   'soft-matcha': {
     page: { background: 'radial-gradient(circle at 10% 0%, rgba(178,213,141,.32), transparent 34%), linear-gradient(180deg,#F8F1DF 0%,#EEF6DF 54%,#FFFDF5 100%)', texture: 'botanical', textColor: '#20301F', mutedTextColor: '#62715C' },
     nav: { background: 'rgba(255,251,235,.84)', textColor: '#24351F', accentColor: '#6DA36F', border: '1px solid rgba(109,163,111,.30)', radius: '999px', shadow: '0 18px 50px rgba(52,81,45,.12)' },
@@ -200,39 +203,80 @@ const familySkins: Record<SkinFamily, Omit<TemplateSkin, 'id' | 'family' | 'artw
   },
 };
 
-function resolveTemplate(input?: SiteData | TemplateGalleryItem | string): TemplateGalleryItem | undefined {
-  if (!input) return undefined;
-  if (typeof input === 'string') return getTemplateById(input);
-  if ('store' in input) return getTemplateById(input.galleryTemplateId || input.visual?.selectedTemplateId || input.template);
-  return input;
+function resolveTemplate(input?: SiteData | TemplateGalleryItem | string): TemplateGalleryItem {
+  let id: string | undefined;
+  if (typeof input === 'string') id = input;
+  else if (input && 'store' in input) id = input.galleryTemplateId || input.visual?.selectedTemplateId;
+  else if (input) id = input.id;
+  if (!id) throw new Error('此模板尚未完成視覺合約，暫不可套用。 Missing template id.');
+  const template = getTemplateById(id);
+  if (!template) throw new Error(`此模板尚未完成視覺合約，暫不可套用。 Unknown template: ${id}`);
+  assertTemplateVisualContractComplete(getTemplateVisualContract(template.id));
+  if (!template.skinId || !template.skinFamily || !template.artworkSrc) {
+    throw new Error(`此模板尚未完成視覺合約，暫不可套用。 Missing skin/artwork: ${template.id}`);
+  }
+  return template;
 }
 
 function familyFor(template: TemplateGalleryItem): SkinFamily {
   const explicit = (template as TemplateGalleryItem & { skinFamily?: SkinFamily }).skinFamily;
-  const id = (template as TemplateGalleryItem & { skinId?: string }).skinId || template.id;
-  const family = explicit || templateSkinFamilyMap[id] || templateSkinFamilyMap[template.id] || templateSkinFamilyMap[template.aiArtworkKey];
-  if (!family) throw new Error(`Template ${template.id} is missing skinFamily mapping`);
-  return family;
+  if (!explicit) throw new Error(`Template ${template.id} is missing skinFamily mapping`);
+  return explicit;
 }
 
 export function getTemplateSkin(input?: SiteData | TemplateGalleryItem | string): TemplateSkin {
-  const template = resolveTemplate(input) || templateCatalog[0];
+  const template = resolveTemplate(input);
+  const contract = getTemplateVisualContract(template.id);
+  assertTemplateVisualContractComplete(contract);
   const family = familyFor(template);
   const artwork = getTemplateArtwork(template);
   const base = familySkins[family];
+  const palette = template.palette;
+  const primary = palette[0] || base.productCard.imageBackground;
+  const accent = palette[1] || base.productCard.priceColor;
+  const secondary = palette[2] || base.placeholder.accent;
+  const surface = palette[3] || primary;
+  const isDark = ['neon-dark', 'luxury-black-gold', 'charcoal-grill', 'monochrome-editorial'].includes(family) || /^#0|^#1|^#2|^#3/.test(primary);
+  const readableText = isDark ? base.productCard.textColor : base.productCard.textColor;
   return {
-    id: ((template as TemplateGalleryItem & { skinId?: string }).skinId || template.id),
+    ...base,
+    id: template.skinId || template.id,
     family,
+    visualContractId: contract.templateId,
+    visualContractName: contract.templateName,
     artwork: {
-      src: artwork.gallerySrc,
+      src: contract.sourceArtwork.gallerySrc || artwork.gallerySrc,
       mobileSrc: artwork.mobileSrc,
       desktopSrc: artwork.desktopSrc,
       objectPosition: artwork.backplate.cropMode === 'top-cover' ? 'center top' : 'center center',
       overlay: artwork.backplate.overlay || base.hero.overlay,
       blendMode: 'normal',
     },
-    ...base,
-    placeholder: { ...base.placeholder, showStoreSiteText: false },
+    section: {
+      ...base.section,
+      background: `linear-gradient(145deg, ${surface}F0, ${primary}D9)`,
+      alternateBackground: `linear-gradient(145deg, ${primary}E6, ${secondary}B8)`,
+      eyebrowColor: accent,
+    },
+    productCard: {
+      ...base.productCard,
+      background: `linear-gradient(145deg, ${surface}F7, ${primary}E8)`,
+      border: `2px solid ${accent}66`,
+      priceColor: accent,
+      imageBackground: `radial-gradient(circle at 22% 18%, ${secondary}AA, transparent 34%), linear-gradient(135deg, ${primary}, ${surface})`,
+      imageAccent: accent,
+      textColor: readableText,
+    },
+    menuList: {
+      ...base.menuList,
+      background: `linear-gradient(145deg, ${surface}DE, ${primary}C9)`,
+      rowBackground: `linear-gradient(90deg, ${primary}B8, ${surface}CC)`,
+      rowBorder: `1px solid ${accent}55`,
+      priceColor: accent,
+      categoryColor: base.menuList.categoryColor,
+    },
+    footer: { ...base.footer, accentColor: accent },
+    placeholder: { ...base.placeholder, background: `radial-gradient(circle at 25% 25%, ${secondary}99, transparent 32%), linear-gradient(135deg, ${primary}, ${surface})`, accent, showStoreSiteText: false },
   };
 }
 

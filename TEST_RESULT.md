@@ -92,8 +92,8 @@
 
 ## v0.1.1 UI / Template Productization QA
 
-測試日期：2026-05-06  
-正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+測試日期：2026-05-06
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
 QA artifacts：`qa-artifacts/v0.1.1/`
 
 | # | 驗收項目 | 結果 | 狀態 |
@@ -178,9 +178,9 @@ QA artifact 清單：
 
 ## v0.2.0 Template Gallery Upgrade QA
 
-測試日期：2026-05-07  
-正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
-QA runtime：WSL-native mirror `/tmp/store-site-builder-gallery-qa`（避免 Windows 掛載路徑 Next server hang）  
+測試日期：2026-05-07
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
+QA runtime：WSL-native mirror `/tmp/store-site-builder-gallery-qa`（避免 Windows 掛載路徑 Next server hang）
 QA artifacts：`qa-artifacts/template-gallery-v0.2.0/`
 
 | # | 驗收項目 | 結果 | 狀態 |
@@ -222,8 +222,8 @@ QA artifact 清單：
 
 ## v0.2.1 P1 Formal AI Artwork QA
 
-測試日期：2026-05-08  
-正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+測試日期：2026-05-08
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
 AI artwork 目錄：`public/template-gallery-ai/`
 
 | # | 驗收項目 | 結果 | 狀態 |
@@ -241,8 +241,8 @@ AI artwork 目錄：`public/template-gallery-ai/`
 
 ### v0.2.1 Live Preview QA 補充
 
-Preview：`https://store-site-builder-44ze20f46-sportkk101-5719s-projects.vercel.app`  
-Vercel Deployment：`dpl_EXjmtDdX86fy2YjRFGPeCCHKrcjo` / Ready / Preview  
+Preview：`https://store-site-builder-44ze20f46-sportkk101-5719s-projects.vercel.app`
+Vercel Deployment：`dpl_EXjmtDdX86fy2YjRFGPeCCHKrcjo` / Ready / Preview
 Live QA artifacts：`qa-artifacts/template-gallery-v0.2.1-live/`
 
 | # | Live 驗收項目 | 結果 | 狀態 |
@@ -260,9 +260,9 @@ Live QA artifacts：`qa-artifacts/template-gallery-v0.2.1-live/`
 
 ## v0.2.1 P1 AI 模板接線修復 QA
 
-測試日期：2026-05-08 12:51 CST  
-正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
-修復 commit：`dc2b3b8d6a464bde6dd162606755e10ceede9a15`  
+測試日期：2026-05-08 12:51 CST
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
+修復 commit：`dc2b3b8d6a464bde6dd162606755e10ceede9a15`
 Preview：`https://store-site-builder-pe7fkma51-sportkk101-5719s-projects.vercel.app`
 
 | # | 驗收項目 | 實測結果 | 狀態 |
@@ -285,9 +285,9 @@ Preview：`https://store-site-builder-pe7fkma51-sportkk101-5719s-projects.vercel
 
 ## v0.1.2 Template Binding + Mobile UX QA
 
-測試日期：2026-05-08 21:26 CST  
-正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
-QA runtime：WSL-native mirror `/tmp/store-site-builder-v012`（避免 Windows 掛載路徑 Next server hang）  
+測試日期：2026-05-08 21:26 CST
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
+QA runtime：WSL-native mirror `/tmp/store-site-builder-v012`（避免 Windows 掛載路徑 Next server hang）
 QA artifacts：`qa-artifacts/v0.1.2/`
 
 | # | 驗收項目 | 實測結果 | 狀態 |
@@ -329,8 +329,8 @@ QA artifact 清單：
 
 ## v0.1.3 Template Polish + Copy + Preview Layout QA
 
-測試日期：2026-05-08 22:50 CST  
-正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+測試日期：2026-05-08 22:50 CST
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
 本輪目標：模板中文文案、Hero 中文排版、AI artwork treatment、圖片主導畫廊、手機 UX、exportStaticSite 同步修復。
 
 ### Build / Typecheck
@@ -392,9 +392,9 @@ QA artifact 清單：
 
 ## v0.1.4 Visual Readability + Template Landing Polish QA
 
-測試日期：2026-05-09  
-正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
-Preview：`https://store-site-builder-git-accepta-260340-sportkk101-5719s-projects.vercel.app`  
+測試日期：2026-05-09
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
+Preview：`https://store-site-builder-git-accepta-260340-sportkk101-5719s-projects.vercel.app`
 Commit：`d5aeff36300442f54b56615317fe7cd58f0b33de`
 
 ### 修正範圍
@@ -435,8 +435,8 @@ Commit：`d5aeff36300442f54b56615317fe7cd58f0b33de`
 
 ## v0.1.5 Template Backplate / Background System QA
 
-測試日期：2026-05-09  
-正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+測試日期：2026-05-09
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
 QA artifacts：`qa-artifacts/v0.1.5/`
 
 ### 修正範圍
@@ -485,8 +485,8 @@ QA artifacts：`qa-artifacts/v0.1.5/`
 
 ## v0.1.5.1 Artwork-as-Source-of-Truth QA
 
-測試日期：2026-05-09  
-正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+測試日期：2026-05-09
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
 QA artifacts：`qa-artifacts/v0.1.5/`
 
 ### 修正範圍
@@ -561,8 +561,8 @@ QA result：`qa-artifacts/v0.1.6/template-skin-result.json`
 
 ## v0.2.0 Full Visual Template Engine QA
 
-測試日期：2026-05-09  
-正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+測試日期：2026-05-09
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
 QA artifacts：`qa-artifacts/v0.2.0/`
 
 | # | 驗收項目 | 結果 | 狀態 |
@@ -581,5 +581,56 @@ QA artifacts：`qa-artifacts/v0.2.0/`
 | 12 | 截圖 | `qa-artifacts/v0.2.0/visual-skin/` 已產出 50 張（10 套 × gallery/hero/products/menu/export-products）。 | ✅ PASS |
 | 13 | Typecheck / Build | `npm run typecheck && npm run build` exit 0；Next.js 16.2.4 compiled successfully。 | ✅ PASS |
 
-QA 結果檔：`qa-artifacts/v0.2.0/full-template-skin-result.json`  
+QA 結果檔：`qa-artifacts/v0.2.0/full-template-skin-result.json`
 視覺截圖目錄：`qa-artifacts/v0.2.0/visual-skin/`
+
+---
+
+## v0.2.1 30/30 Template Visual Completion Gate QA
+
+測試日期：2026-05-09
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
+QA runtime：WSL-native mirror `/tmp/store-site-builder-v021`（避免 Windows 掛載路徑 Next server hang）
+QA artifacts：`qa-artifacts/v0.2.1/`
+QA result：`qa-artifacts/v0.2.1/all-templates-visual-result.json`
+
+| # | 驗收項目 | 結果 | 狀態 |
+|---|---|---|---|
+| 1 | 30/30 Template Visual Contract | `lib/templateVisualContracts.ts` 建立 30 套逐套 contract；每套含 sourceArtwork、visualIdentity、page/header/hero/section/product/menu/placeholder/exportRequirement。 | ✅ PASS |
+| 2 | 禁止 generic/default fallback | `getTemplateVisualContract()` 對缺漏 templateId 直接 throw；`assertTemplateVisualContractComplete()` 強制檢查 contract 完整度。 | ✅ PASS |
+| 3 | Renderer 綁定 contract | React Preview root、product card、menu list、placeholder、footer 皆帶 `data-visual-contract-id`；skin mood 由各模板 palette/contract 套用。 | ✅ PASS |
+| 4 | Export 綁定 contract | `exportStaticSite.ts` 輸出 `data-visual-contract-id`、`data-skin-family`、product/menu/placeholder/footer skin markers，並使用同源 artwork。 | ✅ PASS |
+| 5 | 30 套全量 QA | `scripts/qa-all-templates-visual.ts` 實測 30/30 passed；不抽樣、不代表、不 golden templates。 | ✅ PASS |
+| 6 | Live Preview / Export / Mobile | 每套均通過 live preview HTTP、export HTML、mobile 390px、mobile 320px、hero artwork、product cards、menu list、placeholder、footer 檢查。 | ✅ PASS |
+| 7 | 截圖數量 | `qa-artifacts/v0.2.1/visual-30/` 產出 150 張 PNG（30 套 × gallery / preview-hero / preview-products / preview-menu / export）。 | ✅ PASS |
+| 8 | 視覺差異度 | `uniqueProductBackgrounds=29`，代表 product cards 不是全模板共用同一個白卡/通用皮膚。 | ✅ PASS |
+| 9 | Forbidden strings | StoreSite Builder placeholder / AI-designed / AI-generated / localhost / 127.0.0.1 / /_next 全部 0。 | ✅ PASS |
+| 10 | `npm run typecheck` | 正式 repo 執行 `tsc --noEmit` exit 0。 | ✅ PASS |
+| 11 | `npm run build` | 正式 repo Next.js 16.2.4 build successful；`/`、`/builder` static prerendered，`/__version` dynamic。 | ✅ PASS |
+
+QA summary：
+
+```json
+{
+  "ok": true,
+  "liveStatus": 200,
+  "totalTemplates": 30,
+  "passedTemplates": 30,
+  "failedTemplates": 0,
+  "screenshotCount": 150,
+  "uniqueProductBackgrounds": 29,
+  "forbiddenCounts": {
+    "StoreSite Builder placeholder": 0,
+    "AI-designed": 0,
+    "AI-generated": 0,
+    "website template key visual": 0,
+    "concept image": 0,
+    "prompt": 0,
+    "localhost": 0,
+    "127.0.0.1": 0,
+    "/_next": 0
+  }
+}
+```
+
+結論：v0.2.1 30/30 Template Visual Completion Gate 本機正式 repo 驗證通過；可進入 commit / PR 更新 / Vercel Preview redeploy / live QA。
