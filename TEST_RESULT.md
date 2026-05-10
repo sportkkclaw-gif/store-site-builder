@@ -671,3 +671,50 @@ QA summary：
 - `qa-artifacts/v0.2.2/desktop-preview/preview-route-390.png`
 - `qa-artifacts/v0.2.2/desktop-preview/preview-back-button.png`
 - `qa-artifacts/v0.2.2/desktop-preview/builder-after-back.png`
+
+---
+
+## v0.2.3 Fullscreen Preview Data Binding QA
+
+測試日期：2026-05-10
+範圍限制：本輪只修 `/preview` 全螢幕預覽資料綁定；未修改 30 套模板資料、TemplateSkinEngine、Product cards、Menu list、ExportStaticSite、Template catalog、Skin family、登入/付款/資料庫。
+
+### Build
+- `npm run typecheck`：PASS
+- `npm run build`：PASS
+
+### Data Binding 修復
+- `/builder` 點「全螢幕預覽」前：`saveSiteData(data)`
+- `/preview`：直接讀同一個 `STORAGE_KEY = store-site-builder-data`
+- `/preview`：localStorage 不存在時顯示「尚未載入 Builder 資料，請返回 Builder 建立網站。」
+- `/preview`：移除手刻 demo hero、`Fullscreen Desktop Preview` 網站內容、普通漸層 placeholder
+- Builder 右側 Preview 與 `/preview` 共用 `components/preview/PreviewCanvas.tsx`
+- `PreviewCanvas` render `StoreWebsiteRenderer`，並標示 `data-template-id`、`data-skin-family`、`data-artwork-src`
+
+### Binding QA
+- QA script：`scripts/qa-fullscreen-preview-binding.ts`
+- Result JSON：`qa-artifacts/v0.2.3/fullscreen-preview-binding-result.json`
+- `ok`：true
+- `testedTemplates`：5
+- `builderAndPreviewTemplateMatch`：true
+- `previewUsesLocalStorageSiteData`：true
+- `previewUsesStoreWebsiteRenderer`：true
+- `noDemoHeroContent`：true
+- `noDefaultGradientPlaceholder`：true
+
+### 5 套模板
+- 白桃氣泡：`drink-white-peach-sparkle` / `peach-pastel` / artwork match PASS
+- 珍珠霓光：`drink-boba-neon` / `neon-dark` / artwork match PASS
+- 日常一隅：`cafe-daily-corner` / `urban-casual` / artwork match PASS
+- 城市黑白：`cafe-urban-monochrome` / `monochrome-editorial` / artwork match PASS
+- 金色晚宴：`restaurant-golden-banquet` / `luxury-black-gold` / artwork match PASS
+
+### Screenshots
+- `qa-artifacts/v0.2.3/fullscreen-preview-binding/builder-white-peach-selected.png`
+- `qa-artifacts/v0.2.3/fullscreen-preview-binding/preview-white-peach-1440.png`
+- `qa-artifacts/v0.2.3/fullscreen-preview-binding/builder-boba-neon-selected.png`
+- `qa-artifacts/v0.2.3/fullscreen-preview-binding/preview-boba-neon-1440.png`
+- `qa-artifacts/v0.2.3/fullscreen-preview-binding/builder-daily-corner-selected.png`
+- `qa-artifacts/v0.2.3/fullscreen-preview-binding/preview-daily-corner-1440.png`
+- `qa-artifacts/v0.2.3/fullscreen-preview-binding/preview-mobile-390.png`
+- `qa-artifacts/v0.2.3/fullscreen-preview-binding/preview-back-to-builder.png`

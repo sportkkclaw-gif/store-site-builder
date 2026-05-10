@@ -5,15 +5,13 @@ import type { SiteData } from '@/types/site';
 import { DesktopPreview } from './DesktopPreview';
 import { MobilePreview } from './MobilePreview';
 import { Tabs } from '@/components/ui';
-import { getTemplateById } from '@/lib/templateCatalog';
+import { getCurrentTemplate } from '@/lib/currentTemplate';
 import { getTemplateVisualStyle } from '@/lib/templateVisualStyle';
 import { saveSiteData } from '@/lib/storage';
 
-const names: Record<SiteData['template'], string> = { 'fresh-japanese': '清新日系', 'premium-minimal': '質感極簡', 'playful-colorful': '活潑可愛' };
-
 export function PreviewFrame({ data, onBackToEdit }: { data: SiteData; onBackToEdit?: () => void }) {
   const [mode, setMode] = useState<'desktop' | 'mobile'>('desktop');
-  const selectedTemplateName = getTemplateById(data.galleryTemplateId)?.name || names[data.template];
+  const selectedTemplateName = getCurrentTemplate(data).name;
   const visual = getTemplateVisualStyle(data);
   const openFullscreenPreview = () => {
     saveSiteData(data);
