@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import type { SiteData } from '@/types/site';
 import { FullscreenPreviewShell } from '@/components/preview/FullscreenPreviewShell';
-import { STORAGE_KEY, migrateSiteData } from '@/lib/storage';
+import { PREVIEW_SESSION_KEY, STORAGE_KEY, migrateSiteData } from '@/lib/storage';
 
 type LoadState =
   | { status: 'loading' }
@@ -15,12 +15,14 @@ export function PreviewPageClient() {
 
   useEffect(() => {
     try {
-      const raw = window.localStorage.getItem(STORAGE_KEY);
+      const raw = window.sessionStorage.getItem(PREVIEW_SESSION_KEY) || window.localStorage.getItem(STORAGE_KEY);
       if (!raw) {
         setState({ status: 'missing' });
         return;
       }
-      setState({ status: 'ready', data: migrateSiteData(JSON.parse(raw)) });
+      const data = migrateSiteData(JSON.parse(raw));
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      setState({ status: 'ready', data });
     } catch {
       setState({ status: 'missing' });
     }
@@ -31,7 +33,7 @@ export function PreviewPageClient() {
   }
 
   if (state.status === 'missing') {
-    return <main className="fullscreen-preview-loading"><div className="text-center"><p>尚未載入 Builder 資料，請返回 Builder 建立網站。</p><a className="mt-5 inline-flex min-h-11 items-center rounded-full bg-slate-950 px-5 text-sm font-black text-white" href="/builder">← 返回 Builder</a></div></main>;
+    return <main className="fullscreen-preview-loading"><div className="text-center"><p>尚未載入 Builder 資料，請返回 Builder 後重新開啟預覽。</p><a data-testid="preview-back-to-builder" className="mt-5 inline-flex min-h-11 items-center rounded-full bg-slate-950 px-5 text-sm font-black text-white" href="/builder">← 返回 Builder</a></div></main>;
   }
 
   return <FullscreenPreviewShell data={state.data} />;

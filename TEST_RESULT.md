@@ -718,3 +718,51 @@ QA summary：
 - `qa-artifacts/v0.2.3/fullscreen-preview-binding/preview-daily-corner-1440.png`
 - `qa-artifacts/v0.2.3/fullscreen-preview-binding/preview-mobile-390.png`
 - `qa-artifacts/v0.2.3/fullscreen-preview-binding/preview-back-to-builder.png`
+
+---
+
+## v0.2.4 Fullscreen Preview Entry + Mobile Tap QA
+
+測試日期：2026-05-10
+範圍限制：本輪只修全螢幕預覽入口、手機點擊事件、/preview 路由、PreviewCanvas 桌機置中與目前 Builder siteData 綁定；未修改模板 skin、30 套模板內容、AI artwork、商品卡、菜單列表、ExportStaticSite、登入/付款/資料庫。
+
+### Build
+- `npm run typecheck`：PASS
+- `npm run build`：PASS
+
+### Entry / Tap 修復
+- 桌機入口：`data-testid=fullscreen-preview-button`，same-page navigation 到 `/preview?mode=desktop&viewport=1440`
+- 手機入口：`data-testid=mobile-fullscreen-preview-button`，sticky toolbar 可見，點擊區 >= 48px，`pointer-events:auto`，same-page navigation 到 `/preview?mode=mobile&viewport=390`
+- 入口資料保存：點擊前 `saveSiteData(data)`，並同步寫入 `sessionStorage[store-site-builder-preview-data]`
+- `/preview` 讀取順序：sessionStorage preview data → localStorage store-site-builder-data → 缺資料提示返回 Builder
+- `/preview` 返回：`data-testid=preview-back-to-builder`，返回後 localStorage 不清空，模板保留
+- `PreviewCanvas`：新增 `data-testid=preview-stage`、`preview-scale-wrapper`、`desktop-preview-canvas`；desktop canvas `data-viewport-width=1440`；transform-origin top center；置中 PASS
+
+### QA
+- QA script：`scripts/qa-fullscreen-entry.ts`
+- Result JSON：`qa-artifacts/v0.2.4/fullscreen-entry-result.json`
+- `ok`：true
+- `mobileButtonVisible`：true
+- `mobileButtonClickable`：true
+- `mobilePreviewRouteWorks`：true
+- `desktopButtonVisible`：true
+- `desktopButtonClickable`：true
+- `desktopPreviewRouteWorks`：true
+- `backToBuilderWorks`：true
+- `desktopCanvas1440`：true
+- `desktopCanvasCentered`：true
+- `mobile390NoOverflow`：true
+
+### 3 套模板
+- 香辣市集：`restaurant-spicy-market` / mobile tap PASS / preview same template PASS / back PASS
+- 白桃氣泡：`drink-white-peach-sparkle` / mobile tap PASS / preview same template PASS / back PASS
+- 日常一隅：`cafe-daily-corner` / mobile tap PASS / preview same template PASS / back PASS
+
+### Screenshots
+- `qa-artifacts/v0.2.4/fullscreen-entry/mobile-builder-preview-with-fullscreen-button.png`
+- `qa-artifacts/v0.2.4/fullscreen-entry/mobile-preview-route-390.png`
+- `qa-artifacts/v0.2.4/fullscreen-entry/mobile-preview-back-button.png`
+- `qa-artifacts/v0.2.4/fullscreen-entry/desktop-builder-preview-with-fullscreen-button.png`
+- `qa-artifacts/v0.2.4/fullscreen-entry/desktop-preview-route-1440.png`
+- `qa-artifacts/v0.2.4/fullscreen-entry/desktop-preview-canvas-centered.png`
+- `qa-artifacts/v0.2.4/fullscreen-entry/builder-after-back.png`

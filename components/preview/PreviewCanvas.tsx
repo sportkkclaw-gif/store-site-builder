@@ -44,7 +44,7 @@ export function PreviewCanvas({ siteData, mode, viewportWidth, zoom, frame = 'no
 
   useEffect(() => {
     const updateFit = () => {
-      const container = fitContainerRef?.current || ownRef.current?.parentElement;
+      const container = fitContainerRef?.current || ownRef.current?.parentElement?.parentElement;
       if (!container) return;
       const available = Math.max(container.clientWidth - 48, 280);
       setFitScale(Number(Math.min(1, Math.max(0.2, available / viewportWidth)).toFixed(3)));
@@ -54,29 +54,31 @@ export function PreviewCanvas({ siteData, mode, viewportWidth, zoom, frame = 'no
     return () => window.removeEventListener('resize', updateFit);
   }, [fitContainerRef, viewportWidth, mode]);
 
-  const canvas = (
-    <div
-      ref={ownRef}
-      className={`preview-canvas preview-canvas--${mode} preview-canvas--frame-${frame} ${className}`}
-      data-testid="preview-canvas"
-      data-template-id={templateId}
-      data-template-name={template.name}
-      data-skin-family={skin.family}
-      data-artwork-src={artwork.gallerySrc}
-      data-mode={mode}
-      data-viewport-width={viewportWidth}
-      data-zoom={zoom}
-      style={{ width: viewportWidth, transform: `scale(${scale})`, transformOrigin: 'top center' }}
-    >
-      {frame === 'browser' && <div className="preview-canvas-browser-bar" aria-hidden="true"><span /><span /><span /><b /></div>}
-      {frame === 'phone' && <div className="fullscreen-mobile-notch" aria-hidden="true" />}
-      <StoreWebsiteRenderer data={siteData} />
-    </div>
-  );
-
   return (
-    <div className={`preview-canvas-scroll ${scrollClassName}`} style={{ minHeight: scaledHeight }}>
-      {canvas}
+    <div className={`preview-canvas-scroll ${scrollClassName}`} data-testid="preview-stage" style={{ minHeight: scaledHeight }}>
+      <div
+        ref={ownRef}
+        className="preview-scale-wrapper"
+        data-testid="preview-scale-wrapper"
+        style={{ width: viewportWidth, transform: `scale(${scale})`, transformOrigin: 'top center' }}
+      >
+        <div
+          className={`preview-canvas preview-canvas--${mode} preview-canvas--frame-${frame} ${className}`}
+          data-testid={mode === 'desktop' ? 'desktop-preview-canvas' : 'mobile-preview-canvas'}
+          data-template-id={templateId}
+          data-template-name={template.name}
+          data-skin-family={skin.family}
+          data-artwork-src={artwork.gallerySrc}
+          data-mode={mode}
+          data-viewport-width={viewportWidth}
+          data-zoom={zoom}
+          style={{ width: viewportWidth }}
+        >
+          {frame === 'browser' && <div className="preview-canvas-browser-bar" aria-hidden="true"><span /><span /><span /><b /></div>}
+          {frame === 'phone' && <div className="fullscreen-mobile-notch" aria-hidden="true" />}
+          <StoreWebsiteRenderer data={siteData} />
+        </div>
+      </div>
     </div>
   );
 }

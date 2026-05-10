@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import type { SiteData } from '@/types/site';
 import { getCurrentTemplate } from '@/lib/currentTemplate';
 import { getTemplateArtwork } from '@/lib/templateArtworkResolver';
@@ -16,9 +17,18 @@ const zoomOptions: { value: PreviewCanvasZoom; label: string }[] = [
   { value: '50', label: '50%' },
 ];
 
+function parseMode(value: string | null): PreviewCanvasMode { return value === 'mobile' ? 'mobile' : 'desktop'; }
+function parseViewport(mode: PreviewCanvasMode, value: string | null): PreviewCanvasViewport {
+  const parsed = Number(value);
+  const allowed = mode === 'mobile' ? mobileViewports : desktopViewports;
+  return (allowed as readonly number[]).includes(parsed) ? parsed as PreviewCanvasViewport : mode === 'mobile' ? 390 : 1440;
+}
+
 export function FullscreenPreviewShell({ data }: { data: SiteData }) {
-  const [mode, setMode] = useState<PreviewCanvasMode>('desktop');
-  const [viewport, setViewport] = useState<PreviewCanvasViewport>(1440);
+  const searchParams = useSearchParams();
+  const initialMode = parseMode(searchParams?.get('mode') || null);
+  const [mode, setMode] = useState<PreviewCanvasMode>(initialMode);
+  const [viewport, setViewport] = useState<PreviewCanvasViewport>(parseViewport(initialMode, searchParams?.get('viewport') || null));
   const [zoom, setZoom] = useState<PreviewCanvasZoom>('fit');
   const stageRef = useRef<HTMLDivElement>(null);
   const viewportOptions = useMemo(() => mode === 'desktop' ? desktopViewports : mobileViewports, [mode]);

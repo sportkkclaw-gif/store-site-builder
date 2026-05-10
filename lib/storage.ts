@@ -1,5 +1,6 @@
 import { createDefaultSiteData } from '@/lib/defaultSiteData';import type { SiteData } from '@/types/site';
 export const STORAGE_KEY='store-site-builder-data';
+export const PREVIEW_SESSION_KEY='store-site-builder-preview-data';
 
 export function migrateSiteData(input: Partial<SiteData>): SiteData {
   const defaults = createDefaultSiteData();
