@@ -17,5 +17,5 @@ export function StoreWebsiteRenderer({data}:{data:SiteData}){
     : data.template==='playful-colorful'
       ? <PlayfulColorfulTemplate data={data}/>
       : <FreshJapaneseTemplate data={data}/>;
-  return <div data-template-id={templateId} data-skin-family={skin.family} data-artwork-src={artwork.gallerySrc} data-visual-contract-id={skin.visualContractId} data-template-preset={templateId} data-layout-family={visual.layoutFamily} data-style-label={visual.styleLabel} style={{background:visual.pageBackgroundStyle}}>{rendered}</div>;
+  return <div data-testid="site-renderer" data-template-id={templateId} data-skin-family={skin.family} data-artwork-src={artwork.gallerySrc} data-visual-contract-id={skin.visualContractId} data-template-preset={templateId} data-layout-family={visual.layoutFamily} data-style-label={visual.styleLabel} style={{background:visual.pageBackgroundStyle}}>{rendered}</div>;
 }

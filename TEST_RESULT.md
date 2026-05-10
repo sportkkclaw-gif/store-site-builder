@@ -766,3 +766,32 @@ QA summary：
 - `qa-artifacts/v0.2.4/fullscreen-entry/desktop-preview-route-1440.png`
 - `qa-artifacts/v0.2.4/fullscreen-entry/desktop-preview-canvas-centered.png`
 - `qa-artifacts/v0.2.4/fullscreen-entry/builder-after-back.png`
+
+---
+
+## v0.2.5 Desktop Layout Width / Full-Bleed Polish QA
+測試日期：2026-05-10
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
+QA runtime：WSL-native mirror `/tmp/store-site-builder-v025`（避免 Windows 掛載路徑 Next server hang）
+QA artifacts：`qa-artifacts/v0.2.5/`（local evidence；若 qa-artifacts 受 .gitignore 忽略，PR/回報列路徑）
+
+| 模板 | 1440 siteRootWidth | 1440 heroInnerWidth | 1440 sectionInnerWidth | 1280 siteRootWidth | 左右留白 OK | Export 同步 | 狀態 |
+|---|---:|---:|---:|---:|---|---|---|
+| 白桃氣泡 | 1440 | 1296 | 1250 | 1280 | ✅ | ✅ | ✅ PASS |
+| 飲研實驗室 | 1440 | 1296 | 1250 | 1280 | ✅ | ✅ | ✅ PASS |
+| 午夜焙煎 | 1440 | 1296 | 1248 | 1280 | ✅ | ✅ | ✅ PASS |
+| 日常一隅 | 1440 | 1296 | 1250 | 1280 | ✅ | ✅ | ✅ PASS |
+| 鍋物暖居 | 1440 | 1296 | 1250 | 1280 | ✅ | ✅ | ✅ PASS |
+| 城市黑白 | 1440 | 1296 | 1248 | 1280 | ✅ | ✅ | ✅ PASS |
+
+驗證項目：
+
+- `npm run typecheck`：正式 repo 執行，exit 0。
+- `npm run build`：正式 repo 執行，Next.js 16.2.4 build successful。
+- Desktop container metrics：`desktopContentMaxWidth=1320px`、`desktopHeroMaxWidth=1360px`、`desktopSectionMaxWidth=1320px`。
+- Fullscreen Preview 1440/1280：6 套模板全部通過；1440 `siteRootWidth >= 1440`、`heroInnerWidth >= 1296`、`sectionInnerWidth >= 1248`。
+- Export width sync：`lib/exportStaticSite.ts` 使用同一 `generateTemplateSkinCss()` / `.template-hero-inner` / `.skin-section-inner` class system，避免 export 仍停留窄版。
+- 截圖：`qa-artifacts/v0.2.5/desktop-layout-width/` 共 12 張（6 套 × 1440/1280）。
+- 結果 JSON：`qa-artifacts/v0.2.5/desktop-layout-width-result.json`，`ok=true`、`testedTemplates=6`。
+
+結論：v0.2.5 桌機版內容寬度與 Hero / Section / Product grid 已從窄版 card 修正為桌機官網寬版；手機版與 fullscreen entry 未修改。

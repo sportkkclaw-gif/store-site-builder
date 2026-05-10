@@ -38,7 +38,7 @@ export function FullSkinTemplate({ data, variant = 'fresh' }: { data: SiteData; 
   const artwork = getTemplateArtwork(data);
   const featured = data.menu.categories.flatMap(c => c.items).filter(i => i.featured);
   const cssVars = { ...getTemplateCssVariables(data), '--artwork-overlay': artwork.backplate.overlay, '--artwork-hero-desktop': artwork.backplate.heroHeightDesktop, '--artwork-hero-mobile': artwork.backplate.heroHeightMobile, '--artwork-fit': heroObjectFit(artwork.backplate.cropMode), '--artwork-position': heroObjectPosition(artwork.backplate.cropMode) } as CSSProperties;
-  return <main className={`store-template skin-${skin.family}`} data-template-id={data.galleryTemplateId || data.visual?.selectedTemplateId || data.template} data-skin-id={skin.id} data-skin-family={skin.family} data-visual-contract-id={skin.visualContractId} data-full-skin="true" data-template-variant={variant} style={cssVars}>
+  return <main className={`store-template skin-${skin.family}`} data-testid="site-root" data-template-id={data.galleryTemplateId || data.visual?.selectedTemplateId || data.template} data-skin-id={skin.id} data-skin-family={skin.family} data-visual-contract-id={skin.visualContractId} data-full-skin="true" data-template-variant={variant} style={cssVars}>
     <SkinStyle data={data} />
     <div className="wrap">
       <ThemedNav data={data} skin={skin} />

@@ -13,9 +13,11 @@ function Links({ data }: { data: SiteData }) {
 
 export function ThemedHero({ data, skin }: { data: SiteData; skin: TemplateSkin }) {
   const artwork = getTemplateArtwork(data);
-  return <section className="template-hero" data-skin-component="hero" data-skin-family={skin.family} data-artwork-source="true" data-artwork-src={artwork.gallerySrc} data-panel={artwork.backplate.textPanelMode} data-contrast={artwork.backplate.textContrast} style={{ '--artwork-overlay': artwork.backplate.overlay, '--artwork-hero-desktop': artwork.backplate.heroHeightDesktop, '--artwork-hero-mobile': artwork.backplate.heroHeightMobile, '--artwork-fit': heroObjectFit(artwork.backplate.cropMode), '--artwork-position': heroObjectPosition(artwork.backplate.cropMode) } as CSSProperties}>
-    <picture><source media="(max-width: 760px)" srcSet={artwork.mobileSrc} /><img className="template-hero-backplate" src={artwork.previewSrc} data-artwork-src={artwork.gallerySrc} data-gallery-src={artwork.gallerySrc} alt="" aria-hidden="true" /></picture>
-    <div className="template-hero-overlay" />
-    <div className="hero-copy"><span className="placeholder-badge">{data.store.tagline}</span><h1>{data.hero.title}</h1><p className="muted mt-5 text-lg">{data.hero.subtitle}</p><Links data={data} /></div>
+  return <section className="template-hero" data-testid="site-hero" data-skin-component="hero" data-skin-family={skin.family} data-artwork-source="true" data-artwork-src={artwork.gallerySrc} data-panel={artwork.backplate.textPanelMode} data-contrast={artwork.backplate.textContrast} style={{ '--artwork-overlay': artwork.backplate.overlay, '--artwork-hero-desktop': artwork.backplate.heroHeightDesktop, '--artwork-hero-mobile': artwork.backplate.heroHeightMobile, '--artwork-fit': heroObjectFit(artwork.backplate.cropMode), '--artwork-position': heroObjectPosition(artwork.backplate.cropMode) } as CSSProperties}>
+    <div className="template-hero-inner" data-testid="site-hero-inner">
+      <picture><source media="(max-width: 760px)" srcSet={artwork.mobileSrc} /><img className="template-hero-backplate" src={artwork.previewSrc} data-artwork-src={artwork.gallerySrc} data-gallery-src={artwork.gallerySrc} alt="" aria-hidden="true" /></picture>
+      <div className="template-hero-overlay" />
+      <div className="hero-copy"><span className="placeholder-badge">{data.store.tagline}</span><h1>{data.hero.title}</h1><p className="muted mt-5 text-lg">{data.hero.subtitle}</p><Links data={data} /></div>
+    </div>
   </section>;
 }
