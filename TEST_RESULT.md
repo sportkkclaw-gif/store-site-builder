@@ -815,6 +815,7 @@ QA artifacts：`qa-artifacts/v0.2.5/`（local evidence；若 qa-artifacts 受 .g
 ### 三、30 套模板全量結果
 - QA script：`scripts/qa-mobile-hero-overflow-all.ts`
 - 指令：`npx tsx scripts/qa-mobile-hero-overflow-all.ts http://127.0.0.1:3206`
+- Live Preview 指令：`npx tsx scripts/qa-mobile-hero-overflow-all.ts https://store-site-builder-bxsqc2292-sportkk101-5719s-projects.vercel.app` → PASS（30/30，90 screenshots）
 - totalTemplates：30
 - testedViewports：390 / 375 / 320
 - passed：30
