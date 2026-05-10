@@ -634,3 +634,40 @@ QA summary：
 ```
 
 結論：v0.2.1 30/30 Template Visual Completion Gate 本機正式 repo 驗證通過；可進入 commit / PR 更新 / Vercel Preview redeploy / live QA。
+
+---
+
+## v0.2.2 Desktop Preview Engine QA
+
+測試日期：2026-05-10
+範圍限制：本輪只修「全螢幕桌機預覽」，未修改模板、skin、exportStaticSite、未新增模板或 AI 圖。
+
+### Build
+- `npm run typecheck`：PASS
+- `npm run build`：PASS
+
+### Desktop Preview QA
+- QA script：`scripts/qa-desktop-preview.ts`
+- Local QA URL：`http://127.0.0.1:3202`（WSL-native runtime mirror）
+- Result JSON：`qa-artifacts/v0.2.2/desktop-preview-result.json`
+- `fullscreenButtonVisible`：true
+- `fullscreenButtonClickable`：true
+- `previewRouteWorks`：true
+- `backToBuilderWorks`：true
+- `viewport1440Works`：true
+- `viewport1280Works`：true
+- `viewport1024Works`：true
+- `viewport390Works`：true
+- `fitZoomWorks`：true
+- `zoom100Works`：true
+- `zoom75Works`：true
+- `zoom50Works`：true
+
+### Screenshots
+- `qa-artifacts/v0.2.2/desktop-preview/builder-preview-panel-with-fullscreen-button.png`
+- `qa-artifacts/v0.2.2/desktop-preview/preview-route-1440.png`
+- `qa-artifacts/v0.2.2/desktop-preview/preview-route-1280.png`
+- `qa-artifacts/v0.2.2/desktop-preview/preview-route-1024.png`
+- `qa-artifacts/v0.2.2/desktop-preview/preview-route-390.png`
+- `qa-artifacts/v0.2.2/desktop-preview/preview-back-button.png`
+- `qa-artifacts/v0.2.2/desktop-preview/builder-after-back.png`
