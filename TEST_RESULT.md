@@ -847,4 +847,40 @@ QA artifacts：`qa-artifacts/v0.2.5/`（local evidence；若 qa-artifacts 受 .g
 - 30/30 templates × 3 viewport 全過。
 - Preview 與 Export 手機版同步通過。
 - 可送 Jason 驗收。
+---
+
+## v0.2.7 Homepage Landing Page Productization QA
+
+測試日期：2026-05-10T23:41:05+08:00
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
+Preview：https://store-site-builder-kpn3ccskq-sportkk101-5719s-projects.vercel.app
+Commit：`1d2c9f0d98981f9fb58e7aadc591a526a370fba6`
+QA artifacts：`qa-artifacts/v0.2.7/`
+
+| # | 驗收項目 | 實際結果 | 狀態 |
+|---|---|---|---|
+| 1 | 首頁 Hero 重做 | `AI TEMPLATE WEBSITE BUILDER`、`30 分鐘建立小店家官方網站`、雙 CTA、4 個能力數據與 layered mockup 完成。 | ✅ PASS |
+| 2 | 30 套 AI 模板展示 | `30 套 AI 視覺模板，直接套用成品牌官網` 區塊完成；使用 public/template-gallery-ai 真實 artwork，展示 12 張，涵蓋飲料店/餐飲店/咖啡廳。 | ✅ PASS |
+| 3 | 三步驟流程 | 三步驟完成小店官網，以大數字與流程線呈現；手機直向堆疊。 | ✅ PASS |
+| 4 | 三大產業模板展示 | 飲料店 / 餐飲店 / 咖啡廳三區塊完成；每區含大圖、文案、3 個模板小圖與 Builder CTA。 | ✅ PASS |
+| 5 | Builder / Preview 展示 | 顯示 Builder 表單示意與 Preview 示意，文案包含即時同步、桌機/手機預覽、全螢幕預覽、localStorage 自動儲存。 | ✅ PASS |
+| 6 | 功能特色 | 8 項 icon grid 完成：欄位式建站、30 套 AI 模板、菜單/商品、圖片媒體、SEO、ZIP、手機 RWD、全螢幕預覽。 | ✅ PASS |
+| 7 | ZIP 匯出說明 | `generated-site.zip` 結構 mockup 完成；含無 localhost、無 /_next、file:// 可開啟、手機 RWD 通過。 | ✅ PASS |
+| 8 | 適合對象 / Final CTA / Footer | 適合對象 chips、Final CTA、Footer links 與 v0.2.7 顯示完成。 | ✅ PASS |
+| 9 | CTA：開始建立網站 | Playwright 點擊 `開始建立網站`，URL 成功進入 `/builder`。 | ✅ PASS |
+| 10 | CTA：瀏覽 30 套模板 | Playwright 點擊後成功 scroll 到模板展示區。 | ✅ PASS |
+| 11 | Mobile 390 無水平 overflow | `documentScrollWidth=390`、`bodyScrollWidth=390`、offenders=[]。 | ✅ PASS |
+| 12 | Mobile 375 無水平 overflow | `documentScrollWidth=375`、`bodyScrollWidth=375`、offenders=[]。 | ✅ PASS |
+| 13 | Mobile 320 無水平 overflow | `documentScrollWidth=320`、`bodyScrollWidth=320`、offenders=[]。 | ✅ PASS |
+| 14 | 本機 QA script | `scripts/qa-homepage-landing.ts http://127.0.0.1:3207`：ok=true，9 screenshots。 | ✅ PASS |
+| 15 | Live Preview QA script | `scripts/qa-homepage-landing.ts https://store-site-builder-kpn3ccskq-sportkk101-5719s-projects.vercel.app`：ok=true，9 screenshots。 | ✅ PASS |
+| 16 | `npm run typecheck` | `tsc --noEmit` exit 0。 | ✅ PASS |
+| 17 | `npm run build` | Next.js 16.2.4 Turbopack compiled successfully；`/` static prerendered。 | ✅ PASS |
+
+Artifacts：
+- JSON：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder/qa-artifacts/v0.2.7/homepage-landing-result.json`
+- 截圖資料夾：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder/qa-artifacts/v0.2.7/homepage/`
+- 截圖數量：9（desktop full/hero/template/industries/features/export + mobile 390/375/320）
+
+結論：v0.2.7 首頁產品化與 landing page RWD 驗收 PASS，可送 Jason 首頁視覺驗收。
 
