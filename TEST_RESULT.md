@@ -795,3 +795,55 @@ QA artifacts：`qa-artifacts/v0.2.5/`（local evidence；若 qa-artifacts 受 .g
 - 結果 JSON：`qa-artifacts/v0.2.5/desktop-layout-width-result.json`，`ok=true`、`testedTemplates=6`。
 
 結論：v0.2.5 桌機版內容寬度與 Hero / Section / Product grid 已從窄版 card 修正為桌機官網寬版；手機版與 fullscreen entry 未修改。
+
+---
+
+## v0.2.6 Mobile Fullscreen Hero Text Overflow Fix（2026-05-10）
+
+### 一、版本資訊
+- 版本：v0.2.6
+- 分支：`acceptance/store-site-builder-mvp`
+- 修復範圍：手機全螢幕預覽 Hero 文字 overflow；Preview 與 Export 手機版同步。
+
+### 二、Mobile Hero Overflow 修復
+- 新增 `lib/mobileHeroLayout.ts`：建立 390 / 375 / 320 viewport 的 Mobile Hero Layout Contract。
+- 新增 `lib/formatHeroTitleLines.ts`：將中文 Hero title 穩定分行，例如「每天一杯，日常更美好」→「每天一杯，」/「日常更美好」。
+- `ThemedHero.tsx`：新增 `data-testid="hero-title"`、`data-testid="hero-content-panel"`、`data-testid="hero-cta-row"`、`data-testid="hero-subtitle"`；手機 h1 使用 `.hero-title-line` 分行。
+- `templateSkinEngine.ts`：手機 Hero 改為 stacked/background artwork，不與文字左右並排；移除 mobile 固定 min-width/nowrap/keep-all 風險；content panel 加入 max-width、box-sizing、overflow guard；320px 針對 phone frame 內寬收斂。
+- `exportStaticSite.ts`：同步 Preview 的 Hero title line formatter、content panel testid、CTA row testid 與 mobile CSS guard。
+
+### 三、30 套模板全量結果
+- QA script：`scripts/qa-mobile-hero-overflow-all.ts`
+- 指令：`npx tsx scripts/qa-mobile-hero-overflow-all.ts http://127.0.0.1:3206`
+- totalTemplates：30
+- testedViewports：390 / 375 / 320
+- passed：30
+- failed：0
+- checks：bodyNoOverflow、canvasNoOverflow、heroTitleInsideCanvas、panelInsideCanvas、ctaInsideCanvas、lineCountOk、notSingleCharacterColumn、titleNotClipped、subtitleInsideCanvas、subtitleNotClipped、artworkVisible、exportSynced 全量 PASS。
+
+### 四、重點模板結果
+| 模板 | 390 | 375 | 320 | h1 在畫面內 | CTA 在畫面內 | 無水平 overflow |
+|---|---:|---:|---:|---|---|---|
+| 抹茶日和 | PASS | PASS | PASS | 是 | 是 | 是 |
+| 珍珠霓光 | PASS | PASS | PASS | 是 | 是 | 是 |
+| 白桃氣泡 | PASS | PASS | PASS | 是 | 是 | 是 |
+| 茶霧山嵐 | PASS | PASS | PASS | 是 | 是 | 是 |
+| 日常一隅 | PASS | PASS | PASS | 是 | 是 | 是 |
+| 城市黑白 | PASS | PASS | PASS | 是 | 是 | 是 |
+| 金色晚宴 | PASS | PASS | PASS | 是 | 是 | 是 |
+| 飲研實驗室 | PASS | PASS | PASS | 是 | 是 | 是 |
+
+### 五、QA artifacts
+- Result JSON：`qa-artifacts/v0.2.6/mobile-hero-overflow-all-result.json`
+- 截圖資料夾：`qa-artifacts/v0.2.6/mobile-hero-overflow/`
+- 截圖數量：90（30 templates × 3 viewports）
+
+### 六、Build
+- `npm run typecheck`：PASS
+- `npm run build`：PASS（Next.js 16.2.4，Compiled successfully）
+
+### 七、結論
+- 30/30 templates × 3 viewport 全過。
+- Preview 與 Export 手機版同步通過。
+- 可送 Jason 驗收。
+
