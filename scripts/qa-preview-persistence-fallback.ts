@@ -102,7 +102,7 @@ async function openBuilderWithTemplate(page: Page, templateId: string) {
   await page.goto(`${baseUrl}/builder`, { waitUntil: 'domcontentloaded', timeout: 45000 });
   await page.waitForSelector('[data-testid="site-renderer"]', { state: 'attached', timeout: 25000 });
   await page.waitForFunction((id) => document.querySelector('[data-testid="site-renderer"]')?.getAttribute('data-template-id') === id, expectedTemplateId, { timeout: 25000 });
-  const previewTab = page.getByRole('button', { name: '預覽' }).first();
+  const previewTab = page.getByRole('button', { name: '預覽', exact: true }).first();
   if (await previewTab.isVisible().catch(() => false)) await previewTab.click().catch(() => {});
   const builderMeta = await page.evaluate<BuilderMeta>(`(() => {
     const renderer = document.querySelector('[data-testid="site-renderer"]');

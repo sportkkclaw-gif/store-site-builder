@@ -26,7 +26,7 @@ async function main() {
 
   try {
     await page.goto(`${baseUrl}/builder`, { waitUntil: 'domcontentloaded', timeout: 45000 });
-    const previewTab = page.getByRole('button', { name: '預覽' }).first();
+    const previewTab = page.getByRole('button', { name: '預覽', exact: true }).first();
     if (await previewTab.isVisible({ timeout: 20000 }).catch(() => false)) await previewTab.click();
     await page.waitForSelector('[data-testid="builder-preview-column"]', { state: 'attached', timeout: 25000 });
 
