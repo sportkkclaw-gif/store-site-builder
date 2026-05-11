@@ -28,7 +28,7 @@ async function main() {
     await page.goto(`${baseUrl}/builder`, { waitUntil: 'domcontentloaded', timeout: 45000 });
     const previewTab = page.getByRole('button', { name: '預覽' }).first();
     if (await previewTab.isVisible({ timeout: 20000 }).catch(() => false)) await previewTab.click();
-    await page.waitForSelector('[data-testid="builder-preview-column"]', { timeout: 25000 });
+    await page.waitForSelector('[data-testid="builder-preview-column"]', { state: 'attached', timeout: 25000 });
 
     const textButtons = page.locator('button:visible').filter({ hasText: /^全螢幕預覽$/ });
     const testIdButtons = page.locator('[data-testid="fullscreen-preview-button"]:visible');
