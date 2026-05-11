@@ -1016,7 +1016,7 @@ QA result：`qa-artifacts/v0.2.7/mobile-artwork-containment-all-result.json`
 ## v0.2.10 Fullscreen Button Dedup + Mobile Artwork Fill Fix QA
 
 - Scope: remove duplicate/broken fullscreen preview CTA in mobile Builder and make mobile /preview artwork stage fill the safe canvas.
-- Local QA base URL: http://127.0.0.1:3220
+- Live QA base URL: https://store-site-builder-git-accepta-260340-sportkk101-5719s-projects.vercel.app
 - Unified button: `components/preview/FullscreenPreviewButton.tsx` added and used by Builder preview.
 - Removed legacy black fullscreen CTA from `PreviewFrame`; mobile Builder renders only the green primary CTA.
 - `MobileArtworkSafeFrame` supports `fill-safe`, `fill-safe-top`, `fill-safe-center`, and `contain-safe`; mobile hero uses `fill-safe-top`.
