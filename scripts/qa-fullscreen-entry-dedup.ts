@@ -25,10 +25,18 @@ async function main() {
   };
 
   try {
-    await page.goto(`${baseUrl}/builder`, { waitUntil: 'domcontentloaded', timeout: 45000 });
-    const previewTab = page.getByRole('button', { name: '預覽', exact: true }).first();
-    await previewTab.waitFor({ state: 'visible', timeout: 20000 });
-    await previewTab.click();
+    await page.goto(`${baseUrl}/builder`, { waitUntil: 'networkidle', timeout: 45000 });
+    await page.waitForFunction(`(() => Array.from(document.querySelectorAll('button')).some((button) => {
+      const rect = button.getBoundingClientRect();
+      return button.textContent?.trim() === '預覽' && rect.width > 0 && rect.height > 0;
+    }))()`, null, { timeout: 20000 });
+    await page.evaluate(`(() => {
+      const button = Array.from(document.querySelectorAll('button')).find((item) => {
+        const rect = item.getBoundingClientRect();
+        return item.textContent?.trim() === '預覽' && rect.width > 0 && rect.height > 0;
+      });
+      button?.click();
+    })()`);
     await page.waitForSelector('[data-testid="builder-preview-column"]', { state: 'attached', timeout: 25000 });
 
     await page.waitForFunction(`(() => {
