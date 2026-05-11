@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { SiteData } from '@/types/site';
 import { DesktopPreview } from './DesktopPreview';
 import { MobilePreview } from './MobilePreview';
@@ -15,6 +15,11 @@ export function PreviewFrame({ data, onBackToEdit }: { data: SiteData; onBackToE
   const [mode, setMode] = useState<'desktop' | 'mobile'>('desktop');
   const selectedTemplateName = getCurrentTemplate(data).name;
   const visual = getTemplateVisualStyle(data);
+
+  useEffect(() => {
+    if (window.matchMedia('(max-width: 767px)').matches) setMode('mobile');
+  }, []);
+
   const openFullscreenPreview = (targetMode: 'desktop' | 'mobile' = mode) => {
     const safeData = migrateSiteData(data);
     const viewport = targetMode === 'mobile' ? 390 : 1440;
@@ -44,7 +49,7 @@ export function PreviewFrame({ data, onBackToEdit }: { data: SiteData; onBackToE
       </div>
       <Tabs value={mode} onChange={setMode} items={[{ value: 'desktop', label: '桌機' }, { value: 'mobile', label: '手機' }]} />
       <div className="mt-3 rounded-[24px] border border-teal-200 bg-white/90 p-3 shadow-sm" data-testid="preview-panel-scale-note">
-        <p className="text-xs font-black text-slate-900">桌機預覽｜縮放顯示</p>
+        <p className="text-xs font-black text-slate-900">{mode === 'mobile' ? '手機預覽' : '桌機預覽'}｜縮放顯示</p>
         <p className="mt-1 text-xs font-bold text-slate-500">虛擬畫布：{mode === 'mobile' ? '390px' : '1440px'}</p>
         <p className="text-xs font-bold text-slate-500">縮放：Fit</p>
         <button type="button" data-testid="fullscreen-preview-button" onClick={() => openFullscreenPreview(mode)} className="fullscreen-preview-button mt-3 w-full rounded-full bg-slate-950 px-4 text-sm font-black text-white shadow-lg shadow-slate-900/20 hover:bg-teal-700">全螢幕預覽</button>

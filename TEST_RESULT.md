@@ -884,3 +884,36 @@ Artifacts：
 
 結論：v0.2.7 首頁產品化與 landing page RWD 驗收 PASS，可送 Jason 首頁視覺驗收。
 
+---
+
+## v0.2.8 Mobile Preview Frame Fix QA
+
+測試日期：2026-05-11
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
+修復目標：Jason 回報「預覽跟全螢幕預覽手機的版面都會破圖」。
+
+### 一、修復範圍
+- `components/preview/PreviewCanvas.tsx`：手機 frame 改為固定 390/375/320 對應高度，內容在 `preview-phone-viewport` 內滾動，不再撐長手機外框。
+- `components/preview/MobilePreview.tsx`：Builder 手機預覽改用同一個 phone frame / Fit scale。
+- `components/preview/PreviewFrame.tsx`：手機寬度預設切 mobile mode；預覽說明依 mode 顯示「手機預覽 / 桌機預覽」。
+- `app/globals.css`：新增 phone viewport overflow guard、fullscreen meta ellipsis。
+- `pages/__version.tsx`：版本更新為 `v0.2.8`。
+
+### 二、Build
+- `/tmp/store-site-builder-mobilefix` mirror：`npm run typecheck` PASS。
+- `/tmp/store-site-builder-mobilefix` mirror：`npm run build` PASS（Next.js 16.2.4，Compiled successfully）。
+
+### 三、本機 QA
+- Script：`scripts/qa-mobile-preview-frame.ts http://127.0.0.1:3216`
+- Result JSON：`qa-artifacts/v0.2.8/mobile-preview-frame-result.json`
+- 截圖資料夾：`qa-artifacts/v0.2.8/mobile-preview-frame/`
+
+| Viewport | Builder 手機預覽 | 全螢幕手機預覽 | 結果 |
+|---:|---|---|---|
+| 390 | 無水平 overflow；手機 frame 固定高度；Hero 在 canvas 內 | 無水平 overflow；手機 frame 不再被內容撐長 | PASS |
+| 375 | 無水平 overflow；手機 frame 固定高度；Hero 在 canvas 內 | 無水平 overflow；手機 frame 不再被內容撐長 | PASS |
+| 320 | 無水平 overflow；手機 frame 固定高度；Hero 在 canvas 內 | 無水平 overflow；手機 frame 不再被內容撐長 | PASS |
+
+### 四、結論
+v0.2.8 本機 QA 已確認 Builder 手機預覽與全螢幕手機預覽 frame 破版修復 PASS。待 commit/push、Vercel Preview redeploy 與 live QA 完成後送 Jason 複驗。
+

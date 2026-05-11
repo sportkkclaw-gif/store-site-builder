@@ -254,10 +254,28 @@ button {
 }
 
 .preview-canvas--frame-phone {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   border: 10px solid #020617;
   border-radius: 42px;
   padding: 8px;
   box-shadow: 0 28px 90px rgba(0, 0, 0, .42);
+}
+
+.preview-phone-viewport {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 0 0 28px 28px;
+  background: #ffffff;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+.preview-phone-viewport .store-template {
+  min-height: 100%;
 }
 
 .fullscreen-template-name small {
@@ -361,6 +379,7 @@ button {
 
 .fullscreen-preview-meta {
   width: fit-content;
+  max-width: calc(100vw - 24px);
   margin: 0 auto 18px;
   border-radius: 999px;
   background: rgba(255, 255, 255, .94);
@@ -368,6 +387,9 @@ button {
   color: #334155;
   font-size: 13px;
   font-weight: 900;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .fullscreen-preview-scroll {

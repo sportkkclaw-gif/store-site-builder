@@ -31,6 +31,13 @@ function fixedScale(zoom: PreviewCanvasZoom) {
   return 1;
 }
 
+function phoneViewportHeight(width: PreviewCanvasViewport) {
+  if (width === 320) return 720;
+  if (width === 375) return 812;
+  if (width === 390) return 844;
+  return 844;
+}
+
 export function PreviewCanvas({ siteData, mode, viewportWidth, zoom, frame = 'none', fitContainerRef, className = '', scrollClassName = '', minCanvasHeight }: PreviewCanvasProps) {
   const ownRef = useRef<HTMLDivElement>(null);
   const [fitScale, setFitScale] = useState(1);
@@ -39,8 +46,9 @@ export function PreviewCanvas({ siteData, mode, viewportWidth, zoom, frame = 'no
   const skin = getTemplateSkin(siteData);
   const artwork = getTemplateArtwork(siteData);
   const scale = zoom === 'fit' ? fitScale : fixedScale(zoom);
-  const height = minCanvasHeight || (mode === 'desktop' ? 1200 : 900);
-  const scaledHeight = Math.ceil(height * scale) + (frame === 'phone' ? 120 : 80);
+  const isPhoneFrame = frame === 'phone';
+  const height = isPhoneFrame ? phoneViewportHeight(viewportWidth) : minCanvasHeight || (mode === 'desktop' ? 1200 : 900);
+  const scaledHeight = Math.ceil(height * scale) + (isPhoneFrame ? 28 : 80);
 
   useEffect(() => {
     const updateFit = () => {
@@ -72,11 +80,11 @@ export function PreviewCanvas({ siteData, mode, viewportWidth, zoom, frame = 'no
           data-mode={mode}
           data-viewport-width={viewportWidth}
           data-zoom={zoom}
-          style={{ width: viewportWidth }}
+          style={{ width: viewportWidth, height, minHeight: height }}
         >
           {frame === 'browser' && <div className="preview-canvas-browser-bar" aria-hidden="true"><span /><span /><span /><b /></div>}
-          {frame === 'phone' && <div className="fullscreen-mobile-notch" aria-hidden="true" />}
-          <StoreWebsiteRenderer data={siteData} />
+          {isPhoneFrame && <div className="fullscreen-mobile-notch" aria-hidden="true" />}
+          {isPhoneFrame ? <div className="preview-phone-viewport" data-testid="preview-phone-viewport"><StoreWebsiteRenderer data={siteData} /></div> : <StoreWebsiteRenderer data={siteData} />}
         </div>
       </div>
     </div>
