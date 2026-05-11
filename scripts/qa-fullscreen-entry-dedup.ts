@@ -31,13 +31,25 @@ async function main() {
     await previewTab.click();
     await page.waitForSelector('[data-testid="builder-preview-column"]', { state: 'attached', timeout: 25000 });
 
-    const textButtons = page.locator('button:visible').filter({ hasText: /^全螢幕預覽$/ });
-    const testIdButtons = page.locator('[data-testid="fullscreen-preview-button"]:visible');
-    const visibleTextCount = await textButtons.count();
-    const visibleTestIdCount = await testIdButtons.count();
-    result.visibleFullscreenButtonCount = Math.max(visibleTextCount, visibleTestIdCount);
+    await page.waitForFunction(`(() => {
+      const button = document.querySelector('[data-testid="fullscreen-preview-button"]');
+      if (!button) return false;
+      const rect = button.getBoundingClientRect();
+      return rect.width > 0 && rect.height >= 44;
+    })()`, null, { timeout: 25000 });
+    const visibleCounts = await page.evaluate<{ textCount: number; testIdCount: number }>(`(() => {
+      const isVisible = (el) => {
+        const rect = el.getBoundingClientRect();
+        const style = getComputedStyle(el);
+        return rect.width > 0 && rect.height > 0 && style.display !== 'none' && style.visibility !== 'hidden';
+      };
+      const textCount = Array.from(document.querySelectorAll('button')).filter((el) => isVisible(el) && el.textContent?.trim() === '全螢幕預覽').length;
+      const testIdCount = Array.from(document.querySelectorAll('[data-testid="fullscreen-preview-button"]')).filter(isVisible).length;
+      return { textCount, testIdCount };
+    })()`);
+    result.visibleFullscreenButtonCount = Math.max(visibleCounts.textCount, visibleCounts.testIdCount);
 
-    const button = testIdButtons.first();
+    const button = page.locator('[data-testid="fullscreen-preview-button"]').first();
     const box = await button.boundingBox();
     const styles = await button.evaluate((el) => {
       const cs = getComputedStyle(el as HTMLElement);
@@ -60,7 +72,11 @@ async function main() {
 
     result.noFullscreenButtonInsidePreview =
       (await page.locator('button:visible').filter({ hasText: /^全螢幕預覽$/ }).count()) === 0 &&
-      (await page.locator('[data-testid="fullscreen-preview-button"]:visible').count()) === 0;
+      (await page.locator('[data-testid="fullscreen-preview-button"]').evaluateAll((elements) => elements.filter((el) => {
+        const rect = (el as HTMLElement).getBoundingClientRect();
+        const style = getComputedStyle(el as HTMLElement);
+        return rect.width > 0 && rect.height > 0 && style.display !== 'none' && style.visibility !== 'hidden';
+      }).length)) === 0;
     await page.screenshot({ path: shot('preview-no-fullscreen-button.png'), fullPage: false });
 
     result.backToBuilderVisible = await page.locator('[data-testid="preview-back-to-builder"]:visible').isVisible();
