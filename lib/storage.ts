@@ -1,4 +1,6 @@
-import { createDefaultSiteData } from '@/lib/defaultSiteData';import type { SiteData } from '@/types/site';
+import { createDefaultSiteData } from '@/lib/defaultSiteData';
+import type { SiteData } from '@/types/site';
+import { normalizeCurrentTemplateFields } from './getCurrentTemplate';
 export const STORAGE_KEY='store-site-builder-data';
 export const PREVIEW_SESSION_KEY='store-site-builder-preview-data';
 
@@ -28,7 +30,7 @@ export function migrateSiteData(input: Partial<SiteData>): SiteData {
   };
   if (!data.visual.selectedTemplateId) data.visual.selectedTemplateId = data.galleryTemplateId || defaults.visual!.selectedTemplateId;
   if (!data.galleryTemplateId && data.visual.selectedTemplateId) data.galleryTemplateId = data.visual.selectedTemplateId;
-  return data;
+  return normalizeCurrentTemplateFields(data);
 }
 
 export function loadSiteData():SiteData{if(typeof window==='undefined')return createDefaultSiteData();try{const raw=localStorage.getItem(STORAGE_KEY);return raw?migrateSiteData(JSON.parse(raw)):createDefaultSiteData()}catch{return createDefaultSiteData()}}

@@ -1,12 +1,12 @@
 import type { CSSProperties } from 'react';
 
 export type MobileArtworkSafeFrameMode =
-  | 'contain-poster'
+  | 'background-soft'
+  | 'hero-crop-safe'
+  | 'section-accent'
+  | 'artwork-backdrop'
   | 'safe-cover'
-  | 'top-contain'
-  | 'center-contain'
-  | 'cropped-window'
-  | 'background-soft';
+  | 'cropped-window';
 
 export type MobileArtworkSafeFrameProps = {
   src: string;
@@ -31,14 +31,15 @@ export function MobileArtworkSafeFrame({
       data-testid="mobile-artwork-safe-frame"
       data-mobile-artwork-mode={mode}
       data-skin-family={skinFamily}
-      style={{ '--mobile-artwork-radius': radius, '--mobile-artwork-overlay': overlay || 'transparent' } as CSSProperties}
+      style={{ '--mobile-artwork-radius': radius, '--mobile-artwork-overlay': overlay || 'transparent', '--mobile-artwork-src': `url(${src})` } as CSSProperties}
+      aria-label={alt || undefined}
     >
       <img
         className="mobile-artwork-image"
         data-testid="mobile-artwork-image"
         src={src}
-        alt={alt}
-        aria-hidden={alt ? undefined : 'true'}
+        alt=""
+        aria-hidden="true"
       />
       <div className="mobile-artwork-overlay" aria-hidden="true" />
     </div>

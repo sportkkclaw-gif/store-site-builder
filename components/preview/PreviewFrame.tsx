@@ -8,7 +8,9 @@ import { MobilePreview } from './MobilePreview';
 import { Tabs } from '@/components/ui';
 import { getCurrentTemplate } from '@/lib/currentTemplate';
 import { getTemplateVisualStyle } from '@/lib/templateVisualStyle';
-import { saveSiteData, migrateSiteData, PREVIEW_SESSION_KEY } from '@/lib/storage';
+import { saveSiteData, migrateSiteData } from '@/lib/storage';
+import { createPreviewSession, savePreviewSession } from '@/lib/previewSession';
+import { getCurrentTemplateId } from '@/lib/getCurrentTemplate';
 
 export function PreviewFrame({ data, onBackToEdit }: { data: SiteData; onBackToEdit?: () => void }) {
   const router = useRouter();
@@ -23,12 +25,15 @@ export function PreviewFrame({ data, onBackToEdit }: { data: SiteData; onBackToE
   const openFullscreenPreview = (targetMode: 'desktop' | 'mobile' = mode) => {
     const safeData = migrateSiteData(data);
     const viewport = targetMode === 'mobile' ? 390 : 1440;
-    const previewUrl = `/preview?mode=${targetMode}&viewport=${viewport}&from=builder&t=${Date.now()}`;
+    const templateId = getCurrentTemplateId(safeData);
+    const session = createPreviewSession(safeData);
+    const previewUrl = `/preview?sessionId=${encodeURIComponent(session.sessionId)}&templateId=${encodeURIComponent(templateId)}&mode=${targetMode}&viewport=${viewport}&from=builder`;
     try {
       saveSiteData(safeData);
-      window.sessionStorage.setItem(PREVIEW_SESSION_KEY, JSON.stringify(safeData));
+      savePreviewSession(session);
       router.push(previewUrl);
     } catch {
+      try { saveSiteData(safeData); savePreviewSession(session); } catch {}
       window.location.assign(previewUrl);
     }
   };

@@ -16,7 +16,7 @@ export function TemplateGalleryItem({
 }) {
   const visibleTags = template.styleTags.slice(0, 3);
   return (
-    <article className={`group relative overflow-hidden rounded-[30px] border bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-slate-900/15 ${selected ? 'border-teal-400 ring-4 ring-teal-100' : 'border-slate-200'}`}>
+    <article data-template-id={template.id} data-template-name={template.name} className={`group relative overflow-hidden rounded-[30px] border bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-slate-900/15 ${selected ? 'border-teal-400 ring-4 ring-teal-100' : 'border-slate-200'}`}>
       <div className="relative min-h-[78%] overflow-hidden">
         <button type="button" onClick={() => onPreview(template)} className="relative block w-full overflow-hidden text-left" aria-label={`快速預覽 ${template.name}`}>
           <img src={template.artworkSrc} alt={`${template.name} 模板主視覺`} className={`${compact ? 'h-[22rem]' : 'h-[30rem] md:h-[34rem]'} w-full bg-slate-100 object-cover transition duration-500 group-hover:scale-105`} />

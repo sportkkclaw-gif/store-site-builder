@@ -24,7 +24,7 @@ function parseViewport(mode: PreviewCanvasMode, value: string | null): PreviewCa
   return (allowed as readonly number[]).includes(parsed) ? parsed as PreviewCanvasViewport : mode === 'mobile' ? 390 : 1440;
 }
 
-export function FullscreenPreviewShell({ data }: { data: SiteData }) {
+export function FullscreenPreviewShell({ data, sessionId = '', templateId: boundTemplateId, skinFamily: boundSkinFamily }: { data: SiteData; sessionId?: string; templateId?: string; skinFamily?: string }) {
   const searchParams = useSearchParams();
   const initialMode = parseMode(searchParams?.get('mode') || null);
   const [mode, setMode] = useState<PreviewCanvasMode>(initialMode);
@@ -35,6 +35,8 @@ export function FullscreenPreviewShell({ data }: { data: SiteData }) {
   const template = getCurrentTemplate(data);
   const skin = getTemplateSkin(data);
   const artwork = getTemplateArtwork(data);
+  const displayTemplateId = boundTemplateId || template.id;
+  const displaySkinFamily = boundSkinFamily || skin.family;
 
   const setModeAndViewport = (nextMode: PreviewCanvasMode) => {
     setMode(nextMode);
@@ -50,7 +52,7 @@ export function FullscreenPreviewShell({ data }: { data: SiteData }) {
           <button type="button" data-testid="preview-back-to-builder" onClick={goBuilder} className="fullscreen-primary-button">← 返回 Builder</button>
           <div className="fullscreen-template-name">
             目前模板：<b data-testid="fullscreen-preview-template-name">{template.name}</b>
-            <small>templateId：<span data-testid="fullscreen-preview-template-id">{template.id}</span>｜skinFamily：<span data-testid="fullscreen-preview-skin-family">{skin.family}</span></small>
+            <small>templateId：<span data-testid="fullscreen-preview-template-id">{displayTemplateId}</span>｜skinFamily：<span data-testid="fullscreen-preview-skin-family">{displaySkinFamily}</span>｜sessionId：<span data-testid="fullscreen-preview-session-id">{sessionId || 'localStorage'}</span></small>
           </div>
         </div>
         <div className="fullscreen-toolbar-controls" aria-label="全螢幕預覽控制列">
@@ -66,7 +68,7 @@ export function FullscreenPreviewShell({ data }: { data: SiteData }) {
           <button type="button" onClick={goBuilder} className="fullscreen-secondary-button">關閉</button>
         </div>
       </header>
-      <section ref={stageRef} className="fullscreen-preview-stage" data-preview-mode={mode} data-viewport={viewport} data-zoom={zoom} data-template-id={template.id} data-skin-family={skin.family} data-artwork-src={artwork.gallerySrc}>
+      <section ref={stageRef} className="fullscreen-preview-stage" data-preview-mode={mode} data-viewport={viewport} data-zoom={zoom} data-template-id={displayTemplateId} data-skin-family={displaySkinFamily} data-session-id={sessionId} data-artwork-src={artwork.gallerySrc}>
         <div className="fullscreen-preview-meta">全螢幕{mode === 'desktop' ? '桌機' : '手機'}預覽｜虛擬畫布：{viewport}px｜縮放：{zoom === 'fit' ? 'Fit' : `${zoom}%`}｜artwork：{artwork.gallerySrc}</div>
         <PreviewCanvas siteData={data} mode={mode} viewportWidth={viewport} zoom={zoom} frame={mode === 'desktop' ? 'none' : 'phone'} fitContainerRef={stageRef} className="fullscreen-preview-canvas" scrollClassName="fullscreen-preview-scroll" />
       </section>

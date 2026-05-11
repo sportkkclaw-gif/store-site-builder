@@ -314,7 +314,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div>
             <div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-full bg-slate-950 font-black text-white">S</span><b>StoreSite Builder</b></div>
-            <p className="mt-2 text-sm text-slate-500">小店家 30 分鐘官網產生器 · v0.2.9</p>
+            <p className="mt-2 text-sm text-slate-500">小店家 30 分鐘官網產生器 · v0.2.10</p>
           </div>
           <div className="flex flex-wrap gap-4 text-sm font-bold text-slate-600">
             <Link href="/builder">開始建立網站</Link>

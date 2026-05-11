@@ -7,9 +7,11 @@ import { templateCatalog } from '../lib/templateCatalog';
 const STORAGE_KEY = 'store-site-builder-data';
 const PREVIEW_SESSION_KEY = 'store-site-builder-preview-data';
 const baseUrl = (process.argv[2] || 'http://127.0.0.1:3217').replace(/\/$/, '');
-const artifactRoot = path.join(process.cwd(), 'qa-artifacts', 'v0.2.7');
-const screenshotDir = path.join(artifactRoot, 'mobile-artwork-containment');
-const resultPath = path.join(artifactRoot, 'mobile-artwork-containment-all-result.json');
+const artifactRoot = path.join(process.cwd(), 'qa-artifacts', 'v0.2.9');
+const screenshotDir = path.join(artifactRoot, 'mobile-artwork-containment-live');
+const resultPath = path.join(artifactRoot, 'mobile-artwork-containment-live-result.json');
+const summaryPath = path.join(artifactRoot, 'mobile-artwork-containment-live-summary.md');
+const zipPath = path.join(artifactRoot, 'mobile-artwork-containment-live-artifacts.zip');
 const viewports = [390, 375, 320] as const;
 
 type ViewportWidth = typeof viewports[number];
@@ -62,6 +64,7 @@ async function measureContainment(page: any, context: 'builder' | 'preview' | 'e
     const imgEl = q('[data-testid="mobile-artwork-image"]');
     const titleEl = q('[data-testid="hero-title"]');
     const panelEl = q('[data-testid="mobile-hero-content-panel"]') || q('[data-testid="hero-content-panel"]');
+    const subtitleEl = q('[data-testid="hero-subtitle"]');
     const ctaEl = q('[data-testid="hero-cta-row"]');
     const canvas = rect(canvasEl);
     const heroRect = rect(hero);
@@ -69,6 +72,7 @@ async function measureContainment(page: any, context: 'builder' | 'preview' | 'e
     const image = rect(imgEl);
     const title = rect(titleEl);
     const panel = rect(panelEl);
+    const subtitle = rect(subtitleEl);
     const cta = rect(ctaEl);
     const inside = (child, parent) => !!child && !!parent && child.left + eps >= parent.left && child.right <= parent.right + eps;
     const computed = imgEl ? getComputedStyle(imgEl) : null;
@@ -86,14 +90,20 @@ async function measureContainment(page: any, context: 'builder' | 'preview' | 'e
     const noNegativeHorizontalArtworkOffset = !!image && !!frame && image.left + eps >= frame.left && image.right <= frame.right + eps && marginLeft >= 0 && marginRight >= 0 && left >= 0;
     const heroTitleInsideCanvas = inside(title, canvas);
     const ctaInsideCanvas = inside(cta, canvas);
+    const subtitleInsideCanvas = inside(subtitle, canvas);
     const textPanelInsideCanvas = inside(panel, canvas);
-    const imageVisibleEnough = !!image && image.width >= 96 && image.height >= 120;
+    const titleNotClipped = !!titleEl && titleEl.scrollHeight <= titleEl.clientHeight + 4 && titleEl.scrollWidth <= titleEl.clientWidth + 4;
+    const titleText = titleEl?.innerText || '';
+    const titleLines = titleText.split(String.fromCharCode(10)).map((line) => line.trim()).filter(Boolean);
+    const notSingleCharacterColumn = titleLines.every((line) => Array.from(line).length > 1) && (title?.width || 0) >= 120;
+    const artworkVisible = !!image && image.width >= 96 && image.height >= 120;
+    const imageVisibleEnough = artworkVisible;
     const safeMode = ['contain-poster','top-contain','center-contain','background-soft','cropped-window','safe-cover'].includes(mode);
     return {
       context: '${context}',
       innerWidth: window.innerWidth,
       bodyScrollWidth: document.documentElement.scrollWidth,
-      canvas, hero: heroRect, artworkFrame: frame, artworkImage: image, title, panel, cta,
+      canvas, hero: heroRect, artworkFrame: frame, artworkImage: image, title, subtitle, panel, cta,
       mode,
       objectFit: computed?.objectFit || '',
       objectPosition: computed?.objectPosition || '',
@@ -106,10 +116,14 @@ async function measureContainment(page: any, context: 'builder' | 'preview' | 'e
       decorativeLayersInsideHero,
       heroTitleInsideCanvas,
       ctaInsideCanvas,
+      titleNotClipped,
+      subtitleInsideCanvas,
       textPanelInsideCanvas,
+      notSingleCharacterColumn,
+      artworkVisible,
       imageVisibleEnough,
       safeMode,
-      checksOk: bodyNoOverflow && canvasNoOverflow && artworkFrameInsideCanvas && artworkImageInsideFrame && noNegativeHorizontalArtworkOffset && decorativeLayersInsideHero && heroTitleInsideCanvas && ctaInsideCanvas && textPanelInsideCanvas && imageVisibleEnough && safeMode
+      checksOk: bodyNoOverflow && canvasNoOverflow && artworkFrameInsideCanvas && artworkImageInsideFrame && noNegativeHorizontalArtworkOffset && decorativeLayersInsideHero && heroTitleInsideCanvas && titleNotClipped && subtitleInsideCanvas && ctaInsideCanvas && textPanelInsideCanvas && notSingleCharacterColumn && artworkVisible && safeMode
     };
   })()`);
 }
@@ -159,13 +173,20 @@ async function measureExport(browser: any, data: any, viewport: ViewportWidth) {
 async function main() {
   await fs.mkdir(screenshotDir, { recursive: true });
   const templates = templateCatalog;
-  const result: any = { ok: false, totalTemplates: templates.length, viewports: [...viewports], totalCases: templates.length * viewports.length, passed: 0, failed: 0, failedTemplates: [], results: [], errors: [] };
+  const versionResponse = await fetch(`${baseUrl}/__version`);
+  const versionHtml = await versionResponse.text();
+  const versionText = versionHtml.replace(/<[^>]+>/g, ' ');
+  const version = versionText.match(/\"version\":\s*\"([^\"]+)\"/)?.[1] || '';
+  const commit = versionText.match(/\"commit\":\s*\"([^\"]+)\"/)?.[1] || '';
+  const branch = versionText.match(/\"branch\":\s*\"([^\"]+)\"/)?.[1] || '';
+  const deployment = versionText.match(/\"deployment\":\s*\"([^\"]+)\"/)?.[1] || '';
+  const result: any = { ok: false, source: 'vercel-preview', baseUrl: `${baseUrl}/`, version, commit, branch, deployment, totalTemplates: templates.length, viewports: [...viewports], totalCases: templates.length * viewports.length, passed: 0, failed: 0, failedTemplates: [], results: [], errors: [] };
   const browser = await chromium.launch({ headless: true });
   try {
     for (const [index, item] of templates.entries()) {
       for (const viewport of viewports) {
         const data = makeData(item);
-        const filename = `${String(index + 1).padStart(2, '0')}-${safeSlug(item.id)}-${viewport}.png`;
+        const filename = `${String(index + 1).padStart(2, '0')}-${safeSlug(item.id)}-${viewport}-live.png`;
         try {
           const screenshotPath = path.join(screenshotDir, filename);
           const preview = await measurePreview(browser, data, viewport, screenshotPath);
@@ -180,6 +201,10 @@ async function main() {
             decorativeLayersInsideHero: preview.decorativeLayersInsideHero && builder.decorativeLayersInsideHero && exported.decorativeLayersInsideHero,
             heroTitleInsideCanvas: preview.heroTitleInsideCanvas && builder.heroTitleInsideCanvas && exported.heroTitleInsideCanvas,
             ctaInsideCanvas: preview.ctaInsideCanvas && builder.ctaInsideCanvas && exported.ctaInsideCanvas,
+            titleNotClipped: preview.titleNotClipped && builder.titleNotClipped && exported.titleNotClipped,
+            subtitleInsideCanvas: preview.subtitleInsideCanvas && builder.subtitleInsideCanvas && exported.subtitleInsideCanvas,
+            notSingleCharacterColumn: preview.notSingleCharacterColumn && builder.notSingleCharacterColumn && exported.notSingleCharacterColumn,
+            artworkVisible: preview.artworkVisible && builder.artworkVisible && exported.artworkVisible,
             exportSynced: exported.checksOk,
           };
           const passed = Object.values(checks).every(Boolean);
@@ -197,12 +222,17 @@ async function main() {
         }
       }
     }
-    result.ok = result.totalTemplates === 30 && result.totalCases === 90 && result.passed === 90 && result.failed === 0;
+    const exportSyncedCount = result.results.filter((row: any) => row.checks?.exportSynced).length;
+    result.exportSynced = exportSyncedCount;
+    result.ok = result.source === 'vercel-preview' && result.version === 'v0.2.9' && result.commit === 'f70842bc7b036d5738c5933ba22a6b50b3a11de4' && result.branch === 'acceptance/store-site-builder-mvp' && result.totalTemplates === 30 && result.totalCases === 90 && result.passed === 90 && result.failed === 0 && exportSyncedCount === 90;
+    if (!result.ok && result.failed === 0) result.errors.push({ message: 'metadata/exportSynced gate failed', version: result.version, commit: result.commit, branch: result.branch, exportSynced: exportSyncedCount });
   } finally {
     await browser.close();
     await fs.writeFile(resultPath, JSON.stringify(result, null, 2));
+    const summary = `# v0.2.9 Mobile Artwork Containment Live QA\n\n- source: ${result.source}\n- baseUrl: ${result.baseUrl}\n- version: ${result.version}\n- commit: ${result.commit}\n- branch: ${result.branch}\n- totalTemplates: ${result.totalTemplates}\n- viewports: ${result.viewports.join(', ')}\n- totalCases: ${result.totalCases}\n- passed: ${result.passed}\n- failed: ${result.failed}\n- failedTemplates: ${JSON.stringify(result.failedTemplates)}\n- errors: ${JSON.stringify(result.errors)}\n- exportSynced: ${result.exportSynced}/90\n- screenshots: 90\n`;
+    await fs.writeFile(summaryPath, summary);
   }
-  console.log(JSON.stringify({ ok: result.ok, totalTemplates: result.totalTemplates, viewports: result.viewports, totalCases: result.totalCases, passed: result.passed, failed: result.failed, failedTemplates: result.failedTemplates.map((t: any) => `${t.templateName}-${t.viewport}`), resultPath, screenshotDir }, null, 2));
+  console.log(JSON.stringify({ ok: result.ok, source: result.source, baseUrl: result.baseUrl, version: result.version, commit: result.commit, branch: result.branch, totalTemplates: result.totalTemplates, viewports: result.viewports, totalCases: result.totalCases, passed: result.passed, failed: result.failed, failedTemplates: result.failedTemplates.map((t: any) => `${t.templateName}-${t.viewport}`), errors: result.errors, exportSynced: result.exportSynced, resultPath, summaryPath, screenshotDir, zipPath }, null, 2));
   if (!result.ok) process.exit(1);
 }
 

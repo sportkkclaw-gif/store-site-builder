@@ -949,4 +949,66 @@ QA artifacts：`qa-artifacts/v0.2.7/`（依 Jason 本輪指定路徑）
 QA result：`qa-artifacts/v0.2.7/mobile-artwork-containment-all-result.json`
 截圖資料夾：`qa-artifacts/v0.2.7/mobile-artwork-containment/`
 結論：Mobile Artwork Backplate Containment Fix 本機全量驗證通過，可進入 commit / Preview redeploy / live QA。
+---
+
+## v0.2.9 Live Preview Mobile Artwork Containment QA（正式 repo 補驗）
+
+測試時間：2026-05-11
+
+- source：vercel-preview
+- baseUrl：https://store-site-builder-gxirzlbj4-sportkk101-5719s-projects.vercel.app/
+- /__version：v0.2.9 / f70842bc7b036d5738c5933ba22a6b50b3a11de4 / acceptance/store-site-builder-mvp
+- formal repo：/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder
+- npm ci：PASS（正式 repo；Playwright 可用）
+- npx playwright --version：Version 1.59.1
+- npx playwright install chromium：PASS
+- npm run typecheck：PASS（正式 repo）
+- npm run build：PASS（正式 repo）
+- live QA script：scripts/qa-mobile-artwork-containment-all.ts
+- totalTemplates：30
+- viewports：390 / 375 / 320
+- totalCases：90
+- passed：90
+- failed：0
+- failedTemplates：[]
+- errors：[]
+- exportSynced：90/90
+- live screenshots：90（Vercel Preview URL 來源）
+- artifacts：qa-artifacts/v0.2.9/
+  - qa-artifacts/v0.2.9/mobile-artwork-containment-live-result.json
+  - qa-artifacts/v0.2.9/mobile-artwork-containment-live-summary.md
+  - qa-artifacts/v0.2.9/mobile-artwork-containment-live/
+  - qa-artifacts/v0.2.9/mobile-artwork-containment-live-artifacts.zip
+
+結論：v0.2.9 live Preview 全量 QA 補驗 PASS，可送 Jason 審核。
+---
+
+## v0.2.10 Preview Session Binding + Mobile Not Poster Rendering QA
+
+- Scope: Builder → /preview session snapshot binding and mobile preview renderer not-poster validation.
+- Local QA base URL: http://127.0.0.1:3220
+- Preview session manager: `lib/previewSession.ts` added; sessionStorage first, localStorage backup; no defaultSiteData silent fallback.
+- Current template helper: `lib/getCurrentTemplate.ts` added; synchronizes `galleryTemplateId`, `visual.selectedTemplateId`, and `visual.templatePreset.selectedTemplateId`.
+- Builder fullscreen preview: saves latest siteData, creates preview session, routes with `sessionId`, `templateId`, `mode`, `viewport`.
+- /preview: reads session first; mismatched/missing session shows explicit error; toolbar exposes current template, templateId, skinFamily, sessionId.
+- Mobile artwork rendering: `MobileArtworkSafeFrame` no longer uses full-poster/contain-entire-template behavior for preview; artwork is cropped/background/accent layer while website sections remain rendered by `StoreWebsiteRenderer`.
+
+### QA Results
+
+| Check | Result | Artifact |
+| --- | --- | --- |
+| Preview Session Binding | PASS — 30/30 templates, failed 0 | `qa-artifacts/v0.2.10/preview-session-binding-all-result.json` |
+| Mobile Not Poster Rendering | PASS — 90/90 cases, failed 0 | `qa-artifacts/v0.2.10/mobile-preview-not-poster-result.json` |
+| Screenshots | PASS — 150 total | `qa-artifacts/v0.2.10/preview-session-binding/` (60), `qa-artifacts/v0.2.10/mobile-preview-not-poster/` (90) |
+| Typecheck | PASS | `npm run typecheck` |
+| Build | PASS | `npm run build` |
+
+### Fail Condition Coverage
+
+- Builder A → /preview A binding verified for 30 templates.
+- `/preview` URL includes `sessionId` and `templateId`.
+- `/preview` root includes `data-template-id` and `data-skin-family`.
+- No default/demo/template fallback accepted in session flow.
+- Mobile preview verifies hero, brand story, product-card, and menu-list sections.
+- Mobile preview verifies non-poster artwork mode and cover/crop rendering.
 

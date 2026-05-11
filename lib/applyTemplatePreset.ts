@@ -2,6 +2,7 @@ import type { MediaAsset, SiteData, SiteVisual } from '@/types/site';
 import type { TemplateCatalogItem, TemplateGalleryItem } from '@/types/template';
 import { enrichTemplateItem } from './enrichTemplate';
 import { getTemplateArtwork } from './templateArtworkResolver';
+import { setCurrentTemplateId } from './getCurrentTemplate';
 
 const TEMPLATE_MEDIA_PREFIX = 'template-artwork-';
 
@@ -103,7 +104,7 @@ export function applyTemplatePresetSync(data: SiteData, templateItem: TemplateGa
 }
 
 function applyTemplatePresetToData(data: SiteData, template: TemplateCatalogItem, mediaId: string, media: MediaAsset[]): SiteData {
-  return {
+  const updated: SiteData = {
     ...data,
     industry: template.industry,
     template: template.baseTemplate,
@@ -124,6 +125,7 @@ function applyTemplatePresetToData(data: SiteData, template: TemplateCatalogItem
     seo: { ...data.seo, ogImageId: mediaId },
     media,
   };
+  return setCurrentTemplateId(updated, template.id);
 }
 
 export function selectedTemplateDisplayName(data: SiteData, fallbackName: string, lookup: (id?: string) => TemplateGalleryItem | undefined) {
