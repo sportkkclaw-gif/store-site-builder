@@ -7,7 +7,7 @@ import { applyTemplatePresetSync } from '../lib/applyTemplatePreset';
 import { getCurrentSkinFamily, getCurrentTemplateId } from '../lib/getCurrentTemplate';
 
 const baseUrl = process.argv[2] || 'http://127.0.0.1:3220';
-const artifactRoot = path.join(process.cwd(), 'qa-artifacts', 'v0.2.11');
+const artifactRoot = path.join(process.cwd(), 'qa-artifacts', process.env.QA_ARTIFACT_VERSION || 'v0.2.10');
 const screenshotDir = path.join(artifactRoot, 'preview-persistence-fallback');
 const resultPath = path.join(artifactRoot, 'preview-persistence-fallback-result.json');
 fs.mkdirSync(screenshotDir, { recursive: true });
@@ -183,7 +183,7 @@ async function main() {
   await clearLocalPreviewSessions(page);
   await page.goto(previewUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
   const previewCurrentMeta = await readPreviewMeta(page);
-  await page.screenshot({ path: shot('preview-current-fallback-source.png'), fullPage: false });
+  await page.screenshot({ path: shot('preview-previewCurrent-fallback-source.png'), fullPage: false });
   const previewCurrentFallbackWorks = previewCurrentMeta.templateId === 'drink-matcha-hiyori' && previewCurrentMeta.dataSource === 'preview-current' && !previewCurrentMeta.hasError;
 
   await clearPreviewSessionStorage(page);
