@@ -1048,9 +1048,9 @@ QA result：`qa-artifacts/v0.2.7/mobile-artwork-containment-all-result.json`
 ## v0.2.11 Fullscreen Preview Persistence Fallback Fix QA
 
 - Scope: fullscreen preview data persistence and tolerant `/preview` fallback only. No template catalog, TemplateSkinEngine, artwork, mobile layout, export, auth, payment, or database changes.
-- Commit: `bf6dc469345e6aa757d63e17390a448d87b1c7d1`
+- Code commit: `bf6dc469345e6aa757d63e17390a448d87b1c7d1`
 - Live QA base URL: https://store-site-builder-git-accepta-260340-sportkk101-5719s-projects.vercel.app
-- `/__version`: `v0.2.11` / `bf6dc46` / branch `acceptance/store-site-builder-mvp`
+- `/__version`: `v0.2.11` on branch `acceptance/store-site-builder-mvp` (live deployment commit verified after each push).
 
 ### Persistence Behavior
 
