@@ -1042,3 +1042,46 @@ QA result：`qa-artifacts/v0.2.7/mobile-artwork-containment-all-result.json`
 - Artwork frame width ratio is >= 0.90 and <= 1.00 for 30 templates × 390/375/320.
 - No horizontal overflow detected.
 
+
+---
+
+## v0.2.11 Fullscreen Preview Persistence Fallback Fix QA
+
+- Scope: fullscreen preview data persistence and tolerant `/preview` fallback only. No template catalog, TemplateSkinEngine, artwork, mobile layout, export, auth, payment, or database changes.
+- Commit: `bf6dc469345e6aa757d63e17390a448d87b1c7d1`
+- Live QA base URL: https://store-site-builder-git-accepta-260340-sportkk101-5719s-projects.vercel.app
+- `/__version`: `v0.2.11` / `bf6dc46` / branch `acceptance/store-site-builder-mvp`
+
+### Persistence Behavior
+
+1. Fullscreen preview click now saves the latest Builder data before routing.
+2. Preview session is written to both `sessionStorage` and `localStorage` under `store-site-builder-preview-session:${sessionId}`.
+3. Latest preview snapshot is written to `localStorage[store-site-builder-preview-current]`.
+4. Builder data snapshot is written to `localStorage[store-site-builder-data]`.
+5. `/preview` read order is: sessionStorage session → localStorage session → preview-current → builder-data → error.
+6. TemplateId mismatch is repaired when the query template exists in catalog; it no longer errors only because storage fields are stale.
+7. Error page appears only when all preview/session/builder storage sources are missing.
+
+### QA Results
+
+| Check | Result | Artifact |
+| --- | --- | --- |
+| 5-template normal fullscreen preview | PASS — 早午餐花園、抹茶日和、珍珠霓光、日常一隅、城市黑白 all matched Builder → `/preview` | `qa-artifacts/v0.2.11/preview-persistence-fallback-result.json` |
+| sessionStorage normal source | PASS | `preview-sessionStorage-source.png` |
+| localStorage session fallback | PASS | `preview-localStorage-fallback-source.png` |
+| preview-current fallback | PASS | `preview-current-fallback-source.png` |
+| builder-data fallback | PASS | `preview-builderData-fallback-source.png` |
+| all storage missing error | PASS — error appears only after all storage is cleared | `preview-error-only-when-all-storage-missing.png` |
+| Screenshots | PASS — 9 PNGs | `qa-artifacts/v0.2.11/preview-persistence-fallback/` |
+| Typecheck | PASS | `npm run typecheck` |
+| Build | PASS | `npm run build` |
+| Live Vercel deployment | PASS | `/__version` returned `v0.2.11` and commit `bf6dc46` |
+
+### Fail Condition Coverage
+
+- No unexpected `預覽資料遺失` during normal fullscreen preview.
+- sessionStorage missing still falls back to localStorage session.
+- localStorage session missing still falls back to preview-current.
+- preview-current missing still falls back to builder-data.
+- No fallback to default template or default 抹茶日和 unless current Builder template is 抹茶日和.
+- Live preview updated and verified.
