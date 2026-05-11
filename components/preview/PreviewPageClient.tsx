@@ -4,17 +4,40 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import type { SiteData } from '@/types/site';
 import { FullscreenPreviewShell } from '@/components/preview/FullscreenPreviewShell';
-import { STORAGE_KEY, migrateSiteData } from '@/lib/storage';
-import { getCurrentTemplateId, getCurrentSkinFamily } from '@/lib/getCurrentTemplate';
-import { loadPreviewSession, type PreviewSession } from '@/lib/previewSession';
+import {
+  loadPreviewFallback,
+  reconcilePreviewSession,
+  type PreviewMode,
+  type PreviewSession,
+  type PreviewSessionDataSource,
+} from '@/lib/previewSession';
+
+const LOST_MESSAGE = '預覽資料遺失，請返回 Builder 重新開啟預覽。';
 
 type LoadState =
   | { status: 'loading' }
   | { status: 'error'; message: string }
-  | { status: 'ready'; data: SiteData; session: PreviewSession | null; templateId: string; skinFamily: string; sessionId: string };
+  | {
+      status: 'ready';
+      data: SiteData;
+      session: PreviewSession;
+      templateId: string;
+      skinFamily: string;
+      sessionId: string;
+      dataSource: PreviewSessionDataSource;
+    };
 
 function PreviewError({ message }: { message: string }) {
   return <main className="fullscreen-preview-loading" data-testid="preview-error"><div className="text-center"><p>{message}</p><a data-testid="preview-back-to-builder" className="mt-5 inline-flex min-h-11 items-center rounded-full bg-slate-950 px-5 text-sm font-black text-white" href="/builder">← 返回 Builder</a></div></main>;
+}
+
+function parseMode(value: string | null): PreviewMode | undefined {
+  return value === 'desktop' || value === 'mobile' ? value : undefined;
+}
+
+function parseViewport(value: string | null): number | undefined {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : undefined;
 }
 
 export function PreviewPageClient() {
@@ -24,45 +47,47 @@ export function PreviewPageClient() {
   useEffect(() => {
     const sessionId = searchParams?.get('sessionId') || '';
     const queryTemplateId = searchParams?.get('templateId') || '';
+    const queryMode = parseMode(searchParams?.get('mode') || null);
+    const queryViewport = parseViewport(searchParams?.get('viewport') || null);
+
     try {
-      if (sessionId) {
-        const session = loadPreviewSession(sessionId);
-        if (!session) {
-          setState({ status: 'error', message: '預覽資料遺失，請返回 Builder 重新開啟預覽。' });
-          return;
-        }
-        const data = migrateSiteData(session.siteData);
-        const loadedTemplateId = getCurrentTemplateId(data);
-        const skinFamily = getCurrentSkinFamily(data);
-        if (queryTemplateId && queryTemplateId !== loadedTemplateId) {
-          setState({ status: 'error', message: '預覽模板與 Builder 狀態不一致，請返回 Builder 重新開啟預覽。' });
-          return;
-        }
-        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-        setState({ status: 'ready', data, session, templateId: loadedTemplateId, skinFamily, sessionId });
+      const loaded = loadPreviewFallback(sessionId);
+      if (!loaded) {
+        setState({ status: 'error', message: LOST_MESSAGE });
         return;
       }
 
-      const raw = window.localStorage.getItem(STORAGE_KEY);
-      if (!raw) {
-        setState({ status: 'error', message: '尚未載入 Builder 資料，請返回 Builder 後重新開啟預覽。' });
+      const reconciled = reconcilePreviewSession(loaded, queryTemplateId, queryMode, queryViewport);
+      if (!reconciled) {
+        setState({ status: 'error', message: LOST_MESSAGE });
         return;
       }
-      const data = migrateSiteData(JSON.parse(raw));
-      const loadedTemplateId = getCurrentTemplateId(data);
-      const skinFamily = getCurrentSkinFamily(data);
-      if (queryTemplateId && queryTemplateId !== loadedTemplateId) {
-        setState({ status: 'error', message: '預覽模板與 Builder 狀態不一致，請返回 Builder 重新開啟預覽。' });
-        return;
-      }
-      setState({ status: 'ready', data, session: null, templateId: loadedTemplateId, skinFamily, sessionId: '' });
+
+      const { session, dataSource } = reconciled;
+      setState({
+        status: 'ready',
+        data: session.siteData,
+        session,
+        templateId: session.templateId,
+        skinFamily: session.skinFamily,
+        sessionId: session.sessionId || sessionId,
+        dataSource,
+      });
     } catch {
-      setState({ status: 'error', message: '預覽資料讀取失敗，請返回 Builder 重新開啟預覽。' });
+      setState({ status: 'error', message: LOST_MESSAGE });
     }
   }, [searchParams]);
 
   if (state.status === 'loading') return <main className="fullscreen-preview-loading">載入全螢幕預覽中…</main>;
   if (state.status === 'error') return <PreviewError message={state.message} />;
 
-  return <FullscreenPreviewShell data={state.data} sessionId={state.sessionId} templateId={state.templateId} skinFamily={state.skinFamily} />;
+  return (
+    <FullscreenPreviewShell
+      data={state.data}
+      sessionId={state.sessionId}
+      templateId={state.templateId}
+      skinFamily={state.skinFamily}
+      dataSource={state.dataSource}
+    />
+  );
 }

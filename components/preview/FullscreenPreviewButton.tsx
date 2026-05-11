@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import type { SiteData } from '@/types/site';
 import { saveSiteData, migrateSiteData } from '@/lib/storage';
 import { createPreviewSession, savePreviewSession } from '@/lib/previewSession';
-import { getCurrentTemplateId } from '@/lib/getCurrentTemplate';
+import { getCurrentSkinFamily, getCurrentTemplateId } from '@/lib/getCurrentTemplate';
 
 export type FullscreenPreviewButtonMode = 'desktop' | 'mobile';
 export type FullscreenPreviewButtonViewport = 1440 | 1280 | 1024 | 390 | 375 | 320;
@@ -23,17 +23,18 @@ export function FullscreenPreviewButton({
   const router = useRouter();
 
   const openPreview = () => {
-    const safeData = migrateSiteData(siteData);
-    const templateId = getCurrentTemplateId(safeData);
-    const session = createPreviewSession(safeData);
-    const previewUrl = `/preview?sessionId=${encodeURIComponent(session.sessionId)}&templateId=${encodeURIComponent(templateId)}&mode=${mode}&viewport=${viewport}&from=builder`;
+    const latestSiteData = migrateSiteData(siteData);
+    const templateId = getCurrentTemplateId(latestSiteData);
+    const skinFamily = getCurrentSkinFamily(latestSiteData);
+    const session = createPreviewSession({ siteData: latestSiteData, mode, viewport, templateId, skinFamily });
+    const previewUrl = `/preview?sessionId=${encodeURIComponent(session.sessionId)}&templateId=${encodeURIComponent(templateId)}&mode=${mode}&viewport=${viewport}&t=${Date.now()}`;
     try {
-      saveSiteData(safeData);
+      saveSiteData(latestSiteData);
       savePreviewSession(session);
       router.push(previewUrl);
     } catch {
       try {
-        saveSiteData(safeData);
+        saveSiteData(latestSiteData);
         savePreviewSession(session);
       } catch {}
       window.location.assign(previewUrl);

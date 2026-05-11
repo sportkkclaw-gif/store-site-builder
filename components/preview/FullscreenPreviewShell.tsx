@@ -24,7 +24,19 @@ function parseViewport(mode: PreviewCanvasMode, value: string | null): PreviewCa
   return (allowed as readonly number[]).includes(parsed) ? parsed as PreviewCanvasViewport : mode === 'mobile' ? 390 : 1440;
 }
 
-export function FullscreenPreviewShell({ data, sessionId = '', templateId: boundTemplateId, skinFamily: boundSkinFamily }: { data: SiteData; sessionId?: string; templateId?: string; skinFamily?: string }) {
+export function FullscreenPreviewShell({
+  data,
+  sessionId = '',
+  templateId: boundTemplateId,
+  skinFamily: boundSkinFamily,
+  dataSource = 'builder-data',
+}: {
+  data: SiteData;
+  sessionId?: string;
+  templateId?: string;
+  skinFamily?: string;
+  dataSource?: string;
+}) {
   const searchParams = useSearchParams();
   const initialMode = parseMode(searchParams?.get('mode') || null);
   const [mode, setMode] = useState<PreviewCanvasMode>(initialMode);
@@ -52,7 +64,7 @@ export function FullscreenPreviewShell({ data, sessionId = '', templateId: bound
           <button type="button" data-testid="preview-back-to-builder" onClick={goBuilder} className="fullscreen-primary-button">← 返回 Builder</button>
           <div className="fullscreen-template-name">
             目前模板：<b data-testid="fullscreen-preview-template-name">{template.name}</b>
-            <small>templateId：<span data-testid="fullscreen-preview-template-id">{displayTemplateId}</span>｜skinFamily：<span data-testid="fullscreen-preview-skin-family">{displaySkinFamily}</span>｜sessionId：<span data-testid="fullscreen-preview-session-id">{sessionId || 'localStorage'}</span></small>
+            <small>資料來源：<span data-testid="fullscreen-preview-data-source">{dataSource}</span>｜templateId：<span data-testid="fullscreen-preview-template-id">{displayTemplateId}</span>｜skinFamily：<span data-testid="fullscreen-preview-skin-family">{displaySkinFamily}</span>｜sessionId：<span data-testid="fullscreen-preview-session-id">{sessionId || 'localStorage'}</span>｜mode：<span data-testid="fullscreen-preview-mode">{mode}</span>｜viewport：<span data-testid="fullscreen-preview-viewport">{viewport}</span></small>
           </div>
         </div>
         <div className="fullscreen-toolbar-controls" aria-label="全螢幕預覽控制列">
