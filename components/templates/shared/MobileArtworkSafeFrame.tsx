@@ -6,7 +6,11 @@ export type MobileArtworkSafeFrameMode =
   | 'section-accent'
   | 'artwork-backdrop'
   | 'safe-cover'
-  | 'cropped-window';
+  | 'cropped-window'
+  | 'fill-safe'
+  | 'fill-safe-top'
+  | 'fill-safe-center'
+  | 'contain-safe';
 
 export type MobileArtworkSafeFrameProps = {
   src: string;

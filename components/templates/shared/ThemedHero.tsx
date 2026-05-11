@@ -20,7 +20,7 @@ export function ThemedHero({ data, skin }: { data: SiteData; skin: TemplateSkin 
     <div className="template-hero-inner" data-testid="site-hero-inner">
       <picture><source media="(max-width: 760px)" srcSet={artwork.mobileSrc} /><img className="template-hero-backplate" src={artwork.previewSrc} data-artwork-src={artwork.gallerySrc} data-gallery-src={artwork.gallerySrc} alt="" aria-hidden="true" /></picture>
       <div className="mobile-hero-artwork-stage" data-testid="mobile-hero-artwork-stage">
-        <MobileArtworkSafeFrame src={artwork.mobileSrc} alt={`${data.store.name} 模板主視覺`} mode={artwork.backplate.mobileArtworkMode} skinFamily={skin.family} overlay={artwork.backplate.overlay} />
+        <MobileArtworkSafeFrame src={artwork.mobileSrc} alt={`${data.store.name} 模板主視覺`} mode="fill-safe-top" skinFamily={skin.family} overlay={artwork.backplate.overlay} />
       </div>
       <div className="template-hero-overlay" />
       <div className="hero-copy mobile-hero-content-panel" data-testid="mobile-hero-content-panel"><span className="placeholder-badge">{data.store.tagline}</span><h1 data-testid="hero-title" aria-label={data.hero.title}>{titleLines.map(line => <span key={line} className="hero-title-line">{line}</span>)}</h1><p className="muted mt-5 text-lg" data-testid="hero-subtitle">{data.hero.subtitle}</p><Links data={data} /></div>

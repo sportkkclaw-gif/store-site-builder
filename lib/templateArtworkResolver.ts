@@ -3,7 +3,7 @@ import type { TemplateCatalogItem, TemplateGalleryItem } from '@/types/template'
 import { getTemplateById, templateCatalog } from './templateCatalog';
 
 export type ArtworkCropMode = 'cover' | 'contain' | 'top-cover' | 'center-cover';
-export type MobileArtworkMode = 'background-soft' | 'hero-crop-safe' | 'section-accent' | 'artwork-backdrop' | 'safe-cover' | 'cropped-window';
+export type MobileArtworkMode = 'background-soft' | 'hero-crop-safe' | 'section-accent' | 'artwork-backdrop' | 'safe-cover' | 'cropped-window' | 'fill-safe' | 'fill-safe-top' | 'fill-safe-center' | 'contain-safe';
 export type ArtworkTextPanelMode = 'glass' | 'solid' | 'dark' | 'light' | 'none';
 export type ArtworkTextPanelPosition = 'left' | 'center' | 'bottom' | 'floating';
 export type ArtworkTextContrast = 'light' | 'dark';
@@ -38,7 +38,7 @@ export interface TemplateArtworkSources {
 const DEFAULT_BACKPLATE: Omit<TemplateArtworkBackplate, 'assetPath'> = {
   enabled: true,
   cropMode: 'top-cover',
-  mobileArtworkMode: 'hero-crop-safe',
+  mobileArtworkMode: 'fill-safe-top',
   overlay: 'rgba(0,0,0,0.26)',
   textPanelMode: 'glass',
   textPanelPosition: 'left',

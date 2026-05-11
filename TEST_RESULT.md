@@ -1011,4 +1011,34 @@ QA result：`qa-artifacts/v0.2.7/mobile-artwork-containment-all-result.json`
 - No default/demo/template fallback accepted in session flow.
 - Mobile preview verifies hero, brand story, product-card, and menu-list sections.
 - Mobile preview verifies non-poster artwork mode and cover/crop rendering.
+---
+
+## v0.2.10 Fullscreen Button Dedup + Mobile Artwork Fill Fix QA
+
+- Scope: remove duplicate/broken fullscreen preview CTA in mobile Builder and make mobile /preview artwork stage fill the safe canvas.
+- Local QA base URL: http://127.0.0.1:3220
+- Unified button: `components/preview/FullscreenPreviewButton.tsx` added and used by Builder preview.
+- Removed legacy black fullscreen CTA from `PreviewFrame`; mobile Builder renders only the green primary CTA.
+- `MobileArtworkSafeFrame` supports `fill-safe`, `fill-safe-top`, `fill-safe-center`, and `contain-safe`; mobile hero uses `fill-safe-top`.
+
+### QA Results
+
+| Check | Result | Artifact |
+| --- | --- | --- |
+| Fullscreen Button Dedup | PASS — visible mobile Builder fullscreen button count 1 | `qa-artifacts/v0.2.10/fullscreen-button-dedup-result.json` |
+| Mobile Artwork Fill | PASS — 90/90 cases, failed 0 | `qa-artifacts/v0.2.10/mobile-artwork-fill-result.json` |
+| Screenshots | PASS — 91 total | `qa-artifacts/v0.2.10/fullscreen-button-dedup.png` + `qa-artifacts/v0.2.10/mobile-artwork-fill/` (90) |
+| Typecheck | PASS | `npm run typecheck` |
+| Build | PASS | `npm run build` |
+
+### Fail Condition Coverage
+
+- Mobile Builder visible fullscreen button count: 1.
+- Black legacy button removed.
+- Green button visible, enabled, height >= 48, pointer-events active.
+- Tapping green button navigates to `/preview`.
+- `/preview` has no fullscreen preview button and keeps `返回 Builder`.
+- Artwork frame stays inside phone canvas.
+- Artwork frame width ratio is >= 0.90 and <= 1.00 for 30 templates × 390/375/320.
+- No horizontal overflow detected.
 

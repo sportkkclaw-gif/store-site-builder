@@ -1,6 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import type { SiteData } from '@/types/site';
 import { DesktopPreview } from './DesktopPreview';
@@ -8,12 +7,9 @@ import { MobilePreview } from './MobilePreview';
 import { Tabs } from '@/components/ui';
 import { getCurrentTemplate } from '@/lib/currentTemplate';
 import { getTemplateVisualStyle } from '@/lib/templateVisualStyle';
-import { saveSiteData, migrateSiteData } from '@/lib/storage';
-import { createPreviewSession, savePreviewSession } from '@/lib/previewSession';
-import { getCurrentTemplateId } from '@/lib/getCurrentTemplate';
+import { FullscreenPreviewButton } from './FullscreenPreviewButton';
 
 export function PreviewFrame({ data, onBackToEdit }: { data: SiteData; onBackToEdit?: () => void }) {
-  const router = useRouter();
   const [mode, setMode] = useState<'desktop' | 'mobile'>('desktop');
   const selectedTemplateName = getCurrentTemplate(data).name;
   const visual = getTemplateVisualStyle(data);
@@ -22,27 +18,12 @@ export function PreviewFrame({ data, onBackToEdit }: { data: SiteData; onBackToE
     if (window.matchMedia('(max-width: 767px)').matches) setMode('mobile');
   }, []);
 
-  const openFullscreenPreview = (targetMode: 'desktop' | 'mobile' = mode) => {
-    const safeData = migrateSiteData(data);
-    const viewport = targetMode === 'mobile' ? 390 : 1440;
-    const templateId = getCurrentTemplateId(safeData);
-    const session = createPreviewSession(safeData);
-    const previewUrl = `/preview?sessionId=${encodeURIComponent(session.sessionId)}&templateId=${encodeURIComponent(templateId)}&mode=${targetMode}&viewport=${viewport}&from=builder`;
-    try {
-      saveSiteData(safeData);
-      savePreviewSession(session);
-      router.push(previewUrl);
-    } catch {
-      try { saveSiteData(safeData); savePreviewSession(session); } catch {}
-      window.location.assign(previewUrl);
-    }
-  };
   return (
     <div className="preview-panel" data-testid="preview-panel">
       <div className="preview-mobile-toolbar mb-3" data-testid="mobile-preview-toolbar">
         <button type="button" data-testid="back-to-edit-button" onClick={onBackToEdit} className="mobile-preview-back-button">← 返回編輯</button>
         <div className="mobile-preview-template-label">目前模板：<b>{selectedTemplateName}</b></div>
-        <button type="button" data-testid="mobile-fullscreen-preview-button" onClick={() => openFullscreenPreview('mobile')} className="mobile-fullscreen-preview-button">全螢幕預覽</button>
+        <FullscreenPreviewButton mode="mobile" viewport={390} siteData={data} variant="primary" />
       </div>
       <div className="mb-3 flex items-center justify-between gap-3">
         <div className="min-w-0">
@@ -57,7 +38,6 @@ export function PreviewFrame({ data, onBackToEdit }: { data: SiteData; onBackToE
         <p className="text-xs font-black text-slate-900">{mode === 'mobile' ? '手機預覽' : '桌機預覽'}｜縮放顯示</p>
         <p className="mt-1 text-xs font-bold text-slate-500">虛擬畫布：{mode === 'mobile' ? '390px' : '1440px'}</p>
         <p className="text-xs font-bold text-slate-500">縮放：Fit</p>
-        <button type="button" data-testid="fullscreen-preview-button" onClick={() => openFullscreenPreview(mode)} className="fullscreen-preview-button mt-3 w-full rounded-full bg-slate-950 px-4 text-sm font-black text-white shadow-lg shadow-slate-900/20 hover:bg-teal-700">全螢幕預覽</button>
       </div>
       <div className="mt-4" data-testid="preview-viewport">{mode === 'desktop' ? <DesktopPreview data={data} /> : <MobilePreview data={data} />}</div>
     </div>

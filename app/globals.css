@@ -116,7 +116,6 @@ button {
 }
 
 .mobile-preview-back-button,
-.mobile-fullscreen-preview-button,
 .fullscreen-preview-button {
   position: relative;
   z-index: 70;
@@ -128,7 +127,7 @@ button {
 }
 
 .mobile-preview-back-button,
-.mobile-fullscreen-preview-button {
+.fullscreen-preview-button {
   width: 100%;
   border-radius: 999px;
   padding: 12px 16px;
@@ -141,10 +140,15 @@ button {
   color: #ffffff;
 }
 
-.mobile-fullscreen-preview-button {
+.fullscreen-preview-button {
   background: #0f766e;
   color: #ffffff;
   box-shadow: 0 12px 28px rgba(15, 118, 110, .24);
+}
+
+.fullscreen-preview-button--compact {
+  padding-inline: 14px;
+  font-size: 13px;
 }
 
 .mobile-preview-template-label {
