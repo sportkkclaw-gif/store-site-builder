@@ -986,7 +986,7 @@ QA result：`qa-artifacts/v0.2.7/mobile-artwork-containment-all-result.json`
 ## v0.2.10 Preview Session Binding + Mobile Not Poster Rendering QA
 
 - Scope: Builder → /preview session snapshot binding and mobile preview renderer not-poster validation.
-- Local QA base URL: http://127.0.0.1:3220
+- Live QA base URL: https://store-site-builder-git-accepta-260340-sportkk101-5719s-projects.vercel.app
 - Preview session manager: `lib/previewSession.ts` added; sessionStorage first, localStorage backup; no defaultSiteData silent fallback.
 - Current template helper: `lib/getCurrentTemplate.ts` added; synchronizes `galleryTemplateId`, `visual.selectedTemplateId`, and `visual.templatePreset.selectedTemplateId`.
 - Builder fullscreen preview: saves latest siteData, creates preview session, routes with `sessionId`, `templateId`, `mode`, `viewport`.
