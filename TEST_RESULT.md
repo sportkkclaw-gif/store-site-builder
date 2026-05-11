@@ -923,4 +923,30 @@ Artifacts：
 
 ### 五、結論
 v0.2.8 已確認 Builder 手機預覽與全螢幕手機預覽 frame 破版修復 PASS，Vercel Preview live QA PASS，可送 Jason 複驗。
+---
+
+## v0.2.9 Mobile Artwork Backplate Containment Fix QA
+
+測試日期：2026-05-11
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
+QA runtime：WSL-native mirror `/tmp/store-site-builder-artworkfix`
+QA artifacts：`qa-artifacts/v0.2.7/`（依 Jason 本輪指定路徑）
+
+| # | 驗收項目 | 結果 | 狀態 |
+|---|---|---|---|
+| 1 | MobileArtworkSafeFrame | 已新增 `components/templates/shared/MobileArtworkSafeFrame.tsx`，含 `mobile-artwork-safe-frame` / `mobile-artwork-image` data-testid。 | ✅ PASS |
+| 2 | mobile artwork 預設 | `TemplateArtworkBackplate.mobileArtworkMode` 預設為 `contain-poster`；抹茶日和為 `top-contain`。 | ✅ PASS |
+| 3 | 手機 Hero 結構 | mobile 斷點改為 artwork stage + content panel 垂直排列，不再用 desktop cover background 直接塞滿手機框。 | ✅ PASS |
+| 4 | Preview / Builder mobile | 30 套模板 × 390 / 375 / 320 均檢查 Builder mobile preview 與 `/preview?mode=mobile`。 | ✅ PASS |
+| 5 | Export 同步 | `exportStaticSite.ts` 已輸出等價 MobileArtworkSafeFrame HTML/CSS，export mobile containment 同步檢查。 | ✅ PASS |
+| 6 | artwork containment 全量 QA | totalTemplates=30，viewports=[390,375,320]，totalCases=90，passed=90，failed=0。 | ✅ PASS |
+| 7 | 截圖 artifacts | `qa-artifacts/v0.2.7/mobile-artwork-containment/` 已產出 90 張 PNG。 | ✅ PASS |
+| 8 | `npm run typecheck` | WSL-native mirror 執行 `tsc --noEmit` exit 0。 | ✅ PASS |
+| 9 | `npm run build` | Next.js 16.2.4 production build successful。 | ✅ PASS |
+
+重點模板結果：抹茶日和、珍珠霓光、白桃氣泡、茶霧山嵐、日常一隅、城市黑白於 390 / 375 / 320 全部 PASS；artwork frame 與 image 均在手機畫布內，文字與 CTA 均在 canvas 內，export 同步 PASS。
+
+QA result：`qa-artifacts/v0.2.7/mobile-artwork-containment-all-result.json`
+截圖資料夾：`qa-artifacts/v0.2.7/mobile-artwork-containment/`
+結論：Mobile Artwork Backplate Containment Fix 本機全量驗證通過，可進入 commit / Preview redeploy / live QA。
 

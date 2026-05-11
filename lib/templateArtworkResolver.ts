@@ -3,6 +3,7 @@ import type { TemplateCatalogItem, TemplateGalleryItem } from '@/types/template'
 import { getTemplateById, templateCatalog } from './templateCatalog';
 
 export type ArtworkCropMode = 'cover' | 'contain' | 'top-cover' | 'center-cover';
+export type MobileArtworkMode = 'contain-poster' | 'safe-cover' | 'top-contain' | 'center-contain' | 'cropped-window' | 'background-soft';
 export type ArtworkTextPanelMode = 'glass' | 'solid' | 'dark' | 'light' | 'none';
 export type ArtworkTextPanelPosition = 'left' | 'center' | 'bottom' | 'floating';
 export type ArtworkTextContrast = 'light' | 'dark';
@@ -19,6 +20,7 @@ export interface TemplateArtworkBackplate {
   textContrast: ArtworkTextContrast;
   heroHeightDesktop: string;
   heroHeightMobile: string;
+  mobileArtworkMode: MobileArtworkMode;
 }
 
 export interface TemplateArtworkSources {
@@ -36,6 +38,7 @@ export interface TemplateArtworkSources {
 const DEFAULT_BACKPLATE: Omit<TemplateArtworkBackplate, 'assetPath'> = {
   enabled: true,
   cropMode: 'top-cover',
+  mobileArtworkMode: 'contain-poster',
   overlay: 'rgba(0,0,0,0.26)',
   textPanelMode: 'glass',
   textPanelPosition: 'left',
@@ -46,7 +49,7 @@ const DEFAULT_BACKPLATE: Omit<TemplateArtworkBackplate, 'assetPath'> = {
 
 const overrides: Record<string, Partial<TemplateArtworkBackplate>> = {
   'drink-boba-neon': { overlay: 'rgba(5, 8, 24, 0.35)', textPanelMode: 'dark', textContrast: 'light', textPanelPosition: 'left', cropMode: 'top-cover' },
-  'drink-matcha-hiyori': { overlay: 'rgba(255, 250, 240, 0.28)', textPanelMode: 'light', textContrast: 'dark', textPanelPosition: 'left', cropMode: 'top-cover' },
+  'drink-matcha-hiyori': { overlay: 'rgba(255, 250, 240, 0.28)', textPanelMode: 'light', textContrast: 'dark', textPanelPosition: 'left', cropMode: 'top-cover', mobileArtworkMode: 'top-contain' },
   'drink-fruit-paradise': { overlay: 'rgba(255,255,255,0.22)', textPanelMode: 'light', textContrast: 'dark', textPanelPosition: 'left', cropMode: 'top-cover' },
   'drink-brown-sugar-amber': { overlay: 'rgba(20, 10, 4, 0.35)', textPanelMode: 'dark', textContrast: 'light', textPanelPosition: 'left', cropMode: 'top-cover' },
   'drink-white-peach-sparkle': { overlay: 'rgba(255,240,235,0.22)', textPanelMode: 'light', textContrast: 'dark', textPanelPosition: 'left', cropMode: 'top-cover' },
