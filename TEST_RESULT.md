@@ -914,6 +914,13 @@ Artifacts：
 | 375 | 無水平 overflow；手機 frame 固定高度；Hero 在 canvas 內 | 無水平 overflow；手機 frame 不再被內容撐長 | PASS |
 | 320 | 無水平 overflow；手機 frame 固定高度；Hero 在 canvas 內 | 無水平 overflow；手機 frame 不再被內容撐長 | PASS |
 
-### 四、結論
-v0.2.8 本機 QA 已確認 Builder 手機預覽與全螢幕手機預覽 frame 破版修復 PASS。待 commit/push、Vercel Preview redeploy 與 live QA 完成後送 Jason 複驗。
+### 四、Vercel Preview / Live QA
+- Commit：`31f55b7cde1d4ae25540410b9711dcd176bac85d`
+- Preview：`https://store-site-builder-npt32ossi-sportkk101-5719s-projects.vercel.app`
+- `/__version`：`v0.2.8`，commit `31f55b7`
+- Live QA：`scripts/qa-mobile-preview-frame.ts https://store-site-builder-npt32ossi-sportkk101-5719s-projects.vercel.app` PASS。
+- Live viewport 結果：390 / 375 / 320 全 PASS。
+
+### 五、結論
+v0.2.8 已確認 Builder 手機預覽與全螢幕手機預覽 frame 破版修復 PASS，Vercel Preview live QA PASS，可送 Jason 複驗。
 
