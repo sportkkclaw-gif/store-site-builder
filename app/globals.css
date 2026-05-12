@@ -85,11 +85,7 @@ button {
 .desktop-preview-canvas {
   width: 1180px;
   max-width: none;
-  transform: scale(.43);
-  transform-origin: top left;
   min-height: 1680px;
-  margin-right: -672px;
-  margin-bottom: -950px;
 }
 
 .mobile-preview-window {
@@ -215,7 +211,7 @@ button {
 }
 
 .preview-canvas--desktop {
-  overflow: hidden;
+  overflow: visible;
 }
 
 .preview-canvas--mobile {
@@ -398,12 +394,15 @@ button {
   align-items: flex-start;
   min-width: 0;
   width: 100%;
+  max-height: calc(100vh - 150px);
+  overflow: auto;
+  overscroll-behavior: contain;
 }
 
 .fullscreen-preview-canvas {
   max-width: none;
   min-height: 900px;
-  overflow: hidden;
+  overflow: visible;
   background: #ffffff;
   box-shadow: 0 28px 90px rgba(0, 0, 0, .42);
 }
