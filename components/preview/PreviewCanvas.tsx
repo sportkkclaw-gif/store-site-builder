@@ -6,6 +6,7 @@ import { StoreWebsiteRenderer } from '@/components/templates/StoreWebsiteRendere
 import { getCurrentTemplate, getCurrentTemplateId } from '@/lib/currentTemplate';
 import { getTemplateArtwork } from '@/lib/templateArtworkResolver';
 import { getTemplateSkin } from '@/lib/templateSkinEngine';
+import { ScaledPreviewCanvas } from './ScaledPreviewCanvas';
 
 export type PreviewCanvasMode = 'desktop' | 'mobile';
 export type PreviewCanvasZoom = 'fit' | '100' | '75' | '50';
@@ -61,6 +62,22 @@ export function PreviewCanvas({ siteData, mode, viewportWidth, zoom, frame = 'no
     window.addEventListener('resize', updateFit);
     return () => window.removeEventListener('resize', updateFit);
   }, [fitContainerRef, viewportWidth, mode]);
+
+  if (mode === 'desktop' && !isPhoneFrame) {
+    return (
+      <ScaledPreviewCanvas
+        siteData={siteData}
+        mode={mode}
+        viewportWidth={viewportWidth}
+        zoom={zoom}
+        scale={scale}
+        frame={frame}
+        className={className}
+        scrollClassName={scrollClassName}
+        minCanvasHeight={minCanvasHeight || 1200}
+      />
+    );
+  }
 
   return (
     <div className={`preview-canvas-scroll ${scrollClassName}`} data-testid="preview-stage" style={{ minHeight: scaledHeight }}>

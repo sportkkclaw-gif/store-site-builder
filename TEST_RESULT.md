@@ -950,3 +950,42 @@ QA result：`qa-artifacts/v0.2.7/mobile-artwork-containment-all-result.json`
 截圖資料夾：`qa-artifacts/v0.2.7/mobile-artwork-containment/`
 結論：Mobile Artwork Backplate Containment Fix 本機全量驗證通過，可進入 commit / Preview redeploy / live QA。
 
+
+## v0.2.9-hotfix.1 Desktop Preview Full Height Scroll Fix QA
+
+日期：2026-05-13
+Branch：`fix/v0.2.9-hotfix.1-desktop-preview-full-height`
+Base：`v0.2.9-approved` / `f70842bc7b036d5738c5933ba22a6b50b3a11de4`
+
+修復範圍：
+- 新增 `components/preview/ScaledPreviewCanvas.tsx`，desktop preview 以 ResizeObserver 量測內容高度。
+- 右側 desktop preview 與 fullscreen desktop preview 共用 full-height scaled spacer。
+- `transform: scale()` 只負責視覺縮放；外層 spacer 補上 `contentHeight * scale` 佈局高度。
+- 新增/補齊 QA marker：`preview-panel-scroll-container`、`desktop-preview-scroll-viewport`、`desktop-preview-canvas`、`site-footer`、`site-render-end`。
+- 未修改 30 套 template catalog、TemplateSkinEngine、MobileArtworkSafeFrame、首頁 landing、Onboarding/代管、登入/付款/資料庫。
+
+驗證命令：
+- `npm run typecheck`：PASS
+- `npm run build`：PASS
+- `BASE_URL=http://127.0.0.1:3050 npx tsx scripts/qa-desktop-preview-full-height.ts`：PASS
+
+30 套全量結果：
+- totalTemplates：30
+- builderRightPanelPassed：30
+- fullscreen1440Passed：30
+- fullscreen1280Passed：30
+- fullscreen1024Passed：30
+- failed：0
+- failedTemplates：[]
+
+Regression：
+- mobile 390：PASS
+- mobile 375：PASS
+- mobile 320：PASS
+
+QA artifacts：
+- JSON：`qa-artifacts/v0.2.10/desktop-preview-full-height-result.json`
+- Summary：`qa-artifacts/v0.2.10/desktop-preview-full-height-summary.md`
+- Screenshots：`qa-artifacts/v0.2.10/desktop-preview-full-height/`，90 張 PNG（30 templates × right-panel-bottom / fullscreen-1440-bottom / fullscreen-1280-bottom）
+
+結論：v0.2.9-hotfix.1 本機 full-height regression PASS；需部署 Vercel Preview 後再執行 live QA closeout。
