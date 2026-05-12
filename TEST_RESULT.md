@@ -949,4 +949,34 @@ QA artifacts：`qa-artifacts/v0.2.7/`（依 Jason 本輪指定路徑）
 QA result：`qa-artifacts/v0.2.7/mobile-artwork-containment-all-result.json`
 截圖資料夾：`qa-artifacts/v0.2.7/mobile-artwork-containment/`
 結論：Mobile Artwork Backplate Containment Fix 本機全量驗證通過，可進入 commit / Preview redeploy / live QA。
+## v0.3.0 店名片｜自動導引與代管入口版 QA
+
+測試日期：2026-05-12
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
+Branch：`feat/v0.3.0-denmeipian-onboarding-hosting`
+QA runtime：WSL-native mirror `/tmp/store-site-builder-v030`（避免 `/mnt/d` Next.js server zero-byte/hang 風險）
+QA artifacts：`qa-artifacts/v0.3.0/`
+
+| # | 驗收項目 | 結果 | 狀態 |
+|---|---|---|---|
+| 1 | 品牌改名 | 對外首頁、Header/Footer、SEO、Builder sidebar、ZIP README 改為「店名片」。repo 技術名稱未改。 | ✅ PASS |
+| 2 | Feature Showcase | 首頁新增 5 步導引、推薦模板、發布前檢查三大功能亮點。 | ✅ PASS |
+| 3 | Pricing / 代管方案 | 首頁新增自行匯出 $0、店名片代管 $299/月、企業定制三方案。 | ✅ PASS |
+| 4 | FAQ | 首頁新增 6 題 FAQ，明確說明不含登入/資料庫/金流/自動後端。 | ✅ PASS |
+| 5 | Onboarding Wizard | `/builder?onboarding=1` 可開啟 5 步流程：店家類型、品牌風格、基本資料、使用方式、自動建立。 | ✅ PASS |
+| 6 | 推薦模板自動化 | `lib/onboardingRecommendations.ts` 覆蓋飲料店/餐飲店/咖啡廳/小吃/其他與 6 種風格；QA 可看到推薦模板。 | ✅ PASS |
+| 7 | 範例資料 / 一鍵套用 | `lib/demoSiteData.ts` 提供日沐茶飲、暖巷食堂、日常一隅；Builder Basic 區可一鍵套用並提示覆蓋。 | ✅ PASS |
+| 8 | publishReadiness | `lib/publishReadiness.ts` 輸出 score/status/requiredIssues/recommendedIssues；ExportPanel 顯示 89% 與缺失清單，不阻擋匯出。 | ✅ PASS |
+| 9 | 代管申請入口 | ExportPanel 可開啟 Modal，填 6+ 欄位後產生 `hosting-request.json` / 可複製 JSON，無後端依賴。 | ✅ PASS |
+| 10 | Mobile 390 | 首頁與 Wizard/Builder 390px `scrollWidth=clientWidth=390`，overflow=0。 | ✅ PASS |
+| 11 | Desktop Builder | 1440px Builder sidebar 與 preview column 可見。 | ✅ PASS |
+| 12 | `npm run typecheck` | `tsc --noEmit` exit 0。 | ✅ PASS |
+| 13 | `npm run build` | Next.js 16.2.4 production build successful；正式 repo 與 `/tmp` mirror build 均通過。 | ✅ PASS |
+| 14 | `__version` | `/__version` 顯示 `v0.3.0`。 | ✅ PASS |
+
+QA result：`qa-artifacts/v0.3.0/qa-onboarding-hosting-result.json`（ok=true, passed=14/14, failed=0）
+QA summary：`qa-artifacts/v0.3.0/qa-onboarding-hosting-summary.md`
+截圖 artifacts：`qa-artifacts/v0.3.0/01-home-desktop.png` 至 `13-version-page.png`（共 13 張）
+
+結論：店名片 v0.3.0 本機開發與 QA 驗證通過，可進入 commit / push / PR / Preview 發布收尾。
 

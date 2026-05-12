@@ -18,7 +18,7 @@ export async function exportZip(data: SiteData) {
   const zip = new JSZip();
   zip.file('index.html', exportStaticSite(data));
   zip.file('siteData.json', JSON.stringify(data, null, 2));
-  zip.file('README.txt', '這是由 StoreSite Builder 產生的靜態網站。\n請將 index.html 與 assets 資料夾一起上傳到任何靜態網站主機。\n若要修改內容，請回到 StoreSite Builder 匯入 siteData.json 編輯後重新匯出。');
+  zip.file('README.txt', '這是由店名片產生的靜態網站。\n請將 index.html 與 assets 資料夾一起上傳到任何靜態網站主機。\n若要修改內容，請回到店名片匯入 siteData.json 編輯後重新匯出。');
   const assets = zip.folder('assets')!;
   await addTemplateArtworkAsset(assets, data);
   data.media.forEach(m => {
