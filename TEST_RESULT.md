@@ -996,6 +996,7 @@ QA artifacts：
 
 測試日期：2026-05-13T20:19:53+08:00
 正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
+Live Preview：`https://store-site-builder-cnsav2bb9-sportkk101-5719s-projects.vercel.app`
 QA artifacts：`qa-artifacts/v0.2.10/preview-fit-scale-result.json`、`qa-artifacts/v0.2.10/preview-fit-scale/`
 
 | # | 驗收項目 | 實際結果 | 狀態 |
@@ -1010,5 +1011,7 @@ QA artifacts：`qa-artifacts/v0.2.10/preview-fit-scale-result.json`、`qa-artifa
 | 8 | 截圖 | `qa-artifacts/v0.2.10/preview-fit-scale/` 產出 8 張 PNG。 | ✅ PASS |
 | 9 | `npm run typecheck` | `tsc --noEmit` exit 0。 | ✅ PASS |
 | 10 | `npm run build` | Next.js 16.2.4 production build success。 | ✅ PASS |
+| 11 | Live Preview HTTP | `/`、`/builder`、`/preview?mode=desktop&viewport=1440`、`/preview?mode=mobile&viewport=390`、`/__version` 皆 HTTP 200。 | ✅ PASS |
+| 12 | Live `/__version` | `v0.2.10-hotfix`，commit `cb40f6cd0bdc991a0353333c7051cbcc5239907f`，branch `fix/v0.2.10-preview-fit-scale-engine`。 | ✅ PASS |
 
-結論：v0.2.10-hotfix Preview Fit Scale Engine 本機 QA 通過；等待 PR / Vercel Preview live QA。
+結論：v0.2.10-hotfix Preview Fit Scale Engine 本機與 live Preview QA 通過；可送 Jason 驗收。
