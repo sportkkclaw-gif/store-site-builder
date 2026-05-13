@@ -1060,4 +1060,15 @@ BASE_URL=http://127.0.0.1:3050 npx tsx scripts/qa-preview-scale-centering.ts
 - Summary：`qa-artifacts/v0.2.10/preview-scale-centering-summary.md`
 - Screenshots：`qa-artifacts/v0.2.10/preview-scale-centering/`（12 張）
 
-**待補**：push 後重新部署 Vercel Preview，並以同一腳本對 live Preview 重跑 QA。
+**Live Preview QA 結果**
+- Preview URL：`https://store-site-builder-ig4gahvjs-sportkk101-5719s-projects.vercel.app`
+- Deployment UID：`dpl_3E6MUfUHT6451Qbqr2L9DH2WfrAj`
+- `PREVIEW_URL=https://store-site-builder-ig4gahvjs-sportkk101-5719s-projects.vercel.app npx tsx scripts/qa-preview-scale-centering.ts`：PASS，10/10 templates
+- live `builderDesktopFit=true`
+- live `builderMobileFit=true`
+- live `fullscreenDesktopCentered=true`
+- live `fullscreenMobileCentered=true`
+- live `mobile390=true` / `mobile375=true` / `mobile320=true`
+- live `footerReachable=true`
+- live `failedTemplates=[]`
+- HTTP：`/`、`/builder`、`/preview?mode=desktop&viewport=1440&zoom=fit`、`/preview?mode=mobile&viewport=390&zoom=fit`、`/__version` 全部 200。
