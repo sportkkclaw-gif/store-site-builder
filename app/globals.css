@@ -204,7 +204,40 @@ button {
   width: 100%;
 }
 
+.preview-fit-container {
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  overflow: visible;
+  padding: 8px 0 14px;
+}
+
+.preview-scaled-spacer {
+  max-width: none;
+  overflow: visible;
+}
+
+.preview-scale-wrapper {
+  max-width: none;
+  will-change: transform;
+}
+
+.preview-scale-indicator {
+  align-self: flex-start;
+  margin-left: 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, .88);
+  color: white;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .02em;
+}
+
 .preview-canvas {
+  box-sizing: content-box;
   max-width: none;
   min-height: 900px;
   background: #ffffff;

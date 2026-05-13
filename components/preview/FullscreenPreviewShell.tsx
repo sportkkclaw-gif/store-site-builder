@@ -68,7 +68,7 @@ export function FullscreenPreviewShell({ data }: { data: SiteData }) {
       </header>
       <section ref={stageRef} className="fullscreen-preview-stage" data-preview-mode={mode} data-viewport={viewport} data-zoom={zoom} data-template-id={template.id} data-skin-family={skin.family} data-artwork-src={artwork.gallerySrc}>
         <div className="fullscreen-preview-meta">全螢幕{mode === 'desktop' ? '桌機' : '手機'}預覽｜虛擬畫布：{viewport}px｜縮放：{zoom === 'fit' ? 'Fit' : `${zoom}%`}｜artwork：{artwork.gallerySrc}</div>
-        <PreviewCanvas siteData={data} mode={mode} viewportWidth={viewport} zoom={zoom} frame={mode === 'desktop' ? 'none' : 'phone'} fitContainerRef={stageRef} className="fullscreen-preview-canvas" scrollClassName="fullscreen-preview-scroll" />
+        <PreviewCanvas siteData={data} mode={mode} viewportWidth={viewport} zoom={zoom} frame={mode === 'desktop' ? 'none' : 'phone'} context="fullscreen" fitContainerRef={stageRef} className="fullscreen-preview-canvas" scrollClassName="fullscreen-preview-scroll" />
       </section>
     </div>
   );

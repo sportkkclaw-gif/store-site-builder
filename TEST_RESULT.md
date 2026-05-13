@@ -989,3 +989,26 @@ QA artifacts：
 - Screenshots：`qa-artifacts/v0.2.10/desktop-preview-full-height/`，90 張 PNG（30 templates × right-panel-bottom / fullscreen-1440-bottom / fullscreen-1280-bottom）
 
 結論：v0.2.9-hotfix.1 本機 full-height regression PASS；需部署 Vercel Preview 後再執行 live QA closeout。
+
+---
+
+## v0.2.10-hotfix Preview Fit Scale Engine QA
+
+測試日期：2026-05-13T20:19:53+08:00
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`
+QA artifacts：`qa-artifacts/v0.2.10/preview-fit-scale-result.json`、`qa-artifacts/v0.2.10/preview-fit-scale/`
+
+| # | 驗收項目 | 實際結果 | 狀態 |
+|---|---|---|---|
+| 1 | 統一 PreviewCanvas | Builder desktop、Builder mobile、fullscreen desktop、fullscreen mobile 均使用 `components/preview/PreviewCanvas.tsx`。 | ✅ PASS |
+| 2 | ResizeObserver fit scale | PreviewCanvas 使用 ResizeObserver 量測外層容器寬度與 virtual canvas 內容高度。 | ✅ PASS |
+| 3 | Builder desktop fit scale | 10 套模板全通過；sample containerWidth=605、virtualWidth=1440、scale=0.398、scaledWidth=573。 | ✅ PASS |
+| 4 | Builder mobile fit scale | 10 套模板全通過；sample containerWidth=390、virtualWidth=390、phone targetWidth=426、scale=0.840、scaledWidth=358。 | ✅ PASS |
+| 5 | Fullscreen desktop 1440 Fit | 10 套模板全通過；sample containerWidth=1392、virtualWidth=1440、scale=0.922、scaledWidth=1328。 | ✅ PASS |
+| 6 | Fullscreen mobile 390 Fit | 10 套模板全通過；sample containerWidth=370、virtualWidth=390、phone targetWidth=426、scale=0.718、scaledWidth=306。 | ✅ PASS |
+| 7 | spacer height | `preview-scaled-spacer` 高度由 `contentHeight * scale` 產生，且 QA 驗證 `hasSpacerHeight=true`。 | ✅ PASS |
+| 8 | 截圖 | `qa-artifacts/v0.2.10/preview-fit-scale/` 產出 8 張 PNG。 | ✅ PASS |
+| 9 | `npm run typecheck` | `tsc --noEmit` exit 0。 | ✅ PASS |
+| 10 | `npm run build` | Next.js 16.2.4 production build success。 | ✅ PASS |
+
+結論：v0.2.10-hotfix Preview Fit Scale Engine 本機 QA 通過；等待 PR / Vercel Preview live QA。
