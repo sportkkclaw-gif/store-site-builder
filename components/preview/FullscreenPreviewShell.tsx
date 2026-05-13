@@ -18,6 +18,9 @@ const zoomOptions: { value: PreviewCanvasZoom; label: string }[] = [
 ];
 
 function parseMode(value: string | null): PreviewCanvasMode { return value === 'mobile' ? 'mobile' : 'desktop'; }
+function parseZoom(value: string | null): PreviewCanvasZoom {
+  return value === '100' || value === '75' || value === '50' || value === 'fit' ? value : 'fit';
+}
 function parseViewport(mode: PreviewCanvasMode, value: string | null): PreviewCanvasViewport {
   const parsed = Number(value);
   const allowed = mode === 'mobile' ? mobileViewports : desktopViewports;
@@ -29,7 +32,7 @@ export function FullscreenPreviewShell({ data }: { data: SiteData }) {
   const initialMode = parseMode(searchParams?.get('mode') || null);
   const [mode, setMode] = useState<PreviewCanvasMode>(initialMode);
   const [viewport, setViewport] = useState<PreviewCanvasViewport>(parseViewport(initialMode, searchParams?.get('viewport') || null));
-  const [zoom, setZoom] = useState<PreviewCanvasZoom>('fit');
+  const [zoom, setZoom] = useState<PreviewCanvasZoom>(parseZoom(searchParams?.get('zoom') || null));
   const stageRef = useRef<HTMLDivElement>(null);
   const viewportOptions = useMemo(() => mode === 'desktop' ? desktopViewports : mobileViewports, [mode]);
   const template = getCurrentTemplate(data);

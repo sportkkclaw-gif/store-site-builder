@@ -1015,3 +1015,49 @@ QA artifacts：`qa-artifacts/v0.2.10/preview-fit-scale-result.json`、`qa-artifa
 | 12 | Live `/__version` | `v0.2.10-hotfix`，commit `cb40f6cd0bdc991a0353333c7051cbcc5239907f`，branch `fix/v0.2.10-preview-fit-scale-engine`。 | ✅ PASS |
 
 結論：v0.2.10-hotfix Preview Fit Scale Engine 本機與 live Preview QA 通過；可送 Jason 驗收。
+
+
+## v0.2.10-hotfix PreviewCanvas Fit Scale + Centering Fix QA（2026-05-13 14:02 UTC）
+
+**範圍**：僅修 PreviewCanvas / previewGeometry / stage centering / phone frame width 計算；未修改 30 套模板 catalog、TemplateSkinEngine、MobileArtworkSafeFrame、首頁、代管、exportStaticSite 主流程、登入、付款、資料庫。
+
+**修復摘要**
+- 統一 Builder desktop、Builder mobile、fullscreen desktop、fullscreen mobile 使用 `components/preview/PreviewCanvas.tsx`。
+- 新增 `lib/previewGeometry.ts`，集中計算 `virtualCanvasWidth`、`frameOuterWidth`、`scale`、`scaledWidth`、`scaledHeight`、`stagePadding`、置中策略。
+- `PreviewCanvas` 使用 `ResizeObserver` 量測 stage container width 與 virtual canvas content height。
+- stage 結構改為 `preview-stage` → `preview-centered-spacer` → `preview-scale-wrapper` → frame shell → `preview-virtual-canvas`，由 stage flex center 負責置中。
+- mobile phone frame width 計入 56px chrome；`mobile-preview-canvas` 保持 `data-viewport-width=390/375/320`，不使用 1440px desktop canvas。
+
+**本機 QA 命令**
+```bash
+npm run typecheck
+npm run build
+BASE_URL=http://127.0.0.1:3050 npx tsx scripts/qa-preview-scale-centering.ts
+```
+
+**本機 QA 結果**
+- `npm run typecheck`：PASS
+- `npm run build`：PASS（Next.js 16.2.4 build successful）
+- `scripts/qa-preview-scale-centering.ts`：PASS，10/10 templates
+- `builderDesktopFit=true`
+- `builderMobileFit=true`
+- `fullscreenDesktopCentered=true`
+- `fullscreenMobileCentered=true`
+- `mobile390=true` / `mobile375=true` / `mobile320=true`
+- `footerReachable=true`
+- `failedTemplates=[]`
+
+**代表 scale 數據（抹茶日和）**
+| 場景 | containerWidth | virtualWidth | frameOuterWidth | scale | scaledWidth | centered | leftGap/rightGap | footerReachable |
+|---|---:|---:|---:|---:|---:|---|---|---|
+| Builder desktop | 605 | 1440 | 1440 | 0.409 | 589 | true | 8 / 8 | true |
+| Builder mobile | 390 | 390 | 446 | 0.839 | 374 | true | 8 / 8 | n/a |
+| Fullscreen desktop | 1392 | 1440 | 1440 | 0.933 | 1344 | true | 24 / 24 | true |
+| Fullscreen mobile | 370 | 390 | 446 | 0.722 | 322 | true | 24 / 24 | n/a |
+
+**Artifacts**
+- JSON：`qa-artifacts/v0.2.10/preview-scale-centering-result.json`
+- Summary：`qa-artifacts/v0.2.10/preview-scale-centering-summary.md`
+- Screenshots：`qa-artifacts/v0.2.10/preview-scale-centering/`（12 張）
+
+**待補**：push 後重新部署 Vercel Preview，並以同一腳本對 live Preview 重跑 QA。

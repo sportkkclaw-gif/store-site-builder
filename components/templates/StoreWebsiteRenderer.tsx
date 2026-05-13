@@ -7,7 +7,7 @@ import { getTemplateSkin } from '@/lib/templateSkinEngine';
 import { getCurrentTemplateId } from '@/lib/currentTemplate';
 import { getTemplateArtwork } from '@/lib/templateArtworkResolver';
 
-export function StoreWebsiteRenderer({data}:{data:SiteData}){
+export function StoreWebsiteRenderer({data, previewMode}:{data:SiteData; previewMode?: 'desktop' | 'mobile'}){
   const visual = getTemplateVisualStyle(data);
   const skin = getTemplateSkin(data);
   const templateId = getCurrentTemplateId(data);
@@ -17,5 +17,5 @@ export function StoreWebsiteRenderer({data}:{data:SiteData}){
     : data.template==='playful-colorful'
       ? <PlayfulColorfulTemplate data={data}/>
       : <FreshJapaneseTemplate data={data}/>;
-  return <div data-testid="site-renderer" data-template-id={templateId} data-skin-family={skin.family} data-artwork-src={artwork.gallerySrc} data-visual-contract-id={skin.visualContractId} data-template-preset={templateId} data-layout-family={visual.layoutFamily} data-style-label={visual.styleLabel} style={{background:visual.pageBackgroundStyle}}>{rendered}</div>;
+  return <div data-testid="site-renderer" data-preview-mode={previewMode || 'desktop'} data-template-id={templateId} data-skin-family={skin.family} data-artwork-src={artwork.gallerySrc} data-visual-contract-id={skin.visualContractId} data-template-preset={templateId} data-layout-family={visual.layoutFamily} data-style-label={visual.styleLabel} style={{background:visual.pageBackgroundStyle}}>{rendered}</div>;
 }

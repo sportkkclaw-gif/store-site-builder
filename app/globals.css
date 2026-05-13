@@ -196,22 +196,25 @@ button {
   color: #0f766e;
 }
 
-.preview-canvas-scroll {
+.preview-canvas-scroll,
+.preview-stage {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   min-width: 0;
   width: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 8px 0 14px;
 }
 
 .preview-fit-container {
   position: relative;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
-  overflow: visible;
-  padding: 8px 0 14px;
+}
+
+.preview-centered-spacer {
+  flex: 0 0 auto;
 }
 
 .preview-scaled-spacer {
@@ -225,8 +228,10 @@ button {
 }
 
 .preview-scale-indicator {
-  align-self: flex-start;
-  margin-left: 8px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 3;
   border-radius: 999px;
   background: rgba(15, 23, 42, .88);
   color: white;
@@ -237,7 +242,7 @@ button {
 }
 
 .preview-canvas {
-  box-sizing: content-box;
+  box-sizing: border-box;
   max-width: none;
   min-height: 900px;
   background: #ffffff;
@@ -286,9 +291,10 @@ button {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 10px solid #020617;
+  box-sizing: border-box;
+  border: 12px solid #020617;
   border-radius: 42px;
-  padding: 8px;
+  padding: 13px 16px 17px;
   box-shadow: 0 28px 90px rgba(0, 0, 0, .42);
 }
 
