@@ -39,7 +39,7 @@ async function main() {
   for (const viewport of viewports) {
     await page.getByTestId(`preview-viewport-${viewport}`).click();
     await page.waitForTimeout(450);
-    const metrics = await page.evaluate(`(() => {
+    const metrics: any = await page.evaluate(`(() => {
       const q = (s) => document.querySelector(s);
       const box = (el) => {
         if (!el) return null;
