@@ -1078,8 +1078,8 @@
 
 ## v0.2.10-hotfix follow-up：Mobile Preview Virtual Viewport 修復驗證
 
-測試時間：2026-05-13 23:52 CST  
-修復 commit：待 commit  
+測試時間：2026-05-13 23:52 CST / live 2026-05-14 00:14 CST  
+修復 commit：`832cecf6e00839529526a73ca42e589a3749584d`  
 退回截圖問題：fullscreen mobile 390 雖然手機外框置中，但內部網站仍套用 desktop media query，Hero/CTA 向右溢出並被 phone frame 裁切。
 
 根因：手機 Preview 是在桌機瀏覽器內用 390/375/320px virtual div 渲染；CSS `@media(max-width:760px)` 依據真實瀏覽器 viewport，不依據 virtual canvas，因此 fullscreen/builder mobile preview 未套用手機模板規則。
@@ -1108,4 +1108,11 @@ QA artifacts：
 - `qa-artifacts/v0.2.10-hotfix-mobile-viewport/fullscreen-mobile-375.png`
 - `qa-artifacts/v0.2.10-hotfix-mobile-viewport/fullscreen-mobile-320.png`
 
-Live Preview：待 commit/push/redeploy 後重新驗證。
+Live Preview：
+- Preview URL：`https://store-site-builder-h62guginb-sportkk101-5719s-projects.vercel.app`
+- Deployment：`dpl_HcEuwrZwvUztwU5UxBQsnD6WZtqS`
+- `__version` commit：`832cecf6e00839529526a73ca42e589a3749584d`
+- HTTP：`/` 200、`/builder` 200、`/preview?mode=mobile&viewport=390&zoom=fit` 200、`/__version` 200
+- Live QA：`PREVIEW_URL=https://store-site-builder-h62guginb-sportkk101-5719s-projects.vercel.app npx tsx scripts/qa-mobile-preview-virtual-viewport.ts` → 390 / 375 / 320 全部 passed=true
+- Live metrics：390 `phoneWidth/rootScrollWidth/heroScrollWidth = 390/390/362`；375 `375/375/347`；320 `320/320/292`
+- 結論：Jason 截圖指出的 fullscreen mobile 390 內部桌機版裁切已修復，手機 preview 使用 virtual viewport mobile contract，不再誤套 desktop media query。
