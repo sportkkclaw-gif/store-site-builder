@@ -85,11 +85,7 @@ button {
 .desktop-preview-canvas {
   width: 1180px;
   max-width: none;
-  transform: scale(.43);
-  transform-origin: top left;
   min-height: 1680px;
-  margin-right: -672px;
-  margin-bottom: -950px;
 }
 
 .mobile-preview-window {
@@ -200,22 +196,60 @@ button {
   color: #0f766e;
 }
 
-.preview-canvas-scroll {
+.preview-canvas-scroll,
+.preview-stage {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   min-width: 0;
   width: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 8px 0 14px;
+}
+
+.preview-fit-container {
+  position: relative;
+}
+
+.preview-centered-spacer {
+  flex: 0 0 auto;
+}
+
+.preview-scaled-spacer {
+  max-width: none;
+  overflow: visible;
+}
+
+.preview-scale-wrapper {
+  max-width: none;
+  will-change: transform;
+}
+
+.preview-scale-indicator {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 3;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, .88);
+  color: white;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .02em;
 }
 
 .preview-canvas {
+  box-sizing: border-box;
   max-width: none;
   min-height: 900px;
   background: #ffffff;
 }
 
 .preview-canvas--desktop {
-  overflow: hidden;
+  overflow: visible;
 }
 
 .preview-canvas--mobile {
@@ -257,9 +291,10 @@ button {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 10px solid #020617;
+  box-sizing: border-box;
+  border: 12px solid #020617;
   border-radius: 42px;
-  padding: 8px;
+  padding: 13px 16px 17px;
   box-shadow: 0 28px 90px rgba(0, 0, 0, .42);
 }
 
@@ -276,6 +311,176 @@ button {
 
 .preview-phone-viewport .store-template {
   min-height: 100%;
+}
+
+/*
+ * Mobile preview is rendered inside a 390/375/320px virtual div while the real
+ * browser viewport can still be desktop-sized. CSS @media(max-width:760px)
+ * therefore does not fire in fullscreen/builder preview. Force the same mobile
+ * skin contract when StoreWebsiteRenderer declares data-preview-mode="mobile".
+ */
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"],
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .store-template {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .store-template,
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .store-template * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .store-template .wrap {
+  width: 100%;
+  max-width: 100%;
+  padding: 14px;
+  gap: 16px;
+  overflow-x: hidden;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .skin-nav {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  border-radius: 22px;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .skin-nav nav {
+  display: none;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .template-hero {
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .template-hero-inner {
+  width: 100%;
+  max-width: 100%;
+  min-height: auto;
+  padding: var(--mobile-hero-padding-x);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .template-hero-backplate,
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .template-hero-overlay {
+  display: none;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .mobile-hero-artwork-stage {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .mobile-artwork-safe-frame {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .mobile-artwork-safe-frame img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: none;
+  min-width: 0;
+  margin: 0;
+  transform: none;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .hero-copy,
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .mobile-hero-content-panel {
+  width: min(100%, 340px);
+  max-width: var(--mobile-hero-panel-max-width);
+  min-width: 0;
+  margin: 0 auto;
+  padding: clamp(22px, 6vw, 32px);
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .hero-copy h1,
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .mobile-hero-title {
+  width: 100%;
+  max-width: var(--mobile-hero-title-max-width);
+  font-size: var(--mobile-hero-title-font-size);
+  line-height: var(--mobile-hero-title-line-height);
+  letter-spacing: -0.02em;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  line-break: strict;
+  text-wrap: balance;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .hero-title-line {
+  display: block;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .hero-copy .muted {
+  font-size: var(--mobile-hero-subtitle-font-size);
+  line-height: var(--mobile-hero-subtitle-line-height);
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .skin-link-list {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  gap: 10px;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .skin-btn {
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+  overflow-wrap: normal;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .skin-section,
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .skin-footer {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 20px;
+  border-radius: 22px;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .product-grid,
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .skin-menu-list,
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .info-grid,
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .faq-list {
+  grid-template-columns: 1fr;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .skin-menu-list {
+  padding: 12px;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .skin-menu-row,
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .skin-footer {
+  flex-direction: column;
+}
+
+.preview-phone-viewport [data-testid="site-renderer"][data-preview-mode="mobile"] .product-img {
+  height: 150px;
 }
 
 .fullscreen-template-name small {
@@ -398,12 +603,15 @@ button {
   align-items: flex-start;
   min-width: 0;
   width: 100%;
+  max-height: calc(100vh - 150px);
+  overflow: auto;
+  overscroll-behavior: contain;
 }
 
 .fullscreen-preview-canvas {
   max-width: none;
   min-height: 900px;
-  overflow: hidden;
+  overflow: visible;
   background: #ffffff;
   box-shadow: 0 28px 90px rgba(0, 0, 0, .42);
 }

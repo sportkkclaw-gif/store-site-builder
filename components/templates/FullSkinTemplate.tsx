@@ -49,6 +49,7 @@ export function FullSkinTemplate({ data, variant = 'fresh' }: { data: SiteData; 
       <StoreInfo data={data} skin={skin} />
       <FAQ data={data} skin={skin} />
       <ThemedFooter data={data} skin={skin} />
+      <div data-testid="site-render-end" aria-hidden="true" />
     </div>
   </main>;
 }
