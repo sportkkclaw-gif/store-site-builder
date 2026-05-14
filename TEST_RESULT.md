@@ -1116,3 +1116,39 @@ Live Preview：
 - Live QA：`PREVIEW_URL=https://store-site-builder-h62guginb-sportkk101-5719s-projects.vercel.app npx tsx scripts/qa-mobile-preview-virtual-viewport.ts` → 390 / 375 / 320 全部 passed=true
 - Live metrics：390 `phoneWidth/rootScrollWidth/heroScrollWidth = 390/390/362`；375 `375/375/347`；320 `320/320/292`
 - 結論：Jason 截圖指出的 fullscreen mobile 390 內部桌機版裁切已修復，手機 preview 使用 virtual viewport mobile contract，不再誤套 desktop media query。
+
+---
+
+## v0.2.10-hotfix follow-up：Mobile Hero Artwork 左右滿版修復驗證
+
+測試時間：2026-05-14 08:25 CST  
+正式 repo 工作樹：`/mnt/d/HERMES_TMP/01_REPO_CLONES/store-site-builder`  
+Jason 退回點：手機全螢幕預覽中圈起來的 Hero artwork 圖片太小，左右需要滿版。
+
+根因：v0.2.10-hotfix 的 forced mobile CSS 為避免 overflow，將 `.mobile-artwork-safe-frame img` 設為 `width:auto` 並限制 `max-height:min(42vh,260px)`；抹茶日和主視覺因此被高度上限壓成小圖，而不是填滿 artwork card 寬度。
+
+修復方式：
+- `app/globals.css`：Preview phone viewport 的 mobile artwork image 改為 `display:block; width:100%; max-height:none; margin:0;`。
+- `lib/templateSkinEngine.ts`：同步 mobile/export skin CSS，避免正式 renderer 與 export mobile CSS 不一致。
+- `scripts/qa-mobile-preview-virtual-viewport.ts`：新增 `artworkImageFillRatio` / `artworkImageFullWidth` 檢查，要求 Hero artwork image 寬度 >= artwork stage 寬度 99%。
+
+本機驗證：
+
+| 項目 | 結果 | 狀態 |
+|---|---|---|
+| `npm run typecheck` | `tsc --noEmit` exit 0 | ✅ PASS |
+| `npm run build` | Next.js 16.2.4 / Compiled successfully | ✅ PASS |
+| WSL-native runtime mirror | `/tmp/store-site-builder-runtime` build/start，用於避開 `/mnt/d` Next chunk 400 問題 | ✅ PASS |
+| `BASE_URL=http://127.0.0.1:3050 npx tsx scripts/qa-mobile-preview-virtual-viewport.ts` | 390 / 375 / 320 全部 passed=true | ✅ PASS |
+| 390 artwork image | `artworkImageWidth=320`, `artworkImageFillRatio=1`, `artworkImageFullWidth=true` | ✅ PASS |
+| 375 artwork image | `artworkImageWidth=305`, `artworkImageFillRatio=1`, `artworkImageFullWidth=true` | ✅ PASS |
+| 320 artwork image | `artworkImageWidth=250`, `artworkImageFillRatio=1`, `artworkImageFullWidth=true` | ✅ PASS |
+| overflow regression | 390 / 375 / 320 `phoneScrollWidth <= viewport`、`rootScrollWidth <= viewport`、`heroScrollWidth <= viewport` | ✅ PASS |
+
+QA artifacts：
+- `qa-artifacts/v0.2.10-hotfix-mobile-viewport/mobile-preview-virtual-viewport-result.json`
+- `qa-artifacts/v0.2.10-hotfix-mobile-viewport/fullscreen-mobile-390.png`
+- `qa-artifacts/v0.2.10-hotfix-mobile-viewport/fullscreen-mobile-375.png`
+- `qa-artifacts/v0.2.10-hotfix-mobile-viewport/fullscreen-mobile-320.png`
+
+視覺確認：`fullscreen-mobile-390.png` 中 Hero artwork 已由小圖改為填滿黑色 artwork card 可用寬度，左右不再縮成 thumbnail；未看到水平 overflow。

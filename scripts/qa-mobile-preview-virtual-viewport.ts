@@ -1,6 +1,8 @@
 import { chromium } from 'playwright';
 import fs from 'fs/promises';
 import path from 'path';
+import { createDefaultSiteData } from '@/lib/defaultSiteData';
+import { PREVIEW_SESSION_KEY, STORAGE_KEY } from '@/lib/storage';
 
 const baseUrl = process.env.PREVIEW_URL || process.env.BASE_URL || 'http://127.0.0.1:3050';
 const outDir = path.join(process.cwd(), 'qa-artifacts', 'v0.2.10-hotfix-mobile-viewport');
@@ -22,6 +24,9 @@ type Row = {
   navHidden: boolean;
   backplateHidden: boolean;
   artworkVisible: boolean;
+  artworkImageWidth: number;
+  artworkImageFillRatio: number;
+  artworkImageFullWidth: boolean;
   ctaWithinPhone: boolean;
   screenshot: string;
 };
@@ -30,9 +35,12 @@ async function main() {
   await fs.mkdir(outDir, { recursive: true });
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
-  await page.goto(`${baseUrl}/builder`, { waitUntil: 'networkidle' });
-  await page.getByRole('button', { name: '手機' }).click();
-  await page.getByRole('button', { name: '全螢幕預覽' }).click();
+  const seededData = JSON.stringify(createDefaultSiteData());
+  await page.addInitScript(({ storageKey, previewSessionKey, data }) => {
+    window.localStorage.setItem(storageKey, data);
+    window.sessionStorage.setItem(previewSessionKey, data);
+  }, { storageKey: STORAGE_KEY, previewSessionKey: PREVIEW_SESSION_KEY, data: seededData });
+  await page.goto(`${baseUrl}/preview?mode=mobile&viewport=390&from=qa`, { waitUntil: 'networkidle' });
   await page.waitForSelector('[data-testid="preview-phone-frame"]', { timeout: 30000 });
 
   const rows: Row[] = [];
@@ -55,6 +63,7 @@ async function main() {
         nav: box(q('.skin-nav nav')),
         backplate: box(q('.template-hero-backplate')),
         artwork: box(q('[data-testid="mobile-hero-artwork-stage"]')),
+        artworkImage: box(q('[data-testid="mobile-artwork-image"]')),
         cta: box(q('[data-testid="hero-cta-row"]')),
       };
     })()`);
@@ -77,10 +86,13 @@ async function main() {
       navHidden: metrics.nav?.display === 'none',
       backplateHidden: metrics.backplate?.display === 'none',
       artworkVisible: (metrics.artwork?.display === 'block' || metrics.artwork?.display === 'grid') && (metrics.artwork?.width || 0) > 0,
+      artworkImageWidth: Math.round(metrics.artworkImage?.width || 0),
+      artworkImageFillRatio: Number(((metrics.artworkImage?.width || 0) / Math.max(metrics.artwork?.width || 1, 1)).toFixed(3)),
+      artworkImageFullWidth: (metrics.artworkImage?.width || 0) >= (metrics.artwork?.width || viewport) * 0.99,
       ctaWithinPhone: metrics.cta.left >= metrics.phone.left - 1 && metrics.cta.right <= metrics.phone.right + 1,
       screenshot,
     };
-    row.passed = row.phoneWidth === viewport && row.phoneScrollWidth <= viewport && row.rootScrollWidth <= viewport && row.heroScrollWidth <= viewport && row.heroLeftWithinPhone && row.heroRightWithinPhone && row.heroColumn && row.navHidden && row.backplateHidden && row.artworkVisible && row.ctaWithinPhone;
+    row.passed = row.phoneWidth === viewport && row.phoneScrollWidth <= viewport && row.rootScrollWidth <= viewport && row.heroScrollWidth <= viewport && row.heroLeftWithinPhone && row.heroRightWithinPhone && row.heroColumn && row.navHidden && row.backplateHidden && row.artworkVisible && row.artworkImageFullWidth && row.ctaWithinPhone;
     rows.push(row);
   }
   await browser.close();
