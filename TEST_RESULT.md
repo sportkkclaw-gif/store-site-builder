@@ -1152,3 +1152,12 @@ QA artifacts：
 - `qa-artifacts/v0.2.10-hotfix-mobile-viewport/fullscreen-mobile-320.png`
 
 視覺確認：`fullscreen-mobile-390.png` 中 Hero artwork 已由小圖改為填滿黑色 artwork card 可用寬度，左右不再縮成 thumbnail；未看到水平 overflow。
+
+Live Preview：
+- Commit：`b7b1123cfc2ee2e64ef47c7d52e366c2449098c1`
+- Preview URL：`https://store-site-builder-6262hupju-sportkk101-5719s-projects.vercel.app`
+- Branch alias：`https://store-site-builder-git-fix-v02-a3c67f-sportkk101-5719s-projects.vercel.app`
+- Vercel deployment：`https://vercel.com/sportkk101-5719s-projects/store-site-builder/6oNKwQ64ArTQbq9wgXyuRcYMTeuU`
+- `/__version`：commit `b7b1123cfc2ee2e64ef47c7d52e366c2449098c1`，deployment `store-site-builder-6262hupju-sportkk101-5719s-projects.vercel.app`
+- Live QA：`PREVIEW_URL=https://store-site-builder-6262hupju-sportkk101-5719s-projects.vercel.app npx tsx scripts/qa-mobile-preview-virtual-viewport.ts` → 390 / 375 / 320 全部 passed=true
+- Live metrics：390 `artworkImageWidth=320`, `artworkImageFillRatio=1`, `artworkImageFullWidth=true`；375 `305/1/true`；320 `250/1/true`
