@@ -1,0 +1,159 @@
+{
+  "id": "demo-warm-alley-diner",
+  "industry": "restaurant",
+  "template": "fresh-japanese",
+  "galleryTemplateId": "restaurant-rice-kitchen",
+  "store": {
+    "name": "暖巷食堂",
+    "tagline": "巷口的一碗熱飯，溫暖每個日常",
+    "description": "供應手作主餐、暖心套餐與當季小菜，適合家庭聚餐、外帶便當與附近上班族午餐。",
+    "phone": "02-2345-6789",
+    "email": "hello@warmalley.tw",
+    "address": "台北市中山區暖巷 18 號",
+    "businessHours": "週一至週日 11:00 - 21:00"
+  },
+  "theme": {
+    "primaryColor": "#FFF8EA",
+    "secondaryColor": "#D6C2A0",
+    "backgroundColor": "#B98B6A",
+    "textColor": "#FFFFFF",
+    "fontFamily": "sans",
+    "buttonStyle": "rounded",
+    "sectionRadius": 28,
+    "layoutDensity": "comfortable"
+  },
+  "hero": {
+    "title": "巷口的一碗熱飯",
+    "subtitle": "主餐、套餐、小菜與外帶便當，讓你每天都吃得安心。",
+    "ctaText": "立即訂位",
+    "ctaUrl": "https://forms.gle/",
+    "imageId": "template-artwork-restaurant-rice-kitchen"
+  },
+  "menu": {
+    "categories": [
+      {
+        "id": "main",
+        "name": "主餐",
+        "items": [
+          {
+            "id": "r1",
+            "name": "醬燒雞腿飯",
+            "description": "外酥內嫩雞腿與特製醬汁",
+            "price": 160,
+            "featured": true
+          },
+          {
+            "id": "r2",
+            "name": "炙烤鮭魚定食",
+            "description": "附味噌湯與季節小菜",
+            "price": 220,
+            "featured": true
+          }
+        ]
+      },
+      {
+        "id": "combo",
+        "name": "套餐",
+        "items": [
+          {
+            "id": "r3",
+            "name": "暖巷雙人套餐",
+            "description": "兩份主餐、兩杯飲品與分享小菜",
+            "price": 520,
+            "featured": true
+          },
+          {
+            "id": "r4",
+            "name": "外帶便當",
+            "description": "每日主廚配菜與熱湯",
+            "price": 130,
+            "featured": false
+          }
+        ]
+      },
+      {
+        "id": "side",
+        "name": "小菜與飲品",
+        "items": [
+          {
+            "id": "r5",
+            "name": "胡麻時蔬",
+            "description": "新鮮青菜佐胡麻醬",
+            "price": 80,
+            "featured": false
+          },
+          {
+            "id": "r6",
+            "name": "桂花烏龍",
+            "description": "清香解膩的冷泡茶",
+            "price": 70,
+            "featured": false
+          }
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "id": "template-artwork-restaurant-rice-kitchen",
+      "name": "米香食堂 模板主視覺",
+      "type": "hero",
+      "mimeType": "image/png",
+      "dataUrl": "/template-gallery-ai/restaurant/restaurant-rice-kitchen.png"
+    }
+  ],
+  "links": {
+    "line": "https://line.me/",
+    "googleMap": "https://maps.google.com/",
+    "reservation": "https://forms.gle/",
+    "orderForm": "https://forms.gle/"
+  },
+  "seo": {
+    "title": "暖巷食堂｜巷口的一碗熱飯",
+    "description": "暖巷食堂提供手作主餐、套餐、小菜與外帶訂位服務。",
+    "slug": "warm-alley-diner",
+    "ogImageId": "template-artwork-restaurant-rice-kitchen"
+  },
+  "modules": {
+    "hero": true,
+    "featuredProducts": true,
+    "menu": true,
+    "brandStory": true,
+    "storeInfo": true,
+    "map": true,
+    "faq": true,
+    "socialLinks": true,
+    "footer": true
+  },
+  "faq": [
+    {
+      "question": "可以訂位嗎？",
+      "answer": "可以，請透過 LINE 或訂位表單預約。"
+    },
+    {
+      "question": "可以外帶嗎？",
+      "answer": "可以，主餐與便當皆可外帶。"
+    }
+  ],
+  "visual": {
+    "selectedTemplateId": "restaurant-rice-kitchen",
+    "layoutFamily": "restaurant-family",
+    "backgroundMode": "warm-paper",
+    "aiArtworkKey": "restaurant-rice-kitchen",
+    "heroTreatment": "split-image",
+    "navStyle": "floating",
+    "cardStyle": "soft",
+    "templatePreset": {
+      "selectedTemplateId": "restaurant-rice-kitchen",
+      "layoutFamily": "restaurant-family",
+      "backgroundMode": "warm-paper",
+      "aiArtworkKey": "restaurant-rice-kitchen",
+      "heroTreatment": "split-image",
+      "navStyle": "floating",
+      "cardStyle": "soft",
+      "styleLabel": "米香 / 家常 / 溫暖 / 餐飲店"
+    },
+    "styleLabel": "米香 / 家常 / 溫暖 / 餐飲店",
+    "appliedAt": "2026-05-14T14:48:28.342Z"
+  }
+}

@@ -1,6 +1,5 @@
 import type { IndustryType } from '@/types/site';
 import type { TemplateGalleryItem, TemplateIndustry, TemplateSort } from '@/types/template';
-import { enrichAllTemplates } from './enrichTemplate';
 
 export const templateCatalog = [
   {
@@ -1145,7 +1144,7 @@ export const templateCatalog = [
   }
 ] satisfies TemplateGalleryItem[];
 
-export const templateCatalogWithPresets = enrichAllTemplates(templateCatalog);
+export const templateCatalogWithPresets = templateCatalog;
 
 export const templateIndustries: TemplateIndustry[] = ['drink-shop', 'restaurant', 'cafe'];
 
