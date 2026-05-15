@@ -64,6 +64,49 @@ npx tsx scripts/qa-onboarding-hosting.ts
 - JSON export: `qa-artifacts/v0.3.0/onboarding-hosting/siteData-export.json`
 - Hosting request: `qa-artifacts/v0.3.0/onboarding-hosting/hosting-request.json`
 
+## Hero Image Settings Addendum
+
+Scope: v0.3.0 Hero 設定圖片選擇與綁定缺口修復。
+
+Implemented:
+- `siteData.hero.imageMode`: `template | custom`, default `template`.
+- Hero 主視覺圖片設定區：模板主視覺 / 自訂 Hero 圖 radio mode。
+- Hero 設定區內可直接上傳 JPG / PNG / WebP（2MB validation）並寫入 `siteData.media` as `type=hero`。
+- Hero 設定區可從 media library 選擇 `hero/product/store/other` 圖片。
+- 清除自訂圖片會回到模板主視覺。
+- Builder Preview / Fullscreen Preview / Mobile Preview 依 `hero.imageMode` 顯示 template artwork 或 custom media。
+- 切換模板時：custom mode 保留自訂 Hero 圖；template mode 跟著模板主視覺切換。
+- ZIP export custom mode 會將 Hero media 匯出至 `assets/` 並在 `index.html` 使用該 asset。
+
+Commands:
+
+```bash
+npm run typecheck
+npm run build
+npx tsx scripts/qa-hero-image-settings.ts
+```
+
+Results:
+
+| Check | Result |
+|---|---|
+| hero-image-settings-result.json | ok=true |
+| Hero settings visible | PASS |
+| Template mode | PASS |
+| Custom upload | PASS |
+| Builder Preview custom Hero | PASS |
+| Fullscreen Preview custom Hero | PASS |
+| Template switch keeps custom Hero | PASS |
+| Clear custom Hero | PASS |
+| Export custom Hero asset | PASS |
+| ZIP forbidden strings localhost / 127.0.0.1 / _next | PASS |
+| mobile 390 / 375 / 320 no overflow | PASS |
+| Screenshot count | 8 PNG |
+
+QA Artifacts:
+- `qa-artifacts/v0.3.0/hero-image-settings-result.json`
+- `qa-artifacts/v0.3.0/hero-image-settings/`
+
 ## Notes
 
 A pre-existing client-side circular import between `templateCatalog -> enrichTemplate -> templateArtworkResolver -> templateCatalog` surfaced as `ReferenceError: Cannot access 'n' before initialization` during browser hydration. Fixed by removing eager `enrichAllTemplates(templateCatalog)` evaluation from `templateCatalog.ts`; `templateCatalogWithPresets` now remains a non-eager catalog export because it has no current consumers.

@@ -9,7 +9,7 @@ export function migrateSiteData(input: Partial<SiteData>): SiteData {
     ...input,
     store: { ...defaults.store, ...(input.store || {}) },
     theme: { ...defaults.theme, ...(input.theme || {}) },
-    hero: { ...defaults.hero, ...(input.hero || {}) },
+    hero: { ...defaults.hero, ...(input.hero || {}), imageMode: (input.hero?.imageMode === 'custom' ? 'custom' : 'template') },
     menu: input.menu || defaults.menu,
     media: input.media || defaults.media,
     links: { ...defaults.links, ...(input.links || {}) },

@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "heroImageSettingsVisible": true,
+  "templateModeWorks": true,
+  "customUploadWorks": true,
+  "previewShowsCustomHero": true,
+  "fullscreenPreviewShowsCustomHero": true,
+  "templateSwitchKeepsCustomHero": true,
+  "clearCustomHeroWorks": true,
+  "exportHeroImageWorks": true
+}
