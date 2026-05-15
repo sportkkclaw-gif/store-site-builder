@@ -58,6 +58,10 @@ async function main() {
   await page.locator('[data-testid="hero-upload-input"]').setInputFiles({ name: 'qa-hero-upload.png', mimeType: 'image/png', buffer: redPng });
   await page.getByText('目前使用自訂 Hero 圖').waitFor({ timeout: 15000 });
   await page.locator('[data-testid="hero-media-choice"]').first().waitFor({ timeout: 15000 });
+  await page.waitForFunction(() => {
+    const d = JSON.parse(localStorage.getItem('store-site-builder-data') || '{}');
+    return d.hero?.imageMode === 'custom' && Boolean(d.hero?.imageId) && d.media?.some((m: any) => m.id === d.hero.imageId && m.type === 'hero');
+  }, undefined, { timeout: 15000 });
   await shot(page, 'hero-settings-upload.png');
   await shot(page, 'hero-settings-custom-selected.png');
 
@@ -78,6 +82,10 @@ async function main() {
   const firstApply = page.getByRole('button', { name: '套用' }).first();
   await firstApply.click();
   await page.waitForTimeout(800);
+  await page.waitForFunction((expectedId) => {
+    const d = JSON.parse(localStorage.getItem('store-site-builder-data') || '{}');
+    return d.hero?.imageMode === 'custom' && d.hero?.imageId === expectedId;
+  }, storage.hero.imageId, { timeout: 15000 });
   const afterSwitch = await page.evaluate(() => JSON.parse(localStorage.getItem('store-site-builder-data') || '{}'));
   result.templateSwitchKeepsCustomHero = afterSwitch.hero?.imageMode === 'custom' && afterSwitch.hero?.imageId === storage.hero.imageId;
   result.previewShowsCustomHero = result.previewShowsCustomHero && await heroMode(page) === 'custom';
