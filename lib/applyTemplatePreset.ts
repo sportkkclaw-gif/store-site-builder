@@ -120,8 +120,8 @@ function applyTemplatePresetToData(data: SiteData, template: TemplateCatalogItem
       layoutDensity: layoutDensity(template),
     },
     visual: buildVisual(template, data.industry),
-    hero: { ...data.hero, imageId: mediaId },
-    seo: { ...data.seo, ogImageId: mediaId },
+    hero: { ...data.hero, imageId: data.hero.imageMode === 'custom' ? data.hero.imageId : mediaId },
+    seo: { ...data.seo, ogImageId: data.hero.imageMode === 'custom' ? data.seo.ogImageId : mediaId },
     media,
   };
 }

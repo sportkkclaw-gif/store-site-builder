@@ -1,0 +1,21 @@
+{
+  "type": "denmeipian-hosting-request",
+  "version": "0.3.0",
+  "generatedAt": "2026-05-14T15:05:23.461Z",
+  "contact": {
+    "name": "QA Tester",
+    "email": "qa@example.com",
+    "lineId": "@qa"
+  },
+  "store": {
+    "name": "暖巷食堂",
+    "requestedSlug": "qa-tea",
+    "hasCustomDomain": false
+  },
+  "site": {
+    "templateId": "restaurant-rice-kitchen",
+    "industry": "restaurant",
+    "summary": "暖巷食堂｜巷口的一碗熱飯，溫暖每個日常｜3 個菜單分類"
+  },
+  "notes": ""
+}
