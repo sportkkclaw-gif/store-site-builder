@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react';
 import type { SiteData } from '@/types/site';
 import type { TemplateSkin } from '@/lib/templateSkinEngine';
 import { getHeroTitleLines } from '@/lib/formatHeroTitleLines';
+import { getHeroFallbackCta } from '@/lib/heroCta';
 import { getHeroImageSource } from '@/lib/heroImage';
 import { MobileArtworkSafeFrame } from './MobileArtworkSafeFrame';
 
@@ -9,8 +10,9 @@ const linkLabels: Record<string, string> = { line: 'LINE', instagram: 'Instagram
 
 function Links({ data }: { data: SiteData }) {
   const entries = Object.entries(data.links).filter(([, v]) => v);
-  const links = entries.length ? entries : [['cta', data.hero.ctaUrl || '#menu']];
-  return <div className="skin-link-list mt-6" data-testid="hero-cta-row">{links.map(([k, v]) => <a key={k} className="skin-btn" href={String(v)} target={String(v).startsWith('#') ? undefined : '_blank'} rel={String(v).startsWith('#') ? undefined : 'noopener noreferrer'}>{linkLabels[k] || data.hero.ctaText || '查看菜單'}</a>)}</div>;
+  const fallbackCta = getHeroFallbackCta(data);
+  const links = entries.length ? entries : [['cta', fallbackCta.href]];
+  return <div className="skin-link-list mt-6" data-testid="hero-cta-row">{links.map(([k, v]) => <a key={k} className="skin-btn" href={String(v)} target={String(v).startsWith('#') ? undefined : '_blank'} rel={String(v).startsWith('#') ? undefined : 'noopener noreferrer'}>{k === 'cta' ? fallbackCta.label : linkLabels[k] || data.hero.ctaText || '查看菜單'}</a>)}</div>;
 }
 
 export function ThemedHero({ data, skin }: { data: SiteData; skin: TemplateSkin }) {

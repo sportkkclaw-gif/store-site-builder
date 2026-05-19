@@ -33,10 +33,20 @@ export function HostingRequestModal({ open, onClose, siteData }: { open: boolean
   const [form, setForm] = useState<RequestState>(() => ({ ...initialState, storeName: siteData?.store.name || '' }));
   const [generated, setGenerated] = useState('');
   const [copied, setCopied] = useState(false);
+  const [error, setError] = useState('');
   const requestText = useMemo(() => generated || JSON.stringify(buildHostingRequest(form, siteData), null, 2), [form, generated, siteData]);
   if (!open) return null;
   const update = (key: keyof RequestState, value: string | boolean) => setForm(prev => ({ ...prev, [key]: value }));
   const submit = () => {
+    const hasEmail = form.email.trim().length > 0;
+    const hasLine = form.lineId.trim().length > 0;
+
+    if (!hasEmail && !hasLine) {
+      setError('請至少填寫 Email 或 LINE ID，方便我們聯絡你。');
+      return;
+    }
+
+    setError('');
     const text = JSON.stringify(buildHostingRequest(form, siteData), null, 2);
     setGenerated(text);
     downloadText('hosting-request.json', text);
@@ -65,6 +75,7 @@ export function HostingRequestModal({ open, onClose, siteData }: { open: boolean
           <label className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-bold text-slate-700"><input type="checkbox" checked={form.hasCustomDomain} onChange={e => update('hasCustomDomain', e.target.checked)} /> 已有自己的網域</label>
           <div className="md:col-span-2"><Textarea label="備註" value={form.notes} onChange={e => update('notes', e.target.value)} /></div>
         </div>
+        {error && <p className="mt-4 rounded-2xl bg-rose-50 px-4 py-3 text-sm font-black text-rose-700" role="alert" data-testid="hosting-request-error">{error}</p>}
         <div className="mt-5 flex flex-col gap-3 sm:flex-row"><Button onClick={submit} data-testid="generate-hosting-request">產生 hosting-request.json</Button><Button variant="secondary" onClick={copy} data-testid="copy-hosting-request">{copied ? '已複製申請內容' : '複製申請內容'}</Button></div>
         {generated && <pre className="mt-5 max-h-64 overflow-auto rounded-2xl bg-slate-950 p-4 text-xs leading-5 text-teal-100" data-testid="hosting-request-output">{generated}</pre>}
       </div>

@@ -17,8 +17,8 @@ export function checkPublishReadiness(data: SiteData): PublishReadinessResult {
 
   if (!hasText(data.store.name)) requiredIssues.push('請填寫店名。');
   if (!hasText(data.store.tagline)) requiredIssues.push('請填寫品牌標語。');
-  if (!hasText(data.store.phone) && !hasText(data.links.line)) requiredIssues.push('電話或 LINE 至少需要一個。');
-  if (!hasText(data.store.address) && !hasText(data.links.googleMap)) requiredIssues.push('地址或 Google Maps 至少需要一個。');
+  if (!hasText(data.store.phone) && !hasText(data.links.line)) requiredIssues.push('請填寫電話或 LINE');
+  if (!hasText(data.store.address) && !hasText(data.links.googleMap)) requiredIssues.push('請填寫地址或 Google Maps');
   if (productCount(data) < 3) requiredIssues.push('菜單至少需要 3 個商品。');
   if (ctaLinks(data).length < 1) requiredIssues.push('至少需要一個 CTA / 聯絡 / 外送連結。');
 

@@ -6,12 +6,13 @@ import { getTemplateById } from './templateCatalog';
 import { getHeroImageSource } from './heroImage';
 import { getTemplateArtwork } from './templateArtworkResolver';
 import { generateTemplateSkinCss, getTemplateSkin } from './templateSkinEngine';
+import { getHeroFallbackCta } from './heroCta';
 
 const names: Record<string, string> = { line: 'LINE', instagram: 'Instagram', facebook: 'Facebook', threads: 'Threads', tiktok: 'TikTok', googleMap: 'Google Maps', ubereats: 'Uber Eats', foodpanda: 'foodpanda', orderForm: '立即訂購', reservation: '線上訂位' };
 const templateName: Record<SiteData['template'], string> = { 'fresh-japanese': '清新日系', 'premium-minimal': '質感極簡', 'playful-colorful': '活潑可愛' };
 function asset(data: SiteData, id?: string) { const media = mediaById(data, id); return media ? `assets/${media.id}.${(media.mimeType.split('/')[1] || 'png').replace('jpeg', 'jpg')}` : ''; }
 function font(data: SiteData) { return data.theme.fontFamily === 'serif' ? 'Georgia,"Noto Serif TC",serif' : data.theme.fontFamily === 'rounded' ? 'ui-rounded,"Noto Sans TC",system-ui,sans-serif' : 'system-ui,"Noto Sans TC",sans-serif'; }
-function links(data: SiteData) { const entries = Object.entries(data.links).filter(([, v]) => v); const list = entries.length ? entries : [['cta', data.hero.ctaUrl || '#menu']]; return list.map(([k, v]) => `<a class="skin-btn" href="${esc(v)}" ${String(v).startsWith('#') ? '' : 'target="_blank" rel="noopener noreferrer"'}>${esc(names[k] || data.hero.ctaText || '查看菜單')}</a>`).join(''); }
+function links(data: SiteData) { const entries = Object.entries(data.links).filter(([, v]) => v); const fallbackCta = getHeroFallbackCta(data); const list = entries.length ? entries : [['cta', fallbackCta.href]]; return list.map(([k, v]) => `<a class="skin-btn" href="${esc(v)}" ${String(v).startsWith('#') ? '' : 'target="_blank" rel="noopener noreferrer"'}>${esc(k === 'cta' ? fallbackCta.label : names[k] || data.hero.ctaText || '查看菜單')}</a>`).join(''); }
 
 export function generateExportSkinCss(data: SiteData, skin: TemplateSkin) {
   return `body{margin:0;font-family:${font(data)};overflow-x:hidden}${generateTemplateSkinCss(skin)}@media(max-width:760px){.export-site,.export-site *{max-width:100%;box-sizing:border-box}.hero-copy{overflow-wrap:normal}.skin-nav{min-width:0}.skin-menu-list{padding:12px}.product-img{height:150px}.template-hero-inner{overflow:hidden}.hero-title-line{display:block}}`;

@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "hostingRequestBlocksMissingContact": true,
+  "hostingRequestAllowsEmailOnly": true,
+  "hostingRequestAllowsLineOnly": true,
+  "publishReadinessRequiresPhoneOrLine": true,
+  "publishReadinessRequiresAddressOrMap": true,
+  "heroCtaFallbackWorks": true,
+  "zipRegressionPass": true
+}
