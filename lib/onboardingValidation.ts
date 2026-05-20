@@ -7,7 +7,7 @@ export type OnboardingBasicInfoInput = {
   googleMap?: string;
 };
 
-export type OnboardingBasicInfoErrors = Partial<Record<'storeName' | 'tagline' | 'phoneOrLine' | 'addressOrMap', string>>;
+export type OnboardingBasicInfoErrors = Partial<Record<'storeName' | 'tagline' | 'phoneOrLine' | 'addressOrMap' | 'line' | 'googleMap', string>>;
 
 export type OnboardingBasicInfoValidationResult = {
   ok: boolean;
@@ -16,9 +16,9 @@ export type OnboardingBasicInfoValidationResult = {
 };
 
 const obviousTestValues = new Set(['test', '測試', 'aaa', 'qqq']);
-const googleMapsUrlPattern = /^https:\/\/((www\.)?maps\.google\.com|google\.com\/maps|www\.google\.com\/maps|goo\.gl\/maps|maps\.app\.goo\.gl)\//i;
-const lineUrlPattern = /^https:\/\/(line\.me|lin\.ee)\//i;
-const lineIdPattern = /^[A-Za-z0-9_.-]+$/;
+const googleMapsUrlPattern = /^https:\/\/((www\.)?maps\.google\.com|google\.com\/maps|www\.google\.com\/maps|goo\.gl\/maps|maps\.app\.goo\.gl)(\/|\?|#|$)/i;
+const lineUrlPattern = /^https:\/\/(line\.me|lin\.ee)(\/|\?|#|$)/i;
+const lineIdPattern = /^[A-Za-z0-9_.@-]+$/;
 
 function normalize(input: OnboardingBasicInfoInput): Required<OnboardingBasicInfoInput> {
   return {
@@ -35,6 +35,10 @@ function onlyDigits(value: string) {
   return /^\d+$/.test(value);
 }
 
+function allSameDigits(value: string) {
+  return /^(\d)\1+$/.test(value);
+}
+
 function onlySymbols(value: string) {
   return value.length > 0 && !/[A-Za-z0-9\u3400-\u9FFF]/u.test(value);
 }
@@ -47,26 +51,26 @@ function hasEnoughRealText(value: string, minLength: number) {
   return value.length >= minLength && !onlyDigits(value) && !onlySymbols(value) && !isObviousTestValue(value);
 }
 
-function isValidPhone(value: string) {
+export function isValidOnboardingPhone(value: string) {
   const digits = value.replace(/\D/g, '');
   if (digits.length < 6) return false;
   if (!/^[0-9+\-\s()]+$/.test(value)) return false;
-  if (/^(0{6,}|1{6,}|123456|1234567|12345678|123456789)$/.test(digits)) return false;
+  if (digits === '123456' || /^0{6,}$/.test(digits) || allSameDigits(digits)) return false;
   return true;
 }
 
-function isValidLine(value: string) {
+export function isValidOnboardingLine(value: string) {
   if (!value) return false;
   if (/\s/.test(value)) return false;
   if (/^https?:\/\//i.test(value)) return lineUrlPattern.test(value);
-  return value.length >= 3 && lineIdPattern.test(value) && !onlySymbols(value) && !isObviousTestValue(value);
+  return value.length >= 3 && lineIdPattern.test(value) && !onlyDigits(value) && !onlySymbols(value) && !isObviousTestValue(value);
 }
 
-function isValidAddress(value: string) {
+export function isValidOnboardingAddress(value: string) {
   return hasEnoughRealText(value, 5);
 }
 
-function isValidGoogleMap(value: string) {
+export function isValidOnboardingGoogleMap(value: string) {
   return googleMapsUrlPattern.test(value);
 }
 
@@ -84,14 +88,24 @@ export function validateOnboardingBasicInfo(input: OnboardingBasicInfoInput): On
 
   const hasPhone = normalized.phone.length > 0;
   const hasLine = normalized.line.length > 0;
-  if ((!hasPhone && !hasLine) || (hasPhone && !isValidPhone(normalized.phone)) || (hasLine && !isValidLine(normalized.line))) {
-    errors.phoneOrLine = '請至少填寫電話或 LINE，讓客人可以聯絡你。';
+  const phoneValid = hasPhone && isValidOnboardingPhone(normalized.phone);
+  const lineValid = hasLine && isValidOnboardingLine(normalized.line);
+  if (hasLine && !lineValid) {
+    errors.line = '請填寫有效的 LINE ID 或 LINE 連結。';
+  }
+  if (!phoneValid && !lineValid) {
+    errors.phoneOrLine = '請至少填寫有效的電話或 LINE，讓客人可以聯絡你。';
   }
 
   const hasAddress = normalized.address.length > 0;
   const hasGoogleMap = normalized.googleMap.length > 0;
-  if ((!hasAddress && !hasGoogleMap) || (hasAddress && !isValidAddress(normalized.address)) || (hasGoogleMap && !isValidGoogleMap(normalized.googleMap))) {
-    errors.addressOrMap = '請至少填寫地址或 Google Maps，讓客人找得到店家。';
+  const addressValid = hasAddress && isValidOnboardingAddress(normalized.address);
+  const googleMapValid = hasGoogleMap && isValidOnboardingGoogleMap(normalized.googleMap);
+  if (hasGoogleMap && !googleMapValid) {
+    errors.googleMap = '請填寫有效的 Google Maps 連結。';
+  }
+  if (!addressValid && !googleMapValid) {
+    errors.addressOrMap = '請至少填寫有效的地址或 Google Maps，讓客人找得到店家。';
   }
 
   return { ok: Object.keys(errors).length === 0, errors, normalized };
