@@ -93,6 +93,8 @@ async function main() {
   const helper = checkHelperValidations();
   let blocksInvalidStep3 = false;
   let nextButtonBlockedWhenInvalid = false;
+  let nextButtonDisabledWhenInvalid = false;
+  let nextButtonDoesNotAdvanceWhenInvalid = false;
   let allowsValidStep3 = false;
   let builderReceivesValidData = false;
   let previewNormal = false;
@@ -110,9 +112,17 @@ async function main() {
       && await page.getByText('請填寫有效的 Google Maps 連結。').isVisible()
       && await page.getByText('請至少填寫有效的電話或 LINE，讓客人可以聯絡你。').isVisible()
       && await page.getByText('請至少填寫有效的地址或 Google Maps，讓客人找得到店家。').isVisible();
-    nextButtonBlockedWhenInvalid = blocksInvalidStep3
-      && await page.getByRole('button', { name: '下一步' }).isDisabled()
+    const nextButton = page.getByRole('button', { name: '下一步' });
+    const nextDisabled = await nextButton.isDisabled();
+    const nextAriaDisabled = await nextButton.getAttribute('aria-disabled');
+    const nextCursor = await nextButton.evaluate((el: HTMLButtonElement) => getComputedStyle(el).cursor);
+    const nextBg = await nextButton.evaluate((el: HTMLButtonElement) => getComputedStyle(el).backgroundColor);
+    await nextButton.click({ force: true }).catch(() => undefined);
+    await page.waitForTimeout(300);
+    nextButtonDisabledWhenInvalid = nextDisabled && nextAriaDisabled === 'true' && nextCursor === 'not-allowed' && nextBg !== 'rgb(20, 184, 166)';
+    nextButtonDoesNotAdvanceWhenInvalid = await page.getByTestId('onboarding-step-3').isVisible()
       && !(await page.getByTestId('onboarding-step-4').isVisible().catch(() => false));
+    nextButtonBlockedWhenInvalid = blocksInvalidStep3 && nextButtonDisabledWhenInvalid && nextButtonDoesNotAdvanceWhenInvalid;
     await page.screenshot({ path: path.join(shotDir, 'invalid-line-map-next-blocked.png'), fullPage: true });
 
     await fillStep3(page, {
@@ -147,7 +157,7 @@ async function main() {
   }
 
   const result = {
-    ok: helper.storeNameValidation && helper.taglineValidation && helper.phoneOrLineValidation && helper.addressOrMapValidation && helper.lineFieldValidation && helper.googleMapsFieldValidation && helper.phoneOrLineRequiresValidValue && helper.addressOrMapRequiresValidValue && blocksInvalidStep3 && nextButtonBlockedWhenInvalid && allowsValidStep3 && builderReceivesValidData && previewNormal,
+    ok: helper.storeNameValidation && helper.taglineValidation && helper.phoneOrLineValidation && helper.addressOrMapValidation && helper.lineFieldValidation && helper.googleMapsFieldValidation && helper.phoneOrLineRequiresValidValue && helper.addressOrMapRequiresValidValue && blocksInvalidStep3 && nextButtonBlockedWhenInvalid && nextButtonDisabledWhenInvalid && nextButtonDoesNotAdvanceWhenInvalid && allowsValidStep3 && builderReceivesValidData && previewNormal,
     storeNameValidation: helper.storeNameValidation,
     taglineValidation: helper.taglineValidation,
     phoneOrLineValidation: helper.phoneOrLineValidation,
@@ -155,6 +165,8 @@ async function main() {
     lineFieldValidation: helper.lineFieldValidation,
     googleMapsFieldValidation: helper.googleMapsFieldValidation,
     nextButtonBlockedWhenInvalid,
+    nextButtonDisabledWhenInvalid,
+    nextButtonDoesNotAdvanceWhenInvalid,
     phoneOrLineRequiresValidValue: helper.phoneOrLineRequiresValidValue,
     addressOrMapRequiresValidValue: helper.addressOrMapRequiresValidValue,
     blocksInvalidStep3,
