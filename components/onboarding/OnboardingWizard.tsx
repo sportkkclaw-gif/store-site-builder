@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useRouter } from 'next/navigation';
 import { Button, Input } from '@/components/ui';
 import type { SiteData } from '@/types/site';
@@ -61,5 +62,13 @@ export function OnboardingWizard({ open, onClose }: { open: boolean; onClose: ()
 
 export function OnboardingStartButton({ className, children = '開始建立店名片' }: { className?: string; children?: React.ReactNode }) {
   const [open, setOpen] = useState(false);
-  return <><button type="button" data-testid="home-start-onboarding" onClick={() => setOpen(true)} className={className || 'rounded-full bg-teal-600 px-7 py-4 text-center font-black text-white shadow-2xl shadow-teal-700/25 transition hover:-translate-y-0.5 hover:bg-teal-700'}>{children}</button><OnboardingWizard open={open} onClose={() => setOpen(false)} /></>;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  return (
+    <>
+      <button type="button" data-testid="home-start-onboarding" onClick={() => setOpen(true)} className={className || 'rounded-full bg-teal-600 px-7 py-4 text-center font-black text-white shadow-2xl shadow-teal-700/25 transition hover:-translate-y-0.5 hover:bg-teal-700'}>{children}</button>
+      {mounted ? createPortal(<OnboardingWizard open={open} onClose={() => setOpen(false)} />, document.body) : null}
+    </>
+  );
 }
