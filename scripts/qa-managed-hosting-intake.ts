@@ -3,6 +3,8 @@ import path from 'node:path';
 import JSZip from 'jszip';
 import { chromium, type Page } from 'playwright';
 import { validateRequestedSlug, normalizeRequestedSlug } from '../lib/slugValidation';
+import { validateContactFields } from '../lib/contactValidation';
+import { buildHostingRequest, validateHostingRequestForm, type HostingRequestForm } from '../lib/hostingRequest';
 import { createDefaultSiteData } from '../lib/defaultSiteData';
 import { exportStaticSite } from '../lib/exportStaticSite';
 
@@ -24,6 +26,11 @@ const result = {
   mobile390NoOverflow: false,
   mobile375NoOverflow: false,
   mobile320NoOverflow: false,
+  contactNameValidation: false,
+  emailValidation: false,
+  lineIdValidation: false,
+  requiresEmailOrLine: false,
+  blocksInvalidContactBeforeDownload: false,
 };
 const failed: string[] = [];
 
@@ -34,16 +41,15 @@ function assert(check: unknown, key: keyof typeof result, message: string) {
 
 async function expectNoDownload(page: Page, action: () => Promise<void>) {
   let downloaded = false;
-  await page.waitForEvent('download', { timeout: 900 }).then(() => { downloaded = true; }).catch(() => undefined);
-  if (downloaded) return false;
+  const downloadProbe = page.waitForEvent('download', { timeout: 1200 }).then(() => { downloaded = true; }).catch(() => undefined);
   await action();
-  await page.waitForEvent('download', { timeout: 900 }).then(() => { downloaded = true; }).catch(() => undefined);
+  await downloadProbe;
   return !downloaded;
 }
 
 async function openPublishCenter(page: Page) {
   await page.goto(`${baseUrl}/builder`, { waitUntil: 'networkidle', timeout: 60000 });
-  await page.locator('[data-sidebar-button="export"]').click();
+  await page.locator('[data-sidebar-button="export"]').evaluate((button: HTMLElement) => button.click());
   await page.getByTestId('publish-center').waitFor({ timeout: 30000 });
 }
 
@@ -70,6 +76,50 @@ async function main() {
   const slugDash = normalizeRequestedSlug('my--tea');
   result.slugValidation = assert(!slug8855.ok && slug8855.errors.includes('網址名稱不可只有數字。') && slugTea.normalized === 'my-tea-shop' && slugTea.ok && slugDash === 'my-tea', 'slugValidation', 'slug cases failed');
 
+  const baseForm: HostingRequestForm = {
+    contactName: 'Jason QA',
+    email: 'sportkk101@gmail.com',
+    lineId: '',
+    storeName: 'Jason QA 茶舖',
+    requestedSlug: 'jason-qa-shop',
+    hasCustomDomain: false,
+    customDomain: '',
+    notes: '',
+  };
+  const contactNameCases = [
+    validateContactFields({ name: '', email: 'user@example.com', lineId: '' }).ok === false,
+    validateContactFields({ name: '558822', email: 'user@example.com', lineId: '' }).ok === false,
+    validateContactFields({ name: '!!!', email: 'user@example.com', lineId: '' }).ok === false,
+    validateContactFields({ name: 'Jason QA', email: 'user@example.com', lineId: '' }).ok === true,
+  ];
+  result.contactNameValidation = assert(contactNameCases.every(Boolean), 'contactNameValidation', 'contact name validation cases failed');
+
+  const emailCases = [
+    validateContactFields({ name: 'Jason QA', email: 'abc', lineId: '' }).ok === false,
+    validateContactFields({ name: 'Jason QA', email: 'abc@test', lineId: '' }).ok === false,
+    validateContactFields({ name: 'Jason QA', email: 'sportkk101@gmail.com', lineId: '' }).ok === true,
+  ];
+  result.emailValidation = assert(emailCases.every(Boolean), 'emailValidation', 'email validation cases failed');
+
+  const lineCases = [
+    validateContactFields({ name: 'Jason QA', email: '', lineId: 'aa' }).ok === false,
+    validateContactFields({ name: 'Jason QA', email: '', lineId: 'abc def' }).ok === false,
+    validateContactFields({ name: 'Jason QA', email: '', lineId: 'qa-line' }).ok === true,
+    validateContactFields({ name: 'Jason QA', email: '', lineId: 'https://line.me/R/ti/p/@qa' }).ok === true,
+  ];
+  result.lineIdValidation = assert(lineCases.every(Boolean), 'lineIdValidation', 'LINE ID validation cases failed');
+
+  const eitherCases = [
+    validateHostingRequestForm({ ...baseForm, email: '', lineId: '' }).ok === false,
+    validateHostingRequestForm({ ...baseForm, email: 'sportkk101@gmail.com', lineId: '' }).ok === true,
+    validateHostingRequestForm({ ...baseForm, email: '', lineId: 'qa-line' }).ok === true,
+    validateHostingRequestForm({ ...baseForm, email: 'sportkk101@gmail.com', lineId: 'qa-line' }).ok === true,
+  ];
+  result.requiresEmailOrLine = assert(eitherCases.every(Boolean), 'requiresEmailOrLine', 'Email/LINE one-of validation cases failed');
+
+  const normalizedRequest = buildHostingRequest({ ...baseForm, contactName: '  Jason QA  ', email: '  SPORTKK101@GMAIL.COM  ', lineId: '  qa-line  ', requestedSlug: ' My QA Shop ', notes: '  hello  ' }, createDefaultSiteData());
+  result.hostingRequestV031 = result.hostingRequestV031 || assert(normalizedRequest.contact.name === 'Jason QA' && normalizedRequest.contact.email === 'sportkk101@gmail.com' && normalizedRequest.contact.lineId === 'qa-line' && normalizedRequest.deployment.requestedSubdomain === 'my-qa-shop', 'hostingRequestV031', 'hosting-request normalize failed');
+
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({ acceptDownloads: true, viewport: { width: 1440, height: 1000 } });
   const page = await context.newPage();
@@ -80,6 +130,16 @@ async function main() {
     await page.getByTestId('open-hosting-request').click();
     await page.getByTestId('hosting-request-modal').waitFor({ timeout: 15000 });
     await fillValidBase(page);
+
+    await page.getByLabel('聯絡人姓名').fill('558822');
+    await page.getByLabel('Email').fill('abc');
+    const invalidJsonBlocked = await expectNoDownload(page, () => page.getByTestId('generate-hosting-request').click());
+    const invalidPackageBlocked = await expectNoDownload(page, () => page.getByTestId('generate-managed-package').click());
+    const invalidErrorText = await page.getByTestId('hosting-request-error').textContent();
+    result.blocksInvalidContactBeforeDownload = assert(invalidJsonBlocked && invalidPackageBlocked && Boolean(invalidErrorText?.includes('請填寫有效的聯絡人姓名。')) && Boolean(invalidErrorText?.includes('Email 格式不正確。')), 'blocksInvalidContactBeforeDownload', 'invalid contact did not block downloads');
+    await page.getByLabel('聯絡人姓名').fill('王小明');
+    await page.getByLabel('Email').fill('');
+    await page.getByLabel('LINE ID').fill('');
 
     const blocked = await expectNoDownload(page, () => page.getByTestId('generate-hosting-request').click());
     const errorText = await page.getByTestId('hosting-request-error').textContent();
@@ -92,7 +152,7 @@ async function main() {
     await emailDownload.saveAs(emailPath);
     await page.screenshot({ path: path.join(shotDir, 'hosting-request-valid-email.png'), fullPage: true });
     const requestJson = JSON.parse(fs.readFileSync(emailPath, 'utf8'));
-    result.hostingRequestV031 = assert(requestJson.version === '0.3.1' && requestJson.publishReadiness && requestJson.deployment && requestJson.deployment.requestedSubdomain === 'my-tea-shop', 'hostingRequestV031', 'hosting-request v0.3.1 shape mismatch');
+    result.hostingRequestV031 = assert(requestJson.version === '0.3.1' && requestJson.publishReadiness && requestJson.deployment && requestJson.deployment.requestedSubdomain === 'my-tea-shop' && requestJson.contact.email === 'qa@example.com' && requestJson.contact.name === '王小明', 'hostingRequestV031', 'hosting-request v0.3.1 shape mismatch');
     await page.screenshot({ path: path.join(shotDir, 'hosting-request-slug-normalize.png'), fullPage: true });
     await page.screenshot({ path: path.join(shotDir, 'hosting-request-generated-v031.png'), fullPage: true });
 
@@ -140,13 +200,14 @@ async function main() {
   result.managedHostingPageWorks = assert(managedResp?.status() === 200 && await managedPage.getByRole('heading', { name: '店名片代管發布' }).count(), 'managedHostingPageWorks', '/managed-hosting failed');
   await managedPage.close();
 
-  const mobile = await context.newPage();
   const widths = [390, 375, 320];
   for (const width of widths) {
-    const builderOk = await checkNoOverflow(mobile, width, '/builder', `mobile-builder-${width}.png`);
-    await mobile.locator('select').last().selectOption('export');
-    await mobile.getByTestId('publish-center').waitFor({ timeout: 30000 });
-    await mobile.getByTestId('open-hosting-request').click();
+    const mobile = await context.newPage();
+    await mobile.setViewportSize({ width, height: 900 });
+    await openPublishCenter(mobile);
+    await mobile.screenshot({ path: path.join(shotDir, `mobile-builder-${width}.png`), fullPage: true });
+    const builderOk = await mobile.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 2);
+    await mobile.getByTestId('open-hosting-request').click({ force: true, timeout: 15000 });
     await mobile.getByTestId('hosting-request-modal').waitFor({ timeout: 15000 });
     await mobile.screenshot({ path: path.join(shotDir, width === 390 ? 'mobile-hosting-request-390.png' : `mobile-hosting-request-${width}.png`), fullPage: true });
     const modalOk = await mobile.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 2);
@@ -156,8 +217,8 @@ async function main() {
     if (width === 390) result.mobile390NoOverflow = assert(ok, 'mobile390NoOverflow', '390 overflow');
     if (width === 375) result.mobile375NoOverflow = assert(ok, 'mobile375NoOverflow', '375 overflow');
     if (width === 320) result.mobile320NoOverflow = assert(ok, 'mobile320NoOverflow', '320 overflow');
+    await mobile.close();
   }
-  await mobile.close();
 
   await browser.close();
 

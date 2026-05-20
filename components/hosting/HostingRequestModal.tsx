@@ -5,6 +5,7 @@ import type { SiteData } from '@/types/site';
 import { Button, Input, Textarea } from '@/components/ui';
 import { createDefaultSiteData } from '@/lib/defaultSiteData';
 import { defaultHostingRequestForm, validateHostingRequestForm, buildHostingRequest, type HostingRequestForm } from '@/lib/hostingRequest';
+import { normalizeContactFields } from '@/lib/contactValidation';
 import { normalizeRequestedSlug } from '@/lib/slugValidation';
 import { downloadHostingRequestJson, generateManagedHostingPackage } from '@/lib/managedHostingPackage';
 import { checkPublishReadiness } from '@/lib/publishReadiness';
@@ -22,6 +23,19 @@ export function HostingRequestModal({ open, onClose, siteData }: { open: boolean
   const requestText = useMemo(() => generated || JSON.stringify(buildHostingRequest(form, activeSiteData, readiness), null, 2), [form, generated, activeSiteData, readiness]);
   if (!open) return null;
   const update = (key: keyof HostingRequestForm, value: string | boolean) => setForm(prev => ({ ...prev, [key]: value }));
+  const normalizedForm = () => {
+    const contact = normalizeContactFields({ name: form.contactName, email: form.email, lineId: form.lineId });
+    return {
+      ...form,
+      contactName: contact.name,
+      email: contact.email,
+      lineId: contact.lineId,
+      storeName: form.storeName.trim(),
+      requestedSlug: normalizeRequestedSlug(form.requestedSlug),
+      customDomain: form.customDomain?.trim() || '',
+      notes: form.notes.trim(),
+    };
+  };
   const validate = () => {
     const validation = validateHostingRequestForm(form);
     setErrors(validation.errors);
@@ -30,12 +44,12 @@ export function HostingRequestModal({ open, onClose, siteData }: { open: boolean
   };
   const submit = () => {
     if (!validate()) return;
-    const text = downloadHostingRequestJson({ ...form, requestedSlug: normalizeRequestedSlug(form.requestedSlug) }, activeSiteData);
+    const text = downloadHostingRequestJson(normalizedForm(), activeSiteData);
     setGenerated(text);
   };
   const packageZip = async () => {
     if (!validate()) return;
-    await generateManagedHostingPackage({ ...form, requestedSlug: normalizeRequestedSlug(form.requestedSlug) }, activeSiteData);
+    await generateManagedHostingPackage(normalizedForm(), activeSiteData);
   };
   const copy = async () => {
     await navigator.clipboard?.writeText(requestText);

@@ -2,6 +2,7 @@ import type { SiteData } from '@/types/site';
 import type { PublishReadinessResult } from './publishReadiness';
 import { checkPublishReadiness } from './publishReadiness';
 import { normalizeRequestedSlug, validateRequestedSlug } from './slugValidation';
+import { normalizeContactFields, validateContactFields } from './contactValidation';
 
 export type HostingRequestForm = {
   contactName: string;
@@ -25,16 +26,11 @@ const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function validateHostingRequestForm(form: HostingRequestForm): HostingRequestValidation {
   const errors: string[] = [];
-  const name = form.contactName.trim();
-  const email = form.email.trim();
-  const lineId = form.lineId.trim();
+  const contact = validateContactFields({ name: form.contactName, email: form.email, lineId: form.lineId });
   const storeName = form.storeName.trim();
   const slug = validateRequestedSlug(form.requestedSlug);
 
-  if (name.length < 2) errors.push('請填寫聯絡人姓名。');
-  if (!email && !lineId) errors.push('請至少填寫 Email 或 LINE ID，方便我們聯絡你。');
-  if (email && !emailPattern.test(email)) errors.push('Email 格式不正確。');
-  if (lineId && lineId.length < 3) errors.push('LINE ID 至少需要 3 個字元。');
+  errors.push(...contact.errors);
   if (!storeName) errors.push('請填寫店家名稱。');
   errors.push(...slug.errors);
 
@@ -62,9 +58,9 @@ export function buildHostingRequest(form: HostingRequestForm, siteData?: SiteDat
     version: '0.3.1',
     generatedAt: new Date().toISOString(),
     contact: {
-      name: form.contactName.trim(),
-      email: form.email.trim(),
-      lineId: form.lineId.trim(),
+      name: normalizeContactFields({ name: form.contactName, email: form.email, lineId: form.lineId }).name,
+      email: normalizeContactFields({ name: form.contactName, email: form.email, lineId: form.lineId }).email,
+      lineId: normalizeContactFields({ name: form.contactName, email: form.email, lineId: form.lineId }).lineId,
     },
     store: {
       name: storeName,
@@ -90,7 +86,7 @@ export function buildHostingRequest(form: HostingRequestForm, siteData?: SiteDat
       hasCustomDomain: form.hasCustomDomain,
       customDomain: form.customDomain?.trim() || '',
     },
-    notes: form.notes,
+    notes: form.notes.trim(),
   };
 }
 
