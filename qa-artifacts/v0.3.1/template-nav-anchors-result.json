@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "builderPreviewAnchorsWork": true,
+  "fullscreenPreviewAnchorsWork": true,
+  "exportAnchorsExist": true,
+  "testedTemplates": 5,
+  "failed": []
+}
