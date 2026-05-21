@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "totalTemplates": 30,
+  "allImagesExist": true,
+  "allSizesUnchanged": true,
+  "allPathsUnchanged": true,
+  "allNoFakeUiConfirmed": true,
+  "galleryLoads": true,
+  "previewLoads": true,
+  "fullscreenPreviewLoads": true,
+  "exportIncludesArtwork": true,
+  "fileLoads": true,
+  "mobileViewports": {
+    "320": true,
+    "375": true,
+    "390": true
+  },
+  "screenshotsCount": 63,
+  "failed": []
+}
