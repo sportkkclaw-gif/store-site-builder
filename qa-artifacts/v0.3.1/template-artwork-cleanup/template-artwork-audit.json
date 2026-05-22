@@ -1,9 +1,11 @@
 {
   "ok": true,
   "totalTemplates": 30,
-  "passCount": 0,
-  "cleanupCount": 0,
-  "replaceCount": 30,
+  "replaced": 30,
+  "unchanged": 0,
+  "allSizesUnchanged": true,
+  "allPathsUnchanged": true,
+  "allNoFakeUiConfirmed": true,
   "failed": [],
   "items": [
     {
@@ -12,16 +14,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "matcha tea cup, clean Japanese fresh beige green atmosphere"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "drink-boba-neon",
@@ -29,16 +25,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "bubble milk tea, neon night, tapioca pearls"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "drink-fruit-paradise",
@@ -46,16 +36,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "fruit tea, tropical citrus paradise"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "drink-brown-sugar-amber",
@@ -63,16 +47,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "brown sugar milk, amber syrup warmth"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "drink-white-peach-sparkle",
@@ -80,16 +58,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "white peach sparkling drink, soft pink bubbles"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "drink-lime-morning",
@@ -97,16 +69,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "lime morning soda, fresh green sunlight"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "drink-tea-mist-ridge",
@@ -114,16 +80,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "misty tea ridge, calm tea leaves and ceramic cup"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "drink-iced-party",
@@ -131,16 +91,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "iced drink party, colorful ice and cups"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "drink-afternoon-cream",
@@ -148,16 +102,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "afternoon cream tea, soft dessert drink"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "drink-lab-brew",
@@ -165,16 +113,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "craft brew lab, tea extraction, glassware"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "restaurant-charcoal-essence",
@@ -182,16 +124,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "charcoal grill essence, smoky premium dining"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "restaurant-rice-kitchen",
@@ -199,16 +135,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "warm rice kitchen, family meal and wooden table"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "restaurant-golden-banquet",
@@ -216,16 +146,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "golden banquet, elegant table feast"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "restaurant-corner-meal",
@@ -233,16 +157,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "corner meal bistro, cozy plate on table"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "restaurant-spicy-market",
@@ -250,16 +168,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "spicy market, chili and hot dishes"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "restaurant-sunday-shokudo",
@@ -267,16 +179,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "Sunday shokudo, Japanese set meal warmth"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "restaurant-kitchen-overture",
@@ -284,16 +190,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "kitchen overture, chef counter and ingredients"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "restaurant-brunch-garden",
@@ -301,16 +201,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "brunch garden, eggs, greens, morning light"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "restaurant-hotpot-home",
@@ -318,16 +212,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "hotpot home, warm steam and ingredients"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "restaurant-fast-enjoy",
@@ -335,16 +223,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "fast casual meal, energetic clean food scene"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "cafe-nordic-morning",
@@ -352,16 +234,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "Nordic morning coffee, bright minimal table"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "cafe-midnight-roast",
@@ -369,16 +245,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "midnight roast coffee, dark moody beans"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "cafe-cream-library",
@@ -386,16 +256,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "cream library cafe, books and coffee warmth"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "cafe-forest-teatime",
@@ -403,16 +267,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "forest teatime cafe, leaves and cup"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "cafe-window-seat",
@@ -420,16 +278,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "window seat cafe, soft light and cup"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "cafe-mocha-studio",
@@ -437,16 +289,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "mocha studio, creative coffee workspace without UI"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "cafe-white-dripper",
@@ -454,16 +300,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "white dripper pour over, clean coffee equipment"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "cafe-caramel-afternoon",
@@ -471,16 +311,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "caramel afternoon latte, golden soft cafe"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "cafe-urban-monochrome",
@@ -488,16 +322,10 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "urban monochrome cafe, black white coffee"
+      "commercialHeroVisual": true
     },
     {
       "templateId": "cafe-daily-corner",
@@ -505,16 +333,15 @@
       "originalSize": "1024x1536",
       "finalSize": "1024x1536",
       "sizeUnchanged": true,
-      "status": "REPLACED",
-      "removedIssues": [
-        "fake navbar",
-        "fake icons",
-        "fake buttons",
-        "fake UI-like web/app elements"
-      ],
-      "visualStyleKept": true,
+      "pathUnchanged": true,
+      "replaced": true,
       "noFakeUi": true,
-      "themeDirection": "daily corner cafe, warm everyday cup and plant"
+      "commercialHeroVisual": true
     }
-  ]
+  ],
+  "visionReview": {
+    "contactSheet": "qa-artifacts/v0.3.1/template-artwork-commercial-redesign/contact-sheet.png",
+    "pass": true,
+    "suspiciousLabels": []
+  }
 }

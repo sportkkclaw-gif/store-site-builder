@@ -1,4 +1,6 @@
 {
+  "replaced": 30,
+  "unchanged": 0,
   "ok": true,
   "totalTemplates": 30,
   "allImagesExist": true,
@@ -16,5 +18,10 @@
     "390": true
   },
   "screenshotsCount": 63,
-  "failed": []
+  "failed": [],
+  "commercialVisionReview": {
+    "pass": true,
+    "contactSheet": "qa-artifacts/v0.3.1/template-artwork-commercial-redesign/contact-sheet.png",
+    "suspiciousLabels": []
+  }
 }
