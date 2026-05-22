@@ -6,6 +6,7 @@ import { getTemplateById } from './templateCatalog';
 import { getHeroImageSource } from './heroImage';
 import { getTemplateArtwork } from './templateArtworkResolver';
 import { generateTemplateSkinCss, getTemplateSkin } from './templateSkinEngine';
+import { generateDesktopVisualSystemCss } from './desktopVisualSystemCss';
 import { getHeroFallbackCta } from './heroCta';
 
 const names: Record<string, string> = { line: 'LINE', instagram: 'Instagram', facebook: 'Facebook', threads: 'Threads', tiktok: 'TikTok', googleMap: 'Google Maps', ubereats: 'Uber Eats', foodpanda: 'foodpanda', orderForm: '立即訂購', reservation: '線上訂位' };
@@ -25,7 +26,7 @@ function navLinks(data: SiteData) {
 }
 
 export function generateExportSkinCss(data: SiteData, skin: TemplateSkin) {
-  return `html{scroll-behavior:smooth}body{margin:0;font-family:${font(data)};overflow-x:hidden}${generateTemplateSkinCss(skin)}.skin-nav a{color:inherit;text-decoration:none;cursor:pointer}.skin-section{scroll-margin-top:16px}@media(max-width:760px){.export-site,.export-site *{max-width:100%;box-sizing:border-box}.hero-copy{overflow-wrap:normal}.skin-nav{min-width:0}.skin-nav nav{display:flex;flex-wrap:wrap;gap:8px}.skin-menu-list{padding:12px}.product-img{height:150px}.template-hero-inner{overflow:hidden}.hero-title-line{display:block}}`;
+  return `html{scroll-behavior:smooth}body{margin:0;font-family:${font(data)};overflow-x:hidden}${generateTemplateSkinCss(skin)}${generateDesktopVisualSystemCss(skin)}.skin-nav a{color:inherit;text-decoration:none;cursor:pointer}.skin-section{scroll-margin-top:16px}@media(max-width:760px){.export-site,.export-site *{max-width:100%;box-sizing:border-box}.hero-copy{overflow-wrap:normal}.skin-nav{min-width:0}.skin-nav nav{display:flex;flex-wrap:wrap;gap:8px}.skin-menu-list{padding:12px}.product-img{height:150px}.template-hero-inner{overflow:hidden}.hero-title-line{display:block}}`;
 }
 
 export function renderThemedPlaceholderHtml(type: 'product' | 'hero' | 'store' | 'logo', skin: TemplateSkin, label = '') {

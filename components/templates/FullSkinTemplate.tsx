@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react';
 import type { SiteData } from '@/types/site';
 import { getTemplateArtwork, heroObjectFit, heroObjectPosition } from '@/lib/templateArtworkResolver';
 import { generateTemplateSkinCss, getTemplateCssVariables, getTemplateSkin } from '@/lib/templateSkinEngine';
+import { generateDesktopVisualSystemCss } from '@/lib/desktopVisualSystemCss';
 import { ThemedNav } from './shared/ThemedNav';
 import { ThemedHero } from './shared/ThemedHero';
 import { ThemedSection } from './shared/ThemedSection';
@@ -17,6 +18,7 @@ function SkinStyle({ data }: { data: SiteData }) {
   return <style>{`
 .store-template{font-family:${font(data)}}
 ${generateTemplateSkinCss(skin)}
+${generateDesktopVisualSystemCss(skin)}
 .brand-story{background:${skin.brandStory.background};color:${skin.brandStory.textColor};border-radius:22px;padding:18px;border:1px solid ${skin.brandStory.accentColor}33}
 .skin-cta{background:${skin.cta.background}!important;color:${skin.cta.textColor}}
 @media(max-width:390px){.store-template,.store-template *{max-width:100%}.hero-copy{overflow-wrap:anywhere}.skin-nav{min-width:0}.skin-nav nav{display:flex;flex-wrap:wrap;gap:8px}.skin-nav a{color:inherit;text-decoration:none;cursor:pointer}.skin-section{scroll-margin-top:16px}.skin-menu-list{padding:12px}.product-img{height:150px}}
