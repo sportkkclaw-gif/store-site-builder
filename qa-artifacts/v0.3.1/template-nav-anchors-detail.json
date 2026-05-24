@@ -1,0 +1,114 @@
+{
+  "templates": {
+    "抹茶日和": {
+      "builderDesktop": {
+        "ok": true,
+        "failures": []
+      },
+      "builderMobile": {
+        "ok": true,
+        "failures": []
+      },
+      "fullscreenDesktop": {
+        "ok": true,
+        "failures": []
+      },
+      "fullscreenMobile": {
+        "ok": true,
+        "failures": []
+      },
+      "exportCheck": {
+        "ok": true,
+        "failures": []
+      }
+    },
+    "珍珠霓光": {
+      "builderDesktop": {
+        "ok": true,
+        "failures": []
+      },
+      "builderMobile": {
+        "ok": true,
+        "failures": []
+      },
+      "fullscreenDesktop": {
+        "ok": true,
+        "failures": []
+      },
+      "fullscreenMobile": {
+        "ok": true,
+        "failures": []
+      },
+      "exportCheck": {
+        "ok": true,
+        "failures": []
+      }
+    },
+    "米香食堂": {
+      "builderDesktop": {
+        "ok": true,
+        "failures": []
+      },
+      "builderMobile": {
+        "ok": true,
+        "failures": []
+      },
+      "fullscreenDesktop": {
+        "ok": true,
+        "failures": []
+      },
+      "fullscreenMobile": {
+        "ok": true,
+        "failures": []
+      },
+      "exportCheck": {
+        "ok": true,
+        "failures": []
+      }
+    },
+    "食尚快享": {
+      "builderDesktop": {
+        "ok": true,
+        "failures": []
+      },
+      "builderMobile": {
+        "ok": true,
+        "failures": []
+      },
+      "fullscreenDesktop": {
+        "ok": true,
+        "failures": []
+      },
+      "fullscreenMobile": {
+        "ok": true,
+        "failures": []
+      },
+      "exportCheck": {
+        "ok": true,
+        "failures": []
+      }
+    },
+    "日常一隅": {
+      "builderDesktop": {
+        "ok": true,
+        "failures": []
+      },
+      "builderMobile": {
+        "ok": true,
+        "failures": []
+      },
+      "fullscreenDesktop": {
+        "ok": true,
+        "failures": []
+      },
+      "fullscreenMobile": {
+        "ok": true,
+        "failures": []
+      },
+      "exportCheck": {
+        "ok": true,
+        "failures": []
+      }
+    }
+  }
+}

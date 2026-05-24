@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "totalTemplates": 30,
+  "heroImageSafe": true,
+  "desktopHeroNotBroken": true,
+  "desktopBackgroundRendered": true,
+  "sectionsStyled": true,
+  "fullscreen1440Pass": true,
+  "fullscreen1280Pass": true,
+  "exportDesktopPass": true,
+  "mobileRegressionPass": true,
+  "screenshotsCount": 90,
+  "failed": []
+}

@@ -1,0 +1,185 @@
+{
+  "count": 30,
+  "items": [
+    {
+      "path": "public/template-gallery-ai/drink-shop/drink-afternoon-cream.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 255375
+    },
+    {
+      "path": "public/template-gallery-ai/drink-shop/drink-boba-neon.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 359273
+    },
+    {
+      "path": "public/template-gallery-ai/drink-shop/drink-brown-sugar-amber.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 373005
+    },
+    {
+      "path": "public/template-gallery-ai/drink-shop/drink-fruit-paradise.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 312113
+    },
+    {
+      "path": "public/template-gallery-ai/drink-shop/drink-iced-party.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 419482
+    },
+    {
+      "path": "public/template-gallery-ai/drink-shop/drink-lab-brew.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 251017
+    },
+    {
+      "path": "public/template-gallery-ai/drink-shop/drink-lime-morning.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 254868
+    },
+    {
+      "path": "public/template-gallery-ai/drink-shop/drink-matcha-hiyori.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 245738
+    },
+    {
+      "path": "public/template-gallery-ai/drink-shop/drink-tea-mist-ridge.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 244314
+    },
+    {
+      "path": "public/template-gallery-ai/drink-shop/drink-white-peach-sparkle.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 147039
+    },
+    {
+      "path": "public/template-gallery-ai/restaurant/restaurant-brunch-garden.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 351639
+    },
+    {
+      "path": "public/template-gallery-ai/restaurant/restaurant-charcoal-essence.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 389952
+    },
+    {
+      "path": "public/template-gallery-ai/restaurant/restaurant-corner-meal.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 393109
+    },
+    {
+      "path": "public/template-gallery-ai/restaurant/restaurant-fast-enjoy.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 463568
+    },
+    {
+      "path": "public/template-gallery-ai/restaurant/restaurant-golden-banquet.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 345607
+    },
+    {
+      "path": "public/template-gallery-ai/restaurant/restaurant-hotpot-home.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 458555
+    },
+    {
+      "path": "public/template-gallery-ai/restaurant/restaurant-kitchen-overture.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 433068
+    },
+    {
+      "path": "public/template-gallery-ai/restaurant/restaurant-rice-kitchen.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 330923
+    },
+    {
+      "path": "public/template-gallery-ai/restaurant/restaurant-spicy-market.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 478931
+    },
+    {
+      "path": "public/template-gallery-ai/restaurant/restaurant-sunday-shokudo.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 320301
+    },
+    {
+      "path": "public/template-gallery-ai/cafe/cafe-caramel-afternoon.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 326954
+    },
+    {
+      "path": "public/template-gallery-ai/cafe/cafe-cream-library.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 346453
+    },
+    {
+      "path": "public/template-gallery-ai/cafe/cafe-daily-corner.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 349322
+    },
+    {
+      "path": "public/template-gallery-ai/cafe/cafe-forest-teatime.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 335768
+    },
+    {
+      "path": "public/template-gallery-ai/cafe/cafe-midnight-roast.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 298910
+    },
+    {
+      "path": "public/template-gallery-ai/cafe/cafe-mocha-studio.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 399048
+    },
+    {
+      "path": "public/template-gallery-ai/cafe/cafe-nordic-morning.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 267021
+    },
+    {
+      "path": "public/template-gallery-ai/cafe/cafe-urban-monochrome.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 160851
+    },
+    {
+      "path": "public/template-gallery-ai/cafe/cafe-white-dripper.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 180191
+    },
+    {
+      "path": "public/template-gallery-ai/cafe/cafe-window-seat.png",
+      "w": 1024,
+      "h": 1536,
+      "bytes": 201200
+    }
+  ]
+}

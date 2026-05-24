@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react';
 import type { SiteData } from '@/types/site';
 import { getTemplateArtwork, heroObjectFit, heroObjectPosition } from '@/lib/templateArtworkResolver';
 import { generateTemplateSkinCss, getTemplateCssVariables, getTemplateSkin } from '@/lib/templateSkinEngine';
+import { generateDesktopVisualSystemCss } from '@/lib/desktopVisualSystemCss';
 import { ThemedNav } from './shared/ThemedNav';
 import { ThemedHero } from './shared/ThemedHero';
 import { ThemedSection } from './shared/ThemedSection';
@@ -17,15 +18,19 @@ function SkinStyle({ data }: { data: SiteData }) {
   return <style>{`
 .store-template{font-family:${font(data)}}
 ${generateTemplateSkinCss(skin)}
+${generateDesktopVisualSystemCss(skin)}
 .brand-story{background:${skin.brandStory.background};color:${skin.brandStory.textColor};border-radius:22px;padding:18px;border:1px solid ${skin.brandStory.accentColor}33}
 .skin-cta{background:${skin.cta.background}!important;color:${skin.cta.textColor}}
-@media(max-width:390px){.store-template,.store-template *{max-width:100%}.hero-copy{overflow-wrap:anywhere}.skin-nav{min-width:0}.skin-menu-list{padding:12px}.product-img{height:150px}}
+@media(max-width:390px){.store-template,.store-template *{max-width:100%}.hero-copy{overflow-wrap:anywhere}.skin-nav{min-width:0}.skin-nav nav{display:flex;flex-wrap:wrap;gap:8px}.skin-nav a{color:inherit;text-decoration:none;cursor:pointer}.skin-section{scroll-margin-top:16px}.skin-menu-list{padding:12px}.product-img{height:150px}}
+html{scroll-behavior:smooth}
+.skin-nav a{color:inherit;text-decoration:none;cursor:pointer}
+.skin-section{scroll-margin-top:16px}
 `}</style>;
 }
 
 function StoreInfo({ data, skin }: { data: SiteData; skin: ReturnType<typeof getTemplateSkin> }) {
   if (!data.modules.storeInfo) return null;
-  return <ThemedSection skin={skin} eyebrow="INFO" title="門市資訊"><div className="info-grid"><p>📍 {data.store.address}</p><p>☎ {data.store.phone}</p><p>✉ {data.store.email}</p><p>🕘 {data.store.businessHours}</p></div></ThemedSection>;
+  return <ThemedSection id="store-info" testId="section-store-info" skin={skin} eyebrow="INFO" title="門市資訊"><div className="info-grid"><p>📍 {data.store.address}</p><p>☎ {data.store.phone}</p><p>✉ {data.store.email}</p><p>🕘 {data.store.businessHours}</p></div></ThemedSection>;
 }
 
 function FAQ({ data, skin }: { data: SiteData; skin: ReturnType<typeof getTemplateSkin> }) {
@@ -44,7 +49,7 @@ export function FullSkinTemplate({ data, variant = 'fresh' }: { data: SiteData; 
       <ThemedNav data={data} skin={skin} />
       {data.modules.hero && <ThemedHero data={data} skin={skin} />}
       <ThemedBrandStory data={data} skin={skin} />
-      {data.modules.featuredProducts && <ThemedSection skin={skin} eyebrow="FEATURED" title="招牌商品" alt><ThemedProductGrid data={data} items={featured} skin={skin} /></ThemedSection>}
+      {data.modules.featuredProducts && <ThemedSection id="featured-products" testId="section-featured-products" skin={skin} eyebrow="FEATURED" title="招牌商品" alt><ThemedProductGrid data={data} items={featured} skin={skin} /></ThemedSection>}
       <ThemedMenuList data={data} skin={skin} />
       <StoreInfo data={data} skin={skin} />
       <FAQ data={data} skin={skin} />
