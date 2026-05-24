@@ -1,1 +1,28 @@
-{"scripts":{"dev":"next dev","build":"next build","start":"next start","lint":"next lint","typecheck":"tsc --noEmit"},"dependencies":{"@tailwindcss/postcss":"^4.2.4","@types/node":"latest","@types/react":"latest","@types/react-dom":"latest","autoprefixer":"latest","jszip":"latest","next":"latest","postcss":"latest","react":"latest","react-dom":"latest","tailwindcss":"latest","typescript":"latest"},"devDependencies":{"playwright":"^1.59.1","tsx":"^4.21.0"}}
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "qa:mobile-visual-scale": "tsx scripts/qa-mobile-visual-scale.ts"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.2.4",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "autoprefixer": "latest",
+    "jszip": "latest",
+    "next": "latest",
+    "postcss": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "tailwindcss": "latest",
+    "typescript": "latest"
+  },
+  "devDependencies": {
+    "playwright": "^1.59.1",
+    "tsx": "^4.21.0"
+  }
+}
