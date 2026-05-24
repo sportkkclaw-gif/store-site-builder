@@ -758,3 +758,72 @@ button {
 /* v0.3.1-mobile-all-clickable-hit-area-guard */
 @media (max-width:760px){ body a, body button, body [role="button"], body input[type="submit"]{min-height:44px !important; height:auto !important; padding-top:12px !important; padding-bottom:12px !important; padding-left:18px !important; padding-right:18px !important; font-size:max(15px,1em) !important; line-height:1.2 !important; display:inline-flex !important; align-items:center !important; justify-content:center !important; touch-action:manipulation !important; pointer-events:auto !important; box-sizing:border-box !important;} }
 [data-preview-mode="mobile"] a, [data-preview-mode="mobile"] button, [data-preview-mode="mobile"] [role="button"], .preview-phone-viewport a, .preview-phone-viewport button, .preview-phone-viewport [role="button"]{min-height:44px !important; height:auto !important; padding-top:12px !important; padding-bottom:12px !important; padding-left:18px !important; padding-right:18px !important; font-size:max(15px,1em) !important; line-height:1.2 !important; display:inline-flex !important; align-items:center !important; justify-content:center !important; touch-action:manipulation !important; pointer-events:auto !important; box-sizing:border-box !important;}
+
+
+/* v0.3.1-hero-visual-size-tuning */
+/* Scope: Hero visual size only. No template data/artwork/PreviewCanvas/Onboarding/Hosting changes. */
+@media (max-width: 760px) {
+  .template-hero,
+  .skin-hero,
+  .hero,
+  [data-skin-component="hero"] {
+    padding-inline: 10px !important;
+  }
+
+  .template-hero-backplate,
+  .hero-backplate,
+  .hero-artwork,
+  .mobile-artwork,
+  [data-testid="hero-image"],
+  [data-skin-component="hero"] img {
+    width: calc(100% + 12px) !important;
+    max-width: calc(100% + 12px) !important;
+    margin-left: -6px !important;
+    margin-right: -6px !important;
+    height: clamp(240px, 82vw, 360px) !important;
+    object-fit: cover !important;
+  }
+}
+
+.preview-phone-viewport [data-preview-mode="mobile"] .template-hero,
+.preview-phone-viewport [data-preview-mode="mobile"] .skin-hero,
+.preview-phone-viewport [data-preview-mode="mobile"] .hero,
+.preview-phone-viewport [data-preview-mode="mobile"] [data-skin-component="hero"],
+[data-preview-mode="mobile"] .template-hero,
+[data-preview-mode="mobile"] .skin-hero,
+[data-preview-mode="mobile"] .hero,
+[data-preview-mode="mobile"] [data-skin-component="hero"] {
+  padding-inline: 10px !important;
+}
+
+.preview-phone-viewport [data-preview-mode="mobile"] .template-hero-backplate,
+.preview-phone-viewport [data-preview-mode="mobile"] .hero-backplate,
+.preview-phone-viewport [data-preview-mode="mobile"] .hero-artwork,
+.preview-phone-viewport [data-preview-mode="mobile"] .mobile-artwork,
+.preview-phone-viewport [data-preview-mode="mobile"] [data-testid="hero-image"],
+.preview-phone-viewport [data-preview-mode="mobile"] [data-skin-component="hero"] img,
+[data-preview-mode="mobile"] .template-hero-backplate,
+[data-preview-mode="mobile"] .hero-backplate,
+[data-preview-mode="mobile"] .hero-artwork,
+[data-preview-mode="mobile"] .mobile-artwork,
+[data-preview-mode="mobile"] [data-testid="hero-image"],
+[data-preview-mode="mobile"] [data-skin-component="hero"] img {
+  width: calc(100% + 12px) !important;
+  max-width: calc(100% + 12px) !important;
+  margin-left: -6px !important;
+  margin-right: -6px !important;
+  height: clamp(240px, 82vw, 360px) !important;
+  object-fit: cover !important;
+}
+
+@media (min-width: 1024px) {
+  .template-hero-backplate,
+  .hero-backplate,
+  .hero-artwork,
+  [data-testid="hero-image"],
+  [data-skin-component="hero"] img {
+    max-width: min(46vw, 540px) !important;
+    flex-basis: min(46vw, 540px) !important;
+    align-self: center;
+  }
+}
