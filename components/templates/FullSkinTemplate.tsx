@@ -3,6 +3,7 @@ import type { SiteData } from '@/types/site';
 import { getTemplateArtwork, heroObjectFit, heroObjectPosition } from '@/lib/templateArtworkResolver';
 import { generateTemplateSkinCss, getTemplateCssVariables, getTemplateSkin } from '@/lib/templateSkinEngine';
 import { generateDesktopVisualSystemCss } from '@/lib/desktopVisualSystemCss';
+import { generateTemplateSpecificCss } from '@/lib/templateSpecificCss';
 import { ThemedNav } from './shared/ThemedNav';
 import { ThemedHero } from './shared/ThemedHero';
 import { ThemedSection } from './shared/ThemedSection';
@@ -25,6 +26,7 @@ ${generateDesktopVisualSystemCss(skin)}
 html{scroll-behavior:smooth}
 .skin-nav a{color:inherit;text-decoration:none;cursor:pointer}
 .skin-section{scroll-margin-top:16px}
+${generateTemplateSpecificCss(skin)}
 `}</style>;
 }
 

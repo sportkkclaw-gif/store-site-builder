@@ -26,6 +26,7 @@ export function ThemedHero({ data, skin }: { data: SiteData; skin: TemplateSkin 
         <MobileArtworkSafeFrame src={heroImage.mobileSrc} alt={heroImage.alt} mode={artwork.backplate.mobileArtworkMode} skinFamily={skin.family} overlay={artwork.backplate.overlay} />
       </div>
       <div className="template-hero-overlay" />
+      <div className="template-hero-mark" aria-hidden="true" style={{ display: 'none' }}><b>{data.store.name}</b><small>TEA LAB</small></div>
       <div className="hero-copy mobile-hero-content-panel" data-testid="mobile-hero-content-panel"><span className="placeholder-badge">{data.store.tagline}</span><h1 data-testid="hero-title" aria-label={data.hero.title}>{titleLines.map(line => <span key={line} className="hero-title-line">{line}</span>)}</h1><p className="muted mt-5 text-lg" data-testid="hero-subtitle">{data.hero.subtitle}</p><Links data={data} /></div>
     </div>
   </section>;
