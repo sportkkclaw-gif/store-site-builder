@@ -34,25 +34,25 @@ export function PreviewFrame({ data, onBackToEdit }: { data: SiteData; onBackToE
   };
   return (
     <div className="preview-panel" data-testid="preview-panel">
-      <div className="preview-mobile-toolbar mb-3" data-testid="mobile-preview-toolbar">
-        <button type="button" data-testid="back-to-edit-button" onClick={onBackToEdit} className="mobile-preview-back-button">← 返回編輯</button>
-        <div className="mobile-preview-template-label">目前模板：<b>{selectedTemplateName}</b></div>
-        <button type="button" data-testid="mobile-fullscreen-preview-button" onClick={() => openFullscreenPreview('mobile')} className="mobile-fullscreen-preview-button">全螢幕預覽</button>
-      </div>
-      <div className="mb-3 flex items-center justify-between gap-3">
-        <div className="min-w-0">
-          <p className="text-xs text-slate-500">目前模板</p>
-          <b data-testid="preview-template-name">{selectedTemplateName}</b>
-          <p className="mt-1 text-xs font-bold text-slate-500">風格：{visual.styleLabel}</p>
+      <div className="preview-control-panel" data-testid="preview-control-panel">
+        <div className="preview-control-header">
+          <div className="min-w-0">
+            <p className="preview-control-eyebrow">目前模板</p>
+            <b data-testid="preview-template-name" className="preview-control-title">{selectedTemplateName}</b>
+            <p className="preview-control-style">風格：{visual.styleLabel}</p>
+          </div>
+          <span className="preview-live-badge">即時更新</span>
         </div>
-        <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-bold text-green-700">即時更新</span>
-      </div>
-      <Tabs value={mode} onChange={setMode} items={[{ value: 'desktop', label: '桌機' }, { value: 'mobile', label: '手機' }]} />
-      <div className="mt-3 rounded-[24px] border border-teal-200 bg-white/90 p-3 shadow-sm" data-testid="preview-panel-scale-note">
-        <p className="text-xs font-black text-slate-900">{mode === 'mobile' ? '手機預覽' : '桌機預覽'}｜縮放顯示</p>
-        <p className="mt-1 text-xs font-bold text-slate-500">虛擬畫布：{mode === 'mobile' ? '390px' : '1440px'}</p>
-        <p className="text-xs font-bold text-slate-500">縮放：Fit</p>
-        <button type="button" data-testid="fullscreen-preview-button" onClick={() => openFullscreenPreview(mode)} className="fullscreen-preview-button mt-3 w-full rounded-full bg-slate-950 px-4 text-sm font-black text-white shadow-lg shadow-slate-900/20 hover:bg-teal-700">全螢幕預覽</button>
+        <div className="preview-control-actions" data-testid="mobile-preview-toolbar">
+          <button type="button" data-testid="back-to-edit-button" onClick={onBackToEdit} className="mobile-preview-back-button">返回編輯</button>
+          <div className="preview-mode-tabs"><Tabs value={mode} onChange={setMode} items={[{ value: 'desktop', label: '桌機' }, { value: 'mobile', label: '手機' }]} /></div>
+          <button type="button" data-testid="fullscreen-preview-button" onClick={() => openFullscreenPreview(mode)} className="fullscreen-preview-button">全螢幕預覽</button>
+        </div>
+        <div className="preview-mode-summary" data-testid="preview-panel-scale-note">
+          <b>{mode === 'mobile' ? '手機預覽' : '桌機預覽'}｜縮放顯示</b>
+          <span>虛擬畫布：{mode === 'mobile' ? '390px' : '1440px'}</span>
+          <span>縮放：Fit</span>
+        </div>
       </div>
       <div className="mt-4" data-testid="preview-viewport">{mode === 'desktop' ? <DesktopPreview data={data} /> : <MobilePreview data={data} />}</div>
     </div>
