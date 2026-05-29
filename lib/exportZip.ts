@@ -22,6 +22,7 @@ export async function exportZip(data: SiteData) {
   const assets = zip.folder('assets')!;
   await addTemplateArtworkAsset(assets, data);
   data.media.forEach(m => {
+    if (!m.dataUrl.startsWith('data:')) return;
     const f = dataUrlToFile(m.dataUrl);
     assets.file(`${m.id}.${f.ext}`, f.buffer, { base64: true });
   });

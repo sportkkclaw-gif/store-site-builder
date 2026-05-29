@@ -160,7 +160,7 @@ export function generateTemplateSpecificCss(skin: TemplateSkin): string {
 }
 
 function selector(id: string) {
-  return `.store-template[data-template-id="${id}"], .export-site[data-template-id="${id}"]`;
+  return `:is(.store-template, .export-site)[data-template-id="${id}"]`;
 }
 
 function generateDrinkAtlasCss(skin: TemplateSkin): string {
