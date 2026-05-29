@@ -979,6 +979,77 @@ ${root} .skin-btn {
     grid-template-columns: 1fr !important;
   }
 }
+
+[data-preview-mode="mobile"] ${root} .wrap {
+  max-width: 100% !important;
+  padding: 8px !important;
+  gap: 14px !important;
+}
+
+[data-preview-mode="mobile"] ${root} .template-hero {
+  width: 100% !important;
+  padding: 8px 4px !important;
+  overflow: hidden !important;
+}
+
+[data-preview-mode="mobile"] ${root} .template-hero-inner {
+  display: flex !important;
+  grid-template-columns: 1fr !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: auto !important;
+  max-height: none !important;
+  padding: 14px !important;
+  gap: 14px !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  border-radius: 24px !important;
+}
+
+[data-preview-mode="mobile"] ${root} .template-hero-backplate,
+[data-preview-mode="mobile"] ${root} .template-hero-overlay,
+[data-preview-mode="mobile"] ${root} .template-hero-mark {
+  display: none !important;
+}
+
+[data-preview-mode="mobile"] ${root} .mobile-hero-artwork-stage {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+[data-preview-mode="mobile"] ${root} .hero-copy,
+[data-preview-mode="mobile"] ${root} .mobile-hero-content-panel {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 20px !important;
+  border-radius: 24px !important;
+}
+
+[data-preview-mode="mobile"] ${root} .hero-copy h1,
+[data-preview-mode="mobile"] ${root} .mobile-hero-content-panel h1 {
+  width: 100% !important;
+  max-width: 100% !important;
+  font-size: clamp(32px, 8vw, 44px) !important;
+  line-height: 1.12 !important;
+  white-space: normal !important;
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+}
+
+[data-preview-mode="mobile"] ${root} .hero-title-line {
+  display: block !important;
+}
+
+[data-preview-mode="mobile"] ${root} .skin-section,
+[data-preview-mode="mobile"] ${root} .skin-footer {
+  padding: 16px !important;
+}
 `;
 }
 
