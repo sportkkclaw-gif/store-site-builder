@@ -14,6 +14,8 @@ type DrinkTheme = {
 };
 
 const atlas = 'url("/template-gallery-ai/drink-shop/drink-theme-texture-atlas-gpt-image-2.png")';
+const restaurantAtlas = 'url("/template-gallery-ai/restaurant/restaurant-theme-texture-atlas-gpt-image-2.png")';
+const cafeAtlas = 'url("/template-gallery-ai/cafe/cafe-theme-texture-atlas-gpt-image-2.png")';
 
 const drinkThemes: Record<string, DrinkTheme> = {
   'drink-matcha-hiyori': {
@@ -126,9 +128,35 @@ const drinkThemes: Record<string, DrinkTheme> = {
   },
 };
 
+const restaurantThemes: Record<string, DrinkTheme> = {
+  'restaurant-charcoal-essence': { id: 'restaurant-charcoal-essence', position: '0% 0%', base: '#14100d', text: '#fff4df', muted: '#d6b894', accent: '#f26d28', accentSoft: 'rgba(242, 109, 40, .24)', shadow: 'rgba(242, 109, 40, .26)', dark: true, shape: 'syrup' },
+  'restaurant-rice-kitchen': { id: 'restaurant-rice-kitchen', position: '25% 0%', base: '#f5ead4', text: '#372714', muted: '#7f6848', accent: '#b8894a', accentSoft: 'rgba(184, 137, 74, .22)', shadow: 'rgba(145, 96, 45, .14)', dark: false, shape: 'cream' },
+  'restaurant-golden-banquet': { id: 'restaurant-golden-banquet', position: '50% 0%', base: '#090805', text: '#fff3d2', muted: '#d7bd80', accent: '#d9a93b', accentSoft: 'rgba(217, 169, 59, .26)', shadow: 'rgba(217, 169, 59, .28)', dark: true, shape: 'sparkle' },
+  'restaurant-corner-meal': { id: 'restaurant-corner-meal', position: '75% 0%', base: '#fff0df', text: '#3a2118', muted: '#815f4d', accent: '#d94f36', accentSoft: 'rgba(217, 79, 54, .22)', shadow: 'rgba(190, 76, 45, .16)', dark: false, shape: 'citrus' },
+  'restaurant-spicy-market': { id: 'restaurant-spicy-market', position: '100% 0%', base: '#2a0903', text: '#fff0d8', muted: '#f3b486', accent: '#ff5b22', accentSoft: 'rgba(255, 91, 34, .28)', shadow: 'rgba(255, 91, 34, .28)', dark: true, shape: 'syrup' },
+  'restaurant-sunday-shokudo': { id: 'restaurant-sunday-shokudo', position: '0% 100%', base: '#162333', text: '#f4efe3', muted: '#b8c2c8', accent: '#c99d5d', accentSoft: 'rgba(201, 157, 93, .22)', shadow: 'rgba(35, 58, 84, .24)', dark: true, shape: 'mist' },
+  'restaurant-kitchen-overture': { id: 'restaurant-kitchen-overture', position: '25% 100%', base: '#d8d7d2', text: '#20211f', muted: '#62625e', accent: '#707a7c', accentSoft: 'rgba(112, 122, 124, .22)', shadow: 'rgba(53, 57, 58, .16)', dark: false, shape: 'ice' },
+  'restaurant-brunch-garden': { id: 'restaurant-brunch-garden', position: '50% 100%', base: '#eef2dc', text: '#26351f', muted: '#627356', accent: '#7ca65a', accentSoft: 'rgba(124, 166, 90, .23)', shadow: 'rgba(81, 118, 61, .15)', dark: false, shape: 'brush' },
+  'restaurant-hotpot-home': { id: 'restaurant-hotpot-home', position: '75% 100%', base: '#34180a', text: '#fff0d8', muted: '#e3b98b', accent: '#d57933', accentSoft: 'rgba(213, 121, 51, .26)', shadow: 'rgba(213, 121, 51, .25)', dark: true, shape: 'cream' },
+  'restaurant-fast-enjoy': { id: 'restaurant-fast-enjoy', position: '100% 100%', base: '#fff1c8', text: '#3a1d12', muted: '#7b5b2f', accent: '#e84628', accentSoft: 'rgba(232, 70, 40, .22)', shadow: 'rgba(220, 102, 20, .18)', dark: false, shape: 'citrus' },
+};
+
+const cafeThemes: Record<string, DrinkTheme> = {
+  'cafe-nordic-morning': { id: 'cafe-nordic-morning', position: '0% 0%', base: '#ece6d9', text: '#26302e', muted: '#68716b', accent: '#8fa6a6', accentSoft: 'rgba(143, 166, 166, .23)', shadow: 'rgba(94, 117, 117, .14)', dark: false, shape: 'mist' },
+  'cafe-midnight-roast': { id: 'cafe-midnight-roast', position: '25% 0%', base: '#080504', text: '#fff1da', muted: '#d1aa7d', accent: '#b66b34', accentSoft: 'rgba(182, 107, 52, .28)', shadow: 'rgba(182, 107, 52, .27)', dark: true, shape: 'syrup' },
+  'cafe-cream-library': { id: 'cafe-cream-library', position: '50% 0%', base: '#f4ead6', text: '#332719', muted: '#766654', accent: '#b08a5b', accentSoft: 'rgba(176, 138, 91, .22)', shadow: 'rgba(125, 91, 52, .14)', dark: false, shape: 'cream' },
+  'cafe-forest-teatime': { id: 'cafe-forest-teatime', position: '75% 0%', base: '#dfeada', text: '#1d3023', muted: '#58705b', accent: '#648f61', accentSoft: 'rgba(100, 143, 97, .24)', shadow: 'rgba(54, 101, 58, .16)', dark: false, shape: 'brush' },
+  'cafe-window-seat': { id: 'cafe-window-seat', position: '100% 0%', base: '#eee9df', text: '#2f302c', muted: '#6d6a62', accent: '#a98d6b', accentSoft: 'rgba(169, 141, 107, .20)', shadow: 'rgba(98, 82, 65, .12)', dark: false, shape: 'sparkle' },
+  'cafe-mocha-studio': { id: 'cafe-mocha-studio', position: '0% 100%', base: '#ead8c2', text: '#382316', muted: '#80624a', accent: '#9b623d', accentSoft: 'rgba(155, 98, 61, .23)', shadow: 'rgba(123, 77, 45, .16)', dark: false, shape: 'syrup' },
+  'cafe-white-dripper': { id: 'cafe-white-dripper', position: '25% 100%', base: '#f3f3f0', text: '#252525', muted: '#696966', accent: '#8a8d88', accentSoft: 'rgba(138, 141, 136, .20)', shadow: 'rgba(54, 54, 54, .12)', dark: false, shape: 'mist' },
+  'cafe-caramel-afternoon': { id: 'cafe-caramel-afternoon', position: '50% 100%', base: '#f2d7ae', text: '#3d2614', muted: '#805c36', accent: '#c07a2e', accentSoft: 'rgba(192, 122, 46, .24)', shadow: 'rgba(160, 96, 36, .17)', dark: false, shape: 'cream' },
+  'cafe-urban-monochrome': { id: 'cafe-urban-monochrome', position: '75% 100%', base: '#161616', text: '#f5f5f0', muted: '#b9b9b4', accent: '#d7d7cf', accentSoft: 'rgba(215, 215, 207, .18)', shadow: 'rgba(0, 0, 0, .28)', dark: true, shape: 'ice' },
+  'cafe-daily-corner': { id: 'cafe-daily-corner', position: '100% 100%', base: '#eee3d1', text: '#372b20', muted: '#796856', accent: '#b58c5a', accentSoft: 'rgba(181, 140, 90, .22)', shadow: 'rgba(126, 91, 56, .14)', dark: false, shape: 'cream' },
+};
+
 export function generateTemplateSpecificCss(skin: TemplateSkin): string {
   if (skin.id === 'drink-lab-brew') return generateLabBrewCss();
-  return generateDrinkAtlasCss(skin);
+  return generateDrinkAtlasCss(skin) || generateVenueAtlasCss(skin, restaurantThemes, restaurantAtlas) || generateVenueAtlasCss(skin, cafeThemes, cafeAtlas);
 }
 
 function selector(id: string) {
@@ -368,6 +396,239 @@ ${root} .skin-menu-row {
   background-size: cover, 300% 300% !important;
   background-position: center, var(--drink-theme-pos) !important;
   border-left: 4px solid var(--drink-theme-accent) !important;
+}
+
+@media (max-width: 760px) {
+  ${root} .product-grid,
+  ${root} .skin-menu-list {
+    grid-template-columns: 1fr !important;
+  }
+}
+`;
+}
+
+function generateVenueAtlasCss(skin: TemplateSkin, themes: Record<string, DrinkTheme>, art: string): string {
+  const theme = themes[skin.id];
+  if (!theme) return '';
+
+  const root = selector(theme.id);
+  const sectionOverlay = theme.dark ? 'rgba(4, 6, 8, .72)' : 'rgba(255, 255, 255, .64)';
+  const cardOverlay = theme.dark ? 'rgba(4, 6, 8, .58)' : 'rgba(255, 255, 255, .52)';
+  const lineColor = theme.dark ? 'rgba(255, 255, 255, .14)' : 'rgba(45, 35, 24, .14)';
+  const surfaceShadow = theme.dark ? 'rgba(0, 0, 0, .38)' : 'rgba(75, 50, 28, .13)';
+  const buttonText = theme.dark ? theme.text : '#fffaf2';
+
+  return `
+${root} {
+  --venue-theme-art: ${art};
+  --venue-theme-pos: ${theme.position};
+  --venue-theme-base: ${theme.base};
+  --venue-theme-text: ${theme.text};
+  --venue-theme-muted: ${theme.muted};
+  --venue-theme-accent: ${theme.accent};
+  --venue-theme-accent-soft: ${theme.accentSoft};
+  background: var(--venue-theme-base) !important;
+  color: var(--venue-theme-text) !important;
+}
+
+${root}::before {
+  content: "" !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: -2 !important;
+  pointer-events: none !important;
+  background-image: var(--venue-theme-art) !important;
+  background-size: 500% 200% !important;
+  background-position: var(--venue-theme-pos) !important;
+  opacity: ${theme.dark ? '.72' : '.58'} !important;
+  filter: ${theme.dark ? 'saturate(1.08) contrast(1.04)' : 'saturate(.98) brightness(1.04)'} !important;
+}
+
+${root}::after {
+  content: "" !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+  background:
+    radial-gradient(circle at 14% 10%, var(--venue-theme-accent-soft), transparent 30%),
+    radial-gradient(circle at 84% 18%, var(--venue-theme-accent-soft), transparent 28%),
+    linear-gradient(180deg, ${theme.dark ? 'rgba(0, 0, 0, .38)' : 'rgba(255, 255, 255, .42)'}, ${theme.dark ? 'rgba(0, 0, 0, .62)' : 'rgba(255, 255, 255, .32)'}) !important;
+}
+
+${root} .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+${root} .skin-nav,
+${root} .template-hero-inner,
+${root} .skin-section,
+${root} .skin-footer {
+  border: 1px solid color-mix(in srgb, var(--venue-theme-accent) 50%, transparent) !important;
+  background:
+    linear-gradient(${sectionOverlay}, ${sectionOverlay}),
+    var(--venue-theme-art) !important;
+  background-size: cover, 500% 200% !important;
+  background-position: center, var(--venue-theme-pos) !important;
+  box-shadow:
+    inset 0 0 0 1px ${theme.dark ? 'rgba(255, 255, 255, .06)' : 'rgba(255, 255, 255, .58)'},
+    0 0 28px ${theme.shadow},
+    0 26px 82px ${surfaceShadow} !important;
+}
+
+${root} .skin-nav {
+  backdrop-filter: blur(18px) saturate(1.05) !important;
+}
+
+${root} .skin-nav b,
+${root} .skin-section h2,
+${root} .hero-copy h1,
+${root} .mobile-hero-content-panel h1,
+${root} .skin-product-card h3,
+${root} .skin-menu-category h3 {
+  color: var(--venue-theme-text) !important;
+  letter-spacing: 0 !important;
+  text-shadow: 0 0 16px ${theme.shadow};
+}
+
+${root} .skin-nav small,
+${root} .skin-eyebrow,
+${root} .placeholder-badge,
+${root} .price,
+${root} .skin-menu-row strong {
+  color: var(--venue-theme-accent) !important;
+}
+
+${root} .muted,
+${root} .hero-copy .muted,
+${root} .mobile-hero-content-panel .muted,
+${root} .skin-menu-row small {
+  color: var(--venue-theme-muted) !important;
+}
+
+${root} .template-hero-backplate {
+  filter: saturate(1.06) contrast(1.03) brightness(${theme.dark ? '1.03' : '.98'}) !important;
+  border: 1px solid color-mix(in srgb, var(--venue-theme-accent) 44%, transparent) !important;
+  box-shadow: 0 28px 76px ${theme.shadow} !important;
+}
+
+${root} .hero-copy,
+${root} .mobile-hero-content-panel,
+${root} .brand-story,
+${root} .skin-menu-list,
+${root} .skin-menu-category,
+${root} .skin-product-card,
+${root} .info-grid p,
+${root} .faq-list details {
+  background:
+    linear-gradient(${cardOverlay}, ${cardOverlay}),
+    var(--venue-theme-art) !important;
+  background-size: cover, 500% 200% !important;
+  background-position: center, var(--venue-theme-pos) !important;
+  border: 1px solid color-mix(in srgb, var(--venue-theme-accent) 42%, transparent) !important;
+  box-shadow:
+    inset 0 1px 0 ${theme.dark ? 'rgba(255, 255, 255, .08)' : 'rgba(255, 255, 255, .68)'},
+    0 16px 44px ${theme.shadow} !important;
+}
+
+${root} .skin-section::after {
+  content: "" !important;
+  display: block !important;
+  height: 30px !important;
+  margin-top: 28px !important;
+  border-top: 1px dashed ${lineColor};
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--venue-theme-accent) 48%, transparent) 0 1px, transparent 1px) !important;
+  background-size: 18px 18px !important;
+  background-position: left 14px !important;
+  opacity: .76;
+}
+
+${root} .skin-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 0 !important;
+  font-weight: 900;
+  letter-spacing: .22em !important;
+}
+
+${root} .skin-eyebrow::before,
+${root} .placeholder-badge::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-radius: ${theme.shape === 'pearls' || theme.shape === 'sparkle' ? '999px' : '6px'};
+  border: 1px solid var(--venue-theme-accent);
+  transform: rotate(${theme.shape === 'ice' ? '45deg' : '0deg'});
+  box-shadow: 0 0 14px var(--venue-theme-accent-soft);
+}
+
+${root} .skin-btn {
+  background: var(--venue-theme-accent) !important;
+  color: ${buttonText} !important;
+  border: 1px solid color-mix(in srgb, var(--venue-theme-accent) 64%, white) !important;
+  box-shadow: 0 12px 32px ${theme.shadow} !important;
+}
+
+${root} .product-grid .skin-product-card {
+  padding: 0 0 20px !important;
+  overflow: hidden;
+}
+
+${root} .product-grid .themed-placeholder {
+  height: clamp(210px, 18vw, 270px) !important;
+  min-height: clamp(210px, 18vw, 270px) !important;
+  border-radius: 20px 20px 8px 8px !important;
+  background:
+    ${productShape(theme)},
+    linear-gradient(${theme.dark ? 'rgba(2, 5, 8, .30)' : 'rgba(255, 255, 255, .20)'}, ${theme.dark ? 'rgba(2, 5, 8, .30)' : 'rgba(255, 255, 255, .20)'}),
+    var(--venue-theme-art) !important;
+  background-size: auto, cover, 500% 200% !important;
+  background-position: center, center, var(--venue-theme-pos) !important;
+  background-repeat: no-repeat !important;
+}
+
+${root} .product-grid .themed-placeholder .placeholder-orb,
+${root} .product-grid .themed-placeholder .placeholder-line {
+  background: var(--venue-theme-accent) !important;
+  box-shadow: 0 0 16px var(--venue-theme-accent-soft);
+}
+
+${root} .product-grid .themed-placeholder::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid color-mix(in srgb, var(--venue-theme-accent) 38%, transparent);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+${root} .product-grid .themed-placeholder::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: 42px;
+  height: 6px;
+  border-radius: 999px;
+  background: radial-gradient(circle, var(--venue-theme-accent) 0 2px, transparent 3px);
+  background-size: 12px 6px;
+  box-shadow: 0 0 14px var(--venue-theme-accent-soft);
+  pointer-events: none;
+}
+
+${root} .product-copy {
+  padding: 18px 22px 0;
+}
+
+${root} .skin-menu-row {
+  background:
+    linear-gradient(${theme.dark ? 'rgba(0, 0, 0, .24)' : 'rgba(255, 255, 255, .36)'}, ${theme.dark ? 'rgba(0, 0, 0, .24)' : 'rgba(255, 255, 255, .36)'}),
+    var(--venue-theme-art) !important;
+  background-size: cover, 500% 200% !important;
+  background-position: center, var(--venue-theme-pos) !important;
+  border-left: 4px solid var(--venue-theme-accent) !important;
 }
 
 @media (max-width: 760px) {
